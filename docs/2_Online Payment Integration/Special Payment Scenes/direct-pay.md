@@ -5,9 +5,9 @@ toc_max_heading_level: 6
 
 # Direct Pay
 
-PayBy offers a secure and flexible API for merchants to integrate card payment functionality into their platforms. Customers enter their card details directly on the merchant’s interface to complete transactions. All card information is encrypted and securely stored by PayBy, enabling one-click payments for future purchases.
+Botim Money Business offers a secure and flexible API for merchants to integrate card payment functionality into their platforms. Customers enter their card details directly on the merchant’s interface to complete transactions. All card information is encrypted and securely stored by Botim Money Business, enabling one-click payments for future purchases.
 
-This solution gives merchants full control over the user interface design, allowing for a customized checkout experience while benefiting from PayBy’s secure payment infrastructure. It’s an ideal choice for businesses seeking a seamless and user-friendly card payment integration.
+This solution gives merchants full control over the user interface design, allowing for a customized checkout experience while benefiting from Botim Money Business’s secure payment infrastructure. It’s an ideal choice for businesses seeking a seamless and user-friendly card payment integration.
 
 ## User Experience
 

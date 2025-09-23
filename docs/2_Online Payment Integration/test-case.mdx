@@ -18,7 +18,7 @@ Use the following integration cases to review your integration qualities. To cre
   <details>
     <summary>Case-001 Payment with password authentication triggered</summary>
     <div>
-      <p>When a single payment greater than or equals to a certain amount (usually is AED 500),PayBy users might be prompted to enter the password to complete the payment. This test case is to check whether your system can properly handle this scenario. </p>
+      <p>When a single payment greater than or equals to a certain amount (usually is AED 500),Botim Money Business users might be prompted to enter the password to complete the payment. This test case is to check whether your system can properly handle this scenario. </p>
       <p>Acceptance rules: </p>
       <p><a>- Both [Partner-Id] and [merchantOrderNo] are required in the request. </a></p>
       <p><a>- The payment amount is greater than or equals to AED 500.</a></p>
@@ -48,7 +48,7 @@ Use the following integration cases to review your integration qualities. To cre
     <summary>Case-003 Payment failed with SYSTEM_ERROR returned</summary>
     <div>
       <p>SYSTEM_ERROR is returned when a payment request goes wrong. This test case is to check whether the system can
-        handle the SYSTEM_ERROR according to the best practices recommended by PayBy. </p>
+        handle the SYSTEM_ERROR according to the best practices recommended by Botim Money Business. </p>
       <p>Acceptance rules: </p>
       <p><a>- Both [Partner-Id] and [merchantOrderNo] are required in the request. </a></p>
       <p><a>- Payment interface responds SYSTEM_ERROR.</a></p>
@@ -62,7 +62,7 @@ Use the following integration cases to review your integration qualities. To cre
     <summary>Case-004 Payment timeouts</summary>
     <div>
       <p>A payment request might timeout because of poor network or Botim Money Business system error. This test case is to check
-        whether the system can handle timeout errors according to the best practices recommended by PayBy. </p>
+        whether the system can handle timeout errors according to the best practices recommended by Botim Money Business. </p>
       <p>Acceptance rules: </p>
       <p><a>- Both [Partner-Id] and [merchantOrderNo] are required in the request. </a></p>
       <p><a>- Payment interface responds SYSTEM_ERROR.</a></p>
@@ -133,7 +133,7 @@ Use the following integration cases to review your integration qualities. To cre
   <details>
     <summary>Case-009 Return a [SUCCESS] response to Botim Money Business after received the notification</summary>
     <div>
-      <p>After the payment is successful, Botim Money Business will send the payment result of the order and the user information to the merchant in the form of a data stream. The merchant needs to receive and process it, and return a [SUCCESS] response to PayBy.This test case is to check whether the system can handle the notification.</p>
+      <p>After the payment is successful, Botim Money Business will send the payment result of the order and the user information to the merchant in the form of a data stream. The merchant needs to receive and process it, and return a [SUCCESS] response to Botim Money Business.This test case is to check whether the system can handle the notification.</p>
       <p>Acceptance rules: </p>
       <p><a>- Receive and process the notification. </a></p>
       <p><a>- [SUCCESS] is required in the return response. </a></p>

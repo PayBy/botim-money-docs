@@ -4,9 +4,9 @@ sidebar_position: 10
 
 # Smart Code
 
-Generate a **QR code** by setting a payment amount. You can download the code from the **PayBy portal**, print it, and place it in your store where customers can easily see and scan it.
+Generate a **QR code** by setting a payment amount. You can download the code from the **Botim Money Business portal**, print it, and place it in your store where customers can easily see and scan it.
 
-Customers can scan the QR code using **any scanner app** or the **PayBy app** to complete their payment quickly and securely.
+Customers can scan the QR code using **any scanner app** or the **Botim app** to complete their payment quickly and securely.
 
 ---
 
@@ -19,7 +19,7 @@ Customers can scan the QR code using **any scanner app** or the **PayBy app** to
 ## Step-by-Step Guide
 
 1. **Scan the QR Code**  
-   Use the **PayBy app (test environment)** to scan the code above.  
+   Use the **Botim app (test environment)** to scan the code above.  
    > **Note:** *Camera scanning may not work in the test environment.*  
    
    Find the APK and test account details [here](/demos/testaccount).

@@ -8,7 +8,7 @@ Merchant presented QR code
 
 - **changePayer**   <span style={{color:" #7d8793"}}>String</span>   
 
-  If the user tries to pay with BOTIM / PayBy, whether to bind the payer information to the order after payer scanning the code. If false, if user A does not complete the payment after scanning the QR code, other users can continue to scan the QR code to pay. If true, if user A does not complete the payment after scanning the QR code, other users will fail when they try to scan the QR code to pay. The default value is true.
+  If the user tries to pay with BOTIM Money, whether to bind the payer information to the order after payer scanning the code. If false, if user A does not complete the payment after scanning the QR code, other users can continue to scan the QR code to pay. If true, if user A does not complete the payment after scanning the QR code, other users will fail when they try to scan the QR code to pay. The default value is true.
 
   Default value: True.
   

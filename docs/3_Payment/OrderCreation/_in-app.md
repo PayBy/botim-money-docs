@@ -16,7 +16,7 @@
 
 - **appId**   <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
 
-  Your app needs to be registered with PayBy. Botim Money Business will assign an app id after successful registration. Please log in to the portal and visit [Setting - Developers - My Apps] to register your application.
+  Your app needs to be registered with Botim Money Business. Botim Money Business will assign an app id after successful registration. Please log in to the portal and visit [Setting - Developers - My Apps] to register your application.
 
   Example value: 20211222000000241
 

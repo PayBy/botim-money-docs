@@ -23,6 +23,6 @@ The payer completes the signing of the automatic deduction agreement while makin
 
 - **customerId** <span style={{color:" #7d8793"}}>String</span>
 
-  The payer's id in the merchant's system.Used to identify the payer's contracted entity within PAYBY.
+  The payer's id in the merchant's system.Used to identify the payer's contracted entity within Botim Money Business.
   
   Example value: user1233

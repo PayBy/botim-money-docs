@@ -30,7 +30,7 @@ This product enables online merchants to accept cash payments from customers who
 ![cashier-ue](../pic/ue-cashier-cash.png)
 
 ## Integrate the API
-### Cash Top-Up Payment Flow Using PayBy
+### Cash Top-Up Payment Flow Using Botim Money Business
 
 Follow these steps to initiate and complete a cash top-up transaction:
 

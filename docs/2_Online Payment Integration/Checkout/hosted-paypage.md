@@ -3,7 +3,7 @@ sidebar_position: 1
 toc_max_heading_level: 6
 ---
 # Hosted Paypage
-Hosted paypage is one of the most common and easiest ways to acquire payments. It is payby's preset checkout interface, which integrates all the payment channels you need. When customers pay, they will be redirected from your website to a payment page which is hosted on Botim Money Business servers.
+Hosted paypage is one of the most common and easiest ways to acquire payments. It is Botim Money Business's preset checkout interface, which integrates all the payment channels you need. When customers pay, they will be redirected from your website to a payment page which is hosted on Botim Money Business servers.
 
 ## User Experience
 1. The customers are ready to complete their payment, your application creates a new order creation request.

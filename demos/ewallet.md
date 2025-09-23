@@ -8,7 +8,14 @@ Enhance your mobile app’s checkout experience by adding one or more supported 
 
 **Currently Supported E-wallets**:  
 - **BOTIM**  
-- **PayBy App**
+- **Apple Pay**
+- **Google Pay**
+- **Samsung Pay**
+- **VISA**
+- **MASTERCARD**
+- **AliPay**
+- **Aani**
+- **UnionPay**
 
 ---
 
@@ -33,7 +40,7 @@ Open this link on your mobile browser *(not compatible with PC)*: https://uat-m.
    Enter the payment amount and choose an E-wallet.  
    > **Note:** *In the test environment, only Botim Money Business is available.*  
    
-   Make sure the **PayBy app** is installed. You can find the APK and test account details [here](/demos/testaccount).
+   Make sure the **Botim app** is installed. You can find the APK and test account details [here](/demos/testaccount).
 
 3. **Complete the Payment**  
    You’ll be redirected to the Botim Money Business app’s built-in checkout. Enter your password to finalize the transaction.

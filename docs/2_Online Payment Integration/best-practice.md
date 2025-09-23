@@ -25,7 +25,7 @@ All payment processing begins with order creation using the Order Creation API. 
 
 ### Asynchronous Processing
 
-PayBy processes payments asynchronously after order creation. This architecture provides:
+Botim Money Business processes payments asynchronously after order creation. This architecture provides:
 
 - **Non-blocking Operations**: Merchants are not required to maintain persistent connections
 - **Enhanced Scalability**: Supports higher concurrent request volumes

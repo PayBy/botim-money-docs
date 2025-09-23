@@ -61,7 +61,7 @@
 
   The merchant decides whether the transaction requires 3DS verification. If true, Botim Money Business will return the verification link; if false, Botim Money Business will debit the payment directly after submitting the payment request. The default is False.
 
-  Notice that, if PayBy's risk control system identifies that the transaction requires 3DS verification, even if the merchant passes false, the payer will be required for 3DS verification.
+  Notice that, if Botim Money Business's risk control system identifies that the transaction requires 3DS verification, even if the merchant passes false, the payer will be required for 3DS verification.
 
   Default value: False.
 
@@ -81,7 +81,7 @@
 
 - **saveCard** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
 
-  The payer's card information can be saved for future use. If true, Botim Money Business will return the ID of the card, so that the card ID can be passed directly instead of the card information when another transaction is made. A customer id can save multiple cards in PayBy.
+  The payer's card information can be saved for future use. If true, Botim Money Business will return the ID of the card, so that the card ID can be passed directly instead of the card information when another transaction is made. A customer id can save multiple cards in Botim Money Business.
 
   Default value: False.
 
@@ -134,7 +134,7 @@
 
   The merchant decides whether the transaction requires 3DS verification. If true, Botim Money Business will return the verification link; if false, Botim Money Business will debit the payment directly after submitting the payment request. The default is False.
 
-  Notice that, if PayBy's risk control system identifies that the transaction requires 3DS verification, even if the merchant passes false, the payer will be required for 3DS verification.
+  Notice that, if Botim Money Business's risk control system identifies that the transaction requires 3DS verification, even if the merchant passes false, the payer will be required for 3DS verification.
 
   Default value: False.
 

@@ -15,8 +15,8 @@ QR code payments are inherently secure. The QR code itself serves only as a medi
 
 ## User Experience
 
-1.  The customer confirms to pay for an order, the merchant generates a QR codes on the interface.
-2. The customer uses PayBy, BOTIM to scan the QR code to obtain order information. 
+1. The customer confirms to pay for an order, the merchant generates a QR codes on the interface.
+2. The customer uses BOTIM Money to scan the QR code to obtain order information. 
 3. In the order information returned by Botim Money Business server, there is a parameter **tokenUrl**, Botim Money Business or BOTIM application will parse this parameter and redirect the customer to the built-in checkout of the app.
 4. Customers enter their payment details on the payment page and complete the transaction.
 5. If the payment is completed, the customer will see the payment result on the app.

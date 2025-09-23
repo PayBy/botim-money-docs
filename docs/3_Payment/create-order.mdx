@@ -261,7 +261,7 @@ The attributes are:
   - The secondary merchant ID represents the merchant's member ID on your platform.  
   - Maximum length: <code>200</code>
 
-  > **Note:** *To learn more about this feature please contact PayBy. *
+  > **Note:** *To learn more about this feature please contact Botim Money Business. *
 
 - **deviceId** <span style={{color:" #7d8793"}}>String</span>  
   
@@ -439,7 +439,7 @@ When Botim Money Business sends response, Botim Money Business will use its own 
 
     Appears only in `DIRECTPAY` payment scene.
 
-    If the merchant decides or PayBy's risk control system recognizes that the transaction requires 3DS verification, the 3DS verification link will be returned.
+    If the merchant decides or Botim Money Business's risk control system recognizes that the transaction requires 3DS verification, the 3DS verification link will be returned.
 
   
   > **Note:** The `AUTODEBIT` and `QRPAY ` payment scene don't have `interactionParams`.
@@ -461,7 +461,7 @@ When Botim Money Business sends response, Botim Money Business will use its own 
 | 402   | RATE_LIMIT_REJECT                            | Requests too frequent                                        | Reduce request frequency                    |
 | 403   | UNAUTHORIZED                                 | API not authorized                                           | Contact Botim Money Business                               |
 | 404   | SERVICE_NOT_AVAILABLE                        | API service not available                                    | Contact Botim Money Business                               |
-| 500   | SYSTEM_ERROR                                 | System error                                                 | Contact PayBy. Retry later               |
+| 500   | SYSTEM_ERROR                                 | System error                                                 | Contact Botim Money Business. Retry later               |
 | 504   | SERVICE_TIMEOUT                              | Service timeout                                              | Retry later                                 |
 | 601   | RISK_FAIL                                    | Risk control validation failed                               | Adjust business                             |
 | 62001 | ORDER_PAID                                   | Order already paid successfully, cancellation not supported | Adjust merchant order number                |
