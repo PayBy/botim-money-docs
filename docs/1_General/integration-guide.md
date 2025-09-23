@@ -7,7 +7,7 @@ slug: /integration-guide
 
 # Get Started
 
-This document provides an overview of the process to start accepting payments using PayBy.
+This document provides an overview of the process to start accepting payments using Botim Money Business.
 
 ## Learn About Botim Money Business Products
 
