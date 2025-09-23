@@ -63,7 +63,7 @@ function IframePayPage(props: { orderCreation?: any; siteConfig?: any }) {
           <Input size="large" className="ant-input form-module-xl" />
         </Form.Item>
         <FormItem>
-          <Button type="primary" htmlType="submit" size="large" block style={{ backgroundColor: "#00A75D" }}>
+          <Button type="primary" htmlType="submit" size="large" block style={{ backgroundColor: "#3C8404" }}>
             PAY NOW
           </Button>
         </FormItem>
