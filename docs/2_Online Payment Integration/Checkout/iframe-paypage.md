@@ -5,14 +5,14 @@ toc_max_heading_level: 6
 
 # iFrame Paypage
 
-The iFrame Payment Page is a webpage prepared by PayBy that can be embedded within your website. Although it resides on PayBy’s secure servers, the transition to the PayBy secure page is invisible to the cardholder. 
+The iFrame Payment Page is a webpage prepared by Botim Money Business that can be embedded within your website. Although it resides on PayBy’s secure servers, the transition to the Botim Money Business secure page is invisible to the cardholder. 
 
 Unlike the Hosted Paypage, using the iFrame Paypage ensures that customers remain on your website when making a payment, potentially reducing the payment failure rate. Additionally, integrating the iFrame Paypage within your site provides greater flexibility.
 
 ## User Experience
 
 1. When customers are ready to complete their payment, your application creates a new order creation request.
-2. The PayBy returns a URL that can be rendered in the container on your checkout page.
+2. The Botim Money Business returns a URL that can be rendered in the container on your checkout page.
 3. Customers choose a payment method and enter their payment details on the payment page to complete the transaction.
 4. If the payment is completed, customers will be redirected to the merchant's success page.
 
@@ -25,7 +25,7 @@ Unlike the Hosted Paypage, using the iFrame Paypage ensures that customers remai
 
 ## Integrate the API
 
-### Load PayBy JS SDK
+### Load Botim Money Business JS SDK
 
 ```
 <script async src="https://checkout.payby.com/sdk/payby-sdk.umd.js"></script>
@@ -35,7 +35,7 @@ Unlike the Hosted Paypage, using the iFrame Paypage ensures that customers remai
 
 When the customer confirms to pay, call the [Create order](/docs/createorder) API, follow the API description to create a request. Pass `PAYPAGE` in the **paySceneCode** parameter.
 
-If the request is successful, PayBy will return a token url that can be rendered in the container on your checkout page.
+If the request is successful, Botim Money Business will return a token url that can be rendered in the container on your checkout page.
 
 ---
 
@@ -111,7 +111,7 @@ window.PayBy.createIframe({
 
 - **lang**  
   - **Type:** `String`  
-  - Specifies the default language of the PayBy page returned in the `tokenUrl`.  
+  - Specifies the default language of the Botim Money Business page returned in the `tokenUrl`.  
   - Supported values:  
     - `ar` — Arabic  
     - `en` — English  
@@ -134,11 +134,11 @@ window.PayBy.createIframe({
 
 ### Redirect URL
 
-Create a success page for the URL you provided in the **redirectUrl**  parameter to display order confirmation message to your customer. PayBy will redirect the payer to this page after the payment has been completed on the checkout.
+Create a success page for the URL you provided in the **redirectUrl**  parameter to display order confirmation message to your customer. Botim Money Business will redirect the payer to this page after the payment has been completed on the checkout.
 
 ### Asynchronous Notification
 
-If the **notifyUrl** is set in the order creation request, after the transaction, PayBy will send payment result to the url.
+If the **notifyUrl** is set in the order creation request, after the transaction, Botim Money Business will send payment result to the url.
 
 ### Change Order Status
 
@@ -150,4 +150,4 @@ To retrieve the order detail, call the [Retrieve Order Detail](/docs/retrieveord
 
 ## Set Payment Method
 
-On the paypage, by default, all payment methods activated by the merchant in PayBy will be listed. To adjust the order of payment methods or temporarily disable some payment methods for the payer, configure it in Payment Methods. [Payment Methods](https://b.payby.com/payment-methods).
+On the paypage, by default, all payment methods activated by the merchant in Botim Money Business will be listed. To adjust the order of payment methods or temporarily disable some payment methods for the payer, configure it in Payment Methods. [Payment Methods](https://b.botim.money/payment-methods).

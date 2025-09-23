@@ -10,7 +10,7 @@ Select the payment product you want to access and check the user experience and 
 
 **Checkout**
 
-`Hosted paypage` - Redirect your customer to a PayBy hosted paypage.
+`Hosted paypage` - Redirect your customer to a Botim Money Business hosted paypage.
 
 `iFrame paypage` - Embed the checkout in your website.
 
@@ -40,4 +40,4 @@ Select the payment product you want to access and check the user experience and 
 
 **In-person payment**
 
-`POS` - Contact our sales to apply and install POS. bd@payby.com
+`POS` - Contact our sales to apply and install POS. bd@astratech.ae

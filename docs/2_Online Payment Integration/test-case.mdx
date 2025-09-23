@@ -10,7 +10,7 @@ Use the following integration cases to review your integration qualities. To cre
 
 > - Use iValidate ONLY when your product is ready to go live.
 > - To simulate real payment scenarios, all test cases must be started by using PAYMENT TERMINALS, rather than by manually calling APIs.
-> - After your product goes live, PayBy will analyze your transaction status and identify the hidden integration problems or problems caused by code changes.
+> - After your product goes live, Botim Money Business will analyze your transaction status and identify the hidden integration problems or problems caused by code changes.
 
 <br/>
 
@@ -32,7 +32,7 @@ Use the following integration cases to review your integration qualities. To cre
   <details>
     <summary>Case-002 Payment expires</summary>
     <div>
-      <p>Sometimes PayBy users might choose not to continue when they are prompted to enter the password to complete the
+      <p>Sometimes Botim Money Business users might choose not to continue when they are prompted to enter the password to complete the
         payment, and the payment finally expires. This test case is to check whether your system can properly handle
         this scenario. </p>
       <p>Acceptance rules: </p>
@@ -61,7 +61,7 @@ Use the following integration cases to review your integration qualities. To cre
   <details>
     <summary>Case-004 Payment timeouts</summary>
     <div>
-      <p>A payment request might timeout because of poor network or PayBy system error. This test case is to check
+      <p>A payment request might timeout because of poor network or Botim Money Business system error. This test case is to check
         whether the system can handle timeout errors according to the best practices recommended by PayBy. </p>
       <p>Acceptance rules: </p>
       <p><a>- Both [Partner-Id] and [merchantOrderNo] are required in the request. </a></p>
@@ -131,9 +131,9 @@ Use the following integration cases to review your integration qualities. To cre
   </details>
   <br/>
   <details>
-    <summary>Case-009 Return a [SUCCESS] response to PayBy after received the notification</summary>
+    <summary>Case-009 Return a [SUCCESS] response to Botim Money Business after received the notification</summary>
     <div>
-      <p>After the payment is successful, PayBy will send the payment result of the order and the user information to the merchant in the form of a data stream. The merchant needs to receive and process it, and return a [SUCCESS] response to PayBy.This test case is to check whether the system can handle the notification.</p>
+      <p>After the payment is successful, Botim Money Business will send the payment result of the order and the user information to the merchant in the form of a data stream. The merchant needs to receive and process it, and return a [SUCCESS] response to PayBy.This test case is to check whether the system can handle the notification.</p>
       <p>Acceptance rules: </p>
       <p><a>- Receive and process the notification. </a></p>
       <p><a>- [SUCCESS] is required in the return response. </a></p>

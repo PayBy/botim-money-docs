@@ -6,7 +6,7 @@ slug: /response-code
 
 # Response Codes
 
-The response returned by PayBy will contain the response code and message. Different codes represent different meanings, below is a list of possible codes, along with additional information about how to resolve them. 
+The response returned by Botim Money Business will contain the response code and message. Different codes represent different meanings, below is a list of possible codes, along with additional information about how to resolve them. 
 
 
 ## Global 
@@ -18,11 +18,11 @@ The response returned by PayBy will contain the response code and message. Diffe
 | 400  | REQUESTTIME_TOO_EARLY | The difference between the request time and the current time cannot exceed 15 minutes |
 | 400  | REQUESTTIME_TOO_LATER | The difference between the request time and the current time cannot exceed 15 minutes |
 | 402  | RATE_LIMIT_REJECT     | Request frequency is too high                                |
-| 403  | UNAUTHORIZED          | Merchant does not have permission to use this API, please contact PayBy |
+| 403  | UNAUTHORIZED          | Merchant does not have permission to use this API, please contact Botim Money Business |
 | 404  | SERVICE_NOT_AVAILABLE | API service is temporarily unavailable                       |
 | 500  | SYSTEM_ERROR          | System error                                                 |
 | 504  | SERVICE_TIMEOUT       | Timeout                                                      |
-| 601  | RISK_FAIL             | The request was intercepted by the risk control system, please contact PayBy |
+| 601  | RISK_FAIL             | The request was intercepted by the risk control system, please contact Botim Money Business |
 
 
 ## Payment & Refund
@@ -41,7 +41,7 @@ The response returned by PayBy will contain the response code and message. Diffe
 | 62018 | PAYERMID_NOT_EXIST                | PayerMid not exist                                           |
 | 62019 | PAYEEMID_NOT_EXIST                | PayeeMid not exist                                           |
 | 62020 | PAYERMID_PAYEEMID_ARE_SAME        | PayerMid and PayeeMid cannot be the same                     |
-| 62026 | PRODUCT_IS_NOT_APPLIED            | Merchant does not have permission to use this API, please contact PayBy |
+| 62026 | PRODUCT_IS_NOT_APPLIED            | Merchant does not have permission to use this API, please contact Botim Money Business |
 | 62031 | MISSING_IAP_DEVICE_ID             | Missing iapDeviceId                                          |
 | 62032 | MISSING_APP_ID                    | Missing AppId                                                |
 | 62033 | MISSING_AUTHCODE                  | Missing authCode                                             |
@@ -167,7 +167,7 @@ The response returned by PayBy will contain the response code and message. Diffe
 | 62016 | MERCHANT_ORDER_NO_EXIST    | The merchant order number has generated a transfer order     |
 | 62020 | PAYERMID_PAYEEMID_ARE_SAME | Payer and payee cannot be the same                           |
 | 62023 | NAME_NOT_MATCH             | The payee name being passed does not match the KYC information |
-| 62026 | PRODUCT_IS_NOT_APPLIED     | Merchant does not have permission to use this API, please contact PayBy |
+| 62026 | PRODUCT_IS_NOT_APPLIED     | Merchant does not have permission to use this API, please contact Botim Money Business |
 | 62027 | BENEFICIARY_NOT_EXIST      | The payee does not exist                                     |
 | 62028 | ORDER_SUCCESS              | The order has been successful                                |
 | 62029 | ORDER_CREATED              | The order has been created                                   |
@@ -181,7 +181,7 @@ The response returned by PayBy will contain the response code and message. Diffe
 | ----- | ----------------------- | ------------------------------------------------------------ |
 | 62002 | ORDER_FAILURE           | The order has failed                                         |
 | 62016 | MERCHANT_ORDER_NO_EXIST | The merchant order number has generated a transfer order     |
-| 62026 | PRODUCT_IS_NOT_APPLIED  | Merchant does not have permission to use this API, please contact PayBy |
+| 62026 | PRODUCT_IS_NOT_APPLIED  | Merchant does not have permission to use this API, please contact Botim Money Business |
 | 62028 | ORDER_SUCCESS           | The order has been successful                                |
 | 62029 | ORDER_CREATED           | The order has been created                                   |
 
@@ -193,7 +193,7 @@ The response returned by PayBy will contain the response code and message. Diffe
 
 | Code  | Message                                      | Description                                           |
 | ----- | -------------------------------------------- | ----------------------------------------------------- |
-| 92000 | Risk control rejection                       | PayBy risk control system rejected the transaction    |
+| 92000 | Risk control rejection                       | Botim Money Business risk control system rejected the transaction    |
 | 92001 | The amount of transaction exceeds the limit  | Transaction amount exceeds the maximum limit          |
 | 92002 | The number of transactions exceeds the limit | The number of transactions exceeds the maximum limit  |
 | 92003 | Non-KYC user transactions                    | User has not completed KYC verification               |

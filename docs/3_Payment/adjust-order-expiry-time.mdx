@@ -169,9 +169,9 @@ This interface allows you to adjust the expiration time for existing orders. The
 | 400   | REQUESTTIME_TOO_EARLY | Request time is too early compared to current time | Adjust request time                                        |
 | 400   | REQUESTTIME_TOO_LATER | Request time is too late compared to current time  | Adjust request time                                        |
 | 402   | RATE_LIMIT_REJECT     | Request frequency is too high                      | Reduce request frequency                                   |
-| 403   | UNAUTHORIZED          | API is not authorized                              | Contact PayBy for authorization                            |
-| 404   | SERVICE_NOT_AVAILABLE | API service is unavailable                         | Contact PayBy support                                      |
-| 500   | SYSTEM_ERROR          | System error occurred                              | Contact PayBy support and retry later                      |
+| 403   | UNAUTHORIZED          | API is not authorized                              | Contact Botim Money Business for authorization                            |
+| 404   | SERVICE_NOT_AVAILABLE | API service is unavailable                         | Contact Botim Money Business support                                      |
+| 500   | SYSTEM_ERROR          | System error occurred                              | Contact Botim Money Business support and retry later                      |
 | 504   | SERVICE_TIMEOUT       | Service timeout                                    | Retry the request                                          |
 | 601   | RISK_FAIL             | Risk control validation failed                     | Review and adjust business parameters                      |
 | 62089 | INVALID_EXPIRED_TIME  | Invalid expiration time provided                   | Ensure expiration time is within 15 days from current time |

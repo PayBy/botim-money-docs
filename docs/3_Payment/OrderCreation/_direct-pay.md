@@ -40,7 +40,7 @@
 
 - **email** <span style={{color:" #7d8793"}}>String</span>
 
-  Cardholder's email. After the payment is successful, PayBy will send the billing information to this email address.
+  Cardholder's email. After the payment is successful, Botim Money Business will send the billing information to this email address.
 
   Example value: customer@payment.com
 
@@ -59,7 +59,7 @@
 
 - **threeDSecure** <span style={{color:" #7d8793"}}>String</span>
 
-  The merchant decides whether the transaction requires 3DS verification. If true, PayBy will return the verification link; if false, PayBy will debit the payment directly after submitting the payment request. The default is False.
+  The merchant decides whether the transaction requires 3DS verification. If true, Botim Money Business will return the verification link; if false, Botim Money Business will debit the payment directly after submitting the payment request. The default is False.
 
   Notice that, if PayBy's risk control system identifies that the transaction requires 3DS verification, even if the merchant passes false, the payer will be required for 3DS verification.
 
@@ -81,7 +81,7 @@
 
 - **saveCard** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
 
-  The payer's card information can be saved for future use. If true, PayBy will return the ID of the card, so that the card ID can be passed directly instead of the card information when another transaction is made. A customer id can save multiple cards in PayBy.
+  The payer's card information can be saved for future use. If true, Botim Money Business will return the ID of the card, so that the card ID can be passed directly instead of the card information when another transaction is made. A customer id can save multiple cards in PayBy.
 
   Default value: False.
 
@@ -113,7 +113,7 @@
 
 - **email** <span style={{color:" #7d8793"}}>String</span>
 
-  Cardholder's email. After the payment is successful, PayBy will send the billing information to this email address.
+  Cardholder's email. After the payment is successful, Botim Money Business will send the billing information to this email address.
 
   Example value: customer@payment.com
 
@@ -132,7 +132,7 @@
 
 - **threeDSecure** <span style={{color:" #7d8793"}}>String</span>
 
-  The merchant decides whether the transaction requires 3DS verification. If true, PayBy will return the verification link; if false, PayBy will debit the payment directly after submitting the payment request. The default is False.
+  The merchant decides whether the transaction requires 3DS verification. If true, Botim Money Business will return the verification link; if false, Botim Money Business will debit the payment directly after submitting the payment request. The default is False.
 
   Notice that, if PayBy's risk control system identifies that the transaction requires 3DS verification, even if the merchant passes false, the payer will be required for 3DS verification.
 
@@ -158,6 +158,6 @@
 
 - **eid** <span style={{color:" #7d8793"}}>String</span>
 
-  When a value is passed, it indicates that the merchant requires the user's Emirates ID to be verified. PayBy will perform the verification; if the ID matches, the process will proceed. If it does not match, an error will be returned to the user. If no value is passed, PayBy will skip this verification step. The parameter needs to be encrypted with SHA-256 when passed.
+  When a value is passed, it indicates that the merchant requires the user's Emirates ID to be verified. Botim Money Business will perform the verification; if the ID matches, the process will proceed. If it does not match, an error will be returned to the user. If no value is passed, Botim Money Business will skip this verification step. The parameter needs to be encrypted with SHA-256 when passed.
 
   <br/>

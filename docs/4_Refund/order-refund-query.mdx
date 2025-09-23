@@ -84,7 +84,7 @@ Example value: 1581493898000
 
 **sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
 
-When PayBy sends response, PayBy will use its own private key to sign the message, and the merchant uses PayBy 's public key to verify the signature. If the verification is passed, it proves that the response was sent by PayBy and not faked by others.
+When Botim Money Business sends response, Botim Money Business will use its own private key to sign the message, and the merchant uses Botim Money Business 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Botim Money Business and not faked by others.
 
 
 ### Http Body
@@ -225,11 +225,11 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 | 400   | REQUESTTIME_TOO_EARLY              | Request time is too far in the past         | Adjust request time              |
 | 400   | REQUESTTIME_TOO_LATER              | Request time is too far in the future       | Adjust request time              |
 | 402   | RATE_LIMIT_REJECT                  | Too many requests                           | Reduce request frequency         |
-| 403   | UNAUTHORIZED                       | API not authorized                          | Contact PayBy                    |
-| 404   | SERVICE_NOT_AVAILABLE              | API service unavailable                     | Contact PayBy                    |
-| 500   | SYSTEM_ERROR                       | System error                                | Contact PayBy and retry later    |
+| 403   | UNAUTHORIZED                       | API not authorized                          | Contact Botim Money Business                    |
+| 404   | SERVICE_NOT_AVAILABLE              | API service unavailable                     | Contact Botim Money Business                    |
+| 500   | SYSTEM_ERROR                       | System error                                | Contact Botim Money Business and retry later    |
 | 504   | SERVICE_TIMEOUT                    | Service timeout                             | Retry later                      |
 | 601   | RISK_FAIL                          | Risk control validation failed              | Adjust business logic            |
 | 62007 | REFUND_MERCHANT_ORDER_NO_NOT_EXIST | Refund merchant order number does not exist | Correct the refund order number  |
-| 62035 | ORDER_NO_NOT_EXIST                 | PayBy order number does not exist           | Correct the PayBy order number   |
+| 62035 | ORDER_NO_NOT_EXIST                 | Botim Money Business order number does not exist           | Correct the Botim Money Business order number   |
 

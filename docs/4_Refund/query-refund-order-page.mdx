@@ -20,7 +20,7 @@ toc_max_heading_level: 6
 | -------------- | ---------------- | -------- | ---------- | ---------------- | -------------------------------------------- |
 | Language       | Content-Language | Optional | String(10) | en               | Language preference: en - English (default)  |
 | Signature      | sign             | Required | String     | IXJI/QicPQotIsID... | Request signature for authentication         |
-| Merchant ID    | Partner-Id       | Required | String(12) | 200000000888     | Unique merchant identifier assigned by PayBy |
+| Merchant ID    | Partner-Id       | Required | String(12) | 200000000888     | Unique merchant identifier assigned by Botim Money Business |
 
 ---
 
@@ -111,7 +111,7 @@ The body in the HTTP Body are returned only when `applyStatus` is `SUCCESS` and 
 | Variable Desc.           | Variable name         | Required | Type   | Example value                        | Description                                                  |
 | ------------------------ | --------------------- | -------- | ------ | ------------------------------------ | ------------------------------------------------------------ |
 | Refund Merchant Order No | refundMerchantOrderNo | Required | String | e80b6813-1711-4647-aa0d-48b0d1855ae7 | Merchant's unique refund order identifier                    |
-| Order No                 | orderNo               | Required | String | 911588343112002067                   | PayBy system order number                                    |
+| Order No                 | orderNo               | Required | String | 911588343112002067                   | Botim Money Business system order number                                    |
 | Status                   | status                | Required | String | SUCCESS                              | Refund order status (CREATED/REFUNDED_SETTLED/SUCCESS/FAILURE) |
 | Amount                   | amount                | Required | Money  | -                                    | Refund order total amount with currency                      |
 | Notify URL               | notifyUrl             | Optional | String | https://www.giggles.com              | Callback URL for refund order notifications                  |
@@ -135,7 +135,7 @@ The body in the HTTP Body are returned only when `applyStatus` is `SUCCESS` and 
         "items": [
             {
                 "refundMerchantOrderNo": "e80b6813-1711-4647-aa0d-48b0d1855ae7", // Merchant refund order ID
-                "orderNo": "911588343112002067",                                  // PayBy order number
+                "orderNo": "911588343112002067",                                  // Botim Money Business order number
                 "status": "SUCCESS",                                              // Refund completed successfully
                 "amount": {
                     "amount": 0.01,                                               // Refund amount
@@ -265,9 +265,9 @@ The body in the HTTP Body are returned only when `applyStatus` is `SUCCESS` and 
 | `0`     | SUCCESS               | Request processed successfully                               | —                                 |
 | `400`   | INVALID_PARAMETER     | Parameter error                                              | Adjust the request parameters     |
 | `402`   | RATE_LIMIT_REJECT     | Requests are too frequent                                    | Reduce request frequency          |
-| `403`   | UNAUTHORIZED          | API is not authorized                                        | Contact PayBy                     |
-| `404`   | SERVICE_NOT_AVAILABLE | API service is unavailable                                   | Contact PayBy                     |
-| `500`   | SYSTEM_ERROR          | Internal system error                                        | Contact PayBy and try again later |
+| `403`   | UNAUTHORIZED          | API is not authorized                                        | Contact Botim Money Business                     |
+| `404`   | SERVICE_NOT_AVAILABLE | API service is unavailable                                   | Contact Botim Money Business                     |
+| `500`   | SYSTEM_ERROR          | Internal system error                                        | Contact Botim Money Business and try again later |
 | `504`   | SERVICE_TIMEOUT       | Service timeout                                              | Try again later                   |
 | `601`   | RISK_FAIL             | Risk control verification failed                             | Adjust the business logic         |
 | `71002` | REQUESTTIME_TOO_EARLY | Request time is more than 15 minutes earlier than current time | Adjust the request time           |

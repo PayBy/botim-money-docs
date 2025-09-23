@@ -7,7 +7,7 @@ toc_max_heading_level: 6
 
 ## System Integration Overview
 
-The PayBy payment system integrates with merchant systems through three primary interactions:
+The Botim Money Business payment system integrates with merchant systems through three primary interactions:
 
 1. **Order Creation** - Merchant server initiates payment requests via the order creation API
 2. **Status Inquiry** - Merchant server queries order status through the status endpoint

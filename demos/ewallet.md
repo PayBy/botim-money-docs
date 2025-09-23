@@ -31,10 +31,10 @@ Open this link on your mobile browser *(not compatible with PC)*: https://uat-m.
 
 2. **Select an E-wallet**  
    Enter the payment amount and choose an E-wallet.  
-   > **Note:** *In the test environment, only PayBy is available.*  
+   > **Note:** *In the test environment, only Botim Money Business is available.*  
    
    Make sure the **PayBy app** is installed. You can find the APK and test account details [here](/demos/testaccount).
 
 3. **Complete the Payment**  
-   You’ll be redirected to the PayBy app’s built-in checkout. Enter your password to finalize the transaction.
+   You’ll be redirected to the Botim Money Business app’s built-in checkout. Enter your password to finalize the transaction.
 

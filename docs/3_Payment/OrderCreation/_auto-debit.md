@@ -1,6 +1,6 @@
 **AUTODEBIT**
 
-Automatically deduct the funds from the user's BOTIM & PayBy account
+Automatically deduct the funds from the user's BOTIM & Botim Money Business account
 
 ---
 
@@ -8,7 +8,7 @@ Automatically deduct the funds from the user's BOTIM & PayBy account
 
 - **authProtocolNo** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
 
-  Before allowing the merchant to automatically deduct money from payer's account, the payer needs to agree to the automatic debit agreement. After the payer agrees, PayBy will generate an agreement number and that is the `authProtocolNo`.
+  Before allowing the merchant to automatically deduct money from payer's account, the payer needs to agree to the automatic debit agreement. After the payer agrees, Botim Money Business will generate an agreement number and that is the `authProtocolNo`.
 
   Example value: 2000001
 

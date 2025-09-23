@@ -13,7 +13,7 @@ import ResponseHead from '../4_Refund/_response-head.mdx'
 
 ## Overview
 
-The `getOrder` interface enables merchants to query the status of any PayBy order, helping them actively retrieve order information and proceed with the appropriate business logic based on the order status.
+The `getOrder` interface enables merchants to query the status of any Botim Money Business order, helping them actively retrieve order information and proceed with the appropriate business logic based on the order status.
 
 ### When to Use
 
@@ -90,7 +90,7 @@ The `getOrder` interface enables merchants to query the status of any PayBy orde
 
 **sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
 
-When PayBy sends response, PayBy will use its own private key to sign the message, and the merchant uses PayBy 's public key to verify the signature. If the verification is passed, it proves that the response was sent by PayBy and not faked by others.
+When Botim Money Business sends response, Botim Money Business will use its own private key to sign the message, and the merchant uses Botim Money Business 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Botim Money Business and not faked by others.
 
 
 ### Http Body
@@ -190,10 +190,10 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 | 400     | REQUESTTIME_TOO_EARLY        | Request time is too far in the past            | Adjust request time              |
 | 400     | REQUESTTIME_TOO_LATER        | Request time is too far in the future          | Adjust request time              |
 | 402     | RATE_LIMIT_REJECT            | Too many requests                              | Reduce request frequency         |
-| 403     | UNAUTHORIZED                 | API not authorized                             | Contact PayBy                    |
-| 404     | SERVICE_NOT_AVAILABLE        | API service unavailable                        | Contact PayBy                    |
+| 403     | UNAUTHORIZED                 | API not authorized                             | Contact Botim Money Business                    |
+| 404     | SERVICE_NOT_AVAILABLE        | API service unavailable                        | Contact Botim Money Business                    |
 | 500     | SYSTEM_ERROR                 | System error                                   | Contact PayBy, try again later   |
 | 504     | SERVICE_TIMEOUT              | Service timeout                                | Try again later                  |
 | 601     | RISK_FAIL                    | Risk control validation failed                 | Adjust business logic            |
 | 62004   | MERCHANT_ORDER_NO_NOT_EXIST | Merchant order number does not exist           | Correct merchant order number    |
-| 62035   | ORDER_NO_NOT_EXIST           | PayBy order number does not exist              | Correct PayBy order number       |
+| 62035   | ORDER_NO_NOT_EXIST           | Botim Money Business order number does not exist              | Correct Botim Money Business order number       |

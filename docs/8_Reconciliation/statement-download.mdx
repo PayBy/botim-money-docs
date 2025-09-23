@@ -25,7 +25,7 @@ Merchants can use this interface to download historical financial reports. The d
 > **<font color = '#f19938'>Note:</font>**
 
   1. Orders that failed to be placed successfully on PayBy’s side will not appear in the statements.  
-  2. PayBy generates the previous day’s statements shortly after the merchant’s configured settlement cutoff time—typically within 10 minutes. It is recommended to download the statements at least 30 minutes after the cutoff.  
+  2. Botim Money Business generates the previous day’s statements shortly after the merchant’s configured settlement cutoff time—typically within 10 minutes. It is recommended to download the statements at least 30 minutes after the cutoff.  
   3. All monetary values in the statements are denominated in **AED (Dirhams)**.
 ---
 
@@ -208,7 +208,7 @@ paidTime|transactionType|totalAmount|orderCurrency|productName|paySceneCode|merc
 | productName           | Product name                                 |
 | paySceneCode          | Payment scenario code                        |
 | merchantOrderNo       | Merchant order number                        |
-| orderNo               | PayBy order number                           |
+| orderNo               | Botim Money Business order number                           |
 | status                | Transaction status                           |
 | paymentMethodType     | Payment method type                          |
 | subject               | Transaction subject                          |
@@ -250,8 +250,8 @@ settledTIme|transactionType|direction|settlementAmount|orderCurrency|productName
 | totalCount     | Total record count                   |
 | totalCredit    | Total income                         |
 | totalDebit     | Total expenditure                    |
-| totalComm      | PayBy pre-tax commission total       |
-| totalVAT       | PayBy VAT total                      |
+| totalComm      | Botim Money Business pre-tax commission total       |
+| totalVAT       | Botim Money Business VAT total                      |
 | settleToBank   | Settlement amount and status to bank |
 | stayAmount     | Retained amount                      |
 
@@ -267,13 +267,13 @@ settledTIme|transactionType|direction|settlementAmount|orderCurrency|productName
 | productName           | Product name                                 |
 | paySceneCode          | Payment scenario code                        |
 | merchantOrderNo       | Merchant order number                        |
-| orderNo               | PayBy order number                           |
+| orderNo               | Botim Money Business order number                           |
 | paidTime              | Payment success time (DD-MM-YYYY HH24:MI:SS) |
 | status                | Transaction status                           |
-| comm                  | PayBy pre-tax commission                     |
-| commCurrency          | PayBy pre-tax commission currency            |
-| VAT                   | PayBy VAT                                    |
-| VATCurrency           | PayBy VAT currency                           |
+| comm                  | Botim Money Business pre-tax commission                     |
+| commCurrency          | Botim Money Business pre-tax commission currency            |
+| VAT                   | Botim Money Business VAT                                    |
+| VATCurrency           | Botim Money Business VAT currency                           |
 | paymentMethodType     | Payment method type                          |
 | subject               | Transaction subject                          |
 | payeeMid              | Payee member ID                              |
@@ -331,4 +331,4 @@ ACCOUNTING_TIME|TXN_NO|PRODUCT|BUSINESS_TYPE|DIRECTION|TXN_AMT|BEFORE_AMT|AFTER_
 | AFTER_AMT         | Amount after transaction  |
 | ACCOUNT_TYPE      | Account type              |
 | MERCHANT_ORDER_NO | Merchant order number     |
-| ORDER_NO          | PayBy order number        |
+| ORDER_NO          | Botim Money Business order number        |

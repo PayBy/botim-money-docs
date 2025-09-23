@@ -7,7 +7,7 @@ import FormItem from "antd/es/form/FormItem";
 import message from "antd/es/message";
 import validateAmount from "@site/src/utils/validateAmount";
 import orderCreation from "@site/src/utils/orderCreation";
-import PayBy from "../utils/payby-sdk.esm";
+import Botim Money Business from "../utils/payby-sdk.esm";
 import useIsBrowser from "@docusaurus/useIsBrowser";
 type OrderCreationParams = {
   amount: string;
