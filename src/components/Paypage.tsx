@@ -11,7 +11,7 @@ export function Paypage(props) {
 	Payment scene you are going to use. Example value: PAYPAGE.
 	<span style={{ color: "#333333" }}> **PayScene parameters**</span>- **redirectUrl**{" "}
 	<span style={{ color: "#7d8793" }}>String</span>
-	Link that the payer will be redirected once the payer finalizes payments on PayBy's checkout. Example value:
+	Link that the payer will be redirected once the payer finalizes payments on Botim Money's checkout. Example value:
 	https://www.yoursite.com Maximum length: `512`. - **oneTimePayment**{" "}
 	<span style={{ color: "#7d8793" }}>Boolean</span>
 	When passed true, it means that the merchant requires the order to be paid only once. For example, if an order is
