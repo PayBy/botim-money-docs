@@ -46,7 +46,7 @@ export function CashTopUpDemo(props: { orderCreation?: any; siteConfig?: any }) 
             centered: true,
             width: 360,
             className: 'ant-modal-custom',
-            title: 'Please complete the payment on the PayBy page.',
+            title: 'Please complete the payment on the Botim Money Business page.',
             content:
               'Do not close this pop-up until payment is complete. Please click the following button according to the situation after the payment is completed.',
             okText: 'Payment completed',

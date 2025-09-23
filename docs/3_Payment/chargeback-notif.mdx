@@ -8,12 +8,12 @@ toc_max_heading_level: 6
 
 ## Overview
 
-In the event of a chargeback, PayBy sends the relevant chargeback information to the merchant via a data stream. The merchant must process the notification and respond according to the specifications outlined in this document.
+In the event of a chargeback, Botim Money Business sends the relevant chargeback information to the merchant via a data stream. The merchant must process the notification and respond according to the specifications outlined in this document.
 
 > **Note:**
 
 > 1. The same notification may be sent multiple times. Merchant systems must be able to handle duplicate notifications correctly.
-> 2. If PayBy does not receive a valid response from the merchant or if the response times out, the notification is considered failed and will be retried. The default retry schedule is as follows (in minutes): 2, 10, 10, 60, 120, 360, 900. However, PayBy does not guarantee final delivery.
+> 2. If Botim Money Business does not receive a valid response from the merchant or if the response times out, the notification is considered failed and will be retried. The default retry schedule is as follows (in minutes): 2, 10, 10, 60, 120, 360, 900. However, Botim Money Business does not guarantee final delivery.
 > 3. If the order status is unclear or the merchant has not received a payment result notification from PayBy, it is recommended to actively query the order status using the appropriate API.
 
 ## Notification Parameters
@@ -30,7 +30,7 @@ In the event of a chargeback, PayBy sends the relevant chargeback information to
     - Example value: `S10000`
 
   - **orderNo** <font color='#7d8793'>String(32)</font> <font color='#f19938'>Required</font>  
-    - Unique identifier for the PayBy transaction order.  
+    - Unique identifier for the Botim Money Business transaction order.  
     - Example value: `O1000`
 
   - **payAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  

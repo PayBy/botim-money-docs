@@ -10,9 +10,9 @@ All applications and accounts listed below are intended **only for testing in th
 
 ---
 
-## PayBy App (Android Only)
+## Botim Money Business App (Android Only)
 
-To test scenarios like **Scan to Pay**, **Display QR Code to Pay**, and more, download the PayBy test app and use the credentials provided below.
+To test scenarios like **Scan to Pay**, **Display QR Code to Pay**, and more, download the Botim Money Business test app and use the credentials provided below.
 
 - Download [Android APK](https://appdownload.payby.com/app-software-download/PAYBY/Payby_4.2.1_2024_09_12_09_59_uat.apk). 
 - Scan to download:  
@@ -21,9 +21,9 @@ To test scenarios like **Scan to Pay**, **Display QR Code to Pay**, and more, do
 
 ---
 
-## PayBy App Test Accounts
+## Botim Money Business App Test Accounts
 
-Use the following test accounts to log in to the PayBy app:
+Use the following test accounts to log in to the Botim Money Business app:
 
 | **Mobile Number**   | **Verification Code** | **Payment Password** |
 |---------------------|------------------------|-----------------------|

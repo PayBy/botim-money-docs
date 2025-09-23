@@ -79,7 +79,7 @@ export function SwitchProduct() {
 
 ## Overview
 
-The merchant system first calls this API to generate a prepayment order in the PayBy service backend. Once a valid token (order session identifier) is returned, the payment process can then be initiated.
+The merchant system first calls this API to generate a prepayment order in the Botim Money Business service backend. Once a valid token (order session identifier) is returned, the payment process can then be initiated.
 
 
 ## API URL
@@ -182,7 +182,7 @@ The attributes are:
 
 - **sharingParamList** <span style={{color:" #7d8793"}}>List</span> 
 
-    With every payment, you can split the funds between your merchant account and other PayBy member IDs. For example, a payment of 10 AED, if you share 1 AED to A and 2 AED to B, you will get 7 AED.
+    With every payment, you can split the funds between your merchant account and other Botim Money Business member IDs. For example, a payment of 10 AED, if you share 1 AED to A and 2 AED to B, you will get 7 AED.
 
     The attributes of each item in the list are:
 
@@ -195,13 +195,13 @@ The attributes are:
   
   - **sharingIdentityType**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
   
-    The fund can be transferred to the beneficiary through mobile phone number, PayBy member id or BOTIM member id.
+    The fund can be transferred to the beneficiary through mobile phone number, Botim Money Business member id or BOTIM member id.
   
     The possible values are: 
   
     `PHONE_NO`. Transfer through mobile phone number.
   
-    `MEMBER_ID`. Transfer through PayBy member id.  
+    `MEMBER_ID`. Transfer through Botim Money Business member id.  
   
      Maximum length: `20`
   
@@ -229,8 +229,8 @@ The attributes are:
     
   - **withholdAndRemitFee**   <font color = ' #7d8793'>Boolean</font>    
   
-    Whether this sharing account pay the PayBy transaction fee. If `true`, the final amount this sharing account received is : 
-    `[**sharingAmount** - PayBy transaction fee]`.
+    Whether this sharing account pay the Botim Money Business transaction fee. If `true`, the final amount this sharing account received is : 
+    `[**sharingAmount** - Botim Money Business transaction fee]`.
   
     > **Note:**
     
@@ -383,7 +383,7 @@ The `interActionParams` field is returned only when the order status is `CREATED
 
 **sign** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
 
-When PayBy sends response, PayBy will use its own private key to sign the message, and the merchant uses PayBy 's public key to verify the signature. If the verification is passed, it proves that the response was sent by PayBy and not faked by others.
+When Botim Money Business sends response, Botim Money Business will use its own private key to sign the message, and the merchant uses Botim Money Business 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Botim Money Business and not faked by others.
 
 
 ### Http Body
@@ -409,7 +409,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
 - **interactionParams**
 
-  In different payment scenarios, PayBy may return different parameters, allowing the merchant system and PayBy continue to interact to complete the order.
+  In different payment scenarios, Botim Money Business may return different parameters, allowing the merchant system and Botim Money Business continue to interact to complete the order.
 
   - **tokenUrl** <span style={{color:" #7d8793"}}>String</span>
 
@@ -432,7 +432,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
     Appears only in `EWALLET` payment scene.
 
-    When the payer chooses to open another e-wallet for payment at the merchant's payment page, PayBy will return a link to redirect the payer to the e-wallet's checkout.
+    When the payer chooses to open another e-wallet for payment at the merchant's payment page, Botim Money Business will return a link to redirect the payer to the e-wallet's checkout.
 
 
   - **threeDSecureDom** <span style={{color:" #7d8793"}}>String</span>
@@ -459,8 +459,8 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 | 400   | REQUESTTIME_TOO_EARLY                        | Request time is too early compared to current time          | Adjust request time                         |
 | 400   | REQUESTTIME_TOO_LATER                        | Request time is too late compared to current time           | Adjust request time                         |
 | 402   | RATE_LIMIT_REJECT                            | Requests too frequent                                        | Reduce request frequency                    |
-| 403   | UNAUTHORIZED                                 | API not authorized                                           | Contact PayBy                               |
-| 404   | SERVICE_NOT_AVAILABLE                        | API service not available                                    | Contact PayBy                               |
+| 403   | UNAUTHORIZED                                 | API not authorized                                           | Contact Botim Money Business                               |
+| 404   | SERVICE_NOT_AVAILABLE                        | API service not available                                    | Contact Botim Money Business                               |
 | 500   | SYSTEM_ERROR                                 | System error                                                 | Contact PayBy. Retry later               |
 | 504   | SERVICE_TIMEOUT                              | Service timeout                                              | Retry later                                 |
 | 601   | RISK_FAIL                                    | Risk control validation failed                               | Adjust business                             |
@@ -517,6 +517,6 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 | 62081 | INVALID_EWALLET_CODE                         | Invalid eWalletCode                                          | Adjust request parameters                   |
 | 62083 | SHARING_MEMBER_NOT_EXIST                     | Sharing member does not exist                                | Adjust request parameters                   |
 | 62085 | MISSING_PROTOCOL_SCENE_CODE                  | Missing protocol scene code                                  | Adjust request parameters                   |
-| 62086 | INVALID_PAYEEMID                             | Invalid payeeMid                                             | Contact PayBy                               |
+| 62086 | INVALID_PAYEEMID                             | Invalid payeeMid                                             | Contact Botim Money Business                               |
 | 62087 | INVALID_TYPE                                 | Invalid type                                                 | Adjust request parameters                   |
 | 62088 | MISSING_UNIQUE_ID                            | Missing uniqueId                                             | Adjust request parameters                   |

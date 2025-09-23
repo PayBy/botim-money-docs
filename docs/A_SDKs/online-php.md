@@ -5,7 +5,7 @@ toc_max_heading_level: 6
 
 # Online Payment SDK - PHP
 
-The PayBy PHP SDK provides a simple way to integrate PayBy payment services into your PHP applications.
+The Botim Money Business PHP SDK provides a simple way to integrate Botim Money Business payment services into your PHP applications.
 
 **SDK Repository:** https://github.com/PayBy/PayBy-php
 
@@ -41,13 +41,13 @@ require_once('/path/to/payby-php/init.php');
 
 ### Initialize the SDK
 
-Before making any API calls, initialize the PayBy SDK with your API key:
+Before making any API calls, initialize the Botim Money Business SDK with your API key:
 
 ```php
 \PayBy\PayBy::setApiKey('YOUR-KEY');
 ```
 
-Replace `'YOUR-KEY'` with your actual PayBy API key.
+Replace `'YOUR-KEY'` with your actual Botim Money Business API key.
 
 ### Order
 

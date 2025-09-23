@@ -7,7 +7,7 @@ const mdxMermaid =require('mdx-mermaid')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Integrate PayBy and Accept Payment',
+  title: 'Integrate Botim Money Business and Accept Payment',
   tagline: 'PayBy, a flexible and fast payment solution to manage all business transactions.',
   url: 'https://developers.payby.com',
   baseUrl: '/',

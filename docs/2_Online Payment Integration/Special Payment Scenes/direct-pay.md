@@ -34,27 +34,27 @@ This solution gives merchants full control over the user interface design, allow
    - Set the `paySceneCode` parameter to `DIRECTPAY`.
 
 3. **Payment Processing**  
-   - If the request is successful, PayBy will forward the transaction to the bank and return the payment result to the customer.  
-   - Ensure the **redirectUrl** parameter is set in your request. After payment, PayBy will redirect the customer to this URL to display a confirmation message.
+   - If the request is successful, Botim Money Business will forward the transaction to the bank and return the payment result to the customer.  
+   - Ensure the **redirectUrl** parameter is set in your request. After payment, Botim Money Business will redirect the customer to this URL to display a confirmation message.
 
 4. **3DS Verification (Optional or Required)**  
    - In most cases, payment completes after card entry.  
-   - If 3DS verification is required, PayBy will return a verification URL. Redirect the customer to their bank’s authentication page.  
+   - If 3DS verification is required, Botim Money Business will return a verification URL. Redirect the customer to their bank’s authentication page.  
    - The customer will enter a password or a code sent to their phone. Upon successful verification, the transaction proceeds.
 
 5. **Controlling 3DS Verification**  
    - Use the `threeDSecure` parameter to indicate whether 3DS verification is required:  
-     - `true`: PayBy returns a verification link.  
-     - `false`: PayBy attempts direct debit.  
-     > **Note**: PayBy may enforce 3DS verification based on its risk control system, even if `false` is passed.
+     - `true`: Botim Money Business returns a verification link.  
+     - `false`: Botim Money Business attempts direct debit.  
+     > **Note**: Botim Money Business may enforce 3DS verification based on its risk control system, even if `false` is passed.
 
 6. **Saving Card for Future Use**  
    - Set the `saveCard` parameter to `true` to store the card.  
-   - PayBy will return a **cardToken** (card ID), which can be used for future transactions.  
+   - Botim Money Business will return a **cardToken** (card ID), which can be used for future transactions.  
    - A customer ID can store multiple cards.
 
 7. **Receive Payment Notification**  
-   - If the `notifyUrl` is set in the request, PayBy will send the payment result to this URL after the transaction.
+   - If the `notifyUrl` is set in the request, Botim Money Business will send the payment result to this URL after the transaction.
 
 8. **Order Management**  
    - Use the following APIs to manage the order:  
@@ -76,7 +76,7 @@ This solution gives merchants full control over the user interface design, allow
    - Pass the selected card’s **cardToken** in the `cardToken` parameter.
 
 4. **Receive Payment Notification**  
-   - If the `notifyUrl` is set, PayBy will send the payment result to the specified URL.
+   - If the `notifyUrl` is set, Botim Money Business will send the payment result to the specified URL.
 
 5. **Order Management**  
    - Use the following APIs to manage the order:  

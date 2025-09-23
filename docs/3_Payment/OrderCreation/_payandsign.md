@@ -8,7 +8,7 @@ The payer completes the signing of the automatic deduction agreement while makin
 
 - **protocolSceneCode** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
 
-  The auto-debit service ID between PayBy and the merchant, and some data reading rules are configured in the ID. Please ask PayBy operations staff for your service number.
+  The auto-debit service ID between Botim Money Business and the merchant, and some data reading rules are configured in the ID. Please ask Botim Money Business operations staff for your service number.
 
   Constant value: 120
   
