@@ -1,0 +1,113 @@
+
+```json
+// Http Header
+{
+  "sign": "JzWjVQ245trg3p0CyuwUUHN+Ck40q/HDaMvhqueHDP8YHqC/Uw3c9VWCw4gKsNbk+CRShjT+bvKkck8Fc3aAiRK8wIVQz6eu95sPkJgZp5A0P+tfMH/44F+3CrejtbEIkrHdSwhy98Tv9TYs9QFe7Yni/vEJ8P4OU6FZJOi8LGOMF6Nc8+S5qftc7qLA17cNJ7NJYC+EW8suGe/NmGA9c5NMK5BwHTHzXYOjXwXLx8mw4M3hiirl0wtVym3hrOmbkujYZCH56h8uOVF0FbHGu5uoq61NuniJitLLs9qyiEprQzUe8oWsJnHKXeGAgEr//fLXIXgYsRYb7AWoJzs6Eg=="
+}
+
+// Http Body
+{
+    "head":{
+        "applyStatus":"SUCCESS",
+        "code":"0",
+        "msg":"SUCCESS",
+        "success":true,
+        "traceCode":"843909"
+    },
+    "body":{
+        "acquireOrder":{
+            "accessoryContent":{
+                "amountDetail":{
+                    "vatAmount":{
+                        "amount":0.1,
+                        "currency":"AED"
+                    }
+                },
+                "goodsDetail":{
+                    "body":"gifts",
+                    "goodsId":"GI1005",
+                    "goodsName":"candy flower"
+                },
+                "terminalDetail":{
+                    "merchantName":"regress7"
+                }
+            },
+            "expiredTime":1659005138636,
+            "merchantOrderNo":"807f404a-d310-435e-944e-bea9191a43aa",
+            "notifyUrl":"http://yoursite.com/api/notification",
+            "orderNo":"131658997939155072",
+            "paySceneCode":"PAYPAGE",
+            "payeeMid":"200000030907",
+            "paymentInfo":{
+                "paidAmount":{
+                    "amount":10,
+                    "currency":"AED"
+                },
+                "paidTime":1658998025854,
+                "payChannel":"BALANCE",
+                "payeeFeeAmount":{
+                    "amount":0.03,
+                    "currency":"AED"
+                },
+                "payerFeeAmount":{
+                    "amount":0,
+                    "currency":"AED"
+                },
+                "payerMid":"100000030030",
+                "settlementAmount":{
+                    "amount":9.97,
+                    "currency":"AED"
+                }
+            },
+            "product":"Basic Payment Gateway",
+            "requestTime":1658997938636,
+            "reserved":"order desc",
+            "revoked":"false",
+            "promotionInfoList":[
+            {
+                "appliedRewardId":"1234",
+                "settleFlag":"YES"
+            },
+            {
+                "appliedRewardId":"12534",
+                "settleFlag":"YES"
+            }
+            ],
+            "sharingInfoList":[
+                {
+                    "sharingAmount":{
+                        "amount":1,
+                        "currency":"AED"
+                    },
+                    "sharingIdentitySeqId":1,
+                    "sharingMemo":"bouns",
+                    "sharingMid":"100000047500",
+                    "sharingSettledAmount":{
+                        "amount":1,
+                        "currency":"AED"
+                    }
+                },
+                {
+                    "sharingAmount":{
+                        "amount":1,
+                        "currency":"AED"
+                    },
+                    "sharingIdentitySeqId":2,
+                    "sharingMemo":"cashback",
+                    "sharingMid":"100000002005",
+                    "sharingSettledAmount":{
+                        "amount":1,
+                        "currency":"AED"
+                    }
+                }
+            ],
+            "status":"SETTLED",
+            "subject":"ipad",
+            "totalAmount":{
+                "amount":10,
+                "currency":"AED"
+            }
+        }
+    }
+}
+```

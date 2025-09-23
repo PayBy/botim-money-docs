@@ -1,0 +1,7 @@
+{
+  "label": "Transfer",
+  "position": 5,
+  "link": {
+    "description": "Transfer fund to a PayBy E-wallet user."
+  }
+}

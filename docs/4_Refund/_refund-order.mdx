@@ -1,0 +1,72 @@
+
+- **refundMerchantOrderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - The merchant's reference number of the request. Used to track every request.  
+  - Example value: `1581493898000`  
+  - Maximum length: `64`
+
+- **orderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - The PayBy's unique identification number of the refund order.  
+  - Example value: `M965739182419`  
+  - Maximum length: `64`
+
+- **originMerchantOrderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - The merchant order number of the payment order to be refunded.  
+  - Example value: `M965739182419`  
+  - Maximum length: `64`
+
+- **status** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Status of the refund order. Possible values:  
+    - `CREATED`: PayBy's server accepts the refund request.  
+    - `REFUNDED_SETTLED`: Refund amount has been deducted from the merchant's account.  
+    - `SUCCESS`: Refund has reached the payer's account or is being processed by the bank.  
+    - `FAILURE`: Refund order failed.
+
+- **amount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+  - The amount to refund.
+
+- **feeRefunded** <font color='#7d8793'>Money</font>  
+  - Transaction fee refunded by PayBy.
+
+- **sharingInfoList** <font color='#7d8793'>List</font>  
+  - Details of refund impact on sharing accounts.  
+  - Each item includes:  
+    - **sharingIdentitySeqId** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+      - Serial number for multiple account IDs.  
+      - Example value: `1`  
+    - **sharingMid** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+      - Member ID returned if identity matches an existing PayBy member.  
+    - **sharingMemo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+      - Description of the refund operation.  
+    - **sharingAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+      - Original requested sharing amount.  
+    - **sharingSettledAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+      - Actual amount received by the sharing account.
+
+- **notifyUrl** <font color='#7d8793'>String</font>  
+  - URL for receiving asynchronous notifications.  
+  - Maximum length: `200`
+
+- **reason** <font color='#7d8793'>String</font>  
+  - Reason for refund.  
+  - Maximum length: `64`
+
+- **secondaryMerchantId** <font color='#7d8793'>String</font>  
+  - Merchant's member ID under your platform.  
+  - Maximum length: `200`
+
+- **deviceId** <font color='#7d8793'>String</font>  
+  - Device ID used for transaction data statistics.  
+  - **Note**: Required if using the secondary merchant function.  
+  - Maximum length: `200`
+
+- **failCode** <font color='#7d8793'>String</font>  
+  - Code identifying the reason for failure.  
+  - Example value: `62002`
+
+- **failDes** <font color='#7d8793'>String</font>  
+  - Description of the failure reason.  
+  - Example value: `Failed orders cannot be cancelled or refunded`
+
+- **reserved** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - PayBy's unique identification number of the order.  
+  - Example value: `131658300517875854`

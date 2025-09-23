@@ -1,0 +1,82 @@
+
+- **refundMerchantOrderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - The merchant's reference number of the request. Used to track every request.  
+  - Example value: `M965739182419`  
+  - Maximum length: `64`  
+  > You can use either `merchantOrderNo` or `orderNo` to specify the payment order to refund. But you can't use both parameters at the same time.
+
+- **originMerchantOrderNo** <font color='#7d8793'>String</font>  
+  - The merchant order number of the payment order.  
+  - Example value: `M965739182419`  
+  - Maximum length: `64`
+
+- **originOrderNo** <font color='#7d8793'>String</font>  
+  - The PayBy's unique identification number of the payment order.  
+  - Example value: `131658300517875854`  
+  - Maximum length: `64`
+
+- **amount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+  - Amount to refund. The attributes are:  
+    - **amount** <font color='#7d8793'>Decimal(12,2)</font> <font color='#f19938'>Required</font>  
+      - Allow 12 digits before the decimal point and 2 digits after.  
+      - Example value: `12.34`  
+    - **currency** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+      - The code to identify the order currency. Currently only `AED` is supported.  
+      - Example value: `AED`
+
+- **refundSharingAmount** <font color='#7d8793'>Boolean</font>  
+  - Indicates whether to refund from sharing accounts.  
+  - Default value: `false`  
+  - If `true` and `sharingParamList` is not specified, PayBy will proportionally refund from the payee, sharing account, and PayBy fee account.
+
+- **sharingParamList** <font color='#7d8793'>List</font>  
+  - Used to specify refund amounts for different sharing accounts. Only effective if `refundSharingAmount` is `true`.  
+  - Each item includes:  
+    - **sharingIdentitySeqId** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+      - Serial number for multiple account IDs.  
+      - Example value: `1`  
+    - **sharingIdentityType** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+      - Identity type for fund transfer.  
+      - Possible values: `PHONE_NO`, `MEMBER_ID`, `BOTIM_ID`  
+      - Maximum length: `64`  
+    - **sharingIdentity** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+      - Encrypted identity value.  
+      - Example values: `+971-585812345`, `100006514321`  
+      - Maximum length: `200`  
+    - **sharingMemo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+      - Description of the refund operation.  
+      - Maximum length: `128`  
+    - **sharingAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+      - Amount to refund from this ID.  
+    - **withholdAndRemitFee** <font color='#7d8793'>Boolean</font>  
+      - Indicates whether the transaction fee is withheld and remitted on behalf of the split party.  
+      - Example values: `true`, `false`  
+      - **Note**: If used during order creation, only proportional refunds are allowed.
+
+- **notifyUrl** <font color='#7d8793'>String</font>  
+  - URL to receive asynchronous notifications of order status updates.  
+  - Example value: `https://www.yoursite.com`  
+  - Maximum length: `200`
+
+- **operatorName** <font color='#7d8793'>String</font>  
+  - Name of the employee who initiated the refund order.  
+  - Example value: `Daisy Johansson`  
+  - Maximum length: `200`
+
+- **reason** <font color='#7d8793'>String</font>  
+  - Reason for refunding the payment order.  
+  - Maximum length: `64`
+
+- **deviceId** <font color='#7d8793'>String</font>  
+  - Device ID used for transaction data statistics.  
+  - Required if using the secondary merchant function.  
+  - Maximum length: `200`
+
+- **secondaryMerchantId** <font color='#7d8793'>String</font>  
+  - Merchant's member ID under your platform.  
+  - Maximum length: `200`
+
+- **reserved** <font color='#7d8793'>String</font>  
+  - Merchant's notes for the order.  
+  - Example value: `June campaign order.`  
+  - Maximum length: `200`

@@ -1,0 +1,152 @@
+---
+sidebar_position: 1
+toc_max_heading_level: 6
+---
+
+import RequestHeader from '../_request-header.mdx'
+
+# Get Balance
+
+The `getBalance` interface allows merchants to query their account balance, providing detailed information about available, frozen, and total balance amounts.
+
+This interface is used to query the member account balance.
+
+
+## API URL
+
+- UAT : https://uat.test2pay.com/sgs/api/member/getBalance
+- Production : https://api.payby.com/sgs/api/member/getBalance
+
+
+## Request
+### Http Header
+
+<details>
+  <summary>Attributes</summary>
+  <RequestHeader/>
+</details>  
+
+### Http Body
+
+- **requestTime** <font color='#7d8793'>Timestamp(3)</font> <font color='#f19938'>Required</font>
+	- Example value: `1581493898000`
+
+- **bizContent** <font color='#7d8793'>GetMemberBalanceRequest</font> <font color='#f19938'>Required</font>
+
+	- **currencyCode** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>
+		- Example value: AED
+
+### Request Sample
+
+```json
+Http Header
+{
+    "Content-Language": "en",
+    "Content-Type": "application/json",
+    "Partner-Id": "200000018128",
+    "sign": "RXF8WmC67QSnr62l3oU33fjpUvAo6Yrgvk05c/vYLtmHRGMoAH4qSnap2pto3mY7KgyP5wkNUsyQXJ/ZwbfccSONLb5zA7Z7q74IsOwdJw3BKXxVWr4tfjkA02Pfcp0cZWjE/Y8jTcbtgdc5VI90LNmkgPWbrSlDbNW8p3NlhnKg+Xfl95SgMBPF9afttsU/2a5jLnZXSVcXoSthxpJ6XkZwd45+jhOjBguT+IC8uLVSNRvwDisRGgf9PYv39OH6ITEhbY2sgjkdzBZBOZlt7awy2vkMEsePsuafwrNhuz7xzjj55PzNzk8+zCUu/791OhC/eFUyGimtDw5mX9cyQw=="
+}
+
+Http Body
+{
+    "bizContent":{
+        "currencyCode":"AED"
+    },
+    "requestTime":1708485334645
+}
+```
+
+
+## Response
+
+### Http Header
+
+
+**sign** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>
+
+> **Note**:  The **body** field in the HTTP Body is returned **only when**:
+	- `applyStatus` is `SUCCESS`
+	- `code` is `0`
+
+### HTTP Body
+
+#### Head
+
+- **applyStatus** <font color='#7d8793'>String</font>  
+  - Example value: `"SUCCESS"`  
+
+- **code** <font color='#7d8793'>String</font>  
+  - Example value: `"0"`  
+
+- **msg** <font color='#7d8793'>String</font>  
+  - Example value: `"SUCCESS"`  
+
+- **success** <font color='#7d8793'>Boolean</font>  
+  - Example value: `true`  
+
+- **traceCode** <font color='#7d8793'>String</font>  
+  - Example value: `"375099"`  
+
+
+#### Body
+
+- **memberId** <font color='#7d8793'>String</font>  
+  - Example value: `"200000030907"`  
+
+- **balanceList** <font color='#7d8793'>Array of Balance Objects</font>  
+
+  - **availableBalance** <font color='#7d8793'>Object</font>  
+
+    - **amount** <font color='#7d8793'>Number</font>  
+      - Example value: `897993.88`  
+
+    - **currency** <font color='#7d8793'>String</font>  
+      - Example value: `"AED"`  
+
+
+### Response Sample
+
+```json
+// Http Header
+{
+	"sign": "nDdClX1tAyV3qcX/Epay6AXFNRGSsWd8ysWO9SgwPrNTetSePLA9C39mGp6qRbjJeqXLEnYLwSkBu5eKdtyVX3tflGLiV2kvRjVfYpTCjXdVL2Pcnv2w+ghjHe2jL988iklk7q5AjAgdtXNphpHcTes9pk6W3bVCbvijH6at0fExUtZ91L1LrnPGELT1IJm/lFW3w4KLh0Gxs7FzDPI9RDfUemObNlRzV8kCtkWahwPgs/hBnS69GyYDKN7ihQX2UiLuP239wl6IA+VG/ZZKHPhLs8bbuOS+LKWORIp6jRt+JsAx7c/Ot1RNyOnHKxPRKJ8bVTohEp39yUz/HwG8oA=="
+}
+
+// Http Body
+{
+    "body":{
+        "balanceList":[
+            {
+                "availableBalance":{
+                    "amount":897993.88,
+                    "currency":"AED"
+                }
+            }
+        ],
+        "memberId":"200000030907"
+    },
+    "head":{
+        "applyStatus":"SUCCESS",
+        "code":"0",
+        "msg":"SUCCESS",
+        "success":true,
+        "traceCode":"375099"
+    }
+}
+```
+
+## Response Codes
+
+| Code   | Message                    | Cause                                | Workaround                       |
+|--------|----------------------------|----------------------------------------|--------------------------------|
+| 0      | SUCCESS                    | success                                |                                |
+| 400    | INVALID_PARAMETER          | Parameter error                        | Adjusting request parameters   |
+| 400    | REQUESTTIME_TOO_EARLY      | The request time is greater than the current time Too early     | Adjust request time            |
+| 400    | REQUESTTIME_TOO_LATER      | The request time is greater than the current time Too late      | Adjust request time            |
+| 402    | RATE_LIMIT_REJECT          | Too many requests                      | Reduce request frequency       |
+| 403    | UNAUTHORIZED               | API not authorized                     | Contact PayBy                  |
+| 404    | SERVICE_NOT_AVAILABLE      | API service unavailable                | Contact PayBy                  |
+| 500    | SYSTEM_ERROR               | system error                           | Contact PayBy later Retry    |
+| 504    | SERVICE_TIMEOUT            | Service timeout                        | Try again later                |
+| 601    | RISK_FAIL                  | Risk control verification failed       | Please adjust your business    |
+| 78001  | CURRENCY_CODE_NOT_SUPPORTED| The currency is not supported.         | Adjusting request parameters   |

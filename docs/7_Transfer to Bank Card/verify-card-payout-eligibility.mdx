@@ -1,0 +1,121 @@
+---
+sidebar_position: 1
+toc_max_heading_level: 6
+---
+
+import ResponseHeader from './_response-header.mdx'
+import RequestHeader from '../_request-header.mdx'
+import TransferBankCardOrder from './_transfer-bank-card-order.mdx'
+import BizContent from './_bizContent.mdx'
+
+# Verify Bank Card Payout Eligibility
+
+## Overview
+
+The Verify Bank Card Payout Eligibility API validates whether a bank card meets the requirements for payout operations. This endpoint allows merchants to check card eligibility before initiating transfer requests, helping ensure successful payout transactions.
+
+## API URL
+
+- **UAT Environment:** `https://uat.test2pay.com/sgs/api/transfer/verifyBankCardPayoutEligibility`
+- **Production Environment:** `https://api.payby.com/sgs/api/transfer/verifyBankCardPayoutEligibility`
+
+**HTTP Method:** POST
+
+## Request Parameters
+
+### HTTP Headers
+
+  <details open={true}>
+  <summary>Attributes</summary>
+    <RequestHeader/>
+  </details>
+
+### HTTP Body
+
+- **requestTime** <font color='#7d8793'>Timestamp(3)</font> <font color='#f19938'>Required</font>  
+  - Unix timestamp in milliseconds.  
+  - Example value: `1581493898000`  
+
+- **bizContent** <font color='#7d8793'>VerifyBankCardPayoutEligibilityRequest</font> <font color='#f19938'>Required</font>  
+  - Main request payload containing card verification details.  
+
+  - **cardNumber** <font color='#7d8793'>String(50)</font> <font color='#f19938'>Required</font>  
+    - Encrypted card number for verification.  
+    - Must be 12–19 numeric characters when decrypted.  
+
+## Request Sample
+
+```json
+// Http Header
+{
+    "Content-Language": "en",
+    "Content-Type": "application/json",
+    "Partner-Id": "200000018128",
+    "sign": "S5Wr6x9Po1SX3nm4kRJyTueUMbnmsPGMlMjc3PcoyNyP0G5BuRAwauYjTJLeto6Bu1+893zCGmj201mjrvcXP4v/uMzQxRav5PBMp9VuQ+3dOFGclQAwr8cFAKuBDHhGAAkw1iVpdC8ZZLGl/jRUv3PCiZh6VyOLnrK7ZIevB/TetQSzCmN1xDIQo8mpDYz7YY/jSzYBnD17ePvkr4qQOWNUh7FF2nd29lo9KOQl5tJVoqT/D+PVSlZeuGr+wxBYCAyGqbVXXSAGcwF1egF6ISLJ29jpHcX/LACXxF/uf5cdzbudwPB2X0wtRw9WnowY3RUq34sidoF4DIShXVFHAg=="
+}
+
+//Http Body
+{
+    "bizContent": {
+        "cardNumber": "N1J8gXNPwwqB6B+VeEDBl+bzZt0PHUZYBJvroOD5oWikMlY8a4YFCwDNbY4T/xCLfNzIQ/3fWl2flEp7bIHvt/wFliXBqYXwFIfg532CHD2ghGz8IZ6/19wU1RcGXc7g1C3MS9sCRwP8PubGd3UxaOuUxaE8Q/oKFaKm5ZcBucmZVH5skttFUPETnMyhfhNr2X2v8L34Cr2CVb5tx2x1RD80DFI76fO7OF4VFhWUVF/Jl2N/hecI6iJZ2WIGh6Wkp7wENIydKjJxUdERqE4316SOwSFKZvowpQ4Mmh8pv6lmXHgIZmkASdG+JqdmBTSlNQQOdyiiwwpptIUn7vHXEQ=="
+    },
+    "requestTime": 1741917297160
+}
+```
+
+## Response Parameters
+### HTTP Headers
+
+  <details open={true}>
+  <summary>Attributes</summary>
+    <ResponseHeader/>
+  </details>
+
+### HTTP Body
+
+- **body** <font color='#7d8793'>VerifyBankCardPayoutEligibilityResponse</font> <font color='#f19938'>Optional</font>  
+  - Card verification result details.  
+
+  - **cardPayoutsType** <font color='#7d8793'>CardPayoutsType</font> <font color='#f19938'>Required</font>  
+    - Indicates the payout capability of the verified card.  
+    - Example value: `STANDARD`  
+
+    **CardPayoutsType Values**  
+    - UNKNOWN: Card payout capability cannot be determined  
+    - NOT_SUPPORTED: Card does not support payout operations  
+    - FAST_FUNDS: Card supports expedited payout processing  
+    - STANDARD: Card supports standard payout processing  
+
+## Response Sample
+
+```json
+{
+  "body": {
+    "cardPayoutsType": "STANDARD"
+  },
+  "head": {
+    "applyStatus": "SUCCESS",
+    "code": "0",
+    "msg": "SUCCESS",
+    "success": true,
+    "traceCode": "268991"
+  }
+}
+```
+
+## Response Codes
+
+| Code | Message | Cause | Workaround |
+|------|---------|--------|----------|
+| 0 | SUCCESS | Request processed successfully | - |
+| 400 | INVALID_PARAMETER | Invalid request parameters | Review and correct request parameters |
+| 400 | REQUESTTIME_TOO_EARLY | Request timestamp is too far in the past | Adjust request time to current timestamp |
+| 400 | REQUESTTIME_TOO_LATER | Request timestamp is too far in the future | Adjust request time to current timestamp |
+| 402 | RATE_LIMIT_REJECT | Request rate limit exceeded | Reduce request frequency |
+| 403 | UNAUTHORIZED | API access not authorized | Contact PayBy for authorization |
+| 404 | SERVICE_NOT_AVAILABLE | API service unavailable | Contact PayBy support |
+| 500 | SYSTEM_ERROR | Internal system error | Contact PayBy support and retry later |
+| 504 | SERVICE_TIMEOUT | Service request timeout | Retry the request after some time |
+| 601 | RISK_FAIL | Risk control validation failed | Review business parameters and compliance |
+| 62103 | QUERY_API_UNAVAILABLE | Query API temporarily unavailable | Retry the request later |
+| 62105 | INVALID_DATA_SENT | Invalid data sent to retrieve API | Review and correct request parameters |

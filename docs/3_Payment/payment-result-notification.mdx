@@ -1,0 +1,174 @@
+---
+sidebar_position: 6
+toc_max_heading_level: 6
+---
+
+import AcquireOrder from "./OrderCreation/_acquire-order.mdx";
+
+
+# Asynchronous Notification
+## Overview
+
+After a successful payment, PayBy sends the payment result and user information to the merchant via a data stream. The merchant system must receive, process, and respond to this notification according to the API specifications.
+
+---
+
+> **<span style={{color:"#f19938"}}>Note</span>**
+
+  - Duplicate Notifications: The same notification may be sent multiple times. The merchant system must be able to handle duplicate messages correctly and idempotently.
+  - Retry Mechanism: If PayBy does not receive a valid or timely response from the merchant, it will consider the notification failed and retry delivery. The default retry schedule is up to 7 attempts at the following intervals (in minutes): 2, 10, 10, 60, 120, 360, 900. However, successful delivery is not guaranteed.
+  - Order Status Uncertainty: If the order status is unclear or no notification is received, merchants are advised to actively query the order status using the appropriate API.
+
+---
+
+## Request
+
+### Http Header
+
+- **Content-Type**  <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+  - The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+  - Example value: application/json
+
+- **sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+  When PayBy sends response, PayBy will use its own private key to sign the message, and the merchant uses PayBy 's public key to verify the signature. If the verification is passed, it proves that the response was sent by PayBy and not faked by others.
+
+### Http Body
+
+- **notify_timestamp**  <font color = ' #7d8793'>Timestamp</font>  <font color = '#f19938'>Required</font>
+  - The timestamp when PayBy sent the request.
+  - Example value: 1586849271877
+
+- **notify_id**  <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
+  - The unique identification number of this notification within the PayBy system.
+  - Example value: 202004140007474501
+
+- **acquireOrder** <span style={{color:" #7d8793"}}>Object</span>
+
+    <details open={true}>
+    <summary>Attributes</summary>
+      <AcquireOrder />
+    </details>
+
+- <font color = 'grey'>**notify_time**</font>  <font color = ' #7d8793'>String</font>  
+
+  The parameter is deprecated. Please use the `notify_timestamp` instead.
+
+- <font color = 'grey'>**_input_charset**</font>  <font color = ' #7d8793'>String</font>  
+
+  The parameter is deprecated. 
+
+### Request Sample
+
+```json
+Http Header
+{
+    "Content-Type": "application/json",
+  	"Sign": "NshUvvVM3f/2eYcHyel7w7xDyzX1o7azydZ3ctGVWEghE4MCDcrEfO7LHmuDCQO4tqLwXwIv4pJfPH37X/o4V8q9QaE+gcPPvzO2xlT/Fksocd+gBoBWGz6SaEmD3eKQ7J9SU3+sKLOre9BomzJ5CuzsFAbBrZVw1+0MiwE3NTJvKEL3CW6LhHj2/1bnFMrQeBXP0z2LoqqODORG5Sgy8W9EPlMityjGOtPGMPj6iOK6il1KIeGRBW1wBeP0ZP/n8hwsob/fLygJ8UhB/kOAICXRrA+uo2Z4JJXhuX9P+C0BufPWHIdwq7ZdAvcxmSXFjtwIHuY9JFNWdTBZhxNw3g=="
+}
+
+Http Body
+{
+    "_input_charset": "UTF-8",
+    "acquireOrder": {
+        "accessoryContent": {
+            "amountDetail": {
+                "amount": {
+                    "amount": 1.09,
+                    "currency": "AED"
+                },
+                "vatAmount": {
+                    "amount": 20.65,
+                    "currency": "AED"
+                }
+            },
+            "goodsDetail": {
+                "body": "Gifts",
+                "categoriesTree": "CT12",
+                "goodsCategory": "GC10",
+                "goodsId": "GI1005",
+                "goodsName": "Candy flower",
+                "price": {
+                    "amount": 10.87,
+                    "currency": "AED"
+                },
+                "quantity": 2.0
+            },
+            "terminalDetail": {
+                "merchantName": "LuLu",
+                "operatorId": "OP1000000000000001",
+                "storeId": "SI100000000000002",
+                "storeName": "LuLu",
+                "terminalId": "TI100999999999900"
+            }
+        },
+        "expiredTime": 1587120191014,
+        "merchantOrderNo": "M572007254058",
+        "notifyUrl": "http://www.yoursite.com",
+        "orderNo": "131587112991000943",
+        "paySceneCode": "PAYPAGE",
+        "payeeMid": "200000000888",
+        "paymentInfo": {
+            "paidAmount": {
+                "amount": 0.1,
+                "currency": "AED"
+            },
+            "paidTime": 1587113039000,
+            "payChannel": "BALANCE",
+            "payeeFeeAmount": {
+                "amount": 0.01,
+                "currency": "AED"
+            },
+            "payerFeeAmount": {
+                "amount": 0.0,
+                "currency": "AED"
+            },
+            "payerMid": "100000012396"
+        },
+        "product": "Basic Payment Gateway",
+        "requestTime": 1587112991014,
+        "status": "PAID_SUCCESS",
+        "subject": "Your subject",
+        "totalAmount": {
+            "amount": 0.1,
+            "currency": "AED"
+        }
+    },
+    "notify_id": "202004170007499051",
+    "notify_time": "20200417124359",
+    "notify_timestamp": 1587113039189
+}
+```
+
+## Response 
+
+Please reply `success` after receiving the notification, otherwise PayBy will send the notification repeatedly for the same order.
+
+### Http Header
+
+- **Content-Type**    <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+  - The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+  - Example value: application/json
+
+### Http Body
+
+- **response**  <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+  Example value: Success
+
+### Response Sample
+
+```json
+Http Header
+{
+ "Content-Type": "application/json; charset=UTF-8" 
+}
+
+Http Body
+{
+    "response":"SUCCESS"
+}
+```
+

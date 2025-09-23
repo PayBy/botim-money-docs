@@ -1,0 +1,133 @@
+---
+sidebar_position: 8
+toc_max_heading_level: 6
+---
+
+import RequestHeader from '../_request-header.mdx'
+
+# Get Cashier URL Information
+
+## Overview
+
+This interface returns information about whether a QR code has been scanned by the user and provides details about the scanner (payer).
+
+## API URL
+
+- Testing environment: `https://uat.test2pay.com/sgs/api/acquire2/getCashierUrlInfo`
+- Production environment: `https://api.payby.com/sgs/api/acquire2/getCashierUrlInfo`
+
+## Request
+
+### HTTP Headers
+
+<details>
+  <summary>Attributes</summary>
+  <RequestHeader/>
+</details>
+
+### HTTP Body
+
+- **requestTime** <font color='#7d8793'>Timestamp(3)</font> <font color='#f19938'>Required</font>  
+  - Request timestamp in milliseconds.  
+  - Example value: `1581493898000`
+
+- **bizContent** <font color='#7d8793'>GetCashierUrlInfoRequest</font> <font color='#f19938'>Required</font>  
+  - Business request content containing the necessary parameters for generating the cashier URL.
+
+  - **tokenUrl** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+    - The cashier URL used to initiate or query the payment process.  
+    - Example value:  
+      `https://checkout.payby.com/pay-page/main?BIZ_TYPE=202&ft=cd624549f4894d78b0d368e48bb27aae&t=1654519114067`
+
+### Request Sample
+
+#### HTTP Headers
+
+```json
+{
+    "Content-Language": "en",
+    "Content-Type": "application/json",
+    "Partner-Id": "200000018128",
+    "sign": "RXF8WmC67QSnr62l3oU33fjpUvAo6Yrgvk05c/vYLtmHRGMoAH4qSnap2pto3mY7KgyP5wkNUsyQXJ/ZwbfccSONLb5zA7Z7q74IsOwdJw3BKXxVWr4tfjkA02Pfcp0cZWjE/Y8jTcbtgdc5VI90LNmkgPWbrSlDbNW8p3NlhnKg+Xfl95SgMBPF9afttsU/2a5jLnZXSVcXoSthxpJ6XkZwd45+jhOjBguT+IC8uLVSNRvwDisRGgf9PYv39OH6ITEhbY2sgjkdzBZBOZlt7awy2vkMEsePsuafwrNhuz7xzjj55PzNzk8+zCUu/791OhC/eFUyGimtDw5mX9cyQw=="
+}
+```
+
+#### HTTP Body
+
+```json
+{
+  "requestTime": 1581406091642,
+  "bizContent": {
+    "tokenUrl": "https://checkout.payby.com/pay-page/main?BIZ_TYPE=202&ft=cd624549f4894d78b0d368e48bb27aae&t=1654519114067"
+  }
+}
+```
+
+## Response
+
+### HTTP Headers
+
+- **Sign** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Response signature used to verify the integrity and authenticity of the response data.
+
+### HTTP Body
+
+> **Note:** The `body` field in the HTTP response is returned only when `applyStatus` is `SUCCESS` and `code` is `0`.
+
+- **head** <font color='#7d8793'>ResponseHeader</font> <font color='#f19938'>Required</font>  
+  - Response header information containing metadata such as status codes and messages.
+
+- **body** <font color='#7d8793'>GetCashierUrlInfoResponse</font>  
+  - Response body content containing the main data returned by the API.
+
+  - **payer** <font color='#7d8793'>Payer</font> <font color='#f19938'>Required</font>  
+    - Information about the person making the payment, including identity and payment details.
+
+    - **mobileNumberMask** <font color='#7d8793'>String</font>  
+      - Masked mobile number of the payer, used to partially conceal the full number for privacy and security.  
+      - Example value: `+971-58*92`
+
+### Response Sample
+
+#### HTTP Headers
+
+```json
+{
+	"sign": "nDdClX1tAyV3qcX/Epay6AXFNRGSsWd8ysWO9SgwPrNTetSePLA9C39mGp6qRbjJeqXLEnYLwSkBu5eKdtyVX3tflGLiV2kvRjVfYpTCjXdVL2Pcnv2w+ghjHe2jL988iklk7q5AjAgdtXNphpHcTes9pk6W3bVCbvijH6at0fExUtZ91L1LrnPGELT1IJm/lFW3w4KLh0Gxs7FzDPI9RDfUemObNlRzV8kCtkWahwPgs/hBnS69GyYDKN7ihQX2UiLuP239wl6IA+VG/ZZKHPhLs8bbuOS+LKWORIp6jRt+JsAx7c/Ot1RNyOnHKxPRKJ8bVTohEp39yUz/HwG8oA=="
+}
+```
+
+#### HTTP Body
+
+```json
+{
+    "body":{
+        "payer":{
+            "mobileNumberMask":"+971-58*92"
+        }
+    },
+    "head":{
+        "applyStatus":"SUCCESS",
+        "code":"0",
+        "msg":"SUCCESS",
+        "success":true,
+        "traceCode":"975929"
+    }
+}
+```
+
+## Response Codes
+
+| Code  | Message               | Cause                           | Workaround                    |
+| ----- | --------------------- | ------------------------------- | ----------------------------- |
+| 0     | SUCCESS               | Request completed successfully  | -                             |
+| 400   | INVALID_PARAMETER     | Invalid parameter provided      | Adjust request parameters     |
+| 400   | REQUESTTIME_TOO_EARLY | Request time is too early       | Adjust request time           |
+| 400   | REQUESTTIME_TOO_LATER | Request time is too late        | Adjust request time           |
+| 402   | RATE_LIMIT_REJECT     | Request rate limit exceeded     | Reduce request frequency      |
+| 403   | UNAUTHORIZED          | API not authorized              | Contact PayBy                 |
+| 404   | SERVICE_NOT_AVAILABLE | API service unavailable         | Contact PayBy                 |
+| 500   | SYSTEM_ERROR          | System error occurred           | Contact PayBy and retry later |
+| 504   | SERVICE_TIMEOUT       | Service timeout                 | Retry later                   |
+| 601   | RISK_FAIL             | Risk control validation failed  | Adjust business logic         |
+| 62082 | TOKEN_URL_NOT_EXIST   | Token URL is invalid or expired | Adjust request parameters     |

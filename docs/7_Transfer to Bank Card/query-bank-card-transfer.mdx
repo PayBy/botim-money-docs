@@ -1,0 +1,152 @@
+---
+sidebar_position: 5
+toc_max_heading_level: 6
+---
+
+import ResponseHeader from './_response-header.mdx'
+import TransferBankCardOrder from './_transfer-bank-card-order.mdx'
+import RequestHeader from '../_request-header.mdx'
+
+# Retrieve Order Details
+
+## Overview
+
+This interface allows merchants to retrieve detailed results of bank card transfer transactions. It provides comprehensive information about the transfer status, payment details, and transaction metadata.
+
+## API URL
+
+- **UAT Environment**: https://uat.test2pay.com/sgs/api/transfer/getTransferToBankCard
+- **Production Environment**: https://api.payby.com/sgs/api/transfer/getTransferToBankCard
+
+## Request
+
+### HTTP Headers
+
+  <details open={true}>
+  <summary>Attributes</summary>
+    <RequestHeader/>
+  </details>                         
+
+### HTTP Body
+
+- **requestTime** <font color='#7d8793'>Timestamp(3)</font> <font color='#f19938'>Required</font>  
+  - Request timestamp in milliseconds.  
+  - Example value: `1581493898000`  
+
+- **bizContent** <font color='#7d8793'>GetTransferToBankOrderRequest</font> <font color='#f19938'>Required</font>  
+  - Business-specific request content.  
+
+  - **merchantOrderNo** <font color='#7d8793'>String(64)</font> <font color='#f19938'>Required</font>  
+    - Unique order identifier from merchant system.  
+    - Example value: `Me23484`  
+
+
+### Request Sample
+
+#### HTTP Headers
+
+```json
+{
+    "Content-Language": "en",
+    "Content-Type": "application/json",
+    "Partner-Id": "200000018128",
+    "sign": "RXF8WmC67QSnr62l3oU33fjpUvAo6Yrgvk05c/vYLtmHRGMoAH4qSnap2pto3mY7KgyP5wkNUsyQXJ/ZwbfccSONLb5zA7Z7q74IsOwdJw3BKXxVWr4tfjkA02Pfcp0cZWjE/Y8jTcbtgdc5VI90LNmkgPWbrSlDbNW8p3NlhnKg+Xfl95SgMBPF9afttsU/2a5jLnZXSVcXoSthxpJ6XkZwd45+jhOjBguT+IC8uLVSNRvwDisRGgf9PYv39OH6ITEhbY2sgjkdzBZBOZlt7awy2vkMEsePsuafwrNhuz7xzjj55PzNzk8+zCUu/791OhC/eFUyGimtDw5mX9cyQw=="
+}
+```
+
+#### HTTP Body
+
+```json
+{
+    "body": {
+        "bizContent": {
+            "merchantOrderNo": "M536433721888"
+        },
+        "requestTime": 1585142880000
+    }
+}
+```
+
+## Response
+
+### HTTP Header
+
+  <details open={true}>
+  <summary>Attributes</summary>
+    <ResponseHeader/>
+  </details>
+
+### HTTP Body
+
+ <details open={true}>
+  <summary>Attributes</summary>
+    <TransferBankCardOrder/>
+  </details>
+
+### Response Sample
+
+#### HTTP Headers
+
+```json
+{
+    "sign": "Yv+C2lOQmfERdm5GF9b2V4Y98HmX/6CFyconeOW36AoPqcb7InRcP9E5GnvJLfMoCScuNP4FBdJ5tJpL0A7yPHUMfxARi05jFRSMG97JJazDbWTbRkNM1ZupmTubhUvxvRCgvJp1k0c5yrHph+F+++W5eYho92xnkNgd62BS27i0iDRGzGSmsaPpK7MFcdlvnbbnmDZZJ0LH6RhYiJLYKl+znllQx3jNfCRjV28o22FZ35Q43mZTsS4uAZWbZ/KfaqWoV3sN62Cjj8DSg3mD6GCGWSVbxLq58DUxAq+6GwJ7Gj0Dc9nMXP3gnFW7dodQ9AjL2iHnH6Zh1Pw2D5/ung=="
+}
+```
+
+#### HTTP Body
+
+```json
+{
+    "body": {
+        "transferToBankCard": {
+            "amount": {
+                "amount": 0.1,
+                "currency": "AED"
+            },
+            "partnerId": "200000429066",
+            "notifyUrl": "http://yoursite.com/api/notification",
+            "memo": "Bonus",
+            "createdTime": 1741917501666,
+            "payerFeeAmount": {
+                "amount": 0,
+                "currency": "AED"
+            },
+            "payerFeeMemberId": "200000429066",
+            "orderNo": "131741917501042130",
+            "merchantOrderNo": "7a5b47a4-1824-4a4d-b581-9b0ebd5dd436",
+            "product": "Transfer Bank Card",
+            "status": "CREATED",
+            "paidTime": 1741917502000,
+            "accountHolderType": "INDIVIDUAL",
+            "cardNumber": "6b59af6dcc4fb841d5f053a852ed917fd5eecad0cc2c3e3507540c065f520a4c",
+            "expiryMonth": "08",
+            "expiryYear": "2028",
+            "firstName": "c6f27629d041725bb227a0d718641d220d69356cd82b3b7230f1d0dff950de5f",
+            "lastName": "15d6dacb4fbda825195e5873c175a9b093daa32345c708ac18411365f6fc6038",
+            "middleName": "15d6dacb4fbda825195e5873c175a9b093daa32345c708ac18411365f6fc6038"
+        }
+    },
+    "head": {
+        "applyStatus": "SUCCESS",
+        "code": "0",
+        "msg": "SUCCESS",
+        "traceCode": "974825"
+    }
+}
+```
+
+## Response Codes
+
+| Code  | Message                     | Cause                                              | Workaround                               |
+| ----- | --------------------------- | -------------------------------------------------- | ---------------------------------------- |
+| 0     | SUCCESS                     | Request processed successfully                     | -                                        |
+| 400   | INVALID_PARAMETER           | Invalid request parameters                         | Review and correct request parameters    |
+| 400   | REQUESTTIME_TOO_EARLY       | Request time is too early compared to current time | Adjust request timestamp                 |
+| 400   | REQUESTTIME_TOO_LATER       | Request time is too late compared to current time  | Adjust request timestamp                 |
+| 402   | RATE_LIMIT_REJECT           | Request frequency exceeds allowed limit            | Reduce request frequency                 |
+| 403   | UNAUTHORIZED                | API access not authorized                          | Contact PayBy for authorization          |
+| 404   | SERVICE_NOT_AVAILABLE       | API service is unavailable                         | Contact PayBy support                    |
+| 500   | SYSTEM_ERROR                | Internal system error                              | Contact PayBy support and retry later    |
+| 504   | SERVICE_TIMEOUT             | Service request timeout                            | Retry the request                        |
+| 601   | RISK_FAIL                   | Risk control validation failed                     | Review and adjust business parameters    |
+| 62004 | MERCHANT_ORDER_NO_NOT_EXIST | Merchant order number does not exist               | Verify and correct merchant order number |

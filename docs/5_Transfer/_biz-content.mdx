@@ -1,0 +1,45 @@
+
+- **merchantOrderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - The merchant's reference number of the request. Used to track every request.  
+  - Example value: `M965739182419`  
+  - Maximum length: `64`
+
+- **beneficiaryIdentityType** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - The fund can be transferred to the beneficiary through mobile phone number or PayBy member ID.  
+  - Possible values:  
+    - `PHONE_NO`: Transfer through mobile phone number  
+    - `MEMBER_ID`: Transfer through PayBy member ID  
+  - Maximum length: `20`
+
+- **beneficiaryIdentity** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Value to be passed after selecting the beneficiary identity type.  
+  - Should be encrypted using SHA-256.  
+  - Example values:  
+    - `+971-585812345` (for `PHONE_NO`)  
+    - `100006514321` (for `MEMBER_ID`)  
+  - Maximum length: `20`
+
+- **beneficiaryFullName** <font color='#7d8793'>String</font>  
+  - If provided, PayBy will verify it against the beneficiary's KYC information.  
+  - If not provided, no verification is performed.  
+  - Should be encrypted using SHA-256.  
+  - Maximum length: `100`
+
+- **amount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+  - The amount of AED to transfer. Currency must be `AED`.  
+  - **Type of Limit**:  
+    
+    | Limit Type                    | Amount     |
+    | ----------------------------- | ---------- |
+    | Maximum per transaction       | AED 10,000 |
+
+  > **Note:** If the beneficiary's account balance + transfer amount exceeds AED 20,000, the transfer will fail.
+
+- **memo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Description of the transfer.  
+  - Maximum length: `200`
+
+- **notifyUrl** <font color='#7d8793'>String</font>  
+  - URL to receive asynchronous notifications of order status updates.  
+  - Example value: `https://www.yoursite.com`  
+  - Maximum length: `200`

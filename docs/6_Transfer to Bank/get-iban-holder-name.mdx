@@ -1,0 +1,141 @@
+---
+sidebar_position: 6
+toc_max_heading_level: 6
+---
+
+import BizContent from './_biz-content.mdx'
+import RequestHeader from '../_request-header.mdx'
+
+# Query IBAN Holder Name
+
+## Overview
+This API verifies whether a provided account holder's name matches the corresponding IBAN. It is typically used to validate recipient information during fund transfers.
+
+## API URL
+
+- **UAT (Testing):** `https://uat.test2pay.com/sgs/api/transfer/getIbanHolderName`
+- **Production:** `https://api.payby.com/sgs/api/transfer/getIbanHolderName`
+
+
+## Request Parameters
+
+### HTTP Headers
+
+<details>
+  <summary>Attributes</summary>
+  <RequestHeader/>
+</details>  
+
+### HTTP Body
+
+- **requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+
+    Request time of the order. If the request time is more than 15 minutes away from the current time, the request will be rejected. This parameter is used to prevent repeated requests for orders that should have been cancelled due to timeouts.
+
+    Example value: 1581493898000
+
+
+- **bizContent**   <font color = ' #7d8793'>Object</font>  
+
+  <details open={true}>
+  <summary>Attributes</summary>
+    <BizContent/>
+  </details>
+
+
+#### GetIbanHolderNameRequest
+
+- **holderName** <font color='#7d8793'>String(256)</font> <font color='#f19938'>Required</font>  
+  - Encrypted account holder name.
+
+- **iban** <font color='#7d8793'>String(256)</font> <font color='#f19938'>Required</font>  
+  - Encrypted IBAN number.
+
+
+### Request Sample
+
+```json
+Http Header
+{
+    "Content-Language": "en",
+    "Content-Type": "application/json",
+    "Partner-Id": "200000018128",
+    "sign": "<signature_string>"
+}
+
+Http Body
+{
+    "body": {
+        "bizContent": {
+            "holderName": "<encrypted_holder_name>",
+            "iban": "<encrypted_iban>"
+        },
+        "requestTime": 1585142880000
+    }
+}
+```
+
+
+## Response Parameters
+
+### HTTP Headers
+
+<details>
+  <summary>Attributes</summary>
+  <RequestHeader/>
+</details>  
+
+### HTTP Body
+
+- **head** <font color='#7d8793'>ResponseHeader</font> <font color='#f19938'>Required</font>  
+  - Response metadata.
+
+- **body** <font color='#7d8793'>GetIbanHolderNameResponse</font>  
+  - Core response payload.
+
+  - **ibanHolderName** <font color='#7d8793'>IbanHolderName</font> <font color='#f19938'>Required</font>  
+    - Contains the name match result.
+
+### Response Sample
+
+```json
+Http Header
+{
+    "sign": "<response_signature>"
+}
+
+Http Body
+{
+    "head": {
+        "applyStatus": "SUCCESS",
+        "code": "0",
+        "msg": "SUCCESS",
+        "traceCode": "1133"
+    },
+    "body": {
+        "ibanHolderName": {
+            "holderNameMask": "xxx*** xxx*** xxx***",
+            "nameMatchingLevel": "1",
+            "nameMatchingResult": "TRUE"
+        }
+    }
+}
+```
+
+## Return Codes
+
+| Code  | Message                | Cause                            | Workaround                     |
+|-------|------------------------|-----------------------------------|------------------------------|
+| 0     | SUCCESS                | Success                           | -                            |
+| 400   | INVALID_PARAMETER      | Invalid parameter                 | Adjust request parameters.  |
+| 400   | REQUESTTIME_TOO_EARLY | Request time is too early         | Adjust request time.        |
+| 400   | REQUESTTIME_TOO_LATER | Request time is too late          | Adjust request time.        |
+| 402   | RATE_LIMIT_REJECT     | Too many requests                 | Reduce request frequency.   |
+| 403   | UNAUTHORIZED           | Unauthorized API call             | Contact PayBy.              |
+| 404   | SERVICE_NOT_AVAILABLE | API service unavailable           | Contact PayBy.              |
+| 500   | SYSTEM_ERROR           | System error                      | Contact PayBy and retry.    |
+| 504   | SERVICE_TIMEOUT        | Service timeout                   | Retry later.                |
+| 601   | RISK_FAIL              | Risk control validation failed    | Adjust business logic.      |
+| 62101 | WRONG_IBAN_FORMAT      | Incorrect IBAN format             | Correct IBAN format.        |
+| 62102 | NAME_NOT_FOUND         | Name not found for IBAN           | Use a valid IBAN.           |
+| 62103 | QUERY_API_UNAVAILABLE  | Query interface unavailable       | Retry later.                |

@@ -1,0 +1,50 @@
+
+- **accountHolderType** <font color='#7d8793'>String(16)</font> <font color='#f19938'>Required</font>  
+  - Account holder type: `INDIVIDUAL` or `CORPORATE`  
+  - Example value: `INDIVIDUAL`
+
+- **merchantOrderNo** <font color='#7d8793'>String(64)</font> <font color='#f19938'>Required</font>  
+  - Unique order identifier from the merchant.  
+  - Example value: `Me23484`
+
+- **firstName** <font color='#7d8793'>String(50)</font>  
+  - Encrypted field. Account holder's first name.  
+  - Required when `accountHolderType` is `INDIVIDUAL`  
+
+- **lastName** <font color='#7d8793'>String(50)</font>  
+  - Encrypted field. Account holder's last name.  
+  - Required when `accountHolderType` is `INDIVIDUAL`  
+
+- **middleName** <font color='#7d8793'>String(50)</font>  
+  - Encrypted field. Account holder's middle name.  
+
+- **companyName** <font color='#7d8793'>String(50)</font>  
+  - Encrypted field. Company name.  
+  - Required when `accountHolderType` is `CORPORATE`.  
+  - Must be a valid legal name. Cannot be a single character, all numeric, or all punctuation.  
+  - Example value: `Liwa Street off Khaliffa Street`
+
+- **amount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+  - Amount to transfer.  
+  - Example value: `12.34`
+
+- **memo** <font color='#7d8793'>String(50)</font>  
+  - Transfer description or note.  
+  - Example value: `Bonus`
+
+- **notifyUrl** <font color='#7d8793'>String(200)</font>  
+  - URL to receive transfer status notifications.  
+
+- **expiryYear** <font color='#7d8793'>String(4)</font> <font color='#f19938'>Required</font>  
+  - Encrypted field. Card expiration year.  
+  - Must be current year or later.  
+  - Example value: `2025`
+
+- **expiryMonth** <font color='#7d8793'>String(2)</font> <font color='#f19938'>Required</font>  
+  - Encrypted field. Card expiration month (1–12).  
+  - Combined year and month must be current month or later.  
+  - Example value: `12`
+
+- **cardNumber** <font color='#7d8793'>String(50)</font> <font color='#f19938'>Required</font>  
+  - Encrypted field. Card number (12–19 digits, numeric only).  
+
