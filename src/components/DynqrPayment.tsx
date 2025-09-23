@@ -15,7 +15,7 @@ type OrderCreationParams = {
 
 ConfigProvider.config({
   theme: {
-    primaryColor: "#00A75D",
+    primaryColor: "#3C8404",
   },
 });
 
@@ -66,7 +66,7 @@ function DynqrPayment(props: { orderCreation?: any; siteConfig?: any }) {
                 <Input addonBefore="AED" size="large" />
               </FormItem>
               <FormItem>
-                <Button type="primary" htmlType="submit" size="large" block style={{ backgroundColor: "#00A75D" }}>
+                <Button type="primary" htmlType="submit" size="large" block style={{ backgroundColor: "#3C8404" }}>
                   PAY NOW
                 </Button>
               </FormItem>

@@ -14,7 +14,7 @@ QRPAY is ideal for physical retail environments such as department stores, resta
 ## User Experience
 
 1. The customer opens Botim Money Business or BOTIM app to present QR code.
-2. The cashier confirms the payment amount, generates a payment order in the merchant’s system to place order in PayBy.
+2. The cashier confirms the payment amount, generates a payment order in the merchant’s system to place order in Botim Money Business.
 3. The merchant' cashier scans the customer's barcode / QR code with the code scanning equipment, and the merchant‘s POS system submits the payment.
 4. Customers enter their payment details on the payment page and complete the transaction.
 5. If the payment is completed, customers will be redirected to the merchant's success page.
@@ -23,7 +23,7 @@ QRPAY is ideal for physical retail environments such as department stores, resta
 
 ## Integrate the API
 
-### Initiate Payment via QR Code Using PayBy
+### Initiate Payment via QR Code Using Botim Money Business
 
 1. **Customer Confirmation**  
    Wait for the customer to confirm their intent to proceed with the payment.

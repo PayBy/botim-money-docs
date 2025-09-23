@@ -14,14 +14,14 @@ This integration is especially beneficial if your customer base frequently uses 
 ## User Experience
 
 1.  The customer confirms to pay for an order, the merchant generates a QR codes on the interface.
-2. The customer uses PayBy, BOTIM to scan the QR code to obtain order information. 
+2. The customer uses Botim Money Business, BOTIM to scan the QR code to obtain order information. 
 3. In the order information returned by Botim Money Business server, there is a parameter **tokenUrl**, Botim Money Business or BOTIM application will parse this parameter and redirect the customer to the built-in checkout of the app.
 4. Customers enter their payment details on the payment page and complete the transaction.
 5. If the payment is completed, the customer will see the payment result on the app.
 
 ## Integrate the API
 
-### Initiate Payment via Dynamic QR Code Using PayBy
+### Initiate Payment via Dynamic QR Code Using Botim Money Business
 
 1. **Customer Confirmation**  
    Wait for the customer to confirm their intent to proceed with the payment.

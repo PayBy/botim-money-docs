@@ -5,7 +5,7 @@ toc_max_heading_level: 6
 
 # iFrame Paypage
 
-The iFrame Payment Page is a webpage prepared by Botim Money Business that can be embedded within your website. Although it resides on PayBy’s secure servers, the transition to the Botim Money Business secure page is invisible to the cardholder. 
+The iFrame Payment Page is a webpage prepared by Botim Money Business that can be embedded within your website. Although it resides on Botim Money's secure servers, the transition to the Botim Money Business secure page is invisible to the cardholder. 
 
 Unlike the Hosted Paypage, using the iFrame Paypage ensures that customers remain on your website when making a payment, potentially reducing the payment failure rate. Additionally, integrating the iFrame Paypage within your site provides greater flexibility.
 
@@ -28,7 +28,7 @@ Unlike the Hosted Paypage, using the iFrame Paypage ensures that customers remai
 ### Load Botim Money Business JS SDK
 
 ```
-<script async src="https://checkout.payby.com/sdk/payby-sdk.umd.js"></script>
+<script async src="https://checkout.botim.money/sdk/payby-sdk.umd.js"></script>
 ```
 
 ### Get `tokenUrl`
@@ -67,7 +67,7 @@ PayBy.createIframe({
 	- If the redirectURI is a form, it will contain an HTML form that needs to be rendered and submitted automatically. 	The form includes a script for auto-submission.
 3. **3D Secure (3DS) Handling**: Merchants need to handle the 3DS verification themselves. The redirectURI will either lead to a 3DS verification link or contain a form that triggers the 3DS process.
 
-When you create the iFrame using PayBy.createIframe, you can pass a success function to handle the payment result manually. The success function receives a data parameter that contains the payment result in JSON format.
+When you create the iFrame using Botim Money Business.createIframe, you can pass a success function to handle the payment result manually. The success function receives a data parameter that contains the payment result in JSON format.
 
 ```
 window.PayBy.createIframe({
@@ -130,7 +130,7 @@ window.PayBy.createIframe({
 - **error**  
   - **Type:** `Function`  
   - Handles failed payment processing within the iFrame.  
-  - The merchant's website should display an error message based on the `msg` parameter in PayBy's response to inform the user of the specific issue.
+  - The merchant's website should display an error message based on the `msg` parameter in Botim Money's response to inform the user of the specific issue.
 
 ### Redirect URL
 
@@ -150,4 +150,4 @@ To retrieve the order detail, call the [Retrieve Order Detail](/docs/retrieveord
 
 ## Set Payment Method
 
-On the paypage, by default, all payment methods activated by the merchant in Botim Money Business will be listed. To adjust the order of payment methods or temporarily disable some payment methods for the payer, configure it in Payment Methods. [Payment Methods](https://b.payby.com/payment-methods).
+On the paypage, by default, all payment methods activated by the merchant in Botim Money Business will be listed. To adjust the order of payment methods or temporarily disable some payment methods for the payer, configure it in Payment Methods. [Payment Methods](https://b.botim.money/payment-methods).

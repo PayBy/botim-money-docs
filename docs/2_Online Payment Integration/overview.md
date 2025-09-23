@@ -40,4 +40,4 @@ Select the payment product you want to access and check the user experience and 
 
 **In-person payment**
 
-`POS` - Contact our sales to apply and install POS. bd@payby.com
+`POS` - Contact our sales to apply and install POS. bd@astratech.ae

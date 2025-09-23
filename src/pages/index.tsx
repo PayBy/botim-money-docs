@@ -10,7 +10,7 @@ import styles from "./index.module.css";
 
 ConfigProvider.config({
   theme: {
-    primaryColor: "#00A75D",
+    primaryColor: "#3C8404",
   },
 });
 function HomepageHeader() {
@@ -21,7 +21,7 @@ function HomepageHeader() {
         <h1 className={clsx("hero__title hero--primary", styles.title)}>{siteConfig.title}</h1>
         <p className={clsx("hero__subtitle", styles.tagline)}>{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <Button ghost type="primary" size="large" style={{ borderColor: "#00A75D", color: "#00A75D" }}>
+          <Button ghost type="primary" size="large" style={{ borderColor: "#3C8404", color: "#3C8404" }}>
             <Link to="/docs/createorder">API reference</Link>
           </Button>
         </div>

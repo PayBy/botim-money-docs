@@ -77,8 +77,8 @@ export default function HomepageFeatures(): JSX.Element {
     <section className={styles.features}>
       <div className="container">
         <div className="text--center padding-horiz--md">
-          <h3>PayBy offers multiple payment solutions.</h3>
-          <p>Whether you have a physical store, an e-commerce website, or an app, you can access PayBy</p>
+          <h3>Botim Money Business offers multiple payment solutions.</h3>
+          <p>Whether you have a physical store, an e-commerce website, or an app, you can access Botim Money Business</p>
         </div>
         <div className="row">
           {FeatureList.map((props, idx) => (

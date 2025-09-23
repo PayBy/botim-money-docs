@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Hosted Paypage
 
-The **Iframe Payment Page** is a secure checkout interface hosted by **PayBy**, which can be seamlessly embedded into your website to enable smooth payment processing.
+The **Iframe Payment Page** is a secure checkout interface hosted by **Botim Money Business**, which can be seamlessly embedded into your website to enable smooth payment processing.
 
 ---
 
@@ -28,7 +28,7 @@ The **Iframe Payment Page** is a secure checkout interface hosted by **PayBy**, 
    Input the payment amount and click **Pay Now**.
 
 3. **Complete the Transaction**  
-   You will be redirected to the **PayBy hosted checkout** page. Use the test environment’s bank and Botim Money Business account credentials to simulate the payment process.  
+   You will be redirected to the **Botim Money Business hosted checkout** page. Use the test environment’s bank and Botim Money Business account credentials to simulate the payment process.  
 
    Find the APK and test account details [here](/demos/testaccount).
 

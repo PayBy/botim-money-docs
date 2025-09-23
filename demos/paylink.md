@@ -12,5 +12,5 @@ Create a **permanent payment link** by adding a product and setting an amount. T
 ## Try the Demo
 
 - Sample Paylink *(Best viewed on a mobile browser)*: https://uat-paypage.test2pay.com/paylink?linkId=20220909000000071
-- To simulate the payment process, use the **PayBy app** or **bank account** credentials from the test environment. Find the APK and account details [here](/demos/testaccount).
+- To simulate the payment process, use the **Botim app** or **bank account** credentials from the test environment. Find the APK and account details [here](/demos/testaccount).
 

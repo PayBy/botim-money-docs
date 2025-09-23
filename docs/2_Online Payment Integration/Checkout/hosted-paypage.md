@@ -3,7 +3,7 @@ sidebar_position: 1
 toc_max_heading_level: 6
 ---
 # Hosted Paypage
-Hosted paypage is one of the most common and easiest ways to acquire payments. It is payby's preset checkout interface, which integrates all the payment channels you need. When customers pay, they will be redirected from your website to a payment page which is hosted on Botim Money Business servers.
+Hosted paypage is one of the most common and easiest ways to acquire payments. It is Botim Money's preset checkout interface, which integrates all the payment channels you need. When customers pay, they will be redirected from your website to a payment page which is hosted on Botim Money Business servers.
 
 ## User Experience
 1. The customers are ready to complete their payment, your application creates a new order creation request.
@@ -40,10 +40,10 @@ To retrieve the order detail, call the [Retrieve Order Detail](/docs/retrieveord
 ---
 
 ## Customize Paypage UI
-You can customize the appearance of the hosted checkout page by adding your logo and color in the Dashboard’s [Customize Checkout](https://b.payby.com/customize-checkout).
+You can customize the appearance of the hosted checkout page by adding your logo and color in the Dashboard’s [Customize Checkout](https://b.botim.money/customize-checkout).
 
 ## Set Payment Method
-On the paypage page, by default all the payment methods that merchants have activated in Botim Money Business will be listed. If you need to adjust the order of payment methods that your customers see, or temporarily set some payment methods as unavailable to the payer, please configure it in [Payment Methods](https://b.payby.com/payment-methods).
+On the paypage page, by default all the payment methods that merchants have activated in Botim Money Business will be listed. If you need to adjust the order of payment methods that your customers see, or temporarily set some payment methods as unavailable to the payer, please configure it in [Payment Methods](https://b.botim.money/payment-methods).
 
 
 

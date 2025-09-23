@@ -16,7 +16,7 @@ type OrderCreationParams = {
 
 ConfigProvider.config({
   theme: {
-    primaryColor: '#00A75D',
+    primaryColor: '#3C8404',
   },
 })
 

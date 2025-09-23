@@ -10,7 +10,7 @@
 
 - **redirectUrl**   <span style={{color:" #7d8793"}}>String</span> 
 
-  Link that the payer will be redirected once the payer finalizes payments on PayBy's checkout. 
+  Link that the payer will be redirected once the payer finalizes payments on Botim Money's checkout. 
 
   Example value: https://www.yoursite.com
 
@@ -27,7 +27,7 @@
   
 - **changePayer**   <span style={{color:" #7d8793"}}>String</span>   
 
-  If the user pays with BOTIM / PayBy, whether to bind the payer information to the order after the user scanning the code. If false, if user A does not complete the payment after scanning the QR code, other users can continue to scan the QR code to pay. If true, if user A does not complete the payment after scanning the QR code, other users will fail when they try to scan the QR code to pay. The default value is true.
+  If the user pays with Botim, whether to bind the payer information to the order after the user scanning the code. If false, if user A does not complete the payment after scanning the QR code, other users can continue to scan the QR code to pay. If true, if user A does not complete the payment after scanning the QR code, other users will fail when they try to scan the QR code to pay. The default value is true.
 
   Default value: True.
   

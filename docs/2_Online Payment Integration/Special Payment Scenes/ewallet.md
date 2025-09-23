@@ -21,7 +21,7 @@ Currently, Botim Money Business supports the following e-wallets:
 ![ue-ewallet](../pic/ue-ewallet.png)
 
 ## Integrate the API
-### Initiate E-Wallet Payment via PayBy
+### Initiate E-Wallet Payment via Botim Money Business
 
 #### Step 1: Display E-Wallet Options
 - When the customer confirms their intent to pay, render the list of available e-wallets.

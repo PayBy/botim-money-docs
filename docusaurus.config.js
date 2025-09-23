@@ -8,8 +8,8 @@ const mdxMermaid =require('mdx-mermaid')
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Integrate Botim Money Business and Accept Payment',
-  tagline: 'PayBy, a flexible and fast payment solution to manage all business transactions.',
-  url: 'https://developers.payby.com',
+  tagline: 'Botim Money, a flexible and fast payment solution to manage all business transactions.',
+  url: 'https://developers.botim.money',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -17,7 +17,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'PayBy', // Usually your GitHub org/user name.
+  organizationName: 'Botim Money Business', // Usually your GitHub org/user name.
   projectName: 'payby-developer-doc', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -81,7 +81,7 @@ const config = {
       navbar: {
         title: 'Developer',
         logo: {
-          alt: 'PayBy Developer Website',
+          alt: 'Botim Money Business Developer Website',
           src: 'img/logo.svg',
         },
         items: [
@@ -102,7 +102,7 @@ const config = {
       },
       footer: {
         // style: 'dark',
-        copyright: `Copyright © ${new Date().getFullYear()} PayBy, Inc. All Rights Reserved.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Botim Money Technologies LLC. All Rights Reserved.`,
       },
       prism: {
         theme: lightCodeTheme,
