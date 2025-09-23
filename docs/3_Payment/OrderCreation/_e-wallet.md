@@ -10,8 +10,6 @@
 
   Example value: 
 
-  `payby`. Botim Money Business app.
-
   `botim-pay`. BOTIM app.
 
   `ALIPAYPLUS`. Alipay plus Wallet.
