@@ -65,11 +65,11 @@ a:any-link:hover{
 
 .navbar__title{
   color: #666666;
-  font-weight:normal;
+  font-weight:bold;
 }
 
 .navbar__brand .navbar__logo {
-  height: 16px;
+  height: 20px;
   width: auto; 
   vertical-align: middle;
 }
