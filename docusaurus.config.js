@@ -117,3 +117,10 @@ const config = {
 };
 
 module.exports = config;
+
+module.exports = {
+  title: 'Botim Money Developer',
+  url: 'https://developers.botim.money/',
+  baseUrl: '/docs/',
+  // ...其他配置
+};
