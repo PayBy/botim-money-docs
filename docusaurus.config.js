@@ -8,7 +8,7 @@ const mdxMermaid =require('mdx-mermaid')
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Integrate Botim Money Business and Accept Payment',
-  tagline: 'Botim Money, a flexible and fast payment solution to manage all business transactions.',
+  tagline: 'Botim Money Business, a flexible and fast payment solution to manage all business transactions.',
   url: 'https://developers.botim.money',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -18,7 +18,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'Botim Money Business', // Usually your GitHub org/user name.
-  projectName: 'payby-developer-doc', // Usually your repo name.
+  projectName: 'botim-money-docs', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
