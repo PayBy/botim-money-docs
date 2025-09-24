@@ -7,7 +7,7 @@ toc_max_heading_level: 6
 
 ## Merchant-side QR Code
 
-After a customer places an order, a dynamic QR code is generated on the merchant’s interface—whether it’s a website, mobile app, or even a physical terminal like a vending machine. The customer can then scan this code using the Botim Money Business or BOTIM app to complete the payment.
+After a customer places an order, a dynamic QR code is generated on the merchant’s interface—whether it’s a website, mobile app, or even a physical terminal like a vending machine. The customer can then scan this code using the Botim Money or BOTIM app to complete the payment.
 
 This method is especially effective in environments where entering card details is impractical or insecure, such as vending machines or parking garages. By shifting the payment process from the merchant’s interface to the customer’s mobile device, it enhances both convenience and security.
 
@@ -17,7 +17,7 @@ QR code payments are inherently secure. The QR code itself serves only as a medi
 
 1. The customer confirms to pay for an order, the merchant generates a QR codes on the interface.
 2. The customer uses BOTIM Money to scan the QR code to obtain order information. 
-3. In the order information returned by Botim Money Business server, there is a parameter **tokenUrl**, Botim Money Business or BOTIM application will parse this parameter and redirect the customer to the built-in checkout of the app.
+3. In the order information returned by Botim Money server, there is a parameter **tokenUrl**, Botim Money or BOTIM application will parse this parameter and redirect the customer to the built-in checkout of the app.
 4. Customers enter their payment details on the payment page and complete the transaction.
 5. If the payment is completed, the customer will see the payment result on the app.
 
@@ -42,12 +42,12 @@ QR code payments are inherently secure. The QR code itself serves only as a medi
    - Display the QR code on the merchant's interface for the customer to scan.
 
 5. **Payment Notification**  
-   - After the customer completes the payment, Botim Money Business will send the payment result notification to either the Botim Money Business server or the BOTIM app.
+   - After the customer completes the payment, Botim Money will send the payment result notification to either the Botim Money server or the BOTIM app.
    - The customer will see the payment result in the app.
 
 ### Asynchronous Notification
 
-If the **notifyUrl** is set in the order creation request, after the transaction, Botim Money Business will send payment result to the url.
+If the **notifyUrl** is set in the order creation request, after the transaction, Botim Money will send payment result to the url.
 
 ### Change Order Status
 

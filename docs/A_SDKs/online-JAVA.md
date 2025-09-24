@@ -7,7 +7,7 @@ toc_max_heading_level: 6
 
 ## Overview
 
-This guide is written for application developers who want to integrate the Botim Money Business payment solution.
+This guide is written for application developers who want to integrate the Botim Money payment solution.
 
 ## SDK Download
 
@@ -179,7 +179,7 @@ openssl pkcs8 -in PayBy_key.pem -topk8 -nocrypt -out PayBy_key_private.pem
 
 ### Encryption Algorithm
 
-1. The encryption algorithm uses RSA public-key encryption, and Botim Money Business issues the public key.
+1. The encryption algorithm uses RSA public-key encryption, and Botim Money issues the public key.
 2. The encrypted field should not be too large, generally more than 200 bytes.
 3. Encryption rules: RSA (encrypted original encryption).
 4. UTF-8 encoding is used for plaintext.
@@ -187,7 +187,7 @@ openssl pkcs8 -in PayBy_key.pem -topk8 -nocrypt -out PayBy_key_private.pem
 
 ### Verify Signature Algorithm
 
-1. Uses SHA256WithRSA to verify the signature algorithm. The RSA public key is downloaded from the Botim Money Business merchant console.
+1. Uses SHA256WithRSA to verify the signature algorithm. The RSA public key is downloaded from the Botim Money merchant console.
 2. Uses Base64 to decode the signature, i.e., decoded_sign_data.
 3. Uses UTF-8 to decode the original content, i.e. decoded_content_data.
 4. Verify signature using parameters as listed (rsa_public_key, decoded_sign_data, decoded_content_data).
@@ -654,7 +654,7 @@ PayByClient client = getPayByClient();
 **Verify signature**
 
 ```java
-    // setting Botim Money Business publicKey path
+    // setting Botim Money publicKey path
     String payByPubKey = new String(Files.readAllBytes(Paths.get(PayByDemo.class.getClassLoader().getResource("payby_public_key.pem").toURI())));
     String plain =
         "{\"notify_time\":\"20200428133706\",\"acquireOrder\":{\"product\":\"Basic Payment Gateway\",\"orderNo\":\"911588066370006619\",\"paySceneCode\":\"DYNQR\",\"subject\":\"123456\",\"accessoryContent\":{\"amountDetail\":{\"vatAmount\":{\"amount\":0.10,\"currency\":\"AED\"}},\"terminalDetail\":{\"merchantName\":\"binge test merchant\"},\"goodsDetail\":{\"goodsId\":\"GI1005\",\"body\":\"Gifts\",\"goodsName\":\"candy flower\"}},\"merchantOrderNo\":\"eaa16681-070b-4ae6-9b13-809b0db6eb89\",\"expiredTime\":1588073568745,\"requestTime\":1588066368745,\"totalAmount\":{\"amount\":0.10,\"currency\":\"AED\"},\"payeeMid\":\"200000042607\",\"notifyUrl\":\"http://yoursite.com/api/notification\",\"paymentInfo\":{\"payChannel\":\"BALANCE\",\"paidTime\":1588066471000,\"payeeFeeAmount\":{\"amount\":0.01,\"currency\":\"AED\"},\"payerFeeAmount\":{\"amount\":0.00,\"currency\":\"AED\"},\"paidAmount\":{\"amount\":0.10,\"currency\":\"AED\"},\"payerMid\":\"100000001104\"},\"status\":\"PAID_SUCCESS\"},\"_input_charset\":\"UTF-8\",\"notify_timestamp\":1588066626060,\"notify_id\":\"202004280007581901\"}";
@@ -680,7 +680,7 @@ PayByClient client = getPayByClient();
 
     String body = IOUtils.toString(req.getInputStream(), "UTF-8");
 
-    // setting Botim Money Business publicKey path
+    // setting Botim Money publicKey path
     String payByPubKey = new String(Files.readAllBytes(Paths.get(PayByDemo.class.getClassLoader().getResource("payby_public_key.pem").toURI())));
 
     // assert verify sign

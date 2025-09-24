@@ -23,7 +23,7 @@ import AcquireOrderPayer from './_acquire-order-payer.mdx'
 | -------------- | ---------------- | -------- | ---------- | --------------- | -------------------------------------------- |
 | Language       | Content-Language | Optional | String(10) | en              | Language preference: en - English (default)  |
 | Signature      | sign             | Required | String     | IXJI/QicPQot... | Request signature for authentication         |
-| Merchant ID    | Partner-Id       | Required | String(12) | 200000000888    | Unique merchant identifier assigned by Botim Money Business |
+| Merchant ID    | Partner-Id       | Required | String(12) | 200000000888    | Unique merchant identifier assigned by Botim Money |
 
 ---
 
@@ -114,7 +114,7 @@ The body in the HTTP Body are returned only when `applyStatus` is `SUCCESS` and 
 | Variable Desc.    | Variable name   | Required | Type         | Example value                        | Description                                         |
 | ----------------- | --------------- | -------- | ------------ | ------------------------------------ | --------------------------------------------------- |
 | Merchant Order No | merchantOrderNo | Required | String       | b7023000-fb84-4259-9870-8dff62c7299c | Merchant's unique order identifier                  |
-| Order No          | orderNo         | Required | String       | 131658483622183687                   | Botim Money Business system order number                           |
+| Order No          | orderNo         | Required | String       | 131658483622183687                   | Botim Money system order number                           |
 | Device ID         | deviceId        | Required | String       | 20001019                             | Payment device identifier                           |
 | Status            | status          | Required | String       | SETTLED                              | Order status (CREATED/PAID_SUCCESS/SETTLED/FAILURE) |
 | Product           | product         | Required | String       | Basic Payment Gateway                | Payment product type                                |
@@ -178,7 +178,7 @@ The body in the HTTP Body are returned only when `applyStatus` is `SUCCESS` and 
         "items": [
             {
                 "merchantOrderNo": "b7023000-fb84-4259-9870-8dff62c7299c",  // Unique merchant order identifier
-                "orderNo": "131658483622183687",                            // Botim Money Business internal order number
+                "orderNo": "131658483622183687",                            // Botim Money internal order number
                 "deviceId": "20001019",                                     // Payment device ID
                 "status": "SETTLED",                                        // Order has been settled successfully
                 "paymentInfo": {
@@ -211,7 +211,7 @@ The body in the HTTP Body are returned only when `applyStatus` is `SUCCESS` and 
                     },
                     "payChannel": "BALANCE"                                 // Payment made using account balance
                 },
-                "product": "Basic Payment Gateway",                         // Botim Money Business product type used
+                "product": "Basic Payment Gateway",                         // Botim Money product type used
                 "totalAmount": {
                     "amount": 2.25,                                         // Total order amount
                     "currency": "AED"                                       // Order currency

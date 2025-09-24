@@ -3,11 +3,11 @@ sidebar_position: 1
 toc_max_heading_level: 6
 ---
 # Hosted Paypage
-Hosted paypage is one of the most common and easiest ways to acquire payments. It is Botim Money Business's preset checkout interface, which integrates all the payment channels you need. When customers pay, they will be redirected from your website to a payment page which is hosted on Botim Money Business servers.
+Hosted paypage is one of the most common and easiest ways to acquire payments. It is Botim Money's preset checkout interface, which integrates all the payment channels you need. When customers pay, they will be redirected from your website to a payment page which is hosted on Botim Money servers.
 
 ## User Experience
 1. The customers are ready to complete their payment, your application creates a new order creation request.
-2. The Botim Money Business returns a URL that redirects customers to a hosted payment page.
+2. The Botim Money returns a URL that redirects customers to a hosted payment page.
 3. Customers choose a payment method and enter their payment details on the payment page to complete the transaction.
 4. If the payment is completed, customers will be redirected to the merchant's success page.
 ---
@@ -20,12 +20,12 @@ Hosted paypage is one of the most common and easiest ways to acquire payments. I
 ### Create Order
 When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `PAYPAGE` in the **paySceneCode** parameter.
 
-If the request is successful, Botim Money Business will return the **tokenUrl**, redirect your customer to the URL for the Checkout page returned in the response.
+If the request is successful, Botim Money will return the **tokenUrl**, redirect your customer to the URL for the Checkout page returned in the response.
 
-Create a success page for the URL you provided in the **redirectUrl**  parameter to display order confirmation message to your customer. Botim Money Business will redirect the payer to this page after the payment has been completed on the checkout.<br/>
+Create a success page for the URL you provided in the **redirectUrl**  parameter to display order confirmation message to your customer. Botim Money will redirect the payer to this page after the payment has been completed on the checkout.<br/>
 
 ### Asynchronous Notification
-If the **notifyUrl** is set in the order creation request, after the transaction, Botim Money Business will send payment result to the url.
+If the **notifyUrl** is set in the order creation request, after the transaction, Botim Money will send payment result to the url.
 
 ### Change Order Status
 You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
@@ -43,7 +43,7 @@ To retrieve the order detail, call the [Retrieve Order Detail](/docs/retrieveord
 You can customize the appearance of the hosted checkout page by adding your logo and color in the Dashboard’s [Customize Checkout](https://b.botim.money/customize-checkout).
 
 ## Set Payment Method
-On the paypage page, by default all the payment methods that merchants have activated in Botim Money Business will be listed. If you need to adjust the order of payment methods that your customers see, or temporarily set some payment methods as unavailable to the payer, please configure it in [Payment Methods](https://b.botim.money/payment-methods).
+On the paypage page, by default all the payment methods that merchants have activated in Botim Money will be listed. If you need to adjust the order of payment methods that your customers see, or temporarily set some payment methods as unavailable to the payer, please configure it in [Payment Methods](https://b.botim.money/payment-methods).
 
 
 

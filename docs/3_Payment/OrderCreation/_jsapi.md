@@ -1,6 +1,6 @@
 **JSAPI**
 
-BOTIM & Botim Money Business built-in checkout
+BOTIM & Botim Money built-in checkout
 
 ---
 
@@ -8,9 +8,9 @@ BOTIM & Botim Money Business built-in checkout
 
 - **payerMid** <span style={{color:" #7d8793"}}>String</span>
 
-  Botim Money Business member ID of the payer. It can be obtained through OAuth. For details, please view the Botim Money Business OAuth interface document.
+  Botim Money member ID of the payer. It can be obtained through OAuth. For details, please view the Botim Money OAuth interface document.
 
-  If this variable is used, Botim Money Business will check whether the actual payer MID is consistent with the passed parameter, and return an error message if they are inconsistent.
+  If this variable is used, Botim Money will check whether the actual payer MID is consistent with the passed parameter, and return an error message if they are inconsistent.
 
   Example value: 200001200101
 
