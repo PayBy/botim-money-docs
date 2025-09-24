@@ -74,9 +74,6 @@ const config = {
   customFields: {
     // 把你的自定义环境放在这里
     env: process.env.NODE_ENV,
-    metadata: [
-    {name: 'algolia-site-verification', content: '7D20847552B5581A'},
-  ],
   },
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -116,6 +113,8 @@ const config = {
    apiKey: '2140ae6cd55401515603bab42a44c895',
    indexName: 'botimmoneydocs',
    contextualSearch: true,}, 
+   searchParameters: {},   // 传递给algolia的额外参数
+   searchPagePath: 'search', // 搜索页面的路径
     }),
 };
 
@@ -125,6 +124,15 @@ module.exports = {
   title: 'Botim Money Developer',
   url: 'https://developers.botim.money/',
   baseUrl: '/docs/',
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'algolia-site-verification',
+        content: '7D20847552B5581A',
+      },
+    },
+  ],
   // ...其他配置
 };
 
