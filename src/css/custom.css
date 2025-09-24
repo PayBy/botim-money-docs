@@ -68,6 +68,12 @@ a:any-link:hover{
   font-weight:normal;
 }
 
+.navbar__brand .navbar__logo {
+  height: 16px;
+  width: auto; 
+  vertical-align: middle;
+}
+
 .footer{
   border-top:1px solid #E1E1E1;
   background-color:#fff;
