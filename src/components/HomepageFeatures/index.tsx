@@ -78,7 +78,7 @@ export default function HomepageFeatures(): JSX.Element {
       <div className="container">
         <div className="text--center padding-horiz--md">
           <h3>Botim Money offers multiple payment solutions.</h3>
-          <p>Whether you have a physical store, an e-commerce website, or an app, you can access Botim Money</p>
+          <p>Sell Anywhere. Get Paid with Botim Money.</p>
         </div>
         <div className="row">
           {FeatureList.map((props, idx) => (
