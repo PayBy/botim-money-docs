@@ -108,22 +108,23 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-      /*algolia: {
+      algolia: {
    appId: 'VJWJJLTT32',
    apiKey: '2140ae6cd55401515603bab42a44c895',
    indexName: 'botimmoneydocs',
-   contextualSearch: true,}, 
-   searchParameters: {},   // 传递给algolia的额外参数
+   contextualSearch: true,
+  searchParameters: {},   // 传递给algolia的额外参数
    searchPagePath: 'search', // 搜索页面的路径
-    }),*/
+   }, 
+    }),
 };
 
 module.exports = config;
 
-/*module.exports = {
+module.exports = {
   title: 'Botim Money Developer',
   url: 'https://developers.botim.money/',
   baseUrl: '/docs/',
   // ...其他配置
 };
-*/
+
