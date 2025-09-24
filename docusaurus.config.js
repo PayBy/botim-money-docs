@@ -109,8 +109,8 @@ const config = {
         darkTheme: darkCodeTheme,
       },
       algolia: {
-   appId: 'MVWWMIWZ6I',
-   apiKey: '93494b0157791fb872e41e0167771ac7',
+   appId: 'VJWJJLTT32',
+   apiKey: '2140ae6cd55401515603bab42a44c895',
    indexName: 'botim-money-docs',
    contextualSearch: true,}, 
     }),
@@ -118,14 +118,4 @@ const config = {
 
 module.exports = config;
 
-module.exports = {
-  // ...其他配置
-  title: 'Botim Money Developer',
-  url: 'https://github.com/PayBy/',
-  baseUrl: '/botim-money-docs/', // 这里根据你的仓库名填写
-  // ...其他配置
-  metadata: [
-    {name: 'algolia-site-verification', content: '7D20847552B5581A'},
-  ],
-  // ...themeConfig等
-};
+
