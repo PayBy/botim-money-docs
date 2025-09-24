@@ -120,6 +120,10 @@ module.exports = config;
 
 module.exports = {
   // ...其他配置
+  title: 'Botim Money Developer',
+  url: 'https://github.com/PayBy/',
+  baseUrl: '/botim-money-docs/', // 这里根据你的仓库名填写
+  // ...其他配置
   metadata: [
     {name: 'algolia-site-verification', content: '7D20847552B5581A'},
   ],
