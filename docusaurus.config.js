@@ -74,6 +74,9 @@ const config = {
   customFields: {
     // 把你的自定义环境放在这里
     env: process.env.NODE_ENV,
+    metadata: [
+    {name: 'algolia-site-verification', content: '7D20847552B5581A'},
+  ],
   },
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -122,9 +125,6 @@ module.exports = {
   title: 'Botim Money Developer',
   url: 'https://developers.botim.money/',
   baseUrl: '/docs/',
-    metadata: [
-    {name: 'algolia-site-verification', content: '7D20847552B5581A'},
-  ],
   // ...其他配置
 };
 
