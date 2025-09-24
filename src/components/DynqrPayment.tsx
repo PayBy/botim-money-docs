@@ -51,7 +51,7 @@ function DynqrPayment(props: { orderCreation?: any; siteConfig?: any }) {
         {showQRCode ? (
           <React.Fragment>
             <h5>Scan QR Code to Pay</h5>
-            <p>1. Open Botim Money Business App; 2. Click “Scan” Button</p>
+            <p>1. Open Botim Money App; 2. Click “Scan” Button</p>
             {/* <WhiteSpace gutter={6} /> */}
             <QRCode size={120} value={tokenUrl} />
             <AccountTable showBankCardList={false} />

@@ -7,7 +7,7 @@ toc_max_heading_level: 6
 
 ## System Integration Overview
 
-The Botim Money Business payment system integrates with merchant systems through three primary interactions:
+The Botim Money payment system integrates with merchant systems through three primary interactions:
 
 1. **Order Creation** - Merchant server initiates payment requests via the order creation API
 2. **Status Inquiry** - Merchant server queries order status through the status endpoint
@@ -25,7 +25,7 @@ All payment processing begins with order creation using the Order Creation API. 
 
 ### Asynchronous Processing
 
-Botim Money Business processes payments asynchronously after order creation. This architecture provides:
+Botim Money processes payments asynchronously after order creation. This architecture provides:
 
 - **Non-blocking Operations**: Merchants are not required to maintain persistent connections
 - **Enhanced Scalability**: Supports higher concurrent request volumes

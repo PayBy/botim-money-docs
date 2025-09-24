@@ -82,7 +82,7 @@ Use `merchantOrderNo` to specify an order.
 
 **sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
 
-When Botim Money Business sends response, Botim Money Business will use its own private key to sign the message, and the merchant uses Botim Money Business 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Botim Money Business and not faked by others.
+When Botim Money sends response, Botim Money will use its own private key to sign the message, and the merchant uses Botim Money 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Botim Money and not faked by others.
 
 ### Http Body
 
@@ -166,9 +166,9 @@ The following response codes are used for the `status` field:
 | 400      | REQUESTTIME_TOO_EARLY        | Request time is too far in the past            | Adjust the request time           |
 | 400      | REQUESTTIME_TOO_LATER        | Request time is too far in the future          | Adjust the request time           |
 | 402      | RATE_LIMIT_REJECT            | Too many requests in a short period            | Reduce request frequency          |
-| 403      | UNAUTHORIZED                 | API not authorized                             | Contact Botim Money Business                     |
-| 404      | SERVICE_NOT_AVAILABLE        | API service unavailable                        | Contact Botim Money Business                     |
-| 500      | SYSTEM_ERROR                 | System error                                   | Contact Botim Money Business and retry later     |
+| 403      | UNAUTHORIZED                 | API not authorized                             | Contact Botim Money                     |
+| 404      | SERVICE_NOT_AVAILABLE        | API service unavailable                        | Contact Botim Money                     |
+| 500      | SYSTEM_ERROR                 | System error                                   | Contact Botim Money and retry later     |
 | 504      | SERVICE_TIMEOUT              | Service timeout                                | Retry later                       |
 | 601      | RISK_FAIL                    | Risk control validation failed                 | Adjust the business logic         |
 | 62004    | MERCHANT_ORDER_NO_NOT_EXIST  | The order with the given merchant order number does not exist | Check and correct the merchant order number |

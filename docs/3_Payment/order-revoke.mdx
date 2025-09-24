@@ -21,11 +21,11 @@ This interface provides a recovery mechanism for merchants when a transaction is
 
 ### When to Use
 
-Use the Revoke Order interface when no response received from Botim Money Business after initiating a payment request.
+Use the Revoke Order interface when no response received from Botim Money after initiating a payment request.
 
-If the merchant is unsure whether the transaction was successfully processed by Botim Money Business, they can send a revoke request.  
+If the merchant is unsure whether the transaction was successfully processed by Botim Money, they can send a revoke request.  
 
-- If the transaction was successful, Botim Money Business will initiate a refund.  
+- If the transaction was successful, Botim Money will initiate a refund.  
 - If the transaction was not successful, the order will be closed.
 
 
@@ -59,7 +59,7 @@ If the merchant is unsure whether the transaction was successfully processed by 
     - Maximum length: `64`
 
   - **orderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
-    - The Botim Money Business's unique identification number of the order.  
+    - The Botim Money's unique identification number of the order.  
     - Example value: `131658300517875854`
   
 ### Request Sample
@@ -88,7 +88,7 @@ If the merchant is unsure whether the transaction was successfully processed by 
 
 **sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
 
-When Botim Money Business sends response, Botim Money Business will use its own private key to sign the message, and the merchant uses Botim Money Business 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Botim Money Business and not faked by others.
+When Botim Money sends response, Botim Money will use its own private key to sign the message, and the merchant uses Botim Money 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Botim Money and not faked by others.
 
 
 ### Http Body
@@ -184,14 +184,14 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 | 400      | REQUESTTIME_TOO_EARLY                               | Request time is too far in the past         | Adjust request time                 |
 | 400      | REQUESTTIME_TOO_LATER                               | Request time is too far in the future       | Adjust request time                 |
 | 402      | RATE_LIMIT_REJECT                                   | Too many requests                           | Reduce request frequency            |
-| 403      | UNAUTHORIZED                                        | API not authorized                          | Contact Botim Money Business                       |
-| 404      | SERVICE_NOT_AVAILABLE                               | API service unavailable                     | Contact Botim Money Business                       |
-| 500      | SYSTEM_ERROR                                        | Internal system error                       | Contact Botim Money Business and retry later       |
+| 403      | UNAUTHORIZED                                        | API not authorized                          | Contact Botim Money                       |
+| 404      | SERVICE_NOT_AVAILABLE                               | API service unavailable                     | Contact Botim Money                       |
+| 500      | SYSTEM_ERROR                                        | Internal system error                       | Contact Botim Money and retry later       |
 | 504      | SERVICE_TIMEOUT                                     | Service timeout                             | Retry later                         |
 | 601      | RISK_FAIL                                           | Risk control validation failed              | Adjust business logic               |
 | 62004    | MERCHANT_ORDER_NO_NOT_EXIST                         | Merchant order number does not exist        | Check and correct merchant order number |
-| 62035    | ORDER_NO_NOT_EXIST                                  | Botim Money Business order number does not exist           | Check and correct Botim Money Business order number    |
-| 62039    | REVOKE_FAILURE                                      | Internal error in Botim Money Business                     | Contact Botim Money Business                       |
+| 62035    | ORDER_NO_NOT_EXIST                                  | Botim Money order number does not exist           | Check and correct Botim Money order number    |
+| 62039    | REVOKE_FAILURE                                      | Internal error in Botim Money                     | Contact Botim Money                       |
 | 62041    | ACQUIRE_ORDER_REFUNDED                              | Acquiring order has already been refunded   | Use a different merchant order number |
 | 62046    | <a name="return_code_add_62046">REVOKE_REJECTED</a> | Revocation request was rejected             | Adjust business logic               |
 

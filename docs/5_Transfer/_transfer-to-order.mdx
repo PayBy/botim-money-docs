@@ -9,11 +9,11 @@
   - Maximum length: `64`
 
 - **orderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
-  - The Botim Money Business's unique identification number of the order.  
+  - The Botim Money's unique identification number of the order.  
   - Example value: `131658300517875854`
 
 - **product** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
-  - The product name of the API method used in the order. Used for Botim Money Business internal classification.  
+  - The product name of the API method used in the order. Used for Botim Money internal classification.  
   - Maximum length: `100`
 
 - **status** <font color='#7d8793'>Enum</font> <font color='#f19938'>Required</font>  
@@ -33,7 +33,7 @@
   - Method used to identify the beneficiary.  
   - Possible values:  
     - `PHONE_NO`: Transfer through mobile phone number  
-    - `MEMBER_ID`: Transfer through Botim Money Business member ID  
+    - `MEMBER_ID`: Transfer through Botim Money member ID  
   - Maximum length: `20`
 
 - **beneficiaryIdentity** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
@@ -45,7 +45,7 @@
   - Maximum length: `20`
 
 - **beneficiaryFullName** <font color='#7d8793'>String</font>  
-  - If provided, Botim Money Business verifies it against the beneficiary's KYC info.  
+  - If provided, Botim Money verifies it against the beneficiary's KYC info.  
   - If not provided, no verification is performed.  
   - Should be encrypted using SHA-256.  
   - Maximum length: `100`

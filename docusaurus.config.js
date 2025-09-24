@@ -7,8 +7,8 @@ const mdxMermaid =require('mdx-mermaid')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Integrate Botim Money Business and Accept Payment',
-  tagline: 'Botim Money Business, a flexible and fast payment solution to manage all business transactions.',
+  title: 'Integrate Botim Money and Accept Payment',
+  tagline: 'Botim Money, a flexible and fast payment solution to manage all business transactions.',
   url: 'https://developers.botim.money',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -17,7 +17,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Botim Money Business', // Usually your GitHub org/user name.
+  organizationName: 'Botim Money', // Usually your GitHub org/user name.
   projectName: 'botim-money-docs', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -81,7 +81,7 @@ const config = {
       navbar: {
         title: 'Developer',
         logo: {
-          alt: 'Botim Money Business Developer Website',
+          alt: 'Botim Money Developer Website',
           src: 'img/logo.svg',
         },
         items: [
@@ -108,12 +108,23 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-      /* algolia: {
-   appId: 'MVWWMIWZ6I',
-   apiKey: '3165d45e81d9ddffba1b3abc8cfeff4c',
-   indexName: 'developers-payby',
- }, */
+      algolia: {
+   appId: 'VJWJJLTT32',
+   apiKey: '2140ae6cd55401515603bab42a44c895',
+   indexName: 'botimmoneydocs',
+   contextualSearch: true,
+  searchParameters: {},   // 传递给algolia的额外参数
+   searchPagePath: 'search', // 搜索页面的路径
+   }, 
     }),
 };
 
 module.exports = config;
+
+module.exports = {
+  title: 'Botim Money Developer',
+  url: 'https://developers.botim.money/',
+  baseUrl: '/docs/',
+  // ...其他配置
+};
+

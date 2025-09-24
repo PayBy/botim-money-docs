@@ -10,7 +10,7 @@
 
 - **redirectUrl**   <span style={{color:" #7d8793"}}>String</span> 
 
-  Link that the payer will be redirected once the payer finalizes payments on Botim Money Business's checkout. 
+  Link that the payer will be redirected once the payer finalizes payments on Botim Money's checkout. 
 
   Example value: https://www.yoursite.com
 
@@ -20,7 +20,7 @@
 
 - **customerId**   <span style={{color:" #7d8793"}}>String</span>   
 
-  The payer's id in the merchant's system. If this parameter is used, after the user enters the card details and completes the payment for the first time, Botim Money Business will save the card under the customer id. When another transaction is made, the payer will see the saved card on the PayPage checkout. Then the customer only needs to enter cvv to complete the transaction without entering card number, holder name and card expiration time again.
+  The payer's id in the merchant's system. If this parameter is used, after the user enters the card details and completes the payment for the first time, Botim Money will save the card under the customer id. When another transaction is made, the payer will see the saved card on the PayPage checkout. Then the customer only needs to enter cvv to complete the transaction without entering card number, holder name and card expiration time again.
   In this scenario, the payer's card information won't be returned to the merchant. The saved cards can only be viewed and managed by the payer on the checkout.
 
   <br/>
@@ -51,6 +51,6 @@
 
 - **eid** <span style={{color:" #7d8793"}}>String</span>
 
-  When a value is passed, it indicates that the merchant requires the user's Emirates ID to be verified. Botim Money Business will perform the verification; if the ID matches, the process will proceed. If it does not match, an error will be returned to the user. If no value is passed, Botim Money Business will skip this verification step. The parameter needs to be encrypted with SHA-256 when passed.
+  When a value is passed, it indicates that the merchant requires the user's Emirates ID to be verified. Botim Money will perform the verification; if the ID matches, the process will proceed. If it does not match, an error will be returned to the user. If no value is passed, Botim Money will skip this verification step. The parameter needs to be encrypted with SHA-256 when passed.
 
   <br/>

@@ -19,7 +19,7 @@ This directory serves as the official API reference guide for integrating with B
 
 ## Getting Started
 
-To begin using the API, please read the [Get Started](./docs/General/integration-guide.md). You’ll need valid Botim Money credentials to access most endpoints.
+To begin using the API, please read the [Get Started](./docs/1_General/integration-guide.md). You’ll need valid Botim Money credentials to access most endpoints.
 
 ## Feedback & Support
 
