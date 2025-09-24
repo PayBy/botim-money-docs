@@ -111,8 +111,17 @@ const config = {
       algolia: {
    appId: 'MVWWMIWZ6I',
    apiKey: '93494b0157791fb872e41e0167771ac7',
-     contextualSearch: true,}, 
+   indexName: 'botim-money-docs',
+   contextualSearch: true,}, 
     }),
 };
 
 module.exports = config;
+
+module.exports = {
+  // ...其他配置
+  metadata: [
+    {name: 'algolia-site-verification', content: '7D20847552B5581A'},
+  ],
+  // ...themeConfig等
+};
