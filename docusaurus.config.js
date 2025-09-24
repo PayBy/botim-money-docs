@@ -124,15 +124,6 @@ module.exports = {
   title: 'Botim Money Developer',
   url: 'https://developers.botim.money/',
   baseUrl: '/docs/',
-  headTags: [
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'algolia-site-verification',
-        content: '7D20847552B5581A',
-      },
-    },
-  ],
   // ...其他配置
 };
 
