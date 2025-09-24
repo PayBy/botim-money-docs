@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://developers.botim.money/blog</id>
-    <title>Integrate Botim Money Business and Accept Payment Blog</title>
+    <title>Integrate Botim Money and Accept Payment Blog</title>
     <updated>2021-08-26T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://developers.botim.money/blog"/>
-    <subtitle>Integrate Botim Money Business and Accept Payment Blog</subtitle>
+    <subtitle>Integrate Botim Money and Accept Payment Blog</subtitle>
     <icon>https://developers.botim.money/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
