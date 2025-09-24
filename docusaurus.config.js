@@ -111,11 +111,9 @@ const config = {
       algolia: {
    appId: 'VJWJJLTT32',
    apiKey: '2140ae6cd55401515603bab42a44c895',
-   indexName: 'botim-money-docs',
+   indexName: 'botimmoneydocs',
    contextualSearch: true,}, 
     }),
 };
 
 module.exports = config;
-
-
