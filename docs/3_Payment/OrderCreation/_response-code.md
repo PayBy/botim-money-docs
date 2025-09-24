@@ -7,9 +7,9 @@
 | 400   | REQUESTTIME_TOO_EARLY             | Request time is much earlier than current time                                     | Adjust request time                    |
 | 400   | REQUESTTIME_TOO_LATER             | Request time is much later than current time                                       | Adjust request time                    |
 | 402   | RATE_LIMIT_REJECT                 | Requests are too frequent                                                          | Reduce request frequency               |
-| 403   | UNAUTHORIZED                      | API is not authorized                                                              | Contact Botim Money Business                          |
-| 404   | SERVICE_NOT_AVAILABLE             | API service is unavailable                                                         | Contact Botim Money Business                          |
-| 500   | SYSTEM_ERROR                      | System error                                                                       | Contact Botim Money Business and try again later      |
+| 403   | UNAUTHORIZED                      | API is not authorized                                                              | Contact Botim Money                          |
+| 404   | SERVICE_NOT_AVAILABLE             | API service is unavailable                                                         | Contact Botim Money                          |
+| 500   | SYSTEM_ERROR                      | System error                                                                       | Contact Botim Money and try again later      |
 | 504   | SERVICE_TIMEOUT                   | Service timeout                                                                    | Try again later                        |
 | 601   | RISK_FAIL                         | Risk control verification failed                                                   | Please adjust the business             |
 | 62001 | ORDER_PAID                        | Successfully paid orders cannot be cancelled                                       | Adjust the merchant order number       |

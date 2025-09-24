@@ -10,7 +10,7 @@ Select the payment product you want to access and check the user experience and 
 
 **Checkout**
 
-`Hosted paypage` - Redirect your customer to a Botim Money Business hosted paypage.
+`Hosted paypage` - Redirect your customer to a Botim Money hosted paypage.
 
 `iFrame paypage` - Embed the checkout in your website.
 
@@ -26,7 +26,7 @@ Select the payment product you want to access and check the user experience and 
 
 `QRPAY` - The customer presents QR code (of BOTIM app) and the merchant scans to pay.
 
-`JSAPI` - Open merchant's website and pay within Botim app.
+`JSAPI` - Open merchant's website and pay within Botim Money app.
 
 `Direct pay` - Integrate payment gateway in API only.
 

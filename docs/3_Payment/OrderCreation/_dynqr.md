@@ -32,6 +32,6 @@ Merchant presented QR code
 
 - **eid** <span style={{color:" #7d8793"}}>String</span>
 
-  When a value is passed, it indicates that the merchant requires the user's Emirates ID to be verified. Botim Money Business will perform the verification; if the ID matches, the process will proceed. If it does not match, an error will be returned to the user. If no value is passed, Botim Money Business will skip this verification step. The parameter needs to be encrypted with SHA-256 when passed.
+  When a value is passed, it indicates that the merchant requires the user's Emirates ID to be verified. Botim Money will perform the verification; if the ID matches, the process will proceed. If it does not match, an error will be returned to the user. If no value is passed, Botim Money will skip this verification step. The parameter needs to be encrypted with SHA-256 when passed.
 
   <br/>

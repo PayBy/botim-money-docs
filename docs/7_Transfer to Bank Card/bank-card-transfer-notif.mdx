@@ -9,7 +9,7 @@ import TransferBankCardOrder from './_transfer-bank-card-order.mdx'
 
 ## Overview
 
-When a merchant payment to a bank card has a result, Botim Money Business sends the related result to the merchant. 
+When a merchant payment to a bank card has a result, Botim Money sends the related result to the merchant. 
 
 The merchant needs to receive and process the notification, then return a response. 
 The actual arrival time depends on the settlement time of each bank and is subject to the actual arrival time.
@@ -18,22 +18,22 @@ The actual arrival time depends on the settlement time of each bank and is subje
 ### Notification Handling Guidelines
 
 1. **Duplicate Notifications**  
-   Botim Money Business may send the same notification multiple times. The merchant system must be capable of identifying and handling duplicate notifications correctly to avoid processing the same transaction more than once.
+   Botim Money may send the same notification multiple times. The merchant system must be capable of identifying and handling duplicate notifications correctly to avoid processing the same transaction more than once.
 
 2. **Notification Retry Mechanism**  
-   If Botim Money Business receives an invalid response or no response (timeout) from the merchant system during backend notification, it will consider the attempt failed and retry the notification.  
+   If Botim Money receives an invalid response or no response (timeout) from the merchant system during backend notification, it will consider the attempt failed and retry the notification.  
    - **Retry Policy**: Up to 7 attempts  
    - **Retry Intervals**: 2, 10, 10, 60, 120, 360, and 900 minutes  
 
-   > **Note:** Botim Money Business does **not guarantee** final delivery success.
+   > **Note:** Botim Money does **not guarantee** final delivery success.
 
 3. **Unclear Order Status**  
    If the payment result is not received or the order status is unclear, merchants are advised to actively query the order status using the **transfer query interface**.
 
 4. **Signature Verification**  
-   All notification requests are signed using Botim Money Business’s RSA private key.  
+   All notification requests are signed using Botim Money’s RSA private key.  
    - The signature algorithm is the same as for ordinary requests.  
-   - Merchants must verify the signature using Botim Money Business’s public key, which can be downloaded from the merchant portal.
+   - Merchants must verify the signature using Botim Money’s public key, which can be downloaded from the merchant portal.
 
 
 ## Notification Parameters
@@ -74,9 +74,9 @@ Any other response indicates an exception.
 | 400   | REQUESTTIME_TOO_EARLY       | Request time is too early compared to current time           | Adjust request time          |
 | 400   | REQUESTTIME_TOO_LATER       | Request time is too late compared to current time            | Adjust request time          |
 | 402   | RATE_LIMIT_REJECT           | Request too frequent                                         | Reduce request frequency     |
-| 403   | UNAUTHORIZED                | API unauthorized                                             | Contact Botim Money Business                |
-| 404   | SERVICE_NOT_AVAILABLE       | API service unavailable                                      | Contact Botim Money Business                |
-| 500   | SYSTEM_ERROR                | System error                                                 | Contact Botim Money Business, retry later   |
+| 403   | UNAUTHORIZED                | API unauthorized                                             | Contact Botim Money                |
+| 404   | SERVICE_NOT_AVAILABLE       | API service unavailable                                      | Contact Botim Money                |
+| 500   | SYSTEM_ERROR                | System error                                                 | Contact Botim Money, retry later   |
 | 504   | SERVICE_TIMEOUT             | Service timeout                                              | Retry later                  |
 | 601   | RISK_FAIL                   | Risk control verification failed                             | Please adjust business       |
 | 62002 | ORDER_FAILURE               | Failed order initiated cancellation again. Failed order initiated refund. | Adjust merchant order number |

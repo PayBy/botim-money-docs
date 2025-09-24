@@ -14,6 +14,6 @@ Use the sample link below to experience the invoice payment flow:
 
 - Sample Invoice Link  *(Please open on a mobile browser for best results)*: https://uat-paypage.test2pay.com/invoice?linkId=U3IvUz
 
-- For testing, use the **Botim app** and **bank account** credentials from the test environment.  
+- For testing, use the **Botim Money app** and **bank account** credentials from the test environment.  
   Find the APK and account details [here](/demos/testaccount).
 

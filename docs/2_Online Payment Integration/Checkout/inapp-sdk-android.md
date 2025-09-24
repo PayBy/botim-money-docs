@@ -11,7 +11,7 @@ Payers will have the almost the same operation process for using **In-APP** and 
 ## User Experience
 
 1. When customers are ready to complete their payment, your mobile application creates a new order creation request.
-2. The Botim Money Business returns a URL that that redirects customers to a checkout.
+2. The Botim Money returns a URL that that redirects customers to a checkout.
 3. Customers enter their payment details on the checkout and complete the transaction.
 4. If the payment is completed, customers will be redirected to the merchant's success page.<br/>
 

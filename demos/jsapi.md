@@ -17,7 +17,7 @@ The **JSAPI** feature allows merchants to invoke the **built-in checkout** of **
 ## Step-by-Step Guide
 
 1. **Scan the QR Code**  
-   Use the **Botim app (test environment)** to scan the code above.  
+   Use the **Botim Money app (test environment)** to scan the code above.  
    Find the APK and test account details [here](/demos/testaccount).
 
 2. **Complete the Payment**  

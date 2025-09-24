@@ -8,7 +8,7 @@ The payer completes the signing of the automatic deduction agreement while makin
 
 - **protocolSceneCode** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
 
-  The auto-debit service ID between Botim Money Business and the merchant, and some data reading rules are configured in the ID. Please ask Botim Money Business operations staff for your service number.
+  The auto-debit service ID between Botim Money and the merchant, and some data reading rules are configured in the ID. Please ask Botim Money operations staff for your service number.
 
   Constant value: 120
   
@@ -23,6 +23,6 @@ The payer completes the signing of the automatic deduction agreement while makin
 
 - **customerId** <span style={{color:" #7d8793"}}>String</span>
 
-  The payer's id in the merchant's system.Used to identify the payer's contracted entity within Botim Money Business.
+  The payer's id in the merchant's system.Used to identify the payer's contracted entity within Botim Money.
   
   Example value: user1233
