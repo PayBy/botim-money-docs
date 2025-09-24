@@ -58,7 +58,7 @@
     "@algolia/client-search" "4.13.1"
     "@algolia/requester-common" "4.13.1"
     "@algolia/transporter" "4.13.1"
- 
+
 "@algolia/client-common@4.13.1":
   version "4.13.1"
   resolved "https://registry.npmjs.org/@algolia/client-common/-/client-common-4.13.1.tgz"
