@@ -1,26 +1,70 @@
 # Botim Money API Reference Guide
 
-Welcome to the Botim Money Developer Documentation repository!
+Welcome to the **Botim Money Developer Documentation** repository! 🚀
 
-This directory serves as the official API reference guide for integrating with Botim Money's payment solutions. Here, you will find comprehensive information and examples to help you get started quickly and efficiently.
+This repository serves as the comprehensive API reference guide for integrating with Botim Money's payment solutions. Whether you're building a new application or enhancing an existing one, you'll find all the resources needed for seamless integration.
 
-## Contents
+## 📚 What's Inside
 
-- **API Overview:**  
-  Introduction to Botim Money APIs and their core concepts.
-- **Authentication:**  
-  Details on how to authenticate and authorize your API requests.
-- **Endpoints Reference:**  
-  Complete list of available API endpoints, request/response formats, and usage examples.
-- **Error Codes:**  
-  Explanation of common error codes and troubleshooting tips.
-- **Best Practices:**  
-  Recommendations for secure and efficient API integration.
+### **API Overview**
 
-## Getting Started
+Introduction to Botim Money APIs, core concepts, and architectural principles that power our payment ecosystem.
 
-To begin using the API, please read the [Get Started](./docs/1_General/integration-guide.md). You’ll need valid Botim Money credentials to access most endpoints.
+### **Authentication & Security**
 
-## Feedback & Support
+Step-by-step guidance on API authentication, authorization mechanisms, and security best practices to protect your integrations.
 
-If you have any questions or suggestions, please create an issue in this repository or contact the Botim Money support team.
+### **Endpoints Reference**
+
+Complete documentation of all available API endpoints, including:
+
+- Request/response schemas
+- Parameter specifications
+- Real-world usage examples
+- Rate limiting information
+
+### **Error Handling**
+
+Comprehensive guide to error codes, status messages, and troubleshooting strategies to help you debug issues quickly.
+
+### **Integration Best Practices**
+
+Expert recommendations for:
+
+- Secure API implementation
+- Performance optimization
+- Error handling strategies
+- Testing methodologies
+
+## 🚀 Quick Start
+
+Ready to integrate? Start with our [Get Started](./docs/1_General/integration-guide.md) guide to set up your development environment and make your first API call.
+
+**Prerequisites:**
+
+- Valid Botim Money developer credentials
+- Basic understanding of RESTful APIs
+- Your preferred programming language SDK
+
+## 🤝 Community & Support
+
+We're here to help you succeed! Here's how to get assistance:
+
+- **📝 Issues:** Found a bug or have a feature request? [Create an issue](https://github.com/PayBy/botim-money-docs/issues)
+- **📧 Direct Support:** Contact our developer support team for urgent matters
+- **📚 Knowledge Base:** Browse our [API Reference Guide](https://developers.botim.money/docs/integration-guide) for common questions
+
+## 🔄 Stay Updated
+
+- **⭐ Star this repository** to receive notifications about updates
+- **👀 Watch releases** for new API versions and features
+- **📱 Follow us** on our developer channels for announcements
+
+## 📄 License & Terms
+
+Please review our [LICENSE](./LICENSE) before integrating.
+
+---
+
+**Happy coding!** 🎉  
+*The Botim Money Developer Team*
