@@ -11,7 +11,7 @@ This guide is written for application developers who want to integrate the Botim
 
 ## SDK Download
 
-https://github.com/PayBy/PayBy-java
+[Download](https://github.com/PayBy/PayBy-java)
 
 ## Prerequisites
 
@@ -188,9 +188,9 @@ openssl pkcs8 -in PayBy_key.pem -topk8 -nocrypt -out PayBy_key_private.pem
 ### Verify Signature Algorithm
 
 1. Uses SHA256WithRSA to verify the signature algorithm. The RSA public key is downloaded from the Botim Money merchant console.
-2. Uses Base64 to decode the signature, i.e., decoded_sign_data.
-3. Uses UTF-8 to decode the original content, i.e. decoded_content_data.
-4. Verify signature using parameters as listed (rsa_public_key, decoded_sign_data, decoded_content_data).
+2. Uses Base64 to decode the signature, i.e., *decoded_sign_data*.
+3. Uses UTF-8 to decode the original content, i.e. *decoded_content_data*.
+4. Verify signature using parameters as listed (`rsa_public_key`, `decoded_sign_data`, `decoded_content_data`).
 
 ## API Description
 
@@ -290,7 +290,7 @@ public static List<Pair<String, String>> getFixHeaders() {
 
 #### 3. Order Cancellation
 
-**By Merchant Order No**
+##### By Merchant Order No
 
 ```java
     PayByClient client = getPayByClient();
@@ -308,7 +308,7 @@ public static List<Pair<String, String>> getFixHeaders() {
     System.out.println("cancelOrder body=>" + JSON.toJSONString(body));
 ```
 
-**By Order No**
+##### By Order No
 
 ```java
     PayByClient client = getPayByClient();
@@ -328,7 +328,7 @@ public static List<Pair<String, String>> getFixHeaders() {
 
 #### 4. Order Query
 
-**By Merchant Order No**
+##### By Merchant Order No
 
 ```java
     PayByClient client = getPayByClient();
@@ -346,7 +346,7 @@ public static List<Pair<String, String>> getFixHeaders() {
     System.out.println("getOrder body=>" + JSON.toJSONString(body));
 ```
 
-**By Order No**
+##### By Order No
 
 ```java
     PayByClient client = getPayByClient();
@@ -366,7 +366,7 @@ public static List<Pair<String, String>> getFixHeaders() {
 
 #### 5. Order Refund
 
-**By Origin Merchant Order No**
+##### By Origin Merchant Order No
 
 ```java
     PayByClient client = getPayByClient();
@@ -395,7 +395,7 @@ public static List<Pair<String, String>> getFixHeaders() {
     System.out.println("refundOrder body=>" + JSON.toJSONString(body));
 ```
 
-**By Origin Order No**
+##### By Origin Order No
 
 ```java
     PayByClient client = getPayByClient();
@@ -426,7 +426,7 @@ public static List<Pair<String, String>> getFixHeaders() {
 
 #### 6. Order Refund Query
 
-**By Merchant Order No**
+##### By Merchant Order No
 
 ```java
     PayByClient client = getPayByClient();
@@ -444,7 +444,7 @@ public static List<Pair<String, String>> getFixHeaders() {
     System.out.println("getRefundOrder body=>" + JSON.toJSONString(body));
 ```
 
-**By Order No**
+##### By Order No
 
 ```java
     PayByClient client = getPayByClient();
@@ -651,7 +651,7 @@ PayByClient client = getPayByClient();
 
 #### 14. Result Notification
 
-**Verify signature**
+##### Verify Signature
 
 ```java
     // setting Botim Money publicKey path
@@ -670,7 +670,7 @@ PayByClient client = getPayByClient();
 
 ```
 
-**Servlet receives messages**
+##### Servlet Receives Messages
 
 ```java
  @Override
@@ -702,7 +702,7 @@ PayByClient client = getPayByClient();
 
 #### 15. Download Statement
 
-**Order Statement**
+##### Order Statement
 
 ```java
     GetStatementRequest req = new GetStatementRequest();
@@ -720,7 +720,7 @@ PayByClient client = getPayByClient();
     System.out.println("getOrderStatement file size=>" + responseWrap.getBody().length());
 ```
 
-**Fund Statement**
+##### Fund Statement
 
 ```java
     GetStatementRequest req = new GetStatementRequest();
@@ -755,4 +755,3 @@ PayByClient client = getPayByClient();
     System.out.println("plain==>" + SignSerializationUtil.serialize(content));
     System.out.println("sign==>" + RsaUtil.sign(content, Charset.forName("UTF-8"), merchantPrivateKey));
 ```
-
