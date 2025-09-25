@@ -7,11 +7,11 @@ toc_max_heading_level: 6
 
 The Botim Money PHP SDK provides a simple way to integrate Botim Money payment services into your PHP applications.
 
-**SDK Repository:** https://github.com/PayBy/PayBy-php
+You can download it from [SDK Repository](https://github.com/PayBy/PayBy-php).
 
 ## Requirements
 
-- PHP >= 5.6
+- **PHP:** Version 5.6 or higher
 
 ## Installation
 
@@ -54,4 +54,3 @@ Replace `'YOUR-KEY'` with your actual Botim Money API key.
 ```php
 // TODO
 ```
-
