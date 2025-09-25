@@ -65,7 +65,13 @@ a:any-link:hover{
 
 .navbar__title{
   color: #666666;
-  font-weight:normal;
+  font-weight:bold;
+}
+
+.navbar__brand .navbar__logo {
+  height: 40px;
+  width: auto; 
+  vertical-align: middle;
 }
 
 .footer{

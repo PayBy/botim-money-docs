@@ -131,7 +131,7 @@ When Botim Money sends a response, the response content includes HTTP Header and
 Choose your integration to match your business needs:
 
 - **Checkout**: Hosted paypage, iFrame paypage, In-App SDK
-- **Special payment scenes**: E-wallet, DYNQR, QRPAY, JSAPI, Direct pay
+- **Special Payment Scenarios**: E-wallet, DYNQR, QRPAY, JSAPI, Direct pay
 - **Fundout**: Transfer, Transfer to bank
 
 ## Go Live

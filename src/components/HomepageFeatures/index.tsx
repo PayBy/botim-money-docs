@@ -20,7 +20,7 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: "Special payment scenes",
+    title: "Special Payment Scenarios",
     Svg: require("@site/static/img/special_payment_scenes.svg").default,
     description: (
       <>
@@ -30,7 +30,7 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: "In-person payments",
+    title: "In-person Payments",
     Svg: () => (
       <div style={{ display: "flex", height: 200, marginBottom: 7, justifyContent: "center", alignItems: "center" }}>
         <img style={{ width: 200 }} src={require("@site/static/img/in_person_payment.png").default} />
@@ -44,7 +44,7 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: "No-code product",
+    title: "No-code Solution",
     Svg: () => (
       <div style={{ display: "flex", height: 200, marginBottom: 7, justifyContent: "center", alignItems: "center" }}>
         <img style={{ width: 200 }} src={require("@site/static/img/no_code_product.png").default}></img>
@@ -77,8 +77,8 @@ export default function HomepageFeatures(): JSX.Element {
     <section className={styles.features}>
       <div className="container">
         <div className="text--center padding-horiz--md">
-          <h3>Botim Money offers multiple payment solutions.</h3>
-          <p>Whether you have a physical store, an e-commerce website, or an app, you can access Botim Money</p>
+          <h3>Sell Anywhere. Get Paid with Botim Money.</h3>
+          <p>Botim Money offers multiple payment solutions.</p>
         </div>
         <div className="row">
           {FeatureList.map((props, idx) => (
