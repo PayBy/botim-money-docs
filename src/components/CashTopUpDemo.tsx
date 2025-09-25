@@ -86,7 +86,6 @@ export function CashTopUpDemo(props: { orderCreation?: any; siteConfig?: any }) 
               used in game account top up scenario, the payer gives cash to cashier of the store
               that running this business, the cashier helps to complete the online payment.
             </p>
-            <br />
             <p>
               To experience the payment process, suppose you are trying to add money to your game
               account, enter the amount you want to add and click <b>Pay Now</b> below.
