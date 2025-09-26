@@ -9,12 +9,12 @@ This product enables online merchants to accept cash payments from customers who
 
 ## User Experience
 
-1.  The customer confirms to add money to his or her online account, the merchant will generate an QR code for the payer's order. Along with the order, Botim Money will also send a how-to guide to the user's phone.
-2.  The customer follows the guide, find a nearest store that running this business.
-3.  The payer gives cash (same amount with the order amount) to cashier of the store, the cashier checks the cash then use Botim Money POS to scan the QR code. In this process, the store's e-waller balance will be used to pay the payer's order.
-4.  The payer will receive notification that the payment has been made, and the balance of the online account added.
+1. The customer confirms to add money to his or her online account, the merchant will generate an QR code for the payer's order. Along with the order, Botim Money will also send a how-to guide to the user's phone.
+2. The customer follows the guide, find a nearest store that running this business.
+3. The payer gives cash (same amount with the order amount) to cashier of the store, the cashier checks the cash then use Botim Money POS to scan the QR code. In this process, the store's e-waller balance will be used to pay the payer's order.
+4. The payer will receive notification that the payment has been made, and the balance of the online account added.
 
-![payer-ue](../pic/ue-payer-cash.png)
+<!-- ![payer-ue](../pic/ue-payer-cash.png) -->
 
 ## Payment Process
 
