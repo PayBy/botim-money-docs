@@ -6,10 +6,6 @@ toc_max_heading_level: 3
 # E-wallet
 
 Display one or more supported e-wallet icons on your mobile application’s checkout page to offer customers a seamless payment experience. Once a customer selects an e-wallet, they will be redirected to the corresponding app to complete the transaction.
-
-Currently, Botim Money supports the following e-wallets:
-- BOTIM
-- Botim Money App
   
 ## User Experience
 
@@ -24,11 +20,13 @@ Currently, Botim Money supports the following e-wallets:
 ### Initiate E-Wallet Payment via Botim Money
 
 #### Step 1: Display E-Wallet Options
+
 - When the customer confirms their intent to pay, render the list of available e-wallets.
 - The selection and order of e-wallets are determined by the merchant and stored on the merchant's server.
 - The merchant app must query the merchant's server to retrieve this list when the customer initiates payment.
 
 #### Step 2: Create Payment Order
+
 - Call the [Create order](/docs/createorder) API.
 - Construct the request according to the API documentation.
 - Set the `paySceneCode` parameter to `EWALLET`.
@@ -38,6 +36,7 @@ Currently, Botim Money supports the following e-wallets:
 - Use this deeplink to redirect the customer to the selected e-wallet for payment.
 
 #### Step 4: Redirect to Success Page
+
 - Create a success page at the URL specified in the `redirectUrl` parameter.
 - This page should display an order confirmation message to the customer.
 - After the payment is completed via the e-wallet, Botim Money will automatically redirect the customer to this success page.
@@ -55,9 +54,3 @@ You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/
 To retrieve the order detail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
 
 ![ewalletflow](../pic/ewallet.png)
-
-
-
-
-
-

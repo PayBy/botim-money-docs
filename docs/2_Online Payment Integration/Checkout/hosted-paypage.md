@@ -47,16 +47,9 @@ To retrieve the order detail, call the [Retrieve Order Detail](/docs/retrieveord
 
 ## Customize Paypage UI
 
-You can customize the appearance of the hosted checkout page by adding your logo and color in the Dashboard’s [Customize Checkout](https://b.botim.money/customize-checkout).
+You can customize the appearance of the hosted checkout page by adding your logo and color in the Dashboard’s [Customize Checkout](https://uat-web-merchant.test2pay.com/customize-checkout).
 
 ## Set Payment Method
 
-On the paypage page, by default all the payment methods that merchants have activated in Botim Money will be listed. If you need to adjust the order of payment methods that your customers see, or temporarily set some payment methods as unavailable to the payer, please configure it in [Payment Methods](https://b.botim.money/payment-methods).
-
-
-
-
-
-
-
+On the paypage page, by default all the payment methods that merchants have activated in Botim Money will be listed. If you need to adjust the order of payment methods that your customers see, or temporarily set some payment methods as unavailable to the payer, please configure it in [Payment Methods](https://uat-web-merchant.test2pay.com/payment-methods).
 
