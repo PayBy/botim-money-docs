@@ -7,7 +7,6 @@ toc_max_heading_level: 6
 
 Payers will have the almost the same operation process for using **In-APP** and **Paypage**. The difference is that if the mobile client integrates the sdk, users will get a smoother experience when paying on the native page than a web page.
 
-
 ## User Experience
 
 1. When customers are ready to complete their payment, your mobile application creates a new order creation request.
