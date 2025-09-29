@@ -11,7 +11,7 @@ The **Iframe Payment Page** is a secure checkout interface hosted by **Botim Mon
 ## Demo Access
 
 - **Sample Link**:  
-  Open Hosted Paypage *(use a mobile browser for best experience)*: https://uat-m.test2pay.com/uat/payment?code=PAYPAGE
+  Open Hosted Paypage *(use a mobile browser for best experience)*: [https://uat-m.test2pay.com/uat/payment?code=PAYPAGE](https://uat-m.test2pay.com/uat/payment?code=PAYPAGE)
 
 - **Scan to Access**:  
 
@@ -31,4 +31,3 @@ The **Iframe Payment Page** is a secure checkout interface hosted by **Botim Mon
    You will be redirected to the **Botim Money hosted checkout** page. Use the test environment’s bank and Botim Money account credentials to simulate the payment process.  
 
    Find the APK and test account details [here](/demos/testaccount).
-
