@@ -55,8 +55,7 @@ You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/
 
 To retrieve the order detail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
 
-![jsapiflow](../pic/jsapi.jpg)
-
+![jsapiflow](../pic/jsapi.png)
 
 
 
