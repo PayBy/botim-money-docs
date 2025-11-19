@@ -15,6 +15,9 @@ import DirectPay from "./OrderCreation/_direct-pay.md";
 import DYNQR from "./OrderCreation/_dynqr.md";
 import JSAPI from "./OrderCreation/_jsapi.md";
 import QRPAY from "./OrderCreation/_qrpay.md";
+import PREAUTH from "./OrderCreation/_preauth.md";
+import PREAUTHVOID from "./OrderCreation/_preauthvoid.md";
+import CAPTURE from "./OrderCreation/_capture.md";
 import InAPP from "./OrderCreation/_in-app.md";
 import CashTopUp from "./OrderCreation/_cashtopup.md";
 import PAYANDSIGN from './OrderCreation/_payandsign.md';
@@ -32,7 +35,10 @@ export const PRODUCTS_ENUM = {
   AUTODEBIT: "AUTODEBIT",
   DIRECTPAY: "DIRECTPAY",
   CASHTOPUP:"CASHTOPUP",
-  PAYANDSIGN:"PAYANDSIGN"
+  PAYANDSIGN:"PAYANDSIGN",
+  PREAUTH:"PREAUTH",
+  PREAUTHVOID:"PREAUTHVOID",
+  CAPTURE:"CAPTURE"
 };
 
 export const PRODUCTS_MAP = {
@@ -45,7 +51,10 @@ export const PRODUCTS_MAP = {
 [PRODUCTS_ENUM.DIRECTPAY]: DirectPay,
 [PRODUCTS_ENUM.IN_APP_SDK]: InAPP,
 [PRODUCTS_ENUM.CASHTOPUP]:CashTopUp,
-[PRODUCTS_ENUM.PAYANDSIGN]:PAYANDSIGN
+[PRODUCTS_ENUM.PAYANDSIGN]:PAYANDSIGN,
+[PRODUCTS_ENUM.PREAUTH]:PREAUTH,
+[PRODUCTS_ENUM.PREAUTHVOID]:PREAUTHVOID,
+[PRODUCTS_ENUM.CAPTURE]:CAPTURE
 };
 
 export function SwitchProduct() {
@@ -174,7 +183,7 @@ The attributes are:
 
 - **paySceneCode** <span style={{color:" #7d8793"}}>Enum</span> <span style={{color:"#f19938"}}>Required</span>
 
-    Payment scene you are going to use. The possible values are `PAYPAGE`, `INAPP`, `EWALLET`, `DYNQR`, `QRPAY`, `JSAPI`, `AUTODEBIT`, `DIRECTPAY`, etc.
+    Payment scene you are going to use. The possible values are `PAYPAGE`, `INAPP`, `EWALLET`, `DYNQR`, `QRPAY`, `JSAPI`, `AUTODEBIT`, `DIRECTPAY`, `PREAUTH`, `PREAUTHVOID`, and `CAPTURE`.
 
     Select from the drop down to get parameters that need to be passed in different scenarios.
   
@@ -226,7 +235,6 @@ The attributes are:
   
     The amount you plan to split to this id.
   
-    
   - **withholdAndRemitFee**   <font color = ' #7d8793'>Boolean</font>    
   
     Whether this sharing account pay the Botim Money transaction fee. If `true`, the final amount this sharing account received is : 
@@ -415,17 +423,17 @@ When Botim Money sends response, Botim Money will use its own private key to sig
 
     Appears only in the following payment scene.
 
-    `PAYPAGE`. A link that redirects the payer to the paypage.
+    `PAYPAGE`.  A link that redirects the payer to the paypage.
 
-    `INAPP`. A link that redirects the payer to the paypage or the chosen E-wallet.
+    `INAPP`.  A link that redirects the payer to the paypage or the chosen E-wallet.
 
-    `DYNQR`. A link contains details of the order, the merchant needs to convert it to a QR code and present to the payer.
+    `DYNQR`.  A link contains details of the order, the merchant needs to convert it to a QR code and present to the payer.
 
-    `JSAPI`. A link that redirects the payer to the checkout within the APP.
+    `JSAPI`.  A link that redirects the payer to the checkout within the APP.
   
-    `CASHTOPUP`. A link contains details of the order, the merchant needs to convert it to a QR code and present to the payer.
+    `CASHTOPUP`.  A link contains details of the order, the merchant needs to convert it to a QR code and present to the payer.
 
-    `PAYANDSIGN`. A link that redirects the payer to the checkout within the APP.
+    `PAYANDSIGN`.  A link that redirects the payer to the checkout within the APP.
 
 
   - **deepLink** <span style={{color:" #7d8793"}}>String</span>
@@ -437,11 +445,11 @@ When Botim Money sends response, Botim Money will use its own private key to sig
 
   - **threeDSecureDom** <span style={{color:" #7d8793"}}>String</span>
 
-    Appears only in `DIRECTPAY` payment scene.
+    Appears only in `DIRECTPAY` and `PREAUTH` payment scene.
 
     If the merchant decides or Botim Money's risk control system recognizes that the transaction requires 3DS verification, the 3DS verification link will be returned.
 
-  
+
   > **Note:** The `AUTODEBIT` and `QRPAY ` payment scene don't have `interactionParams`.
 
 
