@@ -1,0 +1,214 @@
+---
+sidebar_position: 1
+toc_max_heading_level: 6
+---
+
+
+# Transfer Validation
+
+## Overview
+
+The Transfer to Wallet Validation API allows partners to pre-check transfer requests before execution. It validates authentication, request parameters, beneficiary KYC status, and wallet limits to ensure only eligible transfers proceed.
+
+This validation process improves transaction success rates, reduces operational overhead, and provides clear, actionable error codes to enhance payout reliability.
+
+> **Note:** This is a validation-only endpoint. No actual transfer is executed. Use this API to verify transfer eligibility before calling the actual transfer API.
+
+## API URL
+
+- UAT: `POST https://uat.test2pay.com/sgs/api/transfer/transferToWalletValidation`
+- Production: `POST https://api.payby.com/sgs/api/transfer/transferToWalletValidation`
+
+## Request
+
+### HTTP Header
+
+The HTTP header is required for authentication and request validation. All validation requests must include proper authentication credentials and signature.
+
+- **Content-Language** <font color='#7d8793'>String</font> <font color='#999999'>Optional</font>  
+  
+  - Specifies the preferred response language.  
+  - Default value: `en`
+
+- **Content-Type** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  
+  - Specifies the media type of the request body.  
+  - Must be set to `application/json`
+
+- **Partner-Id** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  
+  - The unique partner identifier assigned during onboarding.  
+  - Used to identify and authenticate the partner making the request.
+  - Example value: `200000018132`
+
+- **sign** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  
+  - RSA signature generated for request authentication and integrity verification.  
+  - Must be generated per request following the signature generation guidelines.
+  - Format: Base64-encoded RSA signature string
+  - Example value: `RSA_SIGNATURE_BASE64_STRING`
+
+### HTTP Header Sample
+
+```json
+{
+  "Content-Language": "en",
+  "Content-Type": "application/json",
+  "Partner-Id": "200000018132",
+  "sign": "RSA_SIGNATURE_BASE64_STRING"
+}
+```
+
+### HTTP Body
+
+**bizContent** <font color='#7d8793'>Object</font> <font color='#f19938'>Required</font> 
+
+Contains the transfer details to be validated.
+
+- **beneficiaryIdentityType** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  
+  - Specifies how the beneficiary will be identified for the transfer.  
+  - Possible values:  
+    - `PHONE_NO`: Identify beneficiary by mobile phone number  
+    - `MEMBER_ID`: Identify beneficiary by Botim Money member ID  
+  - Maximum length: `20`
+
+- **beneficiaryIdentity** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font> 
+
+  - The beneficiary identifier value corresponding to the selected identity type.  
+  - Must be encrypted using SHA-256.
+  - Example values:  
+    - `+971-585812345` (for `PHONE_NO`)  
+    - `100006514321` (for `MEMBER_ID`)  
+  - Maximum length: `20`
+
+- **amount** <font color='#7d8793'>Decimal</font> <font color='#f19938'>Required</font>  
+
+  - The transfer amount to validate in AED.  
+  - Must be greater than 0 and less than or equal to 10,000 AED per transaction.  
+  - Example value: `1.21`
+
+- **currency** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font> 
+
+  - Currency of the transfer.  
+  - Only `AED` is supported.  
+  - Fixed value: `AED`
+
+**requestTime** <font color='#7d8793'>Long</font> <font color='#f19938'>Required</font>
+
+  - Request timestamp in epoch milliseconds.  
+  - Must be within a 15-minute window from the current server time.  
+  - Example value: `1642598400000`
+
+### HTTP Body Sample
+
+```json
+{
+  "bizContent": {
+    "amount": {
+      "amount": 1.21,
+      "currency": "AED"
+    },
+    "beneficiaryIdentity": "KUsQ3Gs48UsPET49wmDr/PDOdbFEqBPCLHxkA==",
+    "beneficiaryIdentityType": "PHONE_NO"
+  },
+  "requestTime": 1585142886252
+}
+```
+
+## Response
+
+### Response Body
+
+**head** <font color='#7d8793'>Object</font> <font color='#f19938'>Required</font> 
+Response metadata containing validation status and trace information.
+
+- **applyStatus** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Overall status of the validation request.  
+  - Possible values:  
+    - `SUCCESS`: Validation request processed successfully  
+    - `FAIL`: Validation request failed  
+
+- **code** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Response code indicating the validation result.  
+  - `0` indicates successful validation.  
+  - Refer to Response Codes section for all possible values.
+
+- **msg** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Human-readable message describing the validation result.  
+  - Example value: `SUCCESS`
+
+- **traceCode** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Unique trace identifier for debugging and support purposes.  
+  - Example value: `ABC123XYZ`
+
+**body** <font color='#7d8793'>Object</font> <font color='#f19938'>Required</font>  
+Contains the validated business content.
+
+- **bizContent** <font color='#7d8793'>Object</font> <font color='#f19938'>Required</font>  
+  - Validated transfer request details.
+
+  - **amount** <font color='#7d8793'>Object</font> <font color='#f19938'>Required</font>  
+    - Validated transfer amount details.  
+    - **amount** <font color='#7d8793'>Decimal</font>: The validated transfer amount (e.g., `1.21`)  
+    - **currency** <font color='#7d8793'>String</font>: Currency code (e.g., `AED`)
+
+  - **beneficiaryIdentity** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+    - Beneficiary identity in encrypted format as provided in the request.  
+    - Example value: `a25c5bff...`
+
+  - **beneficiaryIdentityType** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+    - Type of beneficiary identifier validated.  
+    - Possible values:  
+      - `PHONE_NO`: Mobile phone number  
+      - `MEMBER_ID`: Botim Money member ID
+
+  - **requestTime** <font color='#7d8793'>Long</font> <font color='#f19938'>Required</font>  
+    - Timestamp from the original request in epoch milliseconds.  
+    - Example value: `1585142886252`
+
+  - **status** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+    - Final validation result for the transfer eligibility.  
+    - Possible values:  
+      - `SUCCESS`: Transfer is eligible and can proceed  
+      - `FAIL`: Transfer validation failed; do not proceed
+
+### Response Sample
+
+```json
+{
+  "head": {
+    "applyStatus": "SUCCESS",
+    "code": "0",
+    "msg": "SUCCESS",
+    "traceCode": "ABC123XYZ"
+  },
+  "body": {
+    "bizContent": {
+      "amount": {
+        "amount": 1.21,
+        "currency": "AED"
+      },
+      "beneficiaryIdentity": "a25c5bff...",
+      "beneficiaryIdentityType": "PHONE_NO",
+      "requestTime": 1585142886252,
+      "status": "SUCCESS"
+    }
+  }
+}
+```
+
+## Response Codes
+
+| Code | Message | Cause | Workaround |
+|------|---------|-------|------------|
+| 0 | SUCCESS | Validation passed successfully | Proceed with transfer execution |
+| 400 | INVALID_PARAMETER | Invalid or missing request parameter | Review and adjust request parameters |
+| 402 | RATE_LIMIT_REJECT | Too many validation requests in a short period | Reduce request frequency and retry |
+| 403 | UNAUTHORIZED | Invalid authentication token, Partner-Id, or signature | Refresh credentials and verify authentication details |
+| 404 | SERVICE_NOT_AVAILABLE | Validation API service is currently unavailable | Contact support team for assistance |
+| 500 | SYSTEM_ERROR | Internal system error occurred | Retry the validation request later |
+| 504 | SERVICE_TIMEOUT | Validation request timeout occurred | Retry the validation request later |
+| 62026 | PRODUCT_IS_NOT_APPLIED | Partner not enabled for this product | Apply for product access through support |
+| 62114 | WALLET_CANNOT_RECEIVE_FUNDS | Beneficiary wallet is inactive, limit breached, or restricted | Do not initiate transfer; verify beneficiary wallet status |
+| 62115 | WALLET_DOES_NOT_EXIST | Beneficiary wallet does not exist or is inactive | Do not initiate transfer; verify beneficiary identity |
