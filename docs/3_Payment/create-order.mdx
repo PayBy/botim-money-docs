@@ -186,9 +186,61 @@ The attributes are:
     Payment scene you are going to use. The possible values are `PAYPAGE`, `INAPP`, `EWALLET`, `DYNQR`, `QRPAY`, `JSAPI`, `AUTODEBIT`, `DIRECTPAY`, `PREAUTH`, `PREAUTHVOID`, and `CAPTURE`.
 
     Select from the drop down to get parameters that need to be passed in different scenarios.
-  
+
     <SwitchProduct />
 
+- **agreementInfo** <span style={{color:" #7d8793"}}>Object</span> <span style={{color:"#f19938"}}>Required</span>
+
+    > **Note:** The AgreementInfo parameters are applicable for Case 1, Case 2, and Case4 in DIRECTPAY for the time being. They are **NOT applicable** for Case3 (Installment payment). These parameters are only effective when `agreementSign` is set to **True**.
+
+    - **agreementType** <span style={{color:" #7d8793"}}>String(20)</span>
+
+    The type of agreement for the payment.
+  
+    Possible values: `INSTALLMENT` / `OTHER` / `RECURRING` / `UNSCHEDULED`
+  
+    <br/>
+  
+  - **numberOfPayments** <span style={{color:" #7d8793"}}>Integer</span>
+  
+    The total number of payments in the agreement. Required when `agreementType` is `RECURRING`.
+  
+    Range: 1 - 999
+  
+    <br/>
+  
+  - **amountVariability** <span style={{color:" #7d8793"}}>String(10)</span>
+  
+    Indicates whether the payment amount is fixed or variable. Required when `agreementType` is `RECURRING`.
+  
+    Possible values: `FIXED` / `VARIABLE`
+  
+    <br/>
+  
+  - **expiryDate** <span style={{color:" #7d8793"}}>String(10)</span>
+  
+    The expiry date of the agreement. Required when `agreementType` is `RECURRING`.
+  
+    Format: yyyy-mm-dd
+  
+    <br/>
+  
+  - **paymentFrequency** <span style={{color:" #7d8793"}}>String(10)</span>
+  
+    The frequency of recurring payments. Required when `agreementType` is `RECURRING`.
+  
+    Possible values: `AD_HOC` / `DAILY` / `FORTNIGHTLY` / `MONTHLY` / `OTHER` / `QUARTERLY` / `TWICE_YEARLY` / `WEEKLY` / `YEARLY`
+  
+    <br/>
+  
+  - **minimumDaysBetweenPayments** <span style={{color:" #7d8793"}}>Integer</span>
+  
+    The minimum number of days between consecutive payments.
+  
+    Range: 1 - 999
+  
+    <br/>
+  
 - **sharingParamList** <span style={{color:" #7d8793"}}>List</span> 
 
     With every payment, you can split the funds between your merchant account and other Botim Money member IDs. For example, a payment of 10 AED, if you share 1 AED to A and 2 AED to B, you will get 7 AED.
