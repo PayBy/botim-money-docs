@@ -371,3 +371,57 @@
   The URL where protocol-related notifications will be sent.
 
   <br/>
+
+
+
+**<font color="#333333">AgreementInfo parameters</font>**
+
+> **Note:** The AgreementInfo parameters are applicable for Case 1, Case 2, and Case4 only. They are **NOT applicable** for Case3 (Installment payment). These parameters are only effective when `agreementSign` is set to **True**.
+
+- **agreementType** <span style={{color:" #7d8793"}}>String(20)</span>
+
+  The type of agreement for the payment.
+
+  Possible values: `INSTALLMENT` / `OTHER` / `RECURRING` / `UNSCHEDULED`
+
+  <br/>
+
+- **numberOfPayments** <span style={{color:" #7d8793"}}>Integer</span>
+
+  The total number of payments in the agreement. Required when `agreementType` is `RECURRING`.
+
+  Range: 1 - 999
+
+  <br/>
+
+- **amountVariability** <span style={{color:" #7d8793"}}>String(10)</span>
+
+  Indicates whether the payment amount is fixed or variable. Required when `agreementType` is `RECURRING`.
+
+  Possible values: `FIXED` / `VARIABLE`
+
+  <br/>
+
+- **expiryDate** <span style={{color:" #7d8793"}}>String(10)</span>
+
+  The expiry date of the agreement. Required when `agreementType` is `RECURRING`.
+
+  Format: yyyy-mm-dd
+
+  <br/>
+
+- **paymentFrequency** <span style={{color:" #7d8793"}}>String(10)</span>
+
+  The frequency of recurring payments. Required when `agreementType` is `RECURRING`.
+
+  Possible values: `AD_HOC` / `DAILY` / `FORTNIGHTLY` / `MONTHLY` / `OTHER` / `QUARTERLY` / `TWICE_YEARLY` / `WEEKLY` / `YEARLY`
+
+  <br/>
+
+- **minimumDaysBetweenPayments** <span style={{color:" #7d8793"}}>Integer</span>
+
+  The minimum number of days between consecutive payments.
+
+  Range: 1 - 999
+
+  <br/>
