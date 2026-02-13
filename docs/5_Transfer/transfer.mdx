@@ -47,7 +47,7 @@ Example value: 1581493898000
 ### Request Sample
 
 ```json
-// Http Header
+//Http Header
 {
     "Content-Language": "en",
     "Content-Type": "application/json",
@@ -55,19 +55,23 @@ Example value: 1581493898000
     "sign": "ODOK+d0os7q0FTWNKGTr6Yt3FlO6alfvIp+IhHfudxQZnAwU5FiTWvFVqgthcsvmIR5uYpcg8PT+ZMpaGnsyicmIDfutmUOh1qVwHddkWeUJr0/Mz8kZu01nyaBOaK3Onc6eR/oUnaVRnkelJIkY1T64+DWiihzcLHgsjIThpeYay/mEf8hajKlg2ciXyWpQiA1BOPA7VwQRlBArOA0FTMjJU02uWVj4eqHeBa4lED/p5hJGfSwmSWKMZ1QjqeJzFk1mpTyVLjPZLVltSxPsj/WSpRPXrVE9qKJxekiDVgalhtqB+/LKSMx4+Bb9z0zp2u8II3oTtaPGwwRtylyxdA=="
 }
 
-// Http Body
+//Http Body
 {
     "bizContent": {
         "amount": {
             "amount": 1.21,
             "currency": "AED"
         },
-        "beneficiaryFullName": "SgsiXi2T//eEymXADGbK7o0EE9wmCTQxi4gLNp7y1JYTW0PbGbEmYk2rmsLc56kSOMbgAGUPf0Na0qs3uPwwhyfGSrHJsxNB8J2wBhcvBm8eSX2BjS45qT/hI8pW2KhpprWVXMmwCCh7NX36Imp0WcsDg8o4EHKBKgg1GLBOBkCh7tHAEDMPhwOllsGYioPb9eKmXHoRlgBAosD+wgEayvLS2LgGb18gGMM3w4ujwLKllQ2g2cr3HiCzvEcaroiBJ/1XSjGQ5rJNVomLpXec05Mr9Ql2oszh8uGbayCL3M4EhppXsA0KTYkHhxmZ5yM7pWmpHQH2tRtxE8EM5j7o3g==",
-        "beneficiaryIdentity": "KUsQ3GNU/1p11hVHNljTQehKtjqhIvtED1aOcWuVqY2puGqiSs8ulAN51xLzaQ9mPcWnGry0Sqdun+mGdcroTOGZBP1zOXF3unps29JO7rkYCQK7pqAcelTV0QIi122QLqXmVpEKAcfT/zLRhQdxA9qf+XyOc4LfJTLVv02z+BRK02YvV+pwszbLzmqDJiffs0ffa32zqVDJFgM+sJgRYowW4v3QKvplpwjlEwjB6vnQO9mCBuLX/zz6q0wIQjjPiHLalUQRwOUzhXQU4aRYs7UBhNdy8wcn0dQNeWfZw1Pd30kwVAeDcPis48UsPET49wmDr/PDOdbFEqBPCLHxkA==",
-        "beneficiaryIdentityType": "PHONE_NO",
-        "memo": "Your memo",
-        "merchantOrderNo": "M021482754853",
-        "notifyUrl": "http://www.yoursite.com"
+    "beneficiaryFullName": "SgsiXi2T//eEymXADGbK7o0EE9wmCTQxi4gLNp7y1JYTW0PbGbEmYk2rmsLc56kSOMbgAGUPf0Na0qs3uPwwhyfGSrHJsxNB8J2wBhcvBm8eSX2BjS45qT/hI8pW2KhpprWVXMmwCCh7NX36Imp0WcsDg8o4EHKBKgg1GLBOBkCh7tHAEDMPhwOllsGYioPb9eKmXHoRlgBAosD+wgEayvLS2LgGb18gGMM3w4ujwLKllQ2g2cr3HiCzvEcaroiBJ/1XSjGQ5rJNVomLpXec05Mr9Ql2oszh8uGbayCL3M4EhppXsA0KTYkHhxmZ5yM7pWmpHQH2tRtxE8EM5j7o3g==",
+    "beneficiaryIdentity": "KUsQ3GNU/1p11hVHNljTQehKtjqhIvtED1aOcWuVqY2puGqiSs8ulAN51xLzaQ9mPcWnGry0Sqdun+mGdcroTOGZBP1zOXF3unps29JO7rkYCQK7pqAcelTV0QIi122QLqXmVpEKAcfT/zLRhQdxA9qf+XyOc4LfJTLVv02z+BRK02YvV+pwszbLzmqDJiffs0ffa32zqVDJFgM+sJgRYowW4v3QKvplpwjlEwjB6vnQO9mCBuLX/zz6q0wIQjjPiHLalUQRwOUzhXQU4aRYs7UBhNdy8wcn0dQNeWfZw1Pd30kwVAeDcPis48UsPET49wmDr/PDOdbFEqBPCLHxkA==",
+    "beneficiaryIdentityType": "PHONE_NO",
+    "memo": "Your memo",
+    "merchantOrderNo": "M021482754853",
+    "notifyUrl": "http://www.yoursite.com",
+    "riskInfo":{
+        "scene":"casino",
+        "level":"hight"
+      }
     },
     "requestTime": 1585142886252
 }

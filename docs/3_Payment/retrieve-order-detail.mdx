@@ -56,7 +56,6 @@ The `getOrder` interface enables merchants to query the status of any Botim Mone
 		- Example value: M965739182419
 		- Maximum length: `64`
 	  
-	
 	- **orderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 		- The Botim Money's unique identify number of the order. 
 		- Example value: 131658300517875854
@@ -65,7 +64,7 @@ The `getOrder` interface enables merchants to query the status of any Botim Mone
 ### Request Sample
 
 ```json
-// Http Header
+//Http Header
 {
   "Content-Language": "en",
   "Content-Type": "application/json",
@@ -73,7 +72,7 @@ The `getOrder` interface enables merchants to query the status of any Botim Mone
     "Partner-Id": "200000000888"
 }
 
-// Http Body
+//Http Body
 {
   "requestTime": 1581405884647,
   "bizContent": {
@@ -123,12 +122,12 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 ### Response Sample
 
 ```json
-// Http Header
+//Http Header
 {
 	"sign": "nDdClX1tAyV3qcX/Epay6AXFNRGSsWd8ysWO9SgwPrNTetSePLA9C39mGp6qRbjJeqXLEnYLwSkBu5eKdtyVX3tflGLiV2kvRjVfYpTCjXdVL2Pcnv2w+ghjHe2jL988iklk7q5AjAgdtXNphpHcTes9pk6W3bVCbvijH6at0fExUtZ91L1LrnPGELT1IJm/lFW3w4KLh0Gxs7FzDPI9RDfUemObNlRzV8kCtkWahwPgs/hBnS69GyYDKN7ihQX2UiLuP239wl6IA+VG/ZZKHPhLs8bbuOS+LKWORIp6jRt+JsAx7c/Ot1RNyOnHKxPRKJ8bVTohEp39yUz/HwG8oA=="
 }
 
-// Http Body
+//Http Body
 {
   "head": {
     "applyStatus": "SUCCESS",
@@ -137,44 +136,168 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
   },
   "body": {
     "acquireOrder": {
-      "merchantOrderNo": "M965739182419",
-      "orderNo": "131404956265007836",
-      "status": "SETTLED",
-      "reserved": "order desc",
-      "paymentInfo": {
-        "paidAmount": {
-          "currency": "AED",
-          "amount": 1.01
-        },
-        "paidTime": 1581405372000,
-        "payerMid": "100000001104",
-        "payeeFeeAmount": {
-          "currency": "AED",
-          "amount": 0.5
-        },
-        "payerFeeAmount": {
-          "currency": "AED",
-          "amount": 0
-        },
-        "payChannel": "BALANCE"
-      },
-      "product": "Basic Payment Gateway",
-      "totalAmount": {
-        "currency": "AED",
-        "amount": 1.01
-      },
-      "payeeMid": "200000000888",
-      "expiredTime": 1581412155966,
-      "notifyUrl": "http://www.yoursite.com",
-      "subject": "Your subjet",
-      "requestTime": 1581404955966,
       "accessoryContent": {
-        "amountDetail": {},
-        "goodsDetail": {},
-        "terminalDetail": {}
+        "amountDetail": {
+          "amount": {
+            "amount": 95.00,
+            "currency": "AED"
+          },
+          "discountableAmount": {
+            "amount": 100.00,
+            "currency": "AED"
+          },
+          "tipAmount": {
+            "amount": 0.00,
+            "currency": "AED"
+          },
+          "vatAmount": {
+            "amount": 5.00,
+            "currency": "AED"
+          }
+        },
+        "goodsDetail": {
+          "body": "Test goods description body",
+          "categoriesTree": "Electronics > Mobile > Accessories",
+          "goodsCategory": "Electronics",
+          "goodsId": "GOODS_001",
+          "goodsName": "Test Product",
+          "price": {
+            "amount": 100.00,
+            "currency": "AED"
+          },
+          "quantity": 1,
+          "showUrl": "https://merchant.example.com/product/GOODS_001"
+        },
+        "terminalDetail": {
+          "location": "Dubai, UAE",
+          "merchantName": "Test Merchant",
+          "operatorId": "OP_001",
+          "storeId": "STORE_001",
+          "storeName": "Test Store",
+          "terminalId": "TERM_001"
+        }
       },
-      "paySceneCode": "JSAPI",     
-      "revoked": "false"
+      "deviceId": "mock_device_001",
+      "expiredTime": 1770451403018,
+      "merchantOrderNo": "mock_merchant_order_no",
+      "notifyUrl": "https://merchant.example.com/notify",
+      "orderNo": "131620641843026270",
+      "paySceneCode": "JSAPI",
+      "payeeMid": "200000030906",
+      "paymentInfo": {
+        "cardInfo": {
+          "brand": "VISA",
+          "cardLevel": "PLATINUM",
+          "cardType": "CREDIT",
+          "first6": "411111",
+          "issueBank": "Emirates NBD",
+          "issueCountry": "AE",
+          "last4": "1234"
+        },
+        "channelParam": {
+          "eciValue": "05",
+          "extension": {
+            "processorResponseCode": "00",
+            "terminalId": "TERM_001",
+            "acquirerBin": "123456",
+            "merchantReference": "REF_123456"
+          }
+        },
+        "paidAmount": {
+          "amount": 100.00,
+          "currency": "AED"
+        },
+        "paidTime": 1770447803018,
+        "payChannel": "CARD",
+        "payeeFeeAmount": {
+          "amount": 1.00,
+          "currency": "AED"
+        },
+        "payerMid": "100000012345",
+        "paymentInfoExtend": {
+          "installment": {
+            "installmentFirstTotalAmount": {
+              "currency": "AED",
+              "amount": 333.34
+            },
+            "installmentNumber": "3",
+            "installmentPlan": "VISA",
+            "installmentPlanAccpId": "2617c281-891c-4c95-80ca-1de398ae7701",
+            "installmentTAndC": " [Test Bank] This is a sample T&amp;C text containing Special Ch@racters that govern the Visa Installment services. Refer to https://www.visa.com for more information. 1) Eligibility: To be eligible for \"Visa installment\" payments, you must hold a valid and active Visa credit card issued by an authorized bank. Your credit limit and repayment capacity will determine your eligibility for installment plans. 2) Installment Plan: Installments can be availed for purchases at participating merchants, subject to a minimum transaction amount. The specific installment plan (number of months, interest rate, etc.) will be determined at the time of purchase. 3) Interest &amp; Fees: 20% Interest will be charged on the unpaid principal amount. If you fail to pay any installment by the due date, a late payment fee will be charged. All fees/charges are non-refundable and subject to change. 4) Prepayment &amp; Cancellation: You may choose to prepay the entire outstanding amount at any time. However, prepayment may attract a fee. The installment plan can be cancelled if your Visa card is cancelled &lt;or if you default on payment&gt;. 5) Changes to Terms: Visa reserves the right to change these terms and conditions at any time. Any changes will be communicated to you via email or through our website. It is your responsibility to keep yourself updated with the latest terms and conditions. Please note that these terms are subject to change and it's always recommended to read the actual terms and conditions provided by the card issuer.",
+            "installmentTermsVersion": "5",
+            "installmentTotalAmount": {
+              "currency": "AED",
+              "amount": 1000.00
+            },
+            "installmentUpfrontFee": {
+              "currency": "AED",
+              "amount": 0.00
+            }
+          }
+        },
+        "settlementAmount": {
+          "amount": 99.00,
+          "currency": "AED"
+        }
+      },
+      "promotionInfoList": [
+        {
+          "appliedRewardId": "REWARD_001",
+          "settleFlag": "YES"
+        },
+        {
+          "appliedRewardId": "REWARD_002",
+          "settleFlag": "NO"
+        }
+      ],
+      "requestTime": 1770447803018,
+      "reserved": "reserved_data",
+      "revoked": "false",
+      "sharingInfoList": [
+        {
+          "sharingAmount": {
+            "amount": 10.00,
+            "currency": "AED"
+          },
+          "sharingIdentitySeqId": 1,
+          "sharingMemo": "Commission for partner 1",
+          "sharingMid": "200000012345",
+          "sharingSettledAmount": {
+            "amount": 10.00,
+            "currency": "AED"
+          },
+          "sharingSettledFeeAmount": {
+            "amount": 0.10,
+            "currency": "AED"
+          },
+          "withholdAndRemitFee": false
+        },
+        {
+          "sharingAmount": {
+            "amount": 5.00,
+            "currency": "AED"
+          },
+          "sharingIdentitySeqId": 2,
+          "sharingMemo": "Commission for partner 2",
+          "sharingMid": "200000067890",
+          "sharingSettledAmount": {
+            "amount": 5.00,
+            "currency": "AED"
+          },
+          "sharingSettledFeeAmount": {
+            "amount": 0.05,
+            "currency": "AED"
+          },
+          "withholdAndRemitFee": true
+        }
+      ],
+      "status": "PAID_SUCCESS",
+      "subject": "Test Order Subject",
+      "subjectAr": "موضوع الاختبار",
+      "totalAmount": {
+        "amount": 100.00,
+        "currency": "AED"
+      }
     }
   }
 }
