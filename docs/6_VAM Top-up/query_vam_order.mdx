@@ -1,0 +1,258 @@
+---
+sidebar_position: 2
+toc_max_heading_level: 6
+---
+import VAMDepositOrder from './_vamDepositOrder.mdx'
+
+
+# Query VAM Order
+
+## Overview
+
+The `queryVamOrder` interface enables merchants to query VAM (Virtual Account Management) orders, helping them retrieve order information based on various filter criteria such as reference number, IBAN, and date range.
+
+## API URL
+
+- UAT: https://uat.test2pay.com/sgs/api/transfer/queryVamOrder
+- Production: https://api.payby.com/sgs/api/transfer/queryVamOrder
+
+## Request
+
+### Http Header
+
+<details>
+  <summary>Attributes</summary>
+
+- **Content-Language**    <font color = '#7d8793'>String</font>  
+
+  Language preference for response messages.
+  
+  Example value: en
+  
+  Maximum length: `10`
+
+- **sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+  Signature value for request authentication and security verification.
+
+- **Partner-Id**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+  Unique merchant identifier assigned by Botim Money.
+  
+  Maximum length: `12`
+
+</details>
+
+### Http Body
+
+- **requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+
+	- If the request time is more than 15 minutes away from the current time, the request will be rejected. This parameter is used to prevent repeated requests for orders that should have been cancelled due to timeouts.
+	- Example value: 1581493898000
+
+- **bizContent**   <font color = ' #7d8793'>Object</font>   <font color = '#f19938'>Required</font>
+
+	Contains the main query parameters for filtering VAM orders.
+
+	- **merchantId**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+		- Merchant identifier for the VAM account.
+		- Example value: 200000030906
+		- Maximum length: `64`
+	  
+	- **referenceNo**   <font color = ' #7d8793'>String</font>  
+		- Bank reference number for the transaction.
+		- Example value: UFOC0DI060
+		- Maximum length: `64`
+
+	- **collectIBAN**   <font color = ' #7d8793'>String</font> 
+		- IBAN of the receiving account.
+		- Example value: AE070357414000600001603
+		- Maximum length: `32`
+
+	- **startDate**   <font color = ' #7d8793'>String</font>  
+		- Query start date and time. Must be used together with endDate. Maximum time range is 24 hours.
+		- Format: yyyy-MM-dd HH:mm:ss
+		- Example value: 2026-01-29 00:00:00
+		- Maximum length: `32`
+
+	- **endDate**   <font color = ' #7d8793'>String</font>  
+		- Query end date and time. Must be used together with startDate. Maximum time range is 24 hours.
+		- Format: yyyy-MM-dd HH:mm:ss
+		- Example value: 2026-01-30 23:59:59
+		- Maximum length: `32`
+
+	- **pageNum**   <font color = ' #7d8793'>Integer</font>    <font color = '#f19938'>Required</font>
+		- Page number for pagination, starting from 1.
+		- Default value: 1
+		- Example value: 1
+
+	- **pageSize**   <font color = ' #7d8793'>Integer</font>    <font color = '#f19938'>Required</font>
+		- Number of records per page.
+		- Default value: 10
+		- Example value: 10
+
+### Request Sample
+
+```json
+//Http Header
+{
+    "Content-Language": "en",
+    "Content-Type": "application/json",
+    "sign": "aMs582GhLeRv4fL3xqw7nN4dlzWS+ZVzdsNXT6rKwPpj7qOM4Y7qZBP3Yl6HogILy4IyX1tp8M7D92rK37hUgJg814odd1INIuy4l+KTRPA1Y3F8y0hVGXak0ddeVcOM3XNN+YEhvPClBx4EpmfWVqY3A2qNJTo3ugwr6uZiVGA38OjHRLZthGa+5nea0DtLaZYQnOGWaCI6fPIBZ7qr9HTiVkIsAp3N4m4cHR+3Rvpdbzu2TZoScA358D9wGmF5UOkbHCjwNV03I3O8HzaKUqMe4jnXZ+lJ0TMmxmqLrcMyMztJjZMQB9S4lXMW2+TqMrdNgLQv3GLiQ9IFvhUVEg==",
+    "Partner-Id": "200000030906"
+}
+
+//Http Body
+{
+    "requestTime": 1581405399656,
+    "bizContent": {
+        "merchantId": "200000030906",
+        "startDate": "2024-09-20 00:00:00",
+        "endDate": "2024-09-20 23:59:59",
+        "referenceNo": "UFOC0DI060",
+        "collectIBAN": "AE070357414000600001603",
+        "pageNum": 1,
+        "pageSize": 10
+    }
+}
+```
+
+## Response
+
+### Http Header
+
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+When Botim Money sends response, Botim Money will use its own private key to sign the message, and the merchant uses Botim Money's public key to verify the signature. If the verification is passed, it proves that the response was sent by Botim Money and not faked by others.
+
+### Http Body
+
+**head** 
+
+  <details>
+    <summary>Attributes</summary>
+
+- **applyStatus**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+  Application status of the request. Possible values: SUCCESS, FAIL, ERROR.
+
+- **code**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+  Response code. 0 indicates success.
+
+- **msg**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+  Response message description.
+
+  </details>
+
+**body** 
+
+**<font color = '#f19938'>Notice </font>**
+
+Body is returned only when `applystatus` = `success`, and `code` = `0`.
+If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
+
+---
+
+- **orders**   <font color = ' #7d8793'>List\<Object\></font>   <font color = '#f19938'>Required</font>
+	- Array of VAM order records.
+
+	- **amount**   <font color = ' #7d8793'>Money</font>   <font color = '#f19938'>Required</font>
+		- Transaction amount with currency.
+		
+		- **amount**   <font color = ' #7d8793'>Decimal</font>   <font color = '#f19938'>Required</font>
+			- Example value: 12.74
+		
+		- **currency**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+			- Example value: AED
+
+	- **transactionTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+		- Timestamp when the transaction occurred.
+		- Example value: 1726814520000
+
+	- **orderNo**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- The Botim Money's unique identify number of the order.
+		- Example value: 131726814520094547
+
+	- **status**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- Transaction status.
+		- Possible values: `SUCCESS`, `FAILED`, `PENDING`
+		- Example value: SUCCESS
+
+	- **referenceNo**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- Bank reference number for the transaction.
+		- Example value: UFOC0DI060
+
+	- **remitterInfo**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- Name of the person sending the funds.
+		- Example value: MR CAN WANG
+
+	- **senderBankCode**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- SWIFT code of the sender's bank.
+		- Example value: BBMEAEADXXX
+
+	- **depositDetails**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- Additional deposit details or memo.
+		- Example value: REF AEV180448I9Z7400 GDS
+
+	- **collectIBAN**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- IBAN of the receiving account.
+		- Example value: AE070357414000600001603
+
+- **totalCount**   <font color = ' #7d8793'>Integer</font>   <font color = '#f19938'>Required</font>
+	- Total number of records found in the query.
+	- Example value: 1
+
+- **pageNum**   <font color = ' #7d8793'>Integer</font>   <font color = '#f19938'>Required</font>
+	- Current page number.
+	- Example value: 1
+
+- **pageSize**   <font color = ' #7d8793'>Integer</font>   <font color = '#f19938'>Required</font>
+	- Number of records per page.
+	- Example value: 10
+
+- **totalPages**   <font color = ' #7d8793'>Integer</font>   <font color = '#f19938'>Required</font>
+	- Total number of pages available.
+	- Example value: 1
+
+### Response Sample
+
+```json
+//Http Header
+{
+    "sign": "nDdClX1tAyV3qcX/Epay6AXFNRGSsWd8ysWO9SgwPrNTetSePLA9C39mGp6qRbjJeqXLEnYLwSkBu5eKdtyVX3tflGLiV2kvRjVfYpTCjXdVL2Pcnv2w+ghjHe2jL988iklk7q5AjAgdtXNphpHcTes9pk6W3bVCbvijH6at0fExUtZ91L1LrnPGELT1IJm/lFW3w4KLh0Gxs7FzDPI9RDfUemObNlRzV8kCtkWahwPgs/hBnS69GyYDKN7ihQX2UiLuP239wl6IA+VG/ZZKHPhLs8bbuOS+LKWORIp6jRt+JsAx7c/Ot1RNyOnHKxPRKJ8bVTohEp39yUz/HwG8oA=="
+}
+
+//Http Body
+{
+    "head": {
+        "applyStatus": "SUCCESS",
+        "code": "0",
+        "msg": "SUCCESS"
+    },
+    "body": {
+        "orders": [
+            {
+                "amount": {
+                    "amount": 12.74,
+                    "currency": "AED"
+                },
+                "transactionTime": 1726814520000,
+                "orderNo": "131726814520094547",
+                "status": "SUCCESS",
+                "referenceNo": "UFOC0DI060",
+                "remitterInfo": "MR CAN WANG",
+                "senderBankCode": "BBMEAEADXXX",
+                "depositDetails": "REF AEV180448I9Z7400 GDS",
+                "collectIBAN": "AE070357414000600001603"
+            }
+        ],
+        "totalCount": 1,
+        "pageNum": 1,
+        "pageSize": 10,
+        "totalPages": 1
+    }
+}
+```
+
