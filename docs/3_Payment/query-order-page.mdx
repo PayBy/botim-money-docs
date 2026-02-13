@@ -10,223 +10,422 @@ import AcquireOrderPayer from './_acquire-order-payer.mdx'
 
 # Query Order Page
 
+## Overview
+
+The `queryOrderPage` interface enables merchants to query multiple orders in a paginated format, helping them retrieve order information based on date ranges, device IDs, and order statuses.
+
+
 ## Interface URL
 
 - UAT: https://uat.test2pay.com/sgs/api/acquire2Query/queryOrderPage
 - Production: https://api.payby.com/sgs/api/acquire2Query/queryOrderPage
 
-## Request Parameters
+## Request
 
-### HTTP Header
+### Http Header
 
-| Variable Desc. | Variable name    | Required | Type       | Example value   | Description                                  |
-| -------------- | ---------------- | -------- | ---------- | --------------- | -------------------------------------------- |
-| Language       | Content-Language | Optional | String(10) | en              | Language preference: en - English (default)  |
-| Signature      | sign             | Required | String     | IXJI/QicPQot... | Request signature for authentication         |
-| Merchant ID    | Partner-Id       | Required | String(12) | 200000000888    | Unique merchant identifier assigned by Botim Money |
+<details>
+  <summary>Attributes</summary>
+  <RequestHeader/>
+</details>
 
----
+### Http Body
 
-### HTTP Body
+- **requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
 
-| Variable Desc.   | Variable name | Required | Type                             | Example value | Description                        |
-| ---------------- | ------------- | -------- | -------------------------------- | ------------- | ---------------------------------- |
-| Request time     | requestTime   | Required | TimeStamp(3)                     | 1581404947666 | Unix timestamp in milliseconds     |
-| Business content | bizContent    | Required | QueryAcquire2OrderPageSgsRequest | -             | Contains the main query parameters |
+	- This parameter is used to prevent repeated requests for orders that should have been cancelled due to timeouts.
+	- Example value: 1581404947666
 
----
+- **bizContent**   <font color = ' #7d8793'>Object</font>   <font color = '#f19938'>Required</font>
 
-**QueryAcquire2OrderPageSgsRequest**
+	Contains the main query parameters for filtering and pagination.
 
-| Variable Desc.       | Variable name     | Required | Type          | Example value                        | Description                                           |
-| -------------------- | ----------------- | -------- | ------------- | ------------------------------------ | ----------------------------------------------------- |
-| Start Date           | startDate         | Required | String(10)    | 2022-07-22                           | Query start date in YYYY-MM-DD format                 |
-| End Date             | endDate           | Required | String(10)    | 2022-07-22                           | Query end date in YYYY-MM-DD format                   |
-| Device ID List       | deviceIdList      | Optional | List(String)  | []                                   | Filter by specific device IDs (empty for all devices) |
-| Include Status List  | includeStatusList | Optional | List(String)  | CREATED,PAID_SUCCESS,SETTLED,FAILURE | Filter by order status (empty for all statuses)       |
-| Sort Page Parameters | sortPageParam     | Required | SortPageParam | -                                    | Pagination and sorting configuration                  |
+	- **startDate**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+		- Query start date in YYYY-MM-DD format.
+		- Example value: 2022-07-22
+		- Maximum length: `10`
+	  
+	- **endDate**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+		- Query end date in YYYY-MM-DD format.
+		- Example value: 2022-07-22
+		- Maximum length: `10`
 
----
+	- **deviceIdList**   <font color = ' #7d8793'>List\<String\></font>    
+		- Filter by specific device IDs. Empty array returns all devices.
+		- Example value: []
 
-**SortPageParam** 
+	- **includeStatusList**   <font color = ' #7d8793'>List\<String\></font>   
+		- Filter by order status. Empty array returns all statuses.
+		- Possible values: `CREATED`, `PAID_SUCCESS`, `SETTLED`, `FAILURE`
+		- Example value: []
 
-| Variable Desc. | Variable name | Required | Type | Example value | Description                              |
-| -------------- | ------------- | -------- | ---- | ------------- | ---------------------------------------- |
-| Page Number    | number        | Optional | Int  | 0             | Page number starting from 0 (default: 0) |
-| Page Size      | size          | Required | Int  | 20            | Number of records per page               |
+	- **sortPageParam**   <font color = ' #7d8793'>Object</font>    <font color = '#f19938'>Required</font>
+		- Pagination and sorting configuration.
+		
+		- **number**   <font color = ' #7d8793'>Int</font>
+			- Page number starting from 0.
+			- Default value: 0
+			- Example value: 0
+		
+		- **size**   <font color = ' #7d8793'>Int</font>    <font color = '#f19938'>Required</font>
+			- Number of records per page.
+			- Example value: 20
 
----
-
-## Request Sample
+### Request Sample
 
 ```json
-// HTTP Header
+//Http Header
 {
-    "Content-Language": "en",                    // Language preference
-    "Content-Type": "application/json",          // Request content type
-    "sign": "IXJI/QicPQotIsIDBcSGIg6jtJUXs1rTuifQFZUNd3KDTl25GKmpYO7OrkaKkTV0shDRitLmkxJCe3Z60zHE2ZSeVczrhwrnmuMG+bX9N22Hw821H6MydsXetYHRnyf5dPbgpmVja582w49grA6jRlVFAVMYdxKJDPSCb2X/IpltvyrLQ1Wt+lqr+fnpYXvyON6/PIZIQIknC8BVddVahxJnaC6HEagvJf6gskz22/DFfPHT1mlMA9pg8qrbh4O7DYZahf8TB3nIzAPc/FHOUZkYYTT2c8m4eLL8740nJVK7D3IOSqSnBAU/iJ2omjPPFvRCCSqzz17pkGsT7AW91w==",  // Request signature
-    "Partner-Id": "200000000888"                // Merchant ID
+    "Content-Language": "en",
+    "Content-Type": "application/json",
+    "sign": "IXJI/QicPQotIsIDBcSGIg6jtJUXs1rTuifQFZUNd3KDTl25GKmpYO7OrkaKkTV0shDRitLmkxJCe3Z60zHE2ZSeVczrhwrnmuMG+bX9N22Hw821H6MydsXetYHRnyf5dPbgpmVja582w49grA6jRlVFAVMYdxKJDPSCb2X/IpltvyrLQ1Wt+lqr+fnpYXvyON6/PIZIQIknC8BVddVahxJnaC6HEagvJf6gskz22/DFfPHT1mlMA9pg8qrbh4O7DYZahf8TB3nIzAPc/FHOUZkYYTT2c8m4eLL8740nJVK7D3IOSqSnBAU/iJ2omjPPFvRCCSqzz17pkGsT7AW91w==",
+    "Partner-Id": "200000000888"
 }
 
-// HTTP Body
+//Http Body
 {
-    "requestTime": 1581404947666,               // Request timestamp
+    "requestTime": 1581404947666,
     "bizContent": {
-        "startDate":"2022-07-22",               // Query from this date
-        "endDate":"2022-07-22",                 // Query to this date
-        "deviceIdList": [],                     // Empty array means all devices
-        "includeStatusList":[],                 // Empty array means all statuses
+        "startDate": "2022-07-22",
+        "endDate": "2022-07-22",
+        "deviceIdList": [],
+        "includeStatusList": [],
         "sortPageParam": {
-            "number": 0,                        // First page
-            "size": 20                          // 20 records per page
+            "number": 0,
+            "size": 20
         }
     }
 }
 ```
 
-## Response Parameters
+## Response
 
-The body in the HTTP Body are returned only when `applyStatus` is `SUCCESS` and `code` = `0`.
+### Http Header
 
----
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
 
-**HTTP Body**
+When Botim Money sends response, Botim Money will use its own private key to sign the message, and the merchant uses Botim Money's public key to verify the signature. If the verification is passed, it proves that the response was sent by Botim Money and not faked by others.
 
-| Variable Desc. | Variable name | Required | Type                                | Example value | Description                  |
-| -------------- | ------------- | -------- | ----------------------------------- | ------------- | ---------------------------- |
-| Response head  | head          | Required | ResponseHeader                      |               | Response status and metadata |
-| Response body  | body          | Optional | Pagination(Acquire2OrderListResult) |               | Paginated order data         |
+### Http Body
 
----
+**head** 
 
-**Pagination**
+  <details>
+    <summary>Attributes</summary>
+    <ResponseHead/>
+  </details>
 
-| Variable Desc. | Variable name | Required | Type                          | Example value | Description                     |
-| -------------- | ------------- | -------- | ----------------------------- | ------------- | ------------------------------- |
-| Total Elements | totalElements | Required | Int                           | 6             | Total number of records found   |
-| Total Pages    | totalPages    | Required | Int                           | 1             | Total number of pages available |
-| Items          | items         | Required | List(Acquire2OrderListResult) |               | Array of order records          |
+**body** 
 
----
+**<font color = '#f19938'>Notice </font>**
 
-**Acquire2OrderListResult**
+Body is returned only when `applystatus` = `success`, and `code` = `0`.
+If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
 
-| Variable Desc.    | Variable name   | Required | Type         | Example value                        | Description                                         |
-| ----------------- | --------------- | -------- | ------------ | ------------------------------------ | --------------------------------------------------- |
-| Merchant Order No | merchantOrderNo | Required | String       | b7023000-fb84-4259-9870-8dff62c7299c | Merchant's unique order identifier                  |
-| Order No          | orderNo         | Required | String       | 131658483622183687                   | Botim Money system order number                           |
-| Device ID         | deviceId        | Required | String       | 20001019                             | Payment device identifier                           |
-| Status            | status          | Required | String       | SETTLED                              | Order status (CREATED/PAID_SUCCESS/SETTLED/FAILURE) |
-| Product           | product         | Required | String       | Basic Payment Gateway                | Payment product type                                |
-| Total Amount      | totalAmount     | Required | Money        |                                      | Order total amount with currency                    |
-| Payee Merchant ID | payeeMid        | Required | String       | 200000030906                         | Receiving merchant identifier                       |
-| Expired Time      | expiredTime     | Required | Timestamp(3) | 1658487222029                        | Order expiration timestamp                          |
-| Subject           | subject         | Optional | String       | Test                                 | Order description or subject                        |
-| Request Time      | requestTime     | Required | Timestamp(3) | 1658519999999                        | Order creation timestamp                            |
-| Pay Scene Code    | paySceneCode    | Required | String       | PAYPAGE                              | Payment scenario identifier                         |
-| Payment Info      | paymentInfo     | Optional | PaymentInfo  |                                      | Payment details (present for completed orders)      |
-| Notify URL        | notifyUrl       | Optional | String       |                                      | Callback URL for order notifications                |
-| Revoked           | revoked         | Optional | String       |                                      | Indicates if order was revoked                      |
-| Reserved          | reserved        | Optional | String       |                                      | Reserved field for future use                       |
 
----
+- **totalElements**   <font color = ' #7d8793'>Int</font>   <font color = '#f19938'>Required</font>
+	- Total number of records found in the query.
+	- Example value: 6
 
-**paymentInfo**
+- **totalPages**   <font color = ' #7d8793'>Int</font>   <font color = '#f19938'>Required</font>
+	- Total number of pages available.
+	- Example value: 1
 
-| Variable Desc.       | Variable name           | Required | Type         | Example value | Description                              |
-| -------------------- | ----------------------- | -------- | ------------ | ------------- | ---------------------------------------- |
-| Paid Time            | paidTime                | Required | Timestamp(3) | 1658484202235 | Timestamp when payment was completed     |
-| Settled Time         | settledTime             | Required | Timestamp(3) | settledTime   | Timestamp when payment was settled       |
-| Payer Merchant ID    | payerMid                | Required | String       | 100000047500  | Paying merchant identifier               |
-| Paid Amount          | paidAmount              | Required | Money        |               | Actual amount paid                       |
-| Payee Fee Amount     | payeeFeeAmount          | Required | Money        |               | Fee charged to payee                     |
-| Payer Fee Amount     | payerFeeAmount          | Required | Money        |               | Fee charged to payer                     |
-| Settlement Amount    | settlementAmount        | Required | Money        |               | Net amount settled to payee              |
-| Payee Fee Before Tax | payeeFeeAmountBeforeTax | Required | Money        |               | Payee fee amount before tax              |
-| Payee Fee VAT        | payeeFeeVat             | Required | Money        |               | VAT amount on payee fee                  |
-| Pay Channel          | payChannel              | Required | String       | BALANCE       | Payment method used (BALANCE/CARD/etc.)  |
-| Card Info            | cardInfo                | Optional | CardInfo     |               | Card details (present for card payments) |
+- **sortPageParam**   <font color = ' #7d8793'>Object</font>   <font color = '#f19938'>Required</font>
+	- Pagination configuration.
+	
+	- **number**   <font color = ' #7d8793'>Int</font>   <font color = '#f19938'>Required</font>
+		- Current page number (0-based).
+		- Example value: 0
+	
+	- **size**   <font color = ' #7d8793'>Int</font>   <font color = '#f19938'>Required</font>
+		- Records per page configuration.
+		- Example value: 20
 
----
+- **items**   <font color = ' #7d8793'>List\<Object\></font>   <font color = '#f19938'>Required</font>
+	- Array of order records.
 
-**cardInfo**
+	- **merchantOrderNo**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- The merchant's reference number of the request.
+		- Example value: b7023000-fb84-4259-9870-8dff62c7299c
+		- Maximum length: `64`
 
-| Variable Desc. | Variable name | Required | Type   | Example value | Description                         |
-| -------------- | ------------- | -------- | ------ | ------------- | ----------------------------------- |
-| Brand          | brand         | Required | String | MasterCard    | Card brand (Visa, MasterCard, etc.) |
+	- **orderNo**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- The Botim Money's unique identify number of the order.
+		- Example value: 131658483622183687
 
----
+	- **deviceId**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- Payment device identifier.
+		- Example value: 20001019
 
-## Response Sample
+	- **status**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- Order status.
+		- Possible values: `CREATED`, `PAID_SUCCESS`, `SETTLED`, `FAILURE`
+		- Example value: SETTLED
+
+	- **product**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- Payment product type.
+		- Example value: Basic Payment Gateway
+
+	- **totalAmount**   <font color = ' #7d8793'>Money</font>   <font color = '#f19938'>Required</font>
+		- Order total amount with currency.
+		
+		- **amount**   <font color = ' #7d8793'>Decimal</font>   <font color = '#f19938'>Required</font>
+			- Example value: 100.00
+		
+		- **currency**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+			- Example value: AED
+
+	- **payeeMid**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- Receiving merchant identifier.
+		- Example value: 200000030906
+
+	- **expiredTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+		- Order expiration timestamp.
+		- Example value: 1658487222029
+
+	- **subject**   <font color = ' #7d8793'>String</font>   
+		- Order description or subject.
+		- Example value: Test
+
+	- **requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+		- Order creation timestamp.
+		- Example value: 1658519999999
+
+	- **paySceneCode**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- Payment scenario identifier.
+		- Example value: PAYPAGE
+
+	- **notifyUrl**   <font color = ' #7d8793'>String</font>   
+		- Callback URL for order notifications.
+
+	- **revoked**   <font color = ' #7d8793'>String</font>   
+		- Indicates if order was revoked.
+		- Example value: false
+
+	- **reserved**   <font color = ' #7d8793'>String</font>   
+		- Reserved field for future use.
+
+	- **paymentInfo**   <font color = ' #7d8793'>Object</font>   
+		- Payment details (present for completed orders).
+
+		- **paidTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+			- Timestamp when payment was completed.
+			- Example value: 1658484202235
+
+		- **settledTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+			- Timestamp when payment was settled.
+
+		- **payerMid**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+			- Paying merchant identifier.
+			- Example value: 100000047500
+
+		- **paidAmount**   <font color = ' #7d8793'>Money</font>   <font color = '#f19938'>Required</font>
+			- Actual amount paid.
+
+		- **payeeFeeAmount**   <font color = ' #7d8793'>Money</font>   <font color = '#f19938'>Required</font>
+			- Fee charged to payee.
+
+		- **payerFeeAmount**   <font color = ' #7d8793'>Money</font>   <font color = '#f19938'>Required</font>
+			- Fee charged to payer.
+
+		- **settlementAmount**   <font color = ' #7d8793'>Money</font>   <font color = '#f19938'>Required</font>
+			- Net amount settled to payee.
+
+		- **payeeFeeAmountBeforeTax**   <font color = ' #7d8793'>Money</font>   <font color = '#f19938'>Required</font>
+			- Payee fee amount before tax.
+
+		- **payeeFeeVat**   <font color = ' #7d8793'>Money</font>   <font color = '#f19938'>Required</font>
+			- VAT amount on payee fee.
+
+		- **payChannel**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+			- Payment method used.
+			- Possible values: `BALANCE`, `CARD`
+			- Example value: BALANCE
+
+		- **channelParam**   <font color = ' #7d8793'>Object</font>   
+			- Channel-specific parameters.
+
+			- **eciValue**   <font color = ' #7d8793'>String</font>   
+				- Electronic Commerce Indicator value.
+				- Example value: 05
+
+			- **extension**   <font color = ' #7d8793'>Object</font>   
+				- Additional channel extension data.
+
+		- **paymentInfoExtend**   <font color = ' #7d8793'>Object</font>   
+			- Extended payment information.
+
+			- **installment**   <font color = ' #7d8793'>Object</font>   
+				- Installment plan details.
+
+				- **installmentNumber**   <font color = ' #7d8793'>String</font>   
+					- Number of installments.
+					- Example value: 3
+
+				- **installmentPlan**   <font color = ' #7d8793'>String</font>   
+					- Installment plan provider.
+					- Example value: VISA
+
+				- **installmentPlanAccpId**   <font color = ' #7d8793'>String</font>   
+					- Installment plan acceptance ID.
+
+				- **installmentTotalAmount**   <font color = ' #7d8793'>Money</font>   
+					- Total installment amount.
+
+				- **installmentFirstTotalAmount**   <font color = ' #7d8793'>Money</font>   
+					- First installment amount.
+
+				- **installmentUpfrontFee**   <font color = ' #7d8793'>Money</font>   
+					- Upfront fee for installment.
+
+				- **installmentTAndC**   <font color = ' #7d8793'>String</font>   
+					- Installment terms and conditions.
+
+				- **installmentTermsVersion**   <font color = ' #7d8793'>String</font>   
+					- Version of installment terms.
+
+		- **cardInfo**   <font color = ' #7d8793'>Object</font>   
+			- Card details (present for card payments).
+
+			- **brand**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+				- Card brand.
+				- Example value: VISA
+
+			- **last4**   <font color = ' #7d8793'>String</font>   
+				- Last 4 digits of card number.
+				- Example value: 1234
+
+			- **first6**   <font color = ' #7d8793'>String</font>   
+				- First 6 digits of card number.
+				- Example value: 411111
+
+			- **cardType**   <font color = ' #7d8793'>String</font>   
+				- Type of card.
+				- Possible values: `CREDIT`, `DEBIT`
+
+			- **issueCountry**   <font color = ' #7d8793'>String</font>   
+				- Card issuing country.
+				- Example value: AE
+
+			- **cardLevel**   <font color = ' #7d8793'>String</font>   
+				- Card level.
+				- Example value: GOLD
+
+### Response Sample
 
 ```json
-// HTTP Body
+//Http Header
+{
+	"sign": "nDdClX1tAyV3qcX/Epay6AXFNRGSsWd8ysWO9SgwPrNTetSePLA9C39mGp6qRbjJeqXLEnYLwSkBu5eKdtyVX3tflGLiV2kvRjVfYpTCjXdVL2Pcnv2w+ghjHe2jL988iklk7q5AjAgdtXNphpHcTes9pk6W3bVCbvijH6at0fExUtZ91L1LrnPGELT1IJm/lFW3w4KLh0Gxs7FzDPI9RDfUemObNlRzV8kCtkWahwPgs/hBnS69GyYDKN7ihQX2UiLuP239wl6IA+VG/ZZKHPhLs8bbuOS+LKWORIp6jRt+JsAx7c/Ot1RNyOnHKxPRKJ8bVTohEp39yUz/HwG8oA=="
+}
+
+//Http Body
 {
     "head": {
-        "applyStatus": "SUCCESS",               // Application processed successfully
-        "code": "0",                            // Success response code
-        "msg": "SUCCESS",                       // Success message
-        "traceCode": "000000"                   // Trace code for debugging purposes
+        "applyStatus": "SUCCESS",
+        "code": "0",
+        "msg": "SUCCESS",
+        "traceCode": "000000"
     },
     "body": {
-        "totalElements": 6,                     // Total number of records found in query
-        "totalPages": 1,                        // Total number of pages available
+        "totalElements": 6,
+        "totalPages": 1,
         "sortPageParam": {
-            "number": 0,                        // Current page number (0-based)
-            "size": 20                          // Records per page configuration
+            "number": 0,
+            "size": 20
         },
         "items": [
             {
-                "merchantOrderNo": "b7023000-fb84-4259-9870-8dff62c7299c",  // Unique merchant order identifier
-                "orderNo": "131658483622183687",                            // Botim Money internal order number
-                "deviceId": "20001019",                                     // Payment device ID
-                "status": "SETTLED",                                        // Order has been settled successfully
+                "deviceId": "DEVICE001",
+                "expiredTime": 1770455591940,
+                "merchantOrderNo": "REQ20230415001",
+                "notifyUrl": "https://example.com/notify",
+                "orderNo": "20230415000001",
+                "paySceneCode": "JSAPI",
+                "payeeMid": "M200000030906",
                 "paymentInfo": {
-                    "paidTime": 1658484202235,                              // Unix timestamp when payment completed
-                    "settledTime": 1658484202681,                           // Unix timestamp when payment settled
-                    "payerMid": "100000047500",                             // Merchant ID of the payer
+                    "cardInfo": {
+                        "brand": "VISA",
+                        "cardLevel": "GOLD",
+                        "cardType": "CREDIT",
+                        "first6": "411111",
+                        "issueCountry": "AE",
+                        "last4": "4321"
+                    },
+                    "channelParam": {
+                        "eciValue": "05",
+                        "extension": {
+                            "AuthCode": "765210",
+                            "AcquireCode": "00",
+                            "RRN": "920003454461"
+                        }
+                    },
                     "paidAmount": {
-                        "currency": "AED",                                  // Payment currency code
-                        "amount": 2.25                                      // Amount paid by customer
+                        "amount": 100.00,
+                        "currency": "AED"
                     },
+                    "paidTime": 1770455591940,
+                    "payChannel": "VISA",
                     "payeeFeeAmount": {
-                        "currency": "AED",                                  // Fee currency
-                        "amount": 0.06                                      // Transaction fee charged to payee
-                    },
-                    "payerFeeAmount": {
-                        "currency": "AED",                                  // Payer fee currency
-                        "amount": 0.0                                       // No fee charged to payer
-                    },
-                    "settlementAmount": {
-                        "currency": "AED",                                  // Settlement currency
-                        "amount": 2.19                                      // Net amount after deducting fees
+                        "amount": 2.50,
+                        "currency": "AED"
                     },
                     "payeeFeeAmountBeforeTax": {
-                        "currency": "AED",                                  // Pre-tax fee currency
-                        "amount": 0.06                                      // Fee amount before tax calculation
+                        "amount": 2.38,
+                        "currency": "AED"
                     },
                     "payeeFeeVat": {
-                        "currency": "AED",                                  // VAT currency
-                        "amount": 0.0                                       // No VAT applied to fee
+                        "amount": 0.12,
+                        "currency": "AED"
                     },
-                    "payChannel": "BALANCE"                                 // Payment made using account balance
+                    "payerFeeAmount": {
+                        "amount": 1.50,
+                        "currency": "AED"
+                    },
+                    "payerMid": "PAYER001",
+                    "paymentInfoExtend": {
+                        "installment": {
+                            "installmentFirstTotalAmount": {
+                                "currency": "AED",
+                                "amount": 333.34
+                            },
+                            "installmentNumber": "3",
+                            "installmentPlan": "VISA",
+                            "installmentPlanAccpId": "2617c281-891c-4c95-80ca-1de398ae7701",
+                            "installmentTAndC": " [Test Bank] This is a sample T&amp;C text containing Special Ch@racters that govern the Visa Installment services. Refer to https://www.visa.com for more information. 1) Eligibility: To be eligible for \"Visa installment\" payments, you must hold a valid and active Visa credit card issued by an authorized bank. Your credit limit and repayment capacity will determine your eligibility for installment plans. 2) Installment Plan: Installments can be availed for purchases at participating merchants, subject to a minimum transaction amount. The specific installment plan (number of months, interest rate, etc.) will be determined at the time of purchase. 3) Interest &amp; Fees: 20% Interest will be charged on the unpaid principal amount. If you fail to pay any installment by the due date, a late payment fee will be charged. All fees/charges are non-refundable and subject to change. 4) Prepayment &amp; Cancellation: You may choose to prepay the entire outstanding amount at any time. However, prepayment may attract a fee. The installment plan can be cancelled if your Visa card is cancelled &lt;or if you default on payment&gt;. 5) Changes to Terms: Visa reserves the right to change these terms and conditions at any time. Any changes will be communicated to you via email or through our website. It is your responsibility to keep yourself updated with the latest terms and conditions. Please note that these terms are subject to change and it's always recommended to read the actual terms and conditions provided by the card issuer.",
+                            "installmentTermsVersion": "5",
+                            "installmentTotalAmount": {
+                                "currency": "AED",
+                                "amount": 1000.00
+                            },
+                            "installmentUpfrontFee": {
+                                "currency": "AED",
+                                "amount": 0.00
+                            }
+                        }
+                    },
+                    "settledTime": 1770455591940,
+                    "settlementAmount": {
+                        "amount": 97.50,
+                        "currency": "AED"
+                    }
                 },
-                "product": "Basic Payment Gateway",                         // Botim Money product type used
+                "requestTime": 1770455591940,
+                "reserved": "reserved_data",
+                "revoked": "false",
+                "status": "PAID_SUCCESS",
+                "subject": "Test Order Payment",
                 "totalAmount": {
-                    "amount": 2.25,                                         // Total order amount
-                    "currency": "AED"                                       // Order currency
-                },
-                "payeeMid": "200000030906",                                 // Merchant ID receiving payment
-                "expiredTime": 1658487222029,                               // Unix timestamp when order expires
-                "subject": "test",                                          // Order description/subject
-                "requestTime": 1658519999999,                               // Unix timestamp when order was created
-                "paySceneCode": "PAYPAGE"                                   // Payment scenario code
+                    "amount": 100.00,
+                    "currency": "AED"
+                }
             },
             {
-                "merchantOrderNo": "991d90e1-a0c4-4460-bdac-db876eb6d78f",  // Second order example - created but unpaid
+                "merchantOrderNo": "991d90e1-a0c4-4460-bdac-db876eb6d78f",
                 "orderNo": "131658481358170925",
                 "deviceId": "20001019",
-                "status": "CREATED",                                        // Order created but payment not completed
+                "status": "CREATED",
                 "product": "Basic Payment Gateway",
                 "totalAmount": {
                     "amount": 2.25,
@@ -237,10 +436,9 @@ The body in the HTTP Body are returned only when `applyStatus` is `SUCCESS` and 
                 "subject": "test",
                 "requestTime": 1658481358908,
                 "paySceneCode": "PAYPAGE"
-                // Note: No paymentInfo since order is not paid yet
             },
             {
-                "merchantOrderNo": "c4ccbb32-6420-42ea-bc6c-14e8b3f39f33",  // Third order - also created but unpaid
+                "merchantOrderNo": "c4ccbb32-6420-42ea-bc6c-14e8b3f39f33",
                 "orderNo": "131658480856167343",
                 "deviceId": "20001019",
                 "status": "CREATED",
@@ -256,10 +454,10 @@ The body in the HTTP Body are returned only when `applyStatus` is `SUCCESS` and 
                 "paySceneCode": "PAYPAGE"
             },
             {
-                "merchantOrderNo": "cc63d61e-8caf-436d-a3c6-314318c8c6ad",  // Fourth order - failed payment
+                "merchantOrderNo": "cc63d61e-8caf-436d-a3c6-314318c8c6ad",
                 "orderNo": "131658479615162180",
                 "deviceId": "20001019",
-                "status": "FAILURE",                                        // Payment attempt failed
+                "status": "FAILURE",
                 "product": "Basic Payment Gateway",
                 "totalAmount": {
                     "amount": 2.25,
@@ -272,7 +470,7 @@ The body in the HTTP Body are returned only when `applyStatus` is `SUCCESS` and 
                 "paySceneCode": "PAYPAGE"
             },
             {
-                "merchantOrderNo": "39918222-77f8-4a86-a33f-94d3095dfae1",  // Fifth order - another failed payment
+                "merchantOrderNo": "39918222-77f8-4a86-a33f-94d3095dfae1",
                 "orderNo": "131658478925159905",
                 "deviceId": "20001019",
                 "status": "FAILURE",
@@ -288,7 +486,7 @@ The body in the HTTP Body are returned only when `applyStatus` is `SUCCESS` and 
                 "paySceneCode": "PAYPAGE"
             },
             {
-                "merchantOrderNo": "67a74918-95f4-4367-a265-c06b24bfd335",  // Sixth order - created status
+                "merchantOrderNo": "67a74918-95f4-4367-a265-c06b24bfd335",
                 "orderNo": "131658478570157755",
                 "deviceId": "20001019",
                 "status": "CREATED",
@@ -300,8 +498,65 @@ The body in the HTTP Body are returned only when `applyStatus` is `SUCCESS` and 
                 "payeeMid": "200000030906",
                 "expiredTime": 1658478690961,
                 "subject": "test",
-                "requestTime": 1658433600000,                               // Earlier request time than others
+                "requestTime": 1658433600000,
                 "paySceneCode": "PAYPAGE"
+            },
+            {
+                "deviceId": "",
+                "expiredTime": 1769685049527,
+                "merchantOrderNo": "aaff0b71b5b54945a33dfa4da227ab20",
+                "notifyUrl": "https://example.com/notify",
+                "orderNo": "131769658643041813",
+                "paySceneCode": "DIRECTPAY",
+                "payeeMid": "200000030906",
+                "paymentInfo": {
+                    "authCode": "12487763",
+                    "cardInfo": {
+                        "brand": "VISA",
+                        "first6": "54323",
+                        "last4": "1234",
+                        "cardLevel": "PLATINUM",
+                        "cardType": "DC",
+                        "issueCountry": "UAE"
+                    },
+                    "paidAmount": {
+                        "currency": "AED",
+                        "amount": 100.00
+                    },
+                    "paidTime": 1769685049527,
+                    "payChannel": "CARD",
+                    "payeeFeeAmount": {
+                        "currency": "AED",
+                        "amount": 5.00
+                    },
+                    "payeeFeeAmountBeforeTax": {
+                        "currency": "AED",
+                        "amount": 4.50
+                    },
+                    "payeeFeeVat": {
+                        "currency": "AED",
+                        "amount": 0.50
+                    },
+                    "payerFeeAmount": {
+                        "currency": "AED",
+                        "amount": 2.00
+                    },
+                    "payerMid": "PAYER_TEST",
+                    "settledTime": 1769685049527,
+                    "settlementAmount": {
+                        "currency": "AED",
+                        "amount": 95.00
+                    }
+                },
+                "requestTime": 1769685049527,
+                "reserved": "reserved",
+                "revoked": "false",
+                "status": "CREATED",
+                "subject": "Test Order",
+                "totalAmount": {
+                    "amount": 100.00,
+                    "currency": "AED"
+                }
             }
         ]
     }

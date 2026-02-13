@@ -2,70 +2,35 @@
 - **merchantOrderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
   - Unique identifier for the merchant's order.  
   - Example value: `Me23484`
-
+  - Maximum length: `64`
 - **holderName** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
   - Name of the beneficiary. Transmitted securely (encrypted).  
   - Example value: `Bruce Lee`
-
-- **iban** <font color='#7d8793'>String</font>  
+  - Maximum length: `100`
+- **Iban** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
   - International Bank Account Number. Transmitted securely (encrypted).  
-
+  - Maximum length: `34`
 - **swiftCode** <font color='#7d8793'>String</font>  
   - Improves accuracy if provided.  
   - Example value: `ARABAEADDER`
-
+  - Maximum length: `11`
 - **beneficiaryAddress** <font color='#7d8793'>String</font>  
   - Transmitted securely.  
     If the bank account is personal, this field is required.  
     The combined length of `holderName` and `beneficiaryAddress` must not exceed 140 characters, or the transfer may fail.  
   - Example value: `Liwa Street off Khaliffa Street`
-
+  - Maximum length: `100`
 - **amount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
   - Payment amount for the transaction.  
   - Example value: `12.34`
-
 - **memo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
   - Remarks or notes for the payment.  
   - Example value: `Bonus`
-
+  - Maximum length: `128`
 - **notifyUrl** <font color='#7d8793'>String</font>  
   - URL for receiving backend notifications.  
-
-- **accountNo** <font color='#7d8793'>String</font>  
-  - Transmitted securely (available since v2.1).  
-  - Example value: `2000000000001`
-
-- **networkCode** <font color='#7d8793'>String</font>  
-  - Defaults to `LOCAL` (available since v2.1).  
-  - Example value: `LOCAL`
-
-- **bankName** <font color='#7d8793'>String</font>  
-  - Name of the bank.  
-
-- **countryCode** <font color='#7d8793'>String</font>  
-  - Defaults to `AE` (available since v2.1).  
-  - Example value: `AE`
-
-- **cityCode** <font color='#7d8793'>String</font>  
-  - Available since v2.3.  
-
-- **fundoutCurrencyCode** <font color='#7d8793'>String</font>  
-  - Defaults to `AED` (available since v2.1).  
-  - Example value: `AED`
-
-- **fedwireCode** <font color='#7d8793'>String</font>  
-  - Fedwire code (available since v2.1).  
-
-- **branchName** <font color='#7d8793'>String</font>  
-  - Name of the bank branch.  
-
-- **intermediaryBank** <font color='#7d8793'>String</font>  
-  - Intermediary bank code (available since v2.1).  
-
-- **beneficiaryType** <font color='#7d8793'>String</font>  
-  - Defaults to `IBAN` (available since v2.1).  
-  - Example value: `IBAN`
-
-- **purposeCode** <font color='#7d8793'>String</font>  
-  - Code indicating the purpose of the transaction.  
-  - Example value: `COM`
+  - Maximum length: `200`
+- **riskInfo** <font color='#7d8793'>String</font>  
+  - Extension field in JSON format
+  - Example value: `{"scene":"casino","level":"hight"}`
+  - Maximum length: `255`
