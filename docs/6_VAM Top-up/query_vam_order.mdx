@@ -3,7 +3,6 @@ sidebar_position: 2
 toc_max_heading_level: 6
 ---
 import VAMDepositOrder from './_vamDepositOrder.mdx'
-import PlaceRefundOrderResponse from './_PlaceRefundOrderResponse.mdx'
 import ResponseHeader from './_response-header.mdx'
 
 
@@ -145,12 +144,6 @@ When Botim Money sends response, Botim Money will use its own private key to sig
 Body is returned only when `applystatus` = `success`, and `code` = `0`.
 If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error.again.
 
-- **PlaceRefundOrderResponse**   <font color = ' #7d8793'>Object</font>
-
-  <details open={true}>
-  <summary>Attributes</summary>
-    <PlaceRefundOrderResponse/>
-  </details>
 
 - **orders**   <font color = ' #7d8793'>List</font>   <font color = '#f19938'>Required</font>
 	- Array of VAM order records.
