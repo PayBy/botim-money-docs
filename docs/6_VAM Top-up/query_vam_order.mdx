@@ -3,6 +3,9 @@ sidebar_position: 2
 toc_max_heading_level: 6
 ---
 import VAMDepositOrder from './_vamDepositOrder.mdx'
+import PlaceRefundOrderResponse from './_PlaceRefundOrderResponse.mdx'
+import ResponseHeader from '../_response-header.mdx'
+
 
 
 # Query VAM Order
@@ -130,32 +133,26 @@ When Botim Money sends response, Botim Money will use its own private key to sig
 **head** 
 
   <details>
-    <summary>Attributes</summary>
-
-- **applyStatus**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
-
-  Application status of the request. Possible values: SUCCESS, FAIL, ERROR.
-
-- **code**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
-
-  Response code. 0 indicates success.
-
-- **msg**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
-
-  Response message description.
-
+  <summary>Attributes</summary>
+    <ResponseHeader/>
   </details>
+
 
 **body** 
 
 **<font color = '#f19938'>Notice </font>**
 
 Body is returned only when `applystatus` = `success`, and `code` = `0`.
-If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
+If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error.again.
 
----
+- **transferToBankOrder**   <font color = ' #7d8793'>Object</font>
 
-- **orders**   <font color = ' #7d8793'>List\<Object\></font>   <font color = '#f19938'>Required</font>
+  <details open={true}>
+  <summary>Attributes</summary>
+    <PlaceRefundOrderResponse/>
+  </details>
+
+- **orders**   <font color = ' #7d8793'>List</font>   <font color = '#f19938'>Required</font>
 	- Array of VAM order records.
 
 	- **amount**   <font color = ' #7d8793'>Money</font>   <font color = '#f19938'>Required</font>
