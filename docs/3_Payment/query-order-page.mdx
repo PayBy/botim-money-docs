@@ -15,7 +15,7 @@ import AcquireOrderPayer from './_acquire-order-payer.mdx'
 The `queryOrderPage` interface enables merchants to query multiple orders in a paginated format, helping them retrieve order information based on date ranges, device IDs, and order statuses.
 
 
-## Interface URL
+## API URL
 
 - UAT: https://uat.test2pay.com/sgs/api/acquire2Query/queryOrderPage
 - Production: https://api.payby.com/sgs/api/acquire2Query/queryOrderPage
@@ -50,11 +50,11 @@ The `queryOrderPage` interface enables merchants to query multiple orders in a p
 		- Example value: 2022-07-22
 		- Maximum length: `10`
 
-	- **deviceIdList**   <font color = ' #7d8793'>List\<String\></font>    
+	- **deviceIdList**   <font color = ' #7d8793'>List</font>    
 		- Filter by specific device IDs. Empty array returns all devices.
 		- Example value: []
 
-	- **includeStatusList**   <font color = ' #7d8793'>List\<String\></font>   
+	- **includeStatusList**   <font color = ' #7d8793'>List</font>   
 		- Filter by order status. Empty array returns all statuses.
 		- Possible values: `CREATED`, `PAID_SUCCESS`, `SETTLED`, `FAILURE`
 		- Example value: []
@@ -142,7 +142,7 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 		- Records per page configuration.
 		- Example value: 20
 
-- **items**   <font color = ' #7d8793'>List\<Object\></font>   <font color = '#f19938'>Required</font>
+- **items**   <font color = ' #7d8793'>List</font>   <font color = '#f19938'>Required</font>
 	- Array of order records.
 
 	- **merchantOrderNo**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>

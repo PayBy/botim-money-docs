@@ -3,14 +3,14 @@ sidebar_position: 1
 toc_max_heading_level: 6
 ---
 
+import TransferValidationOrder from './_transfer-validation-order.mdx'
+import BizContent from './_biz-content.mdx'
+import ResponseHead from '../4_Refund/_response-head.mdx'
+import RequestHeader from '../_request-header.mdx'
 
 # Transfer Validation
 
-The Transfer to Wallet Validation API allows partners to pre-check transfer requests before execution. It validates authentication, request parameters, beneficiary KYC status, and wallet limits to ensure only eligible transfers proceed.
-
-This validation process improves transaction success rates, reduces operational overhead, and provides clear, actionable error codes to enhance payout reliability.
-
-> **Note:** This is a validation-only endpoint. No actual transfer is executed. Use this API to verify transfer eligibility before calling the actual transfer API.
+This interface provides merchants with the ability to validate transfers to Botim Money user before executing the transfer.
 
 ## API URL
 
@@ -19,194 +19,137 @@ This validation process improves transaction success rates, reduces operational 
 
 ## Request
 
-### HTTP Header
+### Http Header
 
-The HTTP header is required for authentication and request validation. All validation requests must include proper authentication credentials and signature.
+<details>
+  <summary>Attributes</summary>
+  <RequestHeader/>
+</details>
 
-- **Content-Language** <font color='#7d8793'>String</font> <font color='#999999'>Optional</font>  
-  
-  - Specifies the preferred response language.  
-  - Default value: `en`
+### Http Body
 
-- **Content-Type** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
-  
-  - Specifies the media type of the request body.  
-  - Must be set to `application/json`
+**requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
 
-- **Partner-Id** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
-  
-  - The unique partner identifier assigned during onboarding.  
-  - Used to identify and authenticate the partner making the request.
-  - Example value: `200000018132`
+Request time of the order. If the request time is more than 15 minutes away from the current time, the request will be rejected. This parameter is used to prevent repeated requests for orders that should have been cancelled due to timeouts.
 
-- **sign** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
-  
-  - RSA signature generated for request authentication and integrity verification.  
-  - Must be generated per request following the signature generation guidelines.
-  - Format: Base64-encoded RSA signature string
-  - Example value: `RSA_SIGNATURE_BASE64_STRING`
+Example value: 1581493898000
 
-### HTTP Header Sample
+
+**bizContent**   <font color = ' #7d8793'>Object</font>  
+
+  <details open={true}>
+  <summary>Attributes</summary>
+    <BizContent/>
+  </details>
+
+
+### Request Sample
 
 ```json
+//Http Header
 {
-  "Content-Language": "en",
-  "Content-Type": "application/json",
-  "Partner-Id": "200000018132",
-  "sign": "RSA_SIGNATURE_BASE64_STRING"
+    "Content-Language": "en",
+    "Content-Type": "application/json",
+    "Partner-Id": "200000429066",
+    "sign": "aMs582GhLeRv4fL3xqw7nN4dlzWS+ZVzdsNXT6rKwPpj7qOM4Y7qZBP3Yl6HogILy4IyX1tp8M7D92rK37hUgJg814odd1INIuy4l+KTRPA1Y3F8y0hVGXak0ddeVcOM3XNN+YEhvPClBx4EpmfWVqY3A2qNJTo3ugwr6uZiVGA38OjHRLZthGa+5nea0DtLaZYQnOGWaCI6fPIBZ7qr9HTiVkIsAp3N4m4cHR+3Rvpdbzu2TZoScA358D9wGmF5UOkbHCjwNV03I3O8HzaKUqMe4jnXZ+lJ0TMmxmqLrcMyMztJjZMQB9S4lXMW2+TqMrdNgLQv3GLiQ9IFvhUVEg=="
 }
-```
 
-### HTTP Body
-
-**bizContent** <font color='#7d8793'>Object</font> <font color='#f19938'>Required</font> 
-
-Contains the transfer details to be validated.
-
-- **beneficiaryIdentityType** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
-  
-  - Specifies how the beneficiary will be identified for the transfer.  
-  - Possible values:  
-    - `PHONE_NO`: Identify beneficiary by mobile phone number  
-    - `MEMBER_ID`: Identify beneficiary by Botim Money member ID  
-  - Maximum length: `20`
-
-- **beneficiaryIdentity** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font> 
-
-  - The beneficiary identifier value corresponding to the selected identity type.  
-  - Must be encrypted using SHA-256.
-  - Example values:  
-    - `+971-585812345` (for `PHONE_NO`)  
-    - `100006514321` (for `MEMBER_ID`)  
-  - Maximum length: `20`
-
-- **amount** <font color='#7d8793'>Decimal</font> <font color='#f19938'>Required</font>  
-
-  - The transfer amount to validate in AED.  
-  - Must be greater than 0 and less than or equal to 10,000 AED per transaction.  
-  - Example value: `1.21`
-
-- **currency** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font> 
-
-  - Currency of the transfer.  
-  - Only `AED` is supported.  
-  - Fixed value: `AED`
-
-**requestTime** <font color='#7d8793'>Long</font> <font color='#f19938'>Required</font>
-
-  - Request timestamp in epoch milliseconds.  
-  - Must be within a 15-minute window from the current server time.  
-  - Example value: `1642598400000`
-
-### HTTP Body Sample
-
-```json
+//Http Body
 {
-  "bizContent": {
-    "amount": {
-      "amount": 1.21,
-      "currency": "AED"
-    },
-    "beneficiaryIdentity": "KUsQ3Gs48UsPET49wmDr/PDOdbFEqBPCLHxkA==",
-    "beneficiaryIdentityType": "PHONE_NO"
-  },
-  "requestTime": 1585142886252
+    "requestTime": 1581405399656,
+    "bizContent": {
+        "amount": {
+            "amount": 1,
+            "currency": "AED"
+        },
+        "beneficiaryIdentity": "P3376529",
+        "beneficiaryIdentityType": "MEMBER_ID",
+        "memo": "fundout test",
+        "merchantOrderNo": "53d10fb743f2488dd4c746341a1c",
+        "notifyUrl": "https://www.yoursite.com"
+    }
 }
 ```
 
 ## Response
 
-### Response Body
+### Http Header
 
-**head** <font color='#7d8793'>Object</font> <font color='#f19938'>Required</font> 
-Response metadata containing validation status and trace information.
 
-- **applyStatus** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
-  - Overall status of the validation request.  
-  - Possible values:  
-    - `SUCCESS`: Validation request processed successfully  
-    - `FAIL`: Validation request failed  
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
 
-- **code** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
-  - Response code indicating the validation result.  
-  - `0` indicates successful validation.  
-  - Refer to Response Codes section for all possible values.
+When Botim Money sends response, Botim Money will use its own private key to sign the message, and the merchant uses Botim Money's public key to verify the signature. If the verification is passed, it proves that the response was sent by Botim Money and not faked by others.
 
-- **msg** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
-  - Human-readable message describing the validation result.  
-  - Example value: `SUCCESS`
 
-- **traceCode** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
-  - Unique trace identifier for debugging and support purposes.  
-  - Example value: `ABC123XYZ`
+### Http Body
 
-**body** <font color='#7d8793'>Object</font> <font color='#f19938'>Required</font>  
-Contains the validated business content.
+**head** 
 
-- **bizContent** <font color='#7d8793'>Object</font> <font color='#f19938'>Required</font>  
-  - Validated transfer request details.
+<details>
+  <summary>Attributes</summary>
+    <ResponseHead />
+  </details>
 
-  - **amount** <font color='#7d8793'>Object</font> <font color='#f19938'>Required</font>  
-    - Validated transfer amount details.  
-    - **amount** <font color='#7d8793'>Decimal</font>: The validated transfer amount (e.g., `1.21`)  
-    - **currency** <font color='#7d8793'>String</font>: Currency code (e.g., `AED`)
+**body** 
 
-  - **beneficiaryIdentity** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
-    - Beneficiary identity in encrypted format as provided in the request.  
-    - Example value: `a25c5bff...`
+**<font color = '#f19938'>Notice</font>**
 
-  - **beneficiaryIdentityType** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
-    - Type of beneficiary identifier validated.  
-    - Possible values:  
-      - `PHONE_NO`: Mobile phone number  
-      - `MEMBER_ID`: Botim Money member ID
+Body is returned only when `applystatus` = `success`, and `code` = `0`.
+If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
 
-  - **requestTime** <font color='#7d8793'>Long</font> <font color='#f19938'>Required</font>  
-    - Timestamp from the original request in epoch milliseconds.  
-    - Example value: `1585142886252`
 
-  - **status** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
-    - Final validation result for the transfer eligibility.  
-    - Possible values:  
-      - `SUCCESS`: Transfer is eligible and can proceed  
-      - `FAIL`: Transfer validation failed; do not proceed
+
+- **validateOrder**   <font color = ' #7d8793'>Object</font>
+
+  <details open={true}>
+  <summary>Attributes</summary>
+    <TransferValidationOrder/>
+  </details>
 
 ### Response Sample
 
 ```json
+// Http Header
 {
-  "head": {
-    "applyStatus": "SUCCESS",
-    "code": "0",
-    "msg": "SUCCESS",
-    "traceCode": "ABC123XYZ"
-  },
-  "body": {
-    "bizContent": {
-      "amount": {
-        "amount": 1.21,
-        "currency": "AED"
-      },
-      "beneficiaryIdentity": "a25c5bff...",
-      "beneficiaryIdentityType": "PHONE_NO",
-      "requestTime": 1585142886252,
-      "status": "SUCCESS"
+    "sign": "nDdClX1tAyV3qcX/Epay6AXFNRGSsWd8ysWO9SgwPrNTetSePLA9C39mGp6qRbjJeqXLEnYLwSkBu5eKdtyVX3tflGLiV2kvRjVfYpTCjXdVL2Pcnv2w+ghjHe2jL988iklk7q5AjAgdtXNphpHcTes9pk6W3bVCbvijH6at0fExUtZ91L1LrnPGELT1IJm/lFW3w4KLh0Gxs7FzDPI9RDfUemObNlRzV8kCtkWahwPgs/hBnS69GyYDKN7ihQX2UiLuP239wl6IA+VG/ZZKHPhLs8bbuOS+LKWORIp6jRt+JsAx7c/Ot1RNyOnHKxPRKJ8bVTohEp39yUz/HwG8oA=="
+}
+
+// Http Body
+{
+    "head": {
+        "applyStatus": "SUCCESS",
+        "code": "0",
+        "msg": "SUCCESS"
+    },
+    "body": {
+        "validateOrder": {
+            "amount": {
+                "amount": 1.00,
+                "currency": "AED"
+            },
+            "beneficiaryIdentity": "7b32e17903341eb4759f6b50711d45ff157db95361a16e2cacc608fbcce4deb1",
+            "beneficiaryIdentityType": "MEMBER_ID",
+            "requestTime": 1770204118747,
+            "status": "SUCCESS"
+        }
     }
-  }
 }
 ```
 
 ## Response Codes
 
-| Code | Message | Cause | Workaround |
-|------|---------|-------|------------|
-| 0 | SUCCESS | Validation passed successfully | Proceed with transfer execution |
-| 400 | INVALID_PARAMETER | Invalid or missing request parameter | Review and adjust request parameters |
-| 402 | RATE_LIMIT_REJECT | Too many validation requests in a short period | Reduce request frequency and retry |
-| 403 | UNAUTHORIZED | Invalid authentication token, Partner-Id, or signature | Refresh credentials and verify authentication details |
-| 404 | SERVICE_NOT_AVAILABLE | Validation API service is currently unavailable | Contact support team for assistance |
-| 500 | SYSTEM_ERROR | Internal system error occurred | Retry the validation request later |
-| 504 | SERVICE_TIMEOUT | Validation request timeout occurred | Retry the validation request later |
-| 62026 | PRODUCT_IS_NOT_APPLIED | Partner not enabled for this product | Apply for product access through support |
-| 62114 | WALLET_CANNOT_RECEIVE_FUNDS | Beneficiary wallet is inactive, limit breached, or restricted | Do not initiate transfer; verify beneficiary wallet status |
-| 62115 | WALLET_DOES_NOT_EXIST | Beneficiary wallet does not exist or is inactive | Do not initiate transfer; verify beneficiary identity |
+
+| **Code**  | **Message**                   | **Cause**                                                           | **Workaround**                        |
+|-------|---------------------------|------------------------------------------------------------------|----------------------------------|
+| 0     | SUCCESS                   | Success                                                          |                                  |
+| 400   | INVALID_PARAMETER         | Invalid parameter                                                | Adjust request parameters        |
+| 400   | REQUESTTIME_TOO_EARLY     | Request time is too far in the past                              | Adjust request time              |
+| 400   | REQUESTTIME_TOO_LATER     | Request time is too far in the future                            | Adjust request time              |
+| 402   | RATE_LIMIT_REJECT         | Too many requests                                                | Reduce request frequency         |
+| 403   | UNAUTHORIZED              | API not authorized                                               | Contact Botim Money              |
+| 404   | SERVICE_NOT_AVAILABLE     | API service unavailable                                          | Contact Botim Money              |
+| 500   | SYSTEM_ERROR              | System error                                                     | Contact Botim Money and retry later |
+| 504   | SERVICE_TIMEOUT           | Service timeout                                                  | Retry later                      |
+| 62026 | PRODUCT_IS_NOT_APPLIED    | Product not applied for                                          | Apply for the product            |
+| 62114 | WALLET_CANNOT_RECEIVE_FUNDS | Recipient KYC expired, amount limit exceeded, recipient status abnormal | Contact Botim Money              |
+| 62115 | WALLET_DOES_NOT_EXIST     | Recipient KYC invalid                                            | Contact Botim Money              |
