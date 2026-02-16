@@ -103,89 +103,200 @@ When Botim Money sends response, Botim Money will use its own private key to sig
 
 **body** 
 
----
-
 **<font color = '#f19938'>Notice </font>**
 
 Body is returned only when `applystatus` = `success`, and `code` = `0`.
 If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
 
-**GetOrderResponse**
 
-- **acquireOrder** <font color='#7d8793'>AcquireOrder</font> <font color='#f19938'>Required</font>  
-  - Complete order information object.
+- **totalElements**   <font color = ' #7d8793'>Int</font>   <font color = '#f19938'>Required</font>
+	- Total number of records found in the query.
+	- Example value: 6
 
----
+- **totalPages**   <font color = ' #7d8793'>Int</font>   <font color = '#f19938'>Required</font>
+	- Total number of pages available.
+	- Example value: 1
 
-**PaymentInfo**
+- **sortPageParam**   <font color = ' #7d8793'>Object</font>   <font color = '#f19938'>Required</font>
+	- Pagination configuration.
+	
+	- **number**   <font color = ' #7d8793'>Int</font>   <font color = '#f19938'>Required</font>
+		- Current page number (0-based).
+		- Example value: 0
+	
+	- **size**   <font color = ' #7d8793'>Int</font>   <font color = '#f19938'>Required</font>
+		- Records per page configuration.
+		- Example value: 20
 
-- **paidTime** <font color='#7d8793'>Timestamp(3)</font> <font color='#f19938'>Required</font>  
-  - Timestamp when payment was completed.  
-  - Example value: `1658484202235`
+- **items**   <font color = ' #7d8793'>List</font>   <font color = '#f19938'>Required</font>
+	- Array of order records.
 
-- **payerMid** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
-  - Paying merchant identifier.  
-  - Example value: `100000047500`
+	- **merchantOrderNo**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- The merchant's reference number of the request.
+		- Example value: b7023000-fb84-4259-9870-8dff62c7299c
+		- Maximum length: `64`
 
-- **paidAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
-  - Actual amount paid by the customer.
+	- **orderNo**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- The Botim Money's unique identify number of the order.
+		- Example value: 131658483622183687
 
-- **payeeFeeAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
-  - Transaction fee charged to the payee.
+	- **deviceId**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- Payment device identifier.
+		- Example value: 20001019
 
-- **payerFeeAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
-  - Transaction fee charged to the payer.
+	- **status**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- Order status.
+		- Possible values: `CREATED`, `PAID_SUCCESS`, `SETTLED`, `FAILURE`
+		- Example value: SETTLED
 
-- **settlementAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
-  - Net amount settled to payee after all deductions.
+	- **product**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- Payment product type.
+		- Example value: Basic Payment Gateway
 
-- **payChannel** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
-  - Payment method used for the transaction.  
-  - Possible values: `BALANCE`, `CARD`, `BANKCARD`, `INSTALLMENT`, `EWALLET`, etc.  
-  - Example value: `BALANCE`
+	- **totalAmount**   <font color = ' #7d8793'>Money</font>   <font color = '#f19938'>Required</font>
+		- Order total amount with currency.
+		
+		- **amount**   <font color = ' #7d8793'>Decimal</font>   <font color = '#f19938'>Required</font>
+			- Example value: 100.00
+		
+		- **currency**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+			- Example value: AED
 
-- **channelParam** <font color='#7d8793'>ChannelParam</font> <font color='#49cc90'>Optional</font>  
-  - Additional parameters specific to the payment channel.
+	- **payeeMid**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- Receiving merchant identifier.
+		- Example value: 200000030906
 
-- **paymentInfoExtend** <font color='#7d8793'>PaymentInfoExtend</font> <font color='#49cc90'>Optional</font>  
-  - Extended payment information for additional details.
+	- **expiredTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+		- Order expiration timestamp.
+		- Example value: 1658487222029
 
-- **cardInfo** <font color='#7d8793'>CardInfo</font> <font color='#49cc90'>Optional</font>  
-  - Card details object (present only for card payments).
+	- **subject**   <font color = ' #7d8793'>String</font>   
+		- Order description or subject.
+		- Example value: Test
 
----
+	- **requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+		- Order creation timestamp.
+		- Example value: 1658519999999
 
-**CardInfo**
+	- **paySceneCode**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+		- Payment scenario identifier.
+		- Example value: PAYPAGE
 
-- **brand** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
-  - Card brand name (e.g., Visa, Mastercard, etc.).
+	- **notifyUrl**   <font color = ' #7d8793'>String</font>   
+		- Callback URL for order notifications.
 
-- **last4** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
-  - Last 4 digits of the card number.
+	- **revoked**   <font color = ' #7d8793'>String</font>   
+		- Indicates if order was revoked.
+		- Example value: false
 
-- **first6** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
-  - First 6 digits of the card number (BIN).
+	- **reserved**   <font color = ' #7d8793'>String</font>   
+		- Reserved field for future use.
 
-- **cardType** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
-  - Type of card (e.g., DEBIT, CREDIT).
+	- **paymentInfo**   <font color = ' #7d8793'>Object</font>   
+		- Payment details (present for completed orders).
 
-- **issueCountry** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
-  - Country code where the card was issued.
+		- **paidTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+			- Timestamp when payment was completed.
+			- Example value: 1658484202235
 
-- **cardLevel** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
-  - Card level or tier (e.g., Standard, Gold, Platinum).
+		- **settledTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+			- Timestamp when payment was settled.
 
-- **cardToken** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
-  - Tokenized representation of the card for secure storage.
+		- **payerMid**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+			- Paying merchant identifier.
+			- Example value: 100000047500
 
-- **cardTokenExpTime** <font color='#7d8793'>Date</font> <font color='#49cc90'>Optional</font>  
-  - Expiration time of the card token.
+		- **paidAmount**   <font color = ' #7d8793'>Money</font>   <font color = '#f19938'>Required</font>
+			- Actual amount paid.
 
-- **expMonth** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
-  - Card expiration month (MM format).
+		- **payeeFeeAmount**   <font color = ' #7d8793'>Money</font>   <font color = '#f19938'>Required</font>
+			- Fee charged to payee.
 
-- **expYear** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
-  - Card expiration year (YYYY format).
+		- **payerFeeAmount**   <font color = ' #7d8793'>Money</font>   <font color = '#f19938'>Required</font>
+			- Fee charged to payer.
+
+		- **settlementAmount**   <font color = ' #7d8793'>Money</font>   <font color = '#f19938'>Required</font>
+			- Net amount settled to payee.
+
+		- **payeeFeeAmountBeforeTax**   <font color = ' #7d8793'>Money</font>   <font color = '#f19938'>Required</font>
+			- Payee fee amount before tax.
+
+		- **payeeFeeVat**   <font color = ' #7d8793'>Money</font>   <font color = '#f19938'>Required</font>
+			- VAT amount on payee fee.
+
+		- **payChannel**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+			- Payment method used.
+			- Possible values: `BALANCE`, `CARD`
+			- Example value: BALANCE
+
+		- **channelParam**   <font color = ' #7d8793'>Object</font>   
+			- Channel-specific parameters.
+
+			- **eciValue**   <font color = ' #7d8793'>String</font>   
+				- Electronic Commerce Indicator value.
+				- Example value: 05
+
+			- **extension**   <font color = ' #7d8793'>Object</font>   
+				- Additional channel extension data.
+
+		- **paymentInfoExtend**   <font color = ' #7d8793'>Object</font>   
+			- Extended payment information.
+
+			- **installment**   <font color = ' #7d8793'>Object</font>   
+				- Installment plan details.
+
+				- **installmentNumber**   <font color = ' #7d8793'>String</font>   
+					- Number of installments.
+					- Example value: 3
+
+				- **installmentPlan**   <font color = ' #7d8793'>String</font>   
+					- Installment plan provider.
+					- Example value: VISA
+
+				- **installmentPlanAccpId**   <font color = ' #7d8793'>String</font>   
+					- Installment plan acceptance ID.
+
+				- **installmentTotalAmount**   <font color = ' #7d8793'>Money</font>   
+					- Total installment amount.
+
+				- **installmentFirstTotalAmount**   <font color = ' #7d8793'>Money</font>   
+					- First installment amount.
+
+				- **installmentUpfrontFee**   <font color = ' #7d8793'>Money</font>   
+					- Upfront fee for installment.
+
+				- **installmentTAndC**   <font color = ' #7d8793'>String</font>   
+					- Installment terms and conditions.
+
+				- **installmentTermsVersion**   <font color = ' #7d8793'>String</font>   
+					- Version of installment terms.
+
+		- **cardInfo**   <font color = ' #7d8793'>Object</font>   
+			- Card details (present for card payments).
+
+			- **brand**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+				- Card brand.
+				- Example value: VISA
+
+			- **last4**   <font color = ' #7d8793'>String</font>   
+				- Last 4 digits of card number.
+				- Example value: 1234
+
+			- **first6**   <font color = ' #7d8793'>String</font>   
+				- First 6 digits of card number.
+				- Example value: 411111
+
+			- **cardType**   <font color = ' #7d8793'>String</font>   
+				- Type of card.
+				- Possible values: `CREDIT`, `DEBIT`
+
+			- **issueCountry**   <font color = ' #7d8793'>String</font>   
+				- Card issuing country.
+				- Example value: AE
+
+			- **cardLevel**   <font color = ' #7d8793'>String</font>   
+				- Card level.
+				- Example value: GOLD
 
 ### Response Sample
 
@@ -197,177 +308,243 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 
 //Http Body
 {
-  "head": {
-    "applyStatus": "SUCCESS",
-    "code": "0",
-    "msg": "SUCCESS"
-  },
-  "body": {
-    "acquireOrder": {
-      "accessoryContent": {
-        "amountDetail": {
-          "amount": {
-            "amount": 95.00,
-            "currency": "AED"
-          },
-          "discountableAmount": {
-            "amount": 100.00,
-            "currency": "AED"
-          },
-          "tipAmount": {
-            "amount": 0.00,
-            "currency": "AED"
-          },
-          "vatAmount": {
-            "amount": 5.00,
-            "currency": "AED"
-          }
+    "head": {
+        "applyStatus": "SUCCESS",
+        "code": "0",
+        "msg": "SUCCESS",
+        "traceCode": "000000"
+    },
+    "body": {
+        "totalElements": 6,
+        "totalPages": 1,
+        "sortPageParam": {
+            "number": 0,
+            "size": 20
         },
-        "goodsDetail": {
-          "body": "Test goods description body",
-          "categoriesTree": "Electronics > Mobile > Accessories",
-          "goodsCategory": "Electronics",
-          "goodsId": "GOODS_001",
-          "goodsName": "Test Product",
-          "price": {
-            "amount": 100.00,
-            "currency": "AED"
-          },
-          "quantity": 1,
-          "showUrl": "https://merchant.example.com/product/GOODS_001"
-        },
-        "terminalDetail": {
-          "location": "Dubai, UAE",
-          "merchantName": "Test Merchant",
-          "operatorId": "OP_001",
-          "storeId": "STORE_001",
-          "storeName": "Test Store",
-          "terminalId": "TERM_001"
-        }
-      },
-      "deviceId": "mock_device_001",
-      "expiredTime": 1770451403018,
-      "merchantOrderNo": "mock_merchant_order_no",
-      "notifyUrl": "https://merchant.example.com/notify",
-      "orderNo": "131620641843026270",
-      "paySceneCode": "JSAPI",
-      "payeeMid": "200000030906",
-      "paymentInfo": {
-        "cardInfo": {
-          "brand": "VISA",
-          "cardLevel": "PLATINUM",
-          "cardType": "CREDIT",
-          "first6": "411111",
-          "issueBank": "Emirates NBD",
-          "issueCountry": "AE",
-          "last4": "1234"
-        },
-        "channelParam": {
-          "eciValue": "05",
-          "extension": {
-            "processorResponseCode": "00",
-            "terminalId": "TERM_001",
-            "acquirerBin": "123456",
-            "merchantReference": "REF_123456"
-          }
-        },
-        "paidAmount": {
-          "amount": 100.00,
-          "currency": "AED"
-        },
-        "paidTime": 1770447803018,
-        "payChannel": "CARD",
-        "payeeFeeAmount": {
-          "amount": 1.00,
-          "currency": "AED"
-        },
-        "payerMid": "100000012345",
-        "paymentInfoExtend": {
-          "installment": {
-            "installmentFirstTotalAmount": {
-              "currency": "AED",
-              "amount": 333.34
+        "items": [
+            {
+                "deviceId": "DEVICE001",
+                "expiredTime": 1770455591940,
+                "merchantOrderNo": "REQ20230415001",
+                "notifyUrl": "https://example.com/notify",
+                "orderNo": "20230415000001",
+                "paySceneCode": "JSAPI",
+                "payeeMid": "M200000030906",
+                "paymentInfo": {
+                    "cardInfo": {
+                        "brand": "VISA",
+                        "cardLevel": "GOLD",
+                        "cardType": "CREDIT",
+                        "first6": "411111",
+                        "issueCountry": "AE",
+                        "last4": "4321"
+                    },
+                    "channelParam": {
+                        "eciValue": "05",
+                        "extension": {
+                            "AuthCode": "765210",
+                            "AcquireCode": "00",
+                            "RRN": "920003454461"
+                        }
+                    },
+                    "paidAmount": {
+                        "amount": 100.00,
+                        "currency": "AED"
+                    },
+                    "paidTime": 1770455591940,
+                    "payChannel": "VISA",
+                    "payeeFeeAmount": {
+                        "amount": 2.50,
+                        "currency": "AED"
+                    },
+                    "payeeFeeAmountBeforeTax": {
+                        "amount": 2.38,
+                        "currency": "AED"
+                    },
+                    "payeeFeeVat": {
+                        "amount": 0.12,
+                        "currency": "AED"
+                    },
+                    "payerFeeAmount": {
+                        "amount": 1.50,
+                        "currency": "AED"
+                    },
+                    "payerMid": "PAYER001",
+                    "paymentInfoExtend": {
+                        "installment": {
+                            "installmentFirstTotalAmount": {
+                                "currency": "AED",
+                                "amount": 333.34
+                            },
+                            "installmentNumber": "3",
+                            "installmentPlan": "VISA",
+                            "installmentPlanAccpId": "2617c281-891c-4c95-80ca-1de398ae7701",
+                            "installmentTAndC": " [Test Bank] This is a sample T&amp;C text containing Special Ch@racters that govern the Visa Installment services. Refer to https://www.visa.com for more information. 1) Eligibility: To be eligible for \"Visa installment\" payments, you must hold a valid and active Visa credit card issued by an authorized bank. Your credit limit and repayment capacity will determine your eligibility for installment plans. 2) Installment Plan: Installments can be availed for purchases at participating merchants, subject to a minimum transaction amount. The specific installment plan (number of months, interest rate, etc.) will be determined at the time of purchase. 3) Interest &amp; Fees: 20% Interest will be charged on the unpaid principal amount. If you fail to pay any installment by the due date, a late payment fee will be charged. All fees/charges are non-refundable and subject to change. 4) Prepayment &amp; Cancellation: You may choose to prepay the entire outstanding amount at any time. However, prepayment may attract a fee. The installment plan can be cancelled if your Visa card is cancelled &lt;or if you default on payment&gt;. 5) Changes to Terms: Visa reserves the right to change these terms and conditions at any time. Any changes will be communicated to you via email or through our website. It is your responsibility to keep yourself updated with the latest terms and conditions. Please note that these terms are subject to change and it's always recommended to read the actual terms and conditions provided by the card issuer.",
+                            "installmentTermsVersion": "5",
+                            "installmentTotalAmount": {
+                                "currency": "AED",
+                                "amount": 1000.00
+                            },
+                            "installmentUpfrontFee": {
+                                "currency": "AED",
+                                "amount": 0.00
+                            }
+                        }
+                    },
+                    "settledTime": 1770455591940,
+                    "settlementAmount": {
+                        "amount": 97.50,
+                        "currency": "AED"
+                    }
+                },
+                "requestTime": 1770455591940,
+                "reserved": "reserved_data",
+                "revoked": "false",
+                "status": "PAID_SUCCESS",
+                "subject": "Test Order Payment",
+                "totalAmount": {
+                    "amount": 100.00,
+                    "currency": "AED"
+                }
             },
-            "installmentNumber": "3",
-            "installmentPlan": "VISA",
-            "installmentPlanAccpId": "2617c281-891c-4c95-80ca-1de398ae7701",
-            "installmentTAndC": " [Test Bank] This is a sample T&amp;C text containing Special Ch@racters that govern the Visa Installment services. Refer to https://www.visa.com for more information. 1) Eligibility: To be eligible for \"Visa installment\" payments, you must hold a valid and active Visa credit card issued by an authorized bank. Your credit limit and repayment capacity will determine your eligibility for installment plans. 2) Installment Plan: Installments can be availed for purchases at participating merchants, subject to a minimum transaction amount. The specific installment plan (number of months, interest rate, etc.) will be determined at the time of purchase. 3) Interest &amp; Fees: 20% Interest will be charged on the unpaid principal amount. If you fail to pay any installment by the due date, a late payment fee will be charged. All fees/charges are non-refundable and subject to change. 4) Prepayment &amp; Cancellation: You may choose to prepay the entire outstanding amount at any time. However, prepayment may attract a fee. The installment plan can be cancelled if your Visa card is cancelled &lt;or if you default on payment&gt;. 5) Changes to Terms: Visa reserves the right to change these terms and conditions at any time. Any changes will be communicated to you via email or through our website. It is your responsibility to keep yourself updated with the latest terms and conditions. Please note that these terms are subject to change and it's always recommended to read the actual terms and conditions provided by the card issuer.",
-            "installmentTermsVersion": "5",
-            "installmentTotalAmount": {
-              "currency": "AED",
-              "amount": 1000.00
+            {
+                "merchantOrderNo": "991d90e1-a0c4-4460-bdac-db876eb6d78f",
+                "orderNo": "131658481358170925",
+                "deviceId": "20001019",
+                "status": "CREATED",
+                "product": "Basic Payment Gateway",
+                "totalAmount": {
+                    "amount": 2.25,
+                    "currency": "AED"
+                },
+                "payeeMid": "200000030906",
+                "expiredTime": 1658484958908,
+                "subject": "test",
+                "requestTime": 1658481358908,
+                "paySceneCode": "PAYPAGE"
             },
-            "installmentUpfrontFee": {
-              "currency": "AED",
-              "amount": 0.00
+            {
+                "merchantOrderNo": "c4ccbb32-6420-42ea-bc6c-14e8b3f39f33",
+                "orderNo": "131658480856167343",
+                "deviceId": "20001019",
+                "status": "CREATED",
+                "product": "Basic Payment Gateway",
+                "totalAmount": {
+                    "amount": 2.25,
+                    "currency": "AED"
+                },
+                "payeeMid": "200000030906",
+                "expiredTime": 1658480977540,
+                "subject": "test",
+                "requestTime": 1658480856968,
+                "paySceneCode": "PAYPAGE"
+            },
+            {
+                "merchantOrderNo": "cc63d61e-8caf-436d-a3c6-314318c8c6ad",
+                "orderNo": "131658479615162180",
+                "deviceId": "20001019",
+                "status": "FAILURE",
+                "product": "Basic Payment Gateway",
+                "totalAmount": {
+                    "amount": 2.25,
+                    "currency": "AED"
+                },
+                "payeeMid": "200000030906",
+                "expiredTime": 1658479736247,
+                "subject": "test",
+                "requestTime": 1658479615457,
+                "paySceneCode": "PAYPAGE"
+            },
+            {
+                "merchantOrderNo": "39918222-77f8-4a86-a33f-94d3095dfae1",
+                "orderNo": "131658478925159905",
+                "deviceId": "20001019",
+                "status": "FAILURE",
+                "product": "Basic Payment Gateway",
+                "totalAmount": {
+                    "amount": 2.25,
+                    "currency": "AED"
+                },
+                "payeeMid": "200000030906",
+                "expiredTime": 1658479046213,
+                "subject": "test",
+                "requestTime": 1658478925581,
+                "paySceneCode": "PAYPAGE"
+            },
+            {
+                "merchantOrderNo": "67a74918-95f4-4367-a265-c06b24bfd335",
+                "orderNo": "131658478570157755",
+                "deviceId": "20001019",
+                "status": "CREATED",
+                "product": "Basic Payment Gateway",
+                "totalAmount": {
+                    "amount": 2.25,
+                    "currency": "AED"
+                },
+                "payeeMid": "200000030906",
+                "expiredTime": 1658478690961,
+                "subject": "test",
+                "requestTime": 1658433600000,
+                "paySceneCode": "PAYPAGE"
+            },
+            {
+                "deviceId": "",
+                "expiredTime": 1769685049527,
+                "merchantOrderNo": "aaff0b71b5b54945a33dfa4da227ab20",
+                "notifyUrl": "https://example.com/notify",
+                "orderNo": "131769658643041813",
+                "paySceneCode": "DIRECTPAY",
+                "payeeMid": "200000030906",
+                "paymentInfo": {
+                    "cardInfo": {
+                        "brand": "VISA",
+                        "first6": "54323",
+                        "last4": "1234",
+                        "cardLevel": "PLATINUM",
+                        "cardType": "DC",
+                        "issueCountry": "UAE"
+                    },
+                    "paidAmount": {
+                        "currency": "AED",
+                        "amount": 100.00
+                    },
+                    "paidTime": 1769685049527,
+                    "payChannel": "CARD",
+                    "payeeFeeAmount": {
+                        "currency": "AED",
+                        "amount": 5.00
+                    },
+                    "payeeFeeAmountBeforeTax": {
+                        "currency": "AED",
+                        "amount": 4.50
+                    },
+                    "payeeFeeVat": {
+                        "currency": "AED",
+                        "amount": 0.50
+                    },
+                    "payerFeeAmount": {
+                        "currency": "AED",
+                        "amount": 2.00
+                    },
+                    "payerMid": "PAYER_TEST",
+                    "settledTime": 1769685049527,
+                    "settlementAmount": {
+                        "currency": "AED",
+                        "amount": 95.00
+                    }
+                },
+                "requestTime": 1769685049527,
+                "reserved": "reserved",
+                "revoked": "false",
+                "status": "CREATED",
+                "subject": "Test Order",
+                "totalAmount": {
+                    "amount": 100.00,
+                    "currency": "AED"
+                }
             }
-          }
-        },
-        "settlementAmount": {
-          "amount": 99.00,
-          "currency": "AED"
-        }
-      },
-      "promotionInfoList": [
-        {
-          "appliedRewardId": "REWARD_001",
-          "settleFlag": "YES"
-        },
-        {
-          "appliedRewardId": "REWARD_002",
-          "settleFlag": "NO"
-        }
-      ],
-      "requestTime": 1770447803018,
-      "reserved": "reserved_data",
-      "revoked": "false",
-      "sharingInfoList": [
-        {
-          "sharingAmount": {
-            "amount": 10.00,
-            "currency": "AED"
-          },
-          "sharingIdentitySeqId": 1,
-          "sharingMemo": "Commission for partner 1",
-          "sharingMid": "200000012345",
-          "sharingSettledAmount": {
-            "amount": 10.00,
-            "currency": "AED"
-          },
-          "sharingSettledFeeAmount": {
-            "amount": 0.10,
-            "currency": "AED"
-          },
-          "withholdAndRemitFee": false
-        },
-        {
-          "sharingAmount": {
-            "amount": 5.00,
-            "currency": "AED"
-          },
-          "sharingIdentitySeqId": 2,
-          "sharingMemo": "Commission for partner 2",
-          "sharingMid": "200000067890",
-          "sharingSettledAmount": {
-            "amount": 5.00,
-            "currency": "AED"
-          },
-          "sharingSettledFeeAmount": {
-            "amount": 0.05,
-            "currency": "AED"
-          },
-          "withholdAndRemitFee": true
-        }
-      ],
-      "status": "PAID_SUCCESS",
-      "subject": "Test Order Subject",
-      "subjectAr": "موضوع الاختبار",
-      "totalAmount": {
-        "amount": 100.00,
-        "currency": "AED"
-      }
+        ]
     }
-  }
 }
 ```
 
