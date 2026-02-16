@@ -110,14 +110,82 @@ When Botim Money sends response, Botim Money will use its own private key to sig
 Body is returned only when `applystatus` = `success`, and `code` = `0`.
 If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
 
+**GetOrderResponse**
+
+- **acquireOrder** <font color='#7d8793'>AcquireOrder</font> <font color='#f19938'>Required</font>  
+  - Complete order information object.
+
 ---
 
-- **acquireOrder** <span style={{color:" #7d8793"}}>Object</span>
+**PaymentInfo**
 
-  <details open={true}>
-  <summary>Attributes</summary>
-    <AcquireOrder/>
-  </details>
+- **paidTime** <font color='#7d8793'>Timestamp(3)</font> <font color='#f19938'>Required</font>  
+  - Timestamp when payment was completed.  
+  - Example value: `1658484202235`
+
+- **payerMid** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Paying merchant identifier.  
+  - Example value: `100000047500`
+
+- **paidAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+  - Actual amount paid by the customer.
+
+- **payeeFeeAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+  - Transaction fee charged to the payee.
+
+- **payerFeeAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+  - Transaction fee charged to the payer.
+
+- **settlementAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+  - Net amount settled to payee after all deductions.
+
+- **payChannel** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Payment method used for the transaction.  
+  - Possible values: `BALANCE`, `CARD`, `BANKCARD`, `INSTALLMENT`, `EWALLET`, etc.  
+  - Example value: `BALANCE`
+
+- **channelParam** <font color='#7d8793'>ChannelParam</font> <font color='#49cc90'>Optional</font>  
+  - Additional parameters specific to the payment channel.
+
+- **paymentInfoExtend** <font color='#7d8793'>PaymentInfoExtend</font> <font color='#49cc90'>Optional</font>  
+  - Extended payment information for additional details.
+
+- **cardInfo** <font color='#7d8793'>CardInfo</font> <font color='#49cc90'>Optional</font>  
+  - Card details object (present only for card payments).
+
+---
+
+**CardInfo**
+
+- **brand** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
+  - Card brand name (e.g., Visa, Mastercard, etc.).
+
+- **last4** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
+  - Last 4 digits of the card number.
+
+- **first6** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
+  - First 6 digits of the card number (BIN).
+
+- **cardType** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
+  - Type of card (e.g., DEBIT, CREDIT).
+
+- **issueCountry** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
+  - Country code where the card was issued.
+
+- **cardLevel** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
+  - Card level or tier (e.g., Standard, Gold, Platinum).
+
+- **cardToken** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
+  - Tokenized representation of the card for secure storage.
+
+- **cardTokenExpTime** <font color='#7d8793'>Date</font> <font color='#49cc90'>Optional</font>  
+  - Expiration time of the card token.
+
+- **expMonth** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
+  - Card expiration month (MM format).
+
+- **expYear** <font color='#7d8793'>String</font> <font color='#49cc90'>Optional</font>  
+  - Card expiration year (YYYY format).
 
 ### Response Sample
 
