@@ -1,8 +1,8 @@
 ---
+title: Gateway Terminal to Host Guide
 sidebar_position: 1
 toc_max_heading_level: 6
-
-slug: /deployment
+slug: /t2hdeployment
 ---
 
 
