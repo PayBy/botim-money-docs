@@ -15,9 +15,9 @@ After a successful payment, Botim Money sends the payment result and user inform
 
 > **<span style={{color:"#f19938"}}>Note</span>**
 
-  - Duplicate Notifications: The same notification may be sent multiple times. The merchant system must be able to handle duplicate messages correctly and idempotently.
-  - Retry Mechanism: If Botim Money does not receive a valid or timely response from the merchant, it will consider the notification failed and retry delivery. The default retry schedule is up to 7 attempts at the following intervals (in minutes): 2, 10, 10, 60, 120, 360, 900. However, successful delivery is not guaranteed.
-  - Order Status Uncertainty: If the order status is unclear or no notification is received, merchants are advised to actively query the order status using the appropriate API.
+  - **Duplicate Notifications**: The same notification may be sent multiple times. The merchant system must be able to handle duplicate messages correctly and idempotently.
+  - **Retry Mechanism**: If Botim Money does not receive a valid or timely response from the merchant, it will consider the notification failed and retry delivery. The default retry schedule is up to 7 attempts at the following intervals (in minutes): 2, 10, 10, 60, 120, 360, 900. However, successful delivery is not guaranteed.
+  - **Order Status Uncertainty**: If the order status is unclear or no notification is received, merchants are advised to actively query the order status using the appropriate API.
 
 ---
 

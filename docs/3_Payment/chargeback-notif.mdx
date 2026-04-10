@@ -3,55 +3,113 @@ sidebar_position: 10
 toc_max_heading_level: 6
 ---
 
-
 # Chargeback Notification
 
 ## Overview
 
-In the event of a chargeback, Botim Money sends the relevant chargeback information to the merchant via a data stream. The merchant must process the notification and respond according to the specifications outlined in this document.
+In the event of a chargeback, Botim Money sends the relevant chargeback information to the merchant via a data stream. The merchant system must receive, process, and respond to this notification according to the API specifications.
 
-> **Note:**
+---
 
-> 1. The same notification may be sent multiple times. Merchant systems must be able to handle duplicate notifications correctly.
-> 2. If Botim Money does not receive a valid response from the merchant or if the response times out, the notification is considered failed and will be retried. The default retry schedule is as follows (in minutes): 2, 10, 10, 60, 120, 360, 900. However, Botim Money does not guarantee final delivery.
-> 3. If the order status is unclear or the merchant has not received a payment result notification from Botim Money, it is recommended to actively query the order status using the appropriate API.
+> **<span style={{color:"#f19938"}}>Note</span>**
 
-## Notification Parameters
+  - **Duplicate Notifications**: The same notification may be sent multiple times. The merchant system must be able to handle duplicate messages correctly and idempotently.
+  - **Retry Mechanism**: If Botim Money does not receive a valid or timely response from the merchant, it will consider the notification failed and retry delivery. The default retry schedule is up to 7 attempts at the following intervals (in minutes): 2, 10, 10, 60, 120, 360, 900. However, successful delivery is not guaranteed.
+  - **Order Status Uncertainty**: If the order status is unclear or no notification is received, merchants are advised to actively query the order status using the appropriate API.
 
-- **acquireChargeback** <font color='#7d8793'>AcquireChargeback</font> <font color='#f19938'>Required</font>  
-  - Contains details of the chargeback order.
+---
 
-  - **chargebackTime** <font color='#7d8793'>Timestamp(3)</font> <font color='#f19938'>Required</font>  
-    - Timestamp indicating when the chargeback was initiated.  
+## Request
+
+### Http Header
+
+- **Content-Type**  <font color='#7d8793'>String</font>  <font color='#f19938'>Required</font>
+
+  - The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+  - Example value: application/json
+
+- **sign**  <font color='#7d8793'>String</font>  <font color='#f19938'>Required</font>
+
+  When Botim Money sends a notification, Botim Money will use its own private key to sign the message, and the merchant uses Botim Money's public key to verify the signature. If the verification is passed, it proves that the notification was sent by Botim Money and not faked by others.
+
+### Http Body
+
+- **notify_timestamp**  <font color='#7d8793'>Timestamp</font>  <font color='#f19938'>Required</font>
+
+  - The timestamp when Botim Money sent the notification.
+  - Example value: `1586849271877`
+
+- **notify_id**  <font color='#7d8793'>String</font>  <font color='#f19938'>Required</font>
+
+  - The unique identification number of this notification within the Botim Money system.
+  - Example value: `202004140007474501`
+
+- **acquireChargeback** <font color='#7d8793'>Object</font>
+
+  <details open={true}>
+  <summary>Attributes</summary>
+
+  - **chargebackTime**  <font color='#7d8793'>Timestamp(3)</font>  <font color='#f19938'>Required</font>
+
+    Timestamp indicating when the chargeback was initiated.
     - Example value: `1581493898000`
 
-  - **merchantOrderNo** <font color='#7d8793'>String(64)</font> <font color='#f19938'>Required</font>  
-    - Unique identifier for the merchant's original order.  
+  - **merchantOrderNo**  <font color='#7d8793'>String(64)</font>  <font color='#f19938'>Required</font>
+
+    Unique identifier for the merchant's original order.
     - Example value: `S10000`
 
-  - **orderNo** <font color='#7d8793'>String(32)</font> <font color='#f19938'>Required</font>  
-    - Unique identifier for the Botim Money transaction order.  
+  - **orderNo**  <font color='#7d8793'>String(32)</font>  <font color='#f19938'>Required</font>
+
+    Unique identifier for the Botim Money transaction order.
     - Example value: `O1000`
 
-  - **payAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
-    - Total amount originally paid in the transaction.
+  - **payAmount**  <font color='#7d8793'>Money</font>  <font color='#f19938'>Required</font>
 
-  - **chargebackAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
-    - Amount being reversed or refunded due to the chargeback.
+    Total amount originally paid in the transaction.
 
-  - **caseType** <font color='#7d8793'>String(200)</font> <font color='#f19938'>Required</font>  
-    - Classification of the chargeback case, such as fraud, dispute, or duplicate transaction.
+  - **chargebackAmount**  <font color='#7d8793'>Money</font>  <font color='#f19938'>Required</font>
 
-  - **partnerId** <font color='#7d8793'>String(200)</font> <font color='#f19938'>Required</font>  
-    - Identifier for the partner or merchant associated with the transaction.  
+    Amount being reversed or refunded due to the chargeback.
+
+  - **caseType**  <font color='#7d8793'>String(200)</font>  <font color='#f19938'>Required</font>
+
+    Classification of the chargeback case, such as fraud, dispute, or duplicate transaction.
+
+  - **partnerId**  <font color='#7d8793'>String(200)</font>  <font color='#f19938'>Required</font>
+
+    Identifier for the partner or merchant associated with the transaction.
     - Example value: `200000003232`
 
-## Response Parameters
+  </details>
 
-Upon receiving the notification, the merchant should return the following JSON response to indicate successful receipt:
+## Response
+
+Please reply `success` after receiving the notification, otherwise Botim Money will send the notification repeatedly for the same order.
+
+### Http Header
+
+- **Content-Type**  <font color='#7d8793'>String</font>  <font color='#f19938'>Required</font>
+
+  - The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+  - Example value: application/json
+
+### Http Body
+
+- **response**  <font color='#7d8793'>String</font>  <font color='#f19938'>Required</font>
+
+  Example value: Success
+
+### Response Sample
 
 ```json
-{"response":"SUCCESS"}
-```
+Http Header
+{
+    "Content-Type": "application/json; charset=UTF-8"
+}
 
-Any other response indicates an error or failure to process the notification.
+Http Body
+{
+    "response": "SUCCESS"
+}
+```
