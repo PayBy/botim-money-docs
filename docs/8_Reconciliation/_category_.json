@@ -2,6 +2,6 @@
   "label": "Reconciliation",
   "position": 9,
   "link": {
-    "description": "Download statement and reconciliate."
+    "description": "Download statement, invoice, and reconciliate."
   }
 }
