@@ -253,9 +253,33 @@
 
   <br/>
 
-- **devicePayType** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
+- **devicePayType** <span style={{color:" #7d8793"}}>Enum</span> <span style={{color:"#f19938"}}>Required</span>
 
-  The specific type of device payment being used.
+  Device pay type. When type is `DEVICE_PAY`, the possible values are:
+
+  - `APPLE_PAY`. Apple Pay using device-based credentials.
+  - `GOOGLE_PAY`. Google Pay using device-based credentials.
+  - `SAMSUNG_PAY`. Samsung Pay using device-based credentials.
+  - `APPLE_PAY_TOKEN`. Apple Pay using a payment token.
+  - `GOOGLE_PAY_TOKEN`. Google Pay using a payment token.
+
+  <br/>
+
+- **paymentToken** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
+
+  Device payment token. Required when `devicePayType` is `APPLE_PAY_TOKEN` or `GOOGLE_PAY_TOKEN`.
+
+  <br/>
+
+- **decryptType** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
+
+  Decryption type. Required when `devicePayType` is `APPLE_PAY_TOKEN` or `GOOGLE_PAY_TOKEN`.
+
+  <br/>
+
+- **cardNoSuffix** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
+
+  Last 4 digits of the card number. Required when `devicePayType` is `APPLE_PAY_TOKEN` or `GOOGLE_PAY_TOKEN`.
 
   <br/>
 
