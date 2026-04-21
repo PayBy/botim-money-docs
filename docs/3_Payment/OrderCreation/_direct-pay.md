@@ -265,15 +265,11 @@
 
   <br/>
 
-- **paymentToken** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
-
-  Device payment token. Required when `devicePayType` is `APPLE_PAY_TOKEN` or `GOOGLE_PAY_TOKEN`.
+- paymentToken <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span> The actual payment token returned by Apple Pay/Google Pay, transmitted in encrypted form. Required when `devicePayType` is `APPLE_PAY_TOKEN` or `GOOGLE_PAY_TOKEN`.
 
   <br/>
 
-- **decryptType** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
-
-  Decryption type. Required when `devicePayType` is `APPLE_PAY_TOKEN` or `GOOGLE_PAY_TOKEN`.
+- decryptType <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span> Decryption type. Valid values are `GATEWAY_DECRYPT` and `MERCHANT_DECRYPT`. Required when `devicePayType` is `APPLE_PAY_TOKEN` or `GOOGLE_PAY_TOKEN`.
 
   <br/>
 
