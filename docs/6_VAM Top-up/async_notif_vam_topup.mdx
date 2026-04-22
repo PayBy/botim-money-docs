@@ -51,24 +51,6 @@ When a VAM top-up occurs, Botim Money will send relevant top-up information to t
   The unique identification number of this notification within the Botim Money system.
   
   Example value: 202004140007474501
-  
-- **feeAmount**  <font color = ' `#7d8793`'>Amount</font>  <font color = '`#f19938`'>Required</font> The fee charged for the VAM Topup transaction (inclusive of VAT). Format: decimal, up to 2 decimal places. Currency is the same as the transaction currency. Example value:
-
-	```json
-	{
-    	  "amount": 10.00,
-    	  "currency": "AED"
-    }
-	```
-
-- **transactionAmount**  <font color = ' `#7d8793`'>Amount</font>  <font color = '`#f19938`'>Required</font> The original amount of the topup transaction (gross amount). Format: decimal, up to 2 decimal places. Currency is the same as the transaction currency. Example value:
-
-	```json
-	{
-    	  "amount": 3010.00,
-    	  "currency": "AED"
-    }
-	```
 
 - **vamDepositOrder**   <font color = ' #7d8793'>Object</font>  <font color = '#f19938'>Required</font>
 
