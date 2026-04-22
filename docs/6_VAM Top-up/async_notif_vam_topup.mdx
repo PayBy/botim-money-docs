@@ -52,7 +52,6 @@ When a VAM top-up occurs, Botim Money will send relevant top-up information to t
   
   Example value: 202004140007474501
 
-
 - **vamDepositOrder**   <font color = ' #7d8793'>Object</font>  <font color = '#f19938'>Required</font>
 
   <details open={true}>
@@ -61,12 +60,12 @@ When a VAM top-up occurs, Botim Money will send relevant top-up information to t
   </details>
 
 
-- <font color = 'grey'>**notify_time**</font>  <font color = ' #7d8793'>String</font>  
+- <font color = 'grey'>notify_time</font>  <font color = ' #7d8793'>String</font>  
 
   The parameter is deprecated. Please use the `notify_timestamp` instead.
 
 
-- <font color = 'grey'>**_input_charset**</font>  <font color = ' #7d8793'>String</font>  
+- <font color = 'grey'>_input_charset</font>  <font color = ' #7d8793'>String</font>  
 
   The parameter is deprecated. 
 
@@ -79,7 +78,6 @@ Http Header
 {
   "Content-Type": "application/json; charset=UTF-8"
 }
-
 // HTTP request body containing the notification data
 Http Body
 {
@@ -87,7 +85,15 @@ Http Body
   "vamDepositOrder": {
     "remitterInfo": "MR HUA JIANG",  // Name of the person sending the funds
     "amount": {
-      "amount": 3000,                // Transaction amount (in smallest currency unit)
+      "amount": 3000.00,             // Transaction amount (in smallest currency unit)
+      "currency": "AED"              // Currency code (ISO 4217 format)
+    },
+    "feeAmount": {
+      "amount": 10.00,               // Fee charged for the transaction
+      "currency": "AED"              // Currency code (ISO 4217 format)
+    },
+    "transactionAmount": {
+      "amount": 3010.00,             // Total transaction amount (amount + feeAmount)
       "currency": "AED"              // Currency code (ISO 4217 format)
     },
     "orderNo": "131727701521486397", // Botim Money internal order number
@@ -101,7 +107,6 @@ Http Body
   "notify_timestamp": 1735006658869, // System notification timestamp in milliseconds
   "notify_id": "202409300013926551"  // Unique notification identifier
 }
-
 ```
 
 ## Response 
