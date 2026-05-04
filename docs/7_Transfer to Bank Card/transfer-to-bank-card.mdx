@@ -1,6 +1,8 @@
 ---
 sidebar_position: 4
 toc_max_heading_level: 6
+
+
 ---
 
 import ResponseHeader from './_response-header.mdx'
@@ -37,9 +39,12 @@ This interface allows merchants to transfer funds from their account to a specif
     <RequestHeader/>
   </details>
 
+
+
 ### HTTP Body
 
 - **requestTime** <font color='#7d8793'>Timestamp</font> <font color='#f19938'>Required</font>  
+
   - Time the request was initiated.  
   - Example value: `1581493898000`  
 
@@ -54,27 +59,44 @@ This interface allows merchants to transfer funds from their account to a specif
 
 ```json
 {
+  "requestTime": 1777636067475,
   "bizContent": {
-    "accountHolderType": "INDIVIDUAL",
+    "merchantOrderNo": "T1777636061770ZMAY",
     "amount": {
-      "amount": 0.1,
+      "amount": 1.00,
       "currency": "AED"
     },
-    "cardNumber": "aJwgWWe27+/d1e5B8jOhcKdW+cfMteX4mNwmBPvYGWDcXWuMWHKxwdQ89L0p6mij4Bu1xzwLbYzj/4Ou/hmwQrQ26/thcw4Ya1cDlPDu0EDjIMHdOk0INeOv4pueJohEzVkG3RpJdFadjKkgQwuhZmdyIX7b7QhDVegMrf18WzFcDdkTS7UA8/oQ96+ybzSx7uXWsN4xaWFBLnv0bJEYDFxgwSiqJD2EiqUtMTy4iEqXRE5kzlRZfA17jzXk4cCZ1nLrTnLIvivoCWFmw4A36e0ELZ5Jn506lFm5rZnd2aMWJN7OPCR6L4IA+7K5jHlN7QWdPQtNJBrSVOu0/3uujA==",
-    "expiryMonth": "S9jFGF1bHU0nOKfLPGDy+euUn2IJVv7v/qiSF2P6GaD8eFLcKs+cJ6D9ou6T60xPA39UyNRnSwBosqbnh5eCD0Rw+jQmTFr72qeqXSqkXFFg/PNIc30VP3l1IyEzJhk4XJ0GQS09kZzs6CEFhb23BWhsSpuWGYba/BOYombxGhaA5td249ZI1G1VbTo5rIxPQjpghJhO9n/iPI0T2dpXE3RuJNeoxOCo2Iz4nhYvmazGuNtncoq2aQcng1Kf6BWb/LmoW2Xz2e3k87YAOcrov+7cm3vh6Af/Wrpk1tNPtN9dAeIYK4rK8gxWHYvn45YFF6HMaZsnFphJ3iDsUca/rg==",
-    "expiryYear": "MK858D0uyjePVnBrRGO3qmiLcXLxxrzcdWZjoCqgozrWkzmCcVX3ncUi9RsZwlbTAJIPI0FsXrF9o40Kt7y3SwyjpnGD2uqvv2KkW+ntzGDCUN6jmv/t7QHFEvN5xTZVsf4sA8IMLae6zVprGfYbUjyvZrje2RFATuexZ5kKdesn7Sbzf9Uo1yKCysGtAe2wRQ4EzsXYPqttnl2mWOJ7vlxbTeMiWPCbONvDvhCRN8XhhPq0gJjLhi2xnMuIKHNe7xdZ0XqpGO81MKWqz4Xd5Z97Glsb9Qpa4G3+t6DyzGRJz9v2b8fuJw7D71w1WQDa1mdEhU5c1iwp1jXIZ2Qxhg==",
-    "firstName": "HYtBz0aDVZ1GCzyov+B+OViYJ5pQg8B64RNwaxdPMqeTpY3PY4pAzsUHJD8+0SNKI5JF74lopEYIJLxCCiC5cUAJZayKSWMKis7N6y6vAi6s3/WVGg7tS2DJsE/LnKiYAkFkoBDfDhiIVTaBD38ubDT9X3BSPP1fCR/6+m5MyQpQEGRFdan/saF6h9vbdMBEW1N3BCKWvWOREy7lesJlQEg2kMIiaePWilHdzS+qiQGyiXiNze+pKZaamReX2RdJPcF/9rs1KVeCifF+aCejX81f1n8WnlywLIAlUKroF04YNAoPxSotmcwlfvBmHZP2Y+xbn1mJC8GkngOB1IcHvw==",
-    "lastName": "FKCYj94zTP/mhGxlqF5SNAwYAx4kVGPgIHi4KdzQ+qmi2ND9iBPvQ5yCygCyxPlwpOdaDjb4zgF+fP6PjIwmFr+284opZVHgMQLCfiX0NRqFXNk6cjIpEmVRFQW5hysATEkZ5bA5slb7WzJACwuuTi/a3gzAsDxwHOdomPl67d1SGypb1nD7DCChGTyn/492diQwIZGeXBewywlyb5NfU/f2f68lMQA82C5eIEmOvM8iLSVjnMARW92BKuTdjhYW6JVJHuUdSG91A1X+GCap5SUklO0LYaXE/lOi+bPxg/KXzARhw4JEpIexV/6IP5hJv1LAq3KjCqo7tjpl6TJ6Gw==",
-    "memo": "Bonus",
-    "merchantOrderNo": "7a5b47a4-1824-4a4d-b581-9b0ebd5dd436",
-    "middleName": "XAvhTN+7oWSj34hxLf6vQsoiPlFn5ysiAAXDasyxTO6w8BearyGSZfnQajtYO2cNSHgmFjXeJbJ7e+YiB5GsWHeVAU0D4tihJ3Yv1VwOoeataGwiBd/mnJ6m/8wK5LWhTBY18Vr5zpjVHTvheH3dMW7t6LucJ/dynKVx08DD0S+YkW+kakICDzCkZYQCXPhuPlMlQNjxTCL2maUSVj2VjzohY7ErRJAy8JHygv8XF0LoE57F3dauoBV9y/hnkuhI/WrxV63wtDtrh/gsFkJ04S/mSiYdzAEOiXkml37Qa5xr0qeBu6XgO5PWo3S7HJCLbe5YO71klDypccmEIxuylA==",
+    "memo": "company single pay",
     "notifyUrl": "http://yoursite.com/api/notification",
-    "riskInfo":{
-      "scene":"casino",
-      "level":"hight"
+    "riskInfo": {
+      "scene": "casino",
+      "level": "high"
+    },
+    "accountHolderType": "INDIVIDUAL",
+    "senderType": "INDIVIDUAL",
+    "firstName": "ONVvIuLQB0FCQwCUbLtgUQWvkFTn5E7cK3Xqe/tXAtsHxUky6NKMxcrHYBvH7kVbzgngb/D39l3Jd5L/nWZM7WkmB7L4EXz3CUkGvgOcE+Y8OuT+WCE0lpM0aLoygKXJsZmiTqcRvBq5T669uW8ezEHAFPqql0EJLex9XuGD/T16JdeQDzfomiodKPNrkcEcNxt6FOGmSHrKXZlMsFk6ED+ZkdI6EQFv7/F81+U5BE+WYSVhTn/l/tcbIdqEmgYU3cY1klruz3ge4RZo55/CwNtuM8mH35aw2USwW7I9cP21r0ALvtV8xiUCrYKBmKVYOHI2riC2l4+jtsjdfPzaTg==",
+    "lastName": "i/1PAWy7FUw3hQNoyR9WYxmLC5xcOiT9eS/kie4uh+/GQIin91/LTXtjRUQobgRGvA5+Mjokrrip0ak1JPnA4o9bBKmi5Aj6PX7F49/I+Nn9+iTXgFwnaHBknjPtPkVynhVaTIqCgb8JxETtLHouhVrBqMqSbAxRJ/btefg/svuE9pE6q3zbXaUSP1vODEX5NspbiWjmS62VkhbWwZxGbVh/wTWwqYPMlJMbQVrnRmibtZ3zTI9J0yRYsEkDLsz7iBC2Ye+ayGOJVZxXYHVibZSgx6Hc342303ejp6vabDfDa70413YbvQ4wDrotIwWgzEa1qBZZ54VQ6XLxMv8lww==",
+    "middleName": "aPDNDh0PVMU36S1rYAQ+EwsMLz0vtkmFyP9IM0cPL/sr5r8iGO80R6VNPyrjBPHK/DAkoxYIQ5caMauVKtQO7/2qTUQAOqHhTONNS5zmqZcd0wXUTqj6lhZxi6euhQxNy5JJde1BPVm06Xs0lLfXqpjmBDpGbYRTmWEwP3tQlj/3oA1JgilMHoZY4f41cANZg1VrdFf7UneIaolLbS8buk2IthfVfErKmPI2FfQ+fSswEQ5hjVSZAOPq9ryyQf3JPZWbOfED68+z6J6VtRTbRr1IqIujxZD8uUg2EL3POEdidvShxrQPHbp4XemLpyAIItbA1fxVrs+ejDDIrRybdw==",
+    "cardNumber": "KNh0ES4qzHfz6KyMopf04sNmBdZAe+2diPsCjYw8mqAmoJFlq5i8z0lI98MB2RJMTkEwdL1anLGkfxcAAjJQJAnFbLpWTQYO3EPoEy0jOmRF8L5R5RarjsKkAnZ4eajVYrSybfLYGkWSViBJVeOh3NANmHvQEVNr9UtYg9wkc67eHm0L+6DZOf0MO+XdDyEHo8eQ3+JKN8fpULATFtrIYsZ0mdFrl8lhb4OhD+ja4ZtkZfmuaxN+xjlK50aCxhEooOBPEvMhpPsyE4ETkf/pN+In/RLTsXlE4OZTyPJFxu5xliM15pCdIU+S6x/32zRBhGt+JnfupXnjk8NXgdUX2A==",
+    "expiryYear": "Z1jLhLD+NWJptjDjP9YLVPyA+qyJ7OliVnNL9fTRLJNWIxaQBLzca0BIB6BHEkA1TIKZvs/0aBdgArTeJixT1OLm8hhWzghNdW0TqwcshYO6mEpIAEHWwXAmoyfRDE/P/RrUsqqsU8GSLL2s4NDQFLW95VcYL3NNNTLqfzuXieeZr3docDQOj3yPomPWNDqi2e4bH2G3s1Q9jGF5a7mMcKwlx07ePcYV1Y8sRqLN4gP8zncvaBeSrD+pcwb15nCAzA+WUNV9Bby6gdTRSLbNtwSpqySZeFSlaWNY18INusOjd98+t6l6zwrixorqZdGigCpCdB8/6RSyvYUIqcj2fQ==",
+    "expiryMonth": "C99R1WEz7NxpycTX7X2IanH7J0TVGhEnrSdImJmUNLCx38+cMaMFygR5l+P2lgtK2LF/lC1FR8fK9AYPLo9GWush2SmPAvBbkUNGuzTJCmJPdWZmjG/7AeopEb1Ax2oWmvKPn0pHetxXrMBesdQtx0Ekx0kAds1D5zyXsCp8fq1/OoI+LiI1cncfkgER8d0AvyV7J2n/DWQBBuxrQ9sEhorIE5QlhcqVQCpAP/HIt0Ow7cHCmprw2wD/iYehYjQZwm/avizm8sVgDA5VnIAfqmZmLnWx7xq84WhFWEpsNEof3FNOm+Xm3TZfW74PVuhgPNNsfkQlNWQA2pD1SzBGaQ==",
+    "countryCode": "AE",
+    "state": "Abu",
+    "city": "Dubai",
+    "addressLine": "26th Floor Sky Tower",
+    "senderInfoRequest": {
+      "firstName": "YIQfkvSFngesF73UXWZr8ollDCAxNCutXSCgWLQrFTTatuKayT51mnShJJHmZl3r6R1Tv3fCGcPuVW/BT8uSVleOrscgNdpsfRRohptyZ4NKgNm+jCXNvb+hmESpocCg38TbwE1RNQeOz2T+b/mxOq5YdlHCLHPEdjkQz9+O3rxrzmR17u7wqu42a6w+REK29cnkpJF+o7GgyZzU7Id/wFrHK71nBE8Vr4aN5sDmXH8KK4JmHWj227OOaSokHDzhYo0JQ80VlhfkPkrPpaUP5u5nvmVWZJy+2Kn8aaKw14jrCuzTdqXUrwuLn8Z5vaGTO2B7NayPFb87i8kECdz88w==",
+      "lastName": "LSBwCYeR/yKx+o3Gzh1CaesKEsCObTdWfy92xBAT7MitRnVqvwDWstMbN9YPcS24OHTtwIfS4SD555mBRIX9NRr36wlk3y0q59/cHGRiTWXXPXWHX/Vd8EEiTADwV1WDDxhok1zkIZA9hOJ29+q9gV3ubTaLXRnp0NbzkDucjLVMzO6YVzKp95ECyuquqFf+rvOrRU1b1Qe8wMWPvZJ7UnPVItdDyJM7QP45JWq78tYj8EISPXodkuo5PFeX4qcES1dcIGiRRlqzZUkoCWzQTpbt+zzFEc14atKBX9YrweiiaJBnaqauY6G/R/Zu57wuGj2T1MekSMqj6Nlh6nsmVg==",
+      "countryCode": "AE",
+      "state": "Abu",
+      "zipCode": "123456",
+      "city": "Dubai",
+      "addressLine": "skytower",
+      "reference": "100000348329",
+      "dateOfBirth": "1999-01-01",
+      "sourceOfFunds": "debit"
     }
-  },
-  "requestTime": 1741917446102
+  }
 }
 ```
 
@@ -87,6 +109,8 @@ This interface allows merchants to transfer funds from their account to a specif
     <ResponseHeader/>
   </details>
 
+
+
 ### HTTP Body
 
 - **transferBankCardOrder** <font color='#7d8793'>TransferBankCardOrder</font> <font color='#f19938'>Required</font>  
@@ -98,6 +122,8 @@ This interface allows merchants to transfer funds from their account to a specif
   <summary>Attributes</summary>
     <TransferBankCardOrder/>
   </details>
+
+
 
 ### Response Sample
 
@@ -116,37 +142,52 @@ This interface allows merchants to transfer funds from their account to a specif
   "body": {
     "transferBankCardOrder": {
       "amount": {
-        "amount": 0.1,
+        "amount": 1.0,
         "currency": "AED"
       },
-      "partnerId": "200000429066",
+      "partnerId": "200000088724",
       "notifyUrl": "http://yoursite.com/api/notification",
-      "memo": "Bonus",
-      "createdTime": 1741917501666,
-      "payerFeeAmount": {
-        "amount": 0,
+      "memo": "company single pay",
+      "requestTime": 1777636068930,
+      "transferFee": {
+        "amount": 0.0,
         "currency": "AED"
       },
-      "payerFeeMemberId": "200000429066",
-      "orderNo": "131741917501042130",
-      "merchantOrderNo": "7a5b47a4-1824-4a4d-b581-9b0ebd5dd436",
+      "orderNo": "131777636068533842",
+      "merchantOrderNo": "T1777636061770ZMAY",
       "product": "Transfer Bank Card",
       "status": "CREATED",
-      "paidTime": 1741917502000,
+      "paidTime": 1777636070000,
       "accountHolderType": "INDIVIDUAL",
-      "cardNumber": "6b59af6dcc4fb841d5f053a852ed917fd5eecad0cc2c3e3507540c065f520a4c",
+      "cardNumber": "b888aa5f23a817883d4d12c74044bab1ae6ee65dc8d6e11515394aba452b273b",
       "expiryMonth": "08",
       "expiryYear": "2028",
-      "firstName": "c6f27629d041725bb227a0d718641d220d69356cd82b3b7230f1d0dff950de5f",
-      "lastName": "15d6dacb4fbda825195e5873c175a9b093daa32345c708ac18411365f6fc6038",
-      "middleName": "15d6dacb4fbda825195e5873c175a9b093daa32345c708ac18411365f6fc6038"
+      "firstName": "46fbf700b56ded7c159e0edbe79e6d53082f48640da2806aaf238fd00c717c04",
+      "lastName": "c85c2e16a566d82acc5f76f0694d3ae16c8481499e4a806aa64e424db158cddb",
+      "middleName": "c6c094bc0054f9cbe34102ff49f86b3928b5ac09f3d2ac87e170d0500675921f",
+      "countryCode": "AE",
+      "state": "Abu",
+      "city": "Dubai",
+      "addressLine": "26th Floor Sky Tower",
+      "senderInfo": {
+        "firstName": "35e8062b71ff23f92bb6d4e881cee471a22c7d79c401685df0d312db7edb58e0",
+        "lastName": "4f3ef4f55a2f52c91fc7ebe3f738beb9ceeffbede18d130f4028a084ce1c0875",
+        "countryCode": "AE",
+        "state": "Abu",
+        "zipCode": "123456",
+        "city": "Dubai",
+        "addressLine": "skytower",
+        "reference": "100000348329",
+        "sourceOfFunds": "debit",
+        "dateOfBirth": "1999-01-01"
+      }
     }
   },
   "head": {
     "applyStatus": "SUCCESS",
     "code": "0",
     "msg": "SUCCESS",
-    "traceCode": "974825"
+    "traceCode": "587641"
   }
 }
 ```
@@ -160,9 +201,9 @@ This interface allows merchants to transfer funds from their account to a specif
 | 400   | REQUESTTIME_TOO_EARLY   | Request time is too early                        | Adjust request time                 |
 | 400   | REQUESTTIME_TOO_LATER   | Request time is too late                         | Adjust request time                 |
 | 402   | RATE_LIMIT_REJECT       | Too many requests                                | Reduce request frequency            |
-| 403   | UNAUTHORIZED            | API not authorized                               | Contact Botim Money                       |
-| 404   | SERVICE_NOT_AVAILABLE   | API service unavailable                          | Contact Botim Money                       |
-| 500   | SYSTEM_ERROR            | System error                                     | Contact Botim Money, retry later          |
+| 403   | UNAUTHORIZED            | API not authorized                               | Contact Botim Money                 |
+| 404   | SERVICE_NOT_AVAILABLE   | API service unavailable                          | Contact Botim Money                 |
+| 500   | SYSTEM_ERROR            | System error                                     | Contact Botim Money, retry later    |
 | 504   | SERVICE_TIMEOUT         | Service timeout                                  | Retry later                         |
 | 601   | RISK_FAIL               | Risk control validation failed                   | Adjust business parameters          |
 | 62002 | ORDER_FAILURE           | Order has failed                                 | Use different merchant order number |
