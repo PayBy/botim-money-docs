@@ -1,72 +1,39 @@
 
 - **requestTime** <font color='#7d8793'>Timestamp(3)</font> <font color='#f19938'>Required</font>  
+  
   - Request time passed by the merchant when placing the order.  
   - Example value: `1581493898000`
-
+  
 - **merchantOrderNo** <font color='#7d8793'>String(64)</font> <font color='#f19938'>Required</font>  
+
   - Merchant's reference number for tracking the request.  
   - Example value: `S10000`
 
 - **orderNo** <font color='#7d8793'>String(32)</font> <font color='#f19938'>Required</font>  
+
   - Botim Money's unique identification number of the order.  
   - Example value: `O1000`
 
 - **product** <font color='#7d8793'>String(200)</font> <font color='#f19938'>Required</font>  
+
   - Product name of the API method used in the order.  
   - Example value: `Transfer Bank Card`
 
 - **status** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+
   - Status of the order.  
   - Possible values: `CREATED`, `SUCCESS`, `FAILURE`, `BANK_FAIL`
 
 - **amount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+
   - Amount to be transferred.
 
-- **accountHolderType** <font color='#7d8793'>String(16)</font> <font color='#f19938'>Required</font>  
-  - Account holder type: `INDIVIDUAL` or `CORPORATE`  
-  - Example value: `INDIVIDUAL`
+- **transferFee** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
 
-- **firstName** <font color='#7d8793'>String(200)</font>  
-  - SHA256 of original text. Required if `accountHolderType` is `INDIVIDUAL`.
+  - Transfer fee.  
 
-- **lastName** <font color='#7d8793'>String(200)</font>  
-  - SHA256 of original text. Required if `accountHolderType` is `INDIVIDUAL`.
-
-- **middleName** <font color='#7d8793'>String(200)</font>  
-  - SHA256 of original text.
-
-- **companyName** <font color='#7d8793'>String(200)</font>  
-  - SHA256 of original text. Required if `accountHolderType` is `CORPORATE`.
-
-- **cardNumber** <font color='#7d8793'>String(64)</font> <font color='#f19938'>Required</font>  
-  - SHA256 of original card number.
-
-- **expiryMonth** <font color='#7d8793'>String(2)</font> <font color='#f19938'>Required</font>  
-  - Card expiration month (1–12).  
-  - Example value: `09`
-
-- **expiryYear** <font color='#7d8793'>String(4)</font> <font color='#f19938'>Required</font>  
-  - Card expiration year.  
-  - Example value: `2027`
-
-- **memo** <font color='#7d8793'>String(128)</font>  
-  - Transfer description or note.  
-  - Example value: `Bonus`
-
-- **notifyUrl** <font color='#7d8793'>String(200)</font>  
-  - URL where the merchant receives notifications.  
-  - Example value: `http://yoursite.com/api/notification`
-
-- **failDes** <font color='#7d8793'>String(200)</font>  
-  - Cause of order failure.  
-  - Example value: `-`
-
-- **bankReference** <font color='#7d8793'>String(128)</font>  
-  - Bank reference number.
-
-- **payerFeeAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
-  - Fee paid by the payer.  
   - Example value:  
+
     ```json
     {
       "amount": 0,
@@ -74,12 +41,131 @@
     }
     ```
 
-- **payerFeeMemberId** <font color='#7d8793'>String(32)</font> <font color='#f19938'>Required</font>  
-  - ID of the party paying the fee.  
-  - Example value: `200000429066`
+- **accountHolderType** <font color='#7d8793'>String(16)</font> <font color='#f19938'>Required</font>  
+
+  - Account holder type: `INDIVIDUAL` or `CORPORATE`  
+  - Example value: `INDIVIDUAL`
+
+- **firstName** <font color='#7d8793'>String(200)</font>  
+
+  - SHA256 of original text. Required if `accountHolderType` is `INDIVIDUAL`.
+
+- **lastName** <font color='#7d8793'>String(200)</font>  
+
+  - SHA256 of original text. Required if `accountHolderType` is `INDIVIDUAL`.
+
+- **middleName** <font color='#7d8793'>String(200)</font>  
+
+  - SHA256 of original text.
+
+- **companyName** <font color='#7d8793'>String(200)</font>  
+
+  - SHA256 of original text. Required if `accountHolderType` is `CORPORATE`.
+
+- **cardNumber** <font color='#7d8793'>String(64)</font> <font color='#f19938'>Required</font>  
+
+  - SHA256 of original card number.
+
+- **expiryMonth** <font color='#7d8793'>String(2)</font> <font color='#f19938'>Required</font>  
+
+  - Card expiration month (1–12).  
+  - Example value: `09`
+
+- **expiryYear** <font color='#7d8793'>String(4)</font> <font color='#f19938'>Required</font>  
+
+  - Card expiration year.  
+  - Example value: `2027`
+
+- **countryCode** <font color='#7d8793'>String(2)</font> <font color='#f19938'>Required</font>  
+
+  - Recipient country code.  
+  - Example value: `AE`
+
+- **state** <font color='#7d8793'>String(3)</font>  
+
+  - Recipient state.  
+  - Example value: `Abu`
+
+- **city** <font color='#7d8793'>String(50)</font> <font color='#f19938'>Required</font>  
+
+  - Recipient city.  
+  - Example value: `Dubai`
+
+- **addressLine** <font color='#7d8793'>String(200)</font> <font color='#f19938'>Required</font>  
+
+  - Recipient full address.
+
+- **memo** <font color='#7d8793'>String(128)</font>  
+
+  - Transfer description or note.  
+  - Example value: `Bonus`
+
+- **notifyUrl** <font color='#7d8793'>String(200)</font>  
+
+  - URL where the merchant receives notifications.  
+  - Example value: `http://yoursite.com/api/notification`
+
+- **failDes** <font color='#7d8793'>String(200)</font>  
+
+  - Cause of order failure.  
+  - Example value: `-`
+
+- **bankReference** <font color='#7d8793'>String(128)</font>  
+
+  - Bank reference number.
 
 - **paidTime** <font color='#7d8793'>Date</font> <font color='#f19938'>Required</font>  
+
   - Time of deduction.
 
 - **refundedTime** <font color='#7d8793'>Date</font>  
+
   - Time of refund.
+
+- **senderInfo** <font color='#7d8793'>Object</font> <font color='#f19938'>Required</font>  
+
+  - Sender information.
+
+  <details open={true}>
+  <summary>Attributes</summary>
+
+
+  - **firstName** <font color='#7d8793'>String(200)</font> <font color='#f19938'>Required</font>  
+    - SHA256 of original text.
+
+  - **lastName** <font color='#7d8793'>String(200)</font> <font color='#f19938'>Required</font>  
+    - SHA256 of original text.
+
+  - **countryCode** <font color='#7d8793'>String(2)</font> <font color='#f19938'>Required</font>  
+    - Sender country code.  
+    - Example value: `AE`
+
+  - **state** <font color='#7d8793'>String(3)</font>  
+    - Sender state.  
+    - Example value: `Abu`
+
+  - **zipCode** <font color='#7d8793'>String(10)</font>  
+    - Sender postal code.  
+    - Example value: `123456`
+
+  - **city** <font color='#7d8793'>String(50)</font> <font color='#f19938'>Required</font>  
+    - Sender city.  
+    - Example value: `Dubai`
+
+  - **addressLine** <font color='#7d8793'>String(200)</font> <font color='#f19938'>Required</font>  
+    - Sender full address.  
+    - Example value: `skytower`
+
+  - **reference** <font color='#7d8793'>String(15)</font> <font color='#f19938'>Required</font>  
+    - Sender reference number.  
+    - Example value: `100000348329`
+
+  - **sourceOfFunds** <font color='#7d8793'>Enum</font> <font color='#f19938'>Required</font>  
+    - Source of the transferred funds.  
+    - Possible values: `credit`, `debit`, `prepaid`, `deposit_account`, `mobile_money_account`, `cash`
+
+  - **dateOfBirth** <font color='#7d8793'>String</font>  
+    - Sender date of birth in `YYYY-MM-DD` format.  
+    - Example value: `1999-01-01`
+
+  </details>
