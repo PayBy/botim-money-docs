@@ -1,6 +1,5 @@
 
 - **accountHolderType** <font color='#7d8793'>String(16)</font> <font color='#f19938'>Required</font>  
-  
   - Account holder type: `INDIVIDUAL` or `CORPORATE`  
   - Example value: `INDIVIDUAL`
   
@@ -117,44 +116,48 @@
 
   - Sender information.
 
-  <details open={true}>
-  <summary>Attributes</summary>
-
-
   - **firstName** <font color='#7d8793'>String(35)</font> <font color='#f19938'>Required</font>  
+
     - Encrypted field. Sender's first name.
 
   - **lastName** <font color='#7d8793'>String(35)</font> <font color='#f19938'>Required</font>  
+
     - Encrypted field. Sender's last name.
 
   - **countryCode** <font color='#7d8793'>String(2)</font> <font color='#f19938'>Required</font>  
+
     - Sender country code.  
     - Example value: `AE`
 
   - **state** <font color='#7d8793'>String(2)</font>  
+
     - Sender state.  
     - Required when `countryCode` is `US`.  
 
   - **zipCode** <font color='#7d8793'>String(10)</font>  
+
     - Sender postal code.  
     - Required when `countryCode` is `US`.  
 
   - **city** <font color='#7d8793'>String(50)</font> <font color='#f19938'>Required</font>  
+
     - Sender city.
 
   - **addressLine** <font color='#7d8793'>String(200)</font> <font color='#f19938'>Required</font>  
+
     - Sender full address.
 
   - **reference** <font color='#7d8793'>String(15)</font> <font color='#f19938'>Required</font>  
+
     - Sender reference number.  
     - Example value: `100000348329`
 
   - **dateOfBirth** <font color='#7d8793'>String</font>  
+
     - Sender date of birth in `YYYY-MM-DD` format.  
     - Example value: `1999-01-01`
 
   - **sourceOfFunds** <font color='#7d8793'>Enum</font> <font color='#f19938'>Required</font>  
+
     - Source of the transferred funds.  
     - Possible values: `credit`, `debit`, `prepaid`, `deposit_account`, `mobile_money_account`, `cash`
-
-  </details>
