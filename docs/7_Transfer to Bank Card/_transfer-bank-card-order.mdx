@@ -1,9 +1,8 @@
-
 - **requestTime** <font color='#7d8793'>Timestamp(3)</font> <font color='#f19938'>Required</font>  
-  
+
   - Request time passed by the merchant when placing the order.  
   - Example value: `1581493898000`
-  
+
 - **merchantOrderNo** <font color='#7d8793'>String(64)</font> <font color='#f19938'>Required</font>  
 
   - Merchant's reference number for tracking the request.  
@@ -34,37 +33,35 @@
 
   - Example value:  
 
-    ```json
+```json
     {
       "amount": 0,
       "currency": "AED"
     }
-    ```
+```
 
 - **accountHolderType** <font color='#7d8793'>String(16)</font> <font color='#f19938'>Required</font>  
 
-  - Account holder type: `INDIVIDUAL` or `CORPORATE`  
+  - Recipient account type. Currently only `INDIVIDUAL` is supported.  
   - Example value: `INDIVIDUAL`
 
-- **firstName** <font color='#7d8793'>String(200)</font>  
+- **firstName** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
 
-  - SHA256 of original text. Required if `accountHolderType` is `INDIVIDUAL`.
+  - Encrypted field. Recipient's first name.  
+  - Required when `accountHolderType` is `INDIVIDUAL`.
 
-- **lastName** <font color='#7d8793'>String(200)</font>  
+- **lastName** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
 
-  - SHA256 of original text. Required if `accountHolderType` is `INDIVIDUAL`.
+  - Encrypted field. Recipient's last name.  
+  - Required when `accountHolderType` is `INDIVIDUAL`.
 
-- **middleName** <font color='#7d8793'>String(200)</font>  
+- **middleName** <font color='#7d8793'>String</font>  
 
-  - SHA256 of original text.
+  - Encrypted field. Recipient's middle name.
 
-- **companyName** <font color='#7d8793'>String(200)</font>  
+- **cardNumber** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
 
-  - SHA256 of original text. Required if `accountHolderType` is `CORPORATE`.
-
-- **cardNumber** <font color='#7d8793'>String(64)</font> <font color='#f19938'>Required</font>  
-
-  - SHA256 of original card number.
+  - Encrypted field. Card number.
 
 - **expiryMonth** <font color='#7d8793'>String(2)</font> <font color='#f19938'>Required</font>  
 
@@ -95,7 +92,7 @@
 
   - Recipient full address.
 
-- **memo** <font color='#7d8793'>String(128)</font>  
+- **memo** <font color='#7d8793'>String(50)</font> <font color='#f19938'>Required</font>  
 
   - Transfer description or note.  
   - Example value: `Bonus`
@@ -107,8 +104,7 @@
 
 - **failDes** <font color='#7d8793'>String(200)</font>  
 
-  - Cause of order failure.  
-  - Example value: `-`
+  - Cause of order failure.
 
 - **bankReference** <font color='#7d8793'>String(128)</font>  
 
@@ -122,53 +118,54 @@
 
   - Time of refund.
 
-- **senderInfo** <font color='#7d8793'>TransferBankCardSenderInfo</font> <font color='#f19938'>Required</font>  
+- **senderInfo** <font color='#7d8793'>TransferBankCardSenderInfo</font>  
 
-  - Sender information.
+  - Sender information. If included, fields marked Required below must be provided.
 
-  - **firstName** <font color='#7d8793'>String(200)</font> <font color='#f19938'>Required</font>  
-    - SHA256 of original text.
-    
-  - **lastName** <font color='#7d8793'>String(200)</font> <font color='#f19938'>Required</font>  
-  
-    - SHA256 of original text.
-  
+  - **firstName** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+
+    - Encrypted field. Sender's first name.
+
+  - **lastName** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+
+    - Encrypted field. Sender's last name.
+
   - **countryCode** <font color='#7d8793'>String(2)</font> <font color='#f19938'>Required</font>  
-  
+
     - Sender country code.  
     - Example value: `AE`
-  
+
   - **state** <font color='#7d8793'>String(3)</font>  
-  
-    - Sender state.  
+
+    - Sender state. Required when `countryCode` is `US`.  
     - Example value: `Abu`
-  
+
   - **zipCode** <font color='#7d8793'>String(10)</font>  
-  
+
     - Sender postal code.  
     - Example value: `123456`
-  
+
   - **city** <font color='#7d8793'>String(50)</font> <font color='#f19938'>Required</font>  
-  
-    - Sender city.  
+
+    - Sender city. Required when `countryCode` is `US`. 
     - Example value: `Dubai`
-  
+
   - **addressLine** <font color='#7d8793'>String(200)</font> <font color='#f19938'>Required</font>  
-  
+
     - Sender full address.  
     - Example value: `skytower`
-  
+
   - **reference** <font color='#7d8793'>String(15)</font> <font color='#f19938'>Required</font>  
-  
+
     - Sender reference number.  
     - Example value: `100000348329`
-  
+
   - **sourceOfFunds** <font color='#7d8793'>Enum</font> <font color='#f19938'>Required</font>  
-  
+
     - Source of the transferred funds.  
     - Possible values: `credit`, `debit`, `prepaid`, `deposit_account`, `mobile_money_account`, `cash`
-  
+
   - **dateOfBirth** <font color='#7d8793'>String</font>  
-  
+
     - Sender date of birth in `YYYY-MM-DD` format.  
     - Example value: `1999-01-01`
