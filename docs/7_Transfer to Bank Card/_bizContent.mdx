@@ -1,6 +1,7 @@
 
 - **accountHolderType** <font color='#7d8793'>String(16)</font> <font color='#f19938'>Required</font>  
-  - Account holder type: `INDIVIDUAL` or `CORPORATE`  
+
+  - Recipient account type:  Currently only `INDIVIDUAL` is supported.  
   - Example value: `INDIVIDUAL`
   
 - **merchantOrderNo** <font color='#7d8793'>String(64)</font> <font color='#f19938'>Required</font>  
@@ -8,12 +9,12 @@
   - Unique order identifier from the merchant.  
   - Example value: `Me23484`
 
-- **firstName** <font color='#7d8793'>String(50)</font>  
+- **firstName** <font color='#7d8793'>String(50)</font> <font color='#f19938'>Required</font>  
 
   - Encrypted field. Account holder's first name.  
   - Required when `accountHolderType` is `INDIVIDUAL`  
 
-- **lastName** <font color='#7d8793'>String(50)</font>  
+- **lastName** <font color='#7d8793'>String(50)</font> <font color='#f19938'>Required</font>  
 
   - Encrypted field. Account holder's last name.  
   - Required when `accountHolderType` is `INDIVIDUAL`  
@@ -21,13 +22,6 @@
 - **middleName** <font color='#7d8793'>String(50)</font>  
 
   - Encrypted field. Account holder's middle name.  
-
-- **companyName** <font color='#7d8793'>String(50)</font>  
-
-  - Encrypted field. Company name.  
-  - Required when `accountHolderType` is `CORPORATE`.  
-  - Must be a valid legal name. Cannot be a single character, all numeric, or all punctuation.  
-  - Example value: `Liwa Street off Khaliffa Street`
 
 - **countryCode** <font color='#7d8793'>String(2)</font> <font color='#f19938'>Required</font>  
 
@@ -70,7 +64,8 @@
 
 - **senderType** <font color='#7d8793'>String(16)</font> <font color='#f19938'>Required</font>  
 
-  - Sender type. Currently only `INDIVIDUAL` is supported.  
+  - Sender account type: `INDIVIDUAL` or `CORPORATE`. 
+  - When the sender account type is `INDIVIDUAL`, `senderInfoRequest` is required.
   - Example value: `INDIVIDUAL`
 
 - **cardToken** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
@@ -113,7 +108,7 @@
   - Example value: `{"scene":"casino","level":"high"}`
 
 - **senderInfoRequest** <font color='#7d8793'>TransferBankCardSenderInfo</font> <font color='#f19938'>Required</font>  
-  - Sender information.
+  - Sender information. When `senderType` is `INDIVIDUAL`, `senderInfoRequest` is required.
   
   - **firstName** <font color='#7d8793'>String(35)</font> <font color='#f19938'>Required</font>  
   
