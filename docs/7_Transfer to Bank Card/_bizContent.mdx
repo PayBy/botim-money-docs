@@ -75,7 +75,7 @@
   - Encrypted field. Card number (12–19 digits, numeric only).  
   - Not required when `cardToken` is provided.  
 - **riskInfo** <font color='#7d8793'>String(255)</font> 
-	- Risk information for merchant-to-card transfer scenarios. A JSON string containing risk assessment details such as scene type and risk level.
+	- Risk information for merchant-to-card transfer scenarios in JSON format.
 	- Example value: `{"scene":"casino","level":"high"}`
 - **senderInfoRequest** <font color='#7d8793'>TransferBankCardSenderInfo</font>  
   - Sender information. It is required and must not be empty when `senderType` is `INDIVIDUAL`.
