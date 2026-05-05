@@ -122,54 +122,53 @@
 
   - Time of refund.
 
-- **senderInfo** <font color='#7d8793'>Object</font> <font color='#f19938'>Required</font>  
+- **senderInfo** <font color='#7d8793'>TransferBankCardSenderInfo</font> <font color='#f19938'>Required</font>  
 
   - Sender information.
 
   - **firstName** <font color='#7d8793'>String(200)</font> <font color='#f19938'>Required</font>  
-
     - SHA256 of original text.
-
+    
   - **lastName** <font color='#7d8793'>String(200)</font> <font color='#f19938'>Required</font>  
-
+  
     - SHA256 of original text.
-
+  
   - **countryCode** <font color='#7d8793'>String(2)</font> <font color='#f19938'>Required</font>  
-
+  
     - Sender country code.  
     - Example value: `AE`
-
+  
   - **state** <font color='#7d8793'>String(3)</font>  
-
+  
     - Sender state.  
     - Example value: `Abu`
-
+  
   - **zipCode** <font color='#7d8793'>String(10)</font>  
-
+  
     - Sender postal code.  
     - Example value: `123456`
-
+  
   - **city** <font color='#7d8793'>String(50)</font> <font color='#f19938'>Required</font>  
-
+  
     - Sender city.  
     - Example value: `Dubai`
-
+  
   - **addressLine** <font color='#7d8793'>String(200)</font> <font color='#f19938'>Required</font>  
-
+  
     - Sender full address.  
     - Example value: `skytower`
-
+  
   - **reference** <font color='#7d8793'>String(15)</font> <font color='#f19938'>Required</font>  
-
+  
     - Sender reference number.  
     - Example value: `100000348329`
-
+  
   - **sourceOfFunds** <font color='#7d8793'>Enum</font> <font color='#f19938'>Required</font>  
-
+  
     - Source of the transferred funds.  
     - Possible values: `credit`, `debit`, `prepaid`, `deposit_account`, `mobile_money_account`, `cash`
-
+  
   - **dateOfBirth** <font color='#7d8793'>String</font>  
-
+  
     - Sender date of birth in `YYYY-MM-DD` format.  
     - Example value: `1999-01-01`
