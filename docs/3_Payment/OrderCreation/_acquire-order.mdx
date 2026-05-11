@@ -1,78 +1,99 @@
 import CardInfo from "./_card-info.mdx";
 
+
+
 - **requestTime** <font color='#7d8793'>Timestamp</font> <font color='#f19938'>Required</font>  
+
   - Request time passed by the merchant when placing the order.  
   - Example value: `1581493898000`
 
 - **merchantOrderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+
   - The merchant's reference number of the request. Used to track every request.  
   - Example value: `M965739182419`  
   - Maximum length: `64`
 
 - **orderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+
   - The Botim Money's unique identification number of the order.  
   - Example value: `131658300517875854`
 
 - **status** <font color='#7d8793'>Enum</font> <font color='#f19938'>Required</font>  
+
   - The possible values are:  
     - `CREATED`: The order has been created.  
     - `PAID_SUCCESS`: The order has been successfully paid.  
     - `SETTLED`: The order has been paid and the fund has been settled to merchant's account.  
     - `FAILURE`: The order has been cancelled or expired.
 
-- **paymentInfo** <font color='#7d8793'>Object</font>  
+- **paymentInfo** <font color='#7d8793'>Object (PaymentInfo)</font>  
+
   - Detailed payment information including fees and timestamps.
 
   - **paidAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+
     - The amount actually paid by the user. If a discount is used, it will differ from the order amount.
 
   - **paidTime** <font color='#7d8793'>Timestamp</font> <font color='#f19938'>Required</font>  
+
     - Payer's successful payment time.  
     - Example value: `1581493898000`
 
   - **payerMid** <font color='#7d8793'>String</font>  
+
     - Payer's member ID in the wallet (BOTIM Money).  
     - Example value: `200001200101`
 
   - **payerFeeAmount** <font color='#7d8793'>Money</font>  
+
     - Transaction fee charged to the payer.
 
   - **payeeFeeAmount** <font color='#7d8793'>Money</font>  
+
     - Transaction fee charged to the payee.
 
   - **payChannel** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+
     - Payment channel used by the payer.  
     - Possible values: `BANKCARD`, `INSTALLMENT`, `EWALLET`, etc.
 
   - **settlementAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+
     - Actual funds received by the payee after deductions.
 
-  - **cardInfo**  
+  - **cardInfo** <font color='#7d8793'>Object (CardInfo)</font>  
+
     - <details>
-        <summary>This object may be returned only for `DIRECTPAY` payment scene. The attributes are:</summary>
-        <CardInfo/>
+      <summary>This object may be returned only for `DIRECTPAY` payment scene. The attributes are:</summary>
+      <CardInfo/>
       </details>
 
 - **product** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+
   - Product name related to the payment scene. Used for internal classification.  
   - Example value: `Basic Payment Gateway`
 
 - **totalAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+
   - The order amount intended to collect from the payer.
 
 - **payeeMid** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+
   - Payee's member ID in Botim Money.  
   - Example value: `200001200101`
 
 - **expiredTime** <font color='#7d8793'>Timestamp</font> <font color='#f19938'>Required</font>  
+
   - Order expiration time.  
   - Example value: `1581493898000`
 
 - **notifyUrl** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+
   - URL to receive asynchronous notifications of order status updates.  
   - Example value: `https://www.yoursite.com`
 
-- **sharingInfoList** <font color='#7d8793'>List</font>  
+- **sharingInfoList** <font color='#7d8793'>List (SharingInfo)</font>  
+
   - Sharing information for split payments.
 
   - **sharingIdentitySeqId** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
@@ -97,44 +118,245 @@ import CardInfo from "./_card-info.mdx";
   - **withholdAndRemitFee** <font color='#7d8793'>Boolean</font>  
     - Indicates whether this sharing account pays the transaction fee.  
     - Only one account can have `true` in this field per request.
-  
+
 - **subject** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+
   - Description of this order.  
   - Example value: `iPhone`
 
 - **accessoryContent** <font color='#7d8793'>String</font>  
+
   - Used for storing additional information about the order.
 
 - **paySceneCode** <font color='#7d8793'>Enum</font> <font color='#f19938'>Required</font>  
+
   - Payment scene used to create the order.  
   - Possible values: `PAYPAGE`, `INAPP`, `EWALLET`, `DYNQR`, `QRPAY`, `JSAPI`, `AUTODEBIT`, `DIRECTPAY`, etc.
 
 - **paySceneParams** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+
   - Different payment scenarios need to pass different scenario parameters.
 
 - **deviceId** <font color='#7d8793'>String</font>  
+
   - If the transaction was made on a terminal or virtual device, the device ID can be passed for transaction data statistics.  
-  - **Note**: This parameter must be passed if you are using the secondary merchant function.
+  - ***Note***: This parameter must be passed if you are using the secondary merchant function.
 
 - **secondaryMerchantId** <font color='#7d8793'>String</font>  
+
   - If you are a platform and the transaction was made at a merchant under your platform, you can use this parameter to allocate the funds collected.  
   - The secondary merchant ID represents the merchant's member ID on your platform.  
   - Maximum length: `200`
 
 - **failCode** <font color='#7d8793'>String</font>  
+
   - If the order status is `FAILURE`, the code to identify the exact reason.  
   - Example value: `504`
 
 - **failDes** <font color='#7d8793'>String</font>  
+
   - If the order status is `FAILURE`, the failure reason.  
   - Example value: `SERVICE_TIMEOUT`
 
 - **revoked** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+
   - If `true`, it means that the payment has been made but then cancelled.
 
 - **reserved** <font color='#7d8793'>String</font>  
+
   - Merchant's notes for the order.  
   - Example value: `June campaign order.`  
   - Maximum length: `200`
 
+- **accountFundingParameter** <font color='#7d8793'>Object (AccountFundingParameter)</font>  
 
+  - Account Funding Transaction (AFT) parameters.  
+  - ***Note***: Required when AFT permission is enabled and `paySceneCode` is `PAYPAGE`, `INAPP`, `AUTODEBIT`, `DIRECTPAY`, or `PAYANDSIGN`. Otherwise `null`.
+
+  - **purpose** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+    - Purpose of the account funding transaction.  
+    - Possible values: `CRYPTOCURRENCY_PURCHASE`, `MERCHANT_SETTLEMENT`, `OTHER`, `PAYROLL`  
+    - Maximum length: `20`
+
+  - **senderIsRecipient** <font color='#7d8793'>String</font>  
+    - Indicates whether the sender is also the recipient.  
+    - Possible values: `True`, `False`
+
+  - **senderType** <font color='#7d8793'>String</font>  
+    - Type of the sender.  
+    - Possible values: `COMMERCIAL_ORGANIZATION`, `GOVERNMENT`, `NON_PROFIT_ORGANIZATION`, `PERSON`
+
+  - **sender** <font color='#7d8793'>Object (SenderData)</font>  
+    - Information about the sender.
+
+    - **billingAddress** <font color='#7d8793'>Object (BillingAddress)</font>  
+      - Billing address of the sender.
+
+      - **city** <font color='#7d8793'>String</font>  
+        - City name.  
+        - Example value: `Shanghai`  
+        - Maximum length: `100`
+
+      - **country** <font color='#7d8793'>String</font>  
+        - ISO standard 3-letter country code.  
+        - Example value: `CHN`
+
+      - **street** <font color='#7d8793'>String</font>  
+        - Street address.  
+        - Example value: `First street`  
+        - Maximum length: `100`
+
+    - **identification** <font color='#7d8793'>Object (Identification)</font>  
+      - Identification details of the sender.
+
+      - **country** <font color='#7d8793'>String</font>  
+        - ISO standard 3-letter country code.  
+        - Example value: `CHN`
+
+      - **type** <font color='#7d8793'>String</font>  
+        - Identification type.  
+        - Possible values: `BUSINESS_TAX_ID`, `COMPANY_REGISTRATION_NUMBER`, `DATE_OF_BIRTH`, `EMAIL`, `NATIONAL_IDENTIFICATION_CARD`, `OTHER`, `PASSPORT`, `PHONE_NUMBER`
+
+      - **value** <font color='#7d8793'>String</font>  
+        - Identification value.  
+        - Example value: `A001`  
+        - Maximum length: `50`
+
+    - **nameDetails** <font color='#7d8793'>Object (NameDetails)</font>  
+      - Name details of the sender.
+
+      - **firstName** <font color='#7d8793'>String</font>  
+        - First name.  
+        - Example value: `Michael`  
+        - Maximum length: `50`
+
+      - **lastName** <font color='#7d8793'>String</font>  
+        - Last name.  
+        - Example value: `Jordan`  
+        - Maximum length: `50`
+
+      - **middleName** <font color='#7d8793'>String</font>  
+        - Middle name.  
+        - Example value: `Tom`  
+        - Maximum length: `50`
+
+  - **recipient** <font color='#7d8793'>Object (RecipientData)</font>  
+    - Information about the recipient.
+
+    - **account** <font color='#7d8793'>Object (RecipientAccount)</font>  
+      - Account information of the recipient.
+
+      - **fundingMethod** <font color='#7d8793'>String</font>  
+        - Funding method of the recipient's account.  
+        - Possible values: `DEBIT`, `CREDIT`, `CHARGE`, `UNKNOWN`
+
+      - **identifier** <font color='#7d8793'>String</font>  
+        - Identifier of the recipient's account.  
+        - Example value: `AD210`  
+        - Maximum length: `50`
+
+      - **identifierType** <font color='#7d8793'>String</font>  
+        - Type of the account identifier.  
+        - Possible values: `BANK_ACCOUNT_BIC`, `BANK_ACCOUNT_IBAN`, `BANK_ACCOUNT_NATIONAL`, `CARD_NUMBER`, `EMAIL_ADDRESS`, `OTHER`, `PHONE_NUMBER`, `SOCIAL_NETWORK_PROFILE_ID`, `STAGED_WALLET_USER_ID`, `STORED_VALUE_WALLET_USER_ID`
+
+    - **address** <font color='#7d8793'>Object (RecipientAddress)</font>  
+      - Address of the recipient.
+
+      - **city** <font color='#7d8793'>String</font>  
+        - City name.  
+        - Example value: `Shanghai`  
+        - Maximum length: `100`
+
+      - **country** <font color='#7d8793'>String</font>  
+        - ISO standard 3-letter country code.  
+        - Example value: `CHN`
+
+      - **postCodeZip** <font color='#7d8793'>String</font>  
+        - Postal/ZIP code.  
+        - Example value: `800090`  
+        - Maximum length: `10`
+
+      - **street** <font color='#7d8793'>String</font>  
+        - Street address.  
+        - Example value: `5th Avenue`  
+        - Maximum length: `100`
+
+      - **street2** <font color='#7d8793'>String</font>  
+        - Secondary street line.  
+        - Example value: `5th Avenue`  
+        - Maximum length: `100`
+
+    - **identification** <font color='#7d8793'>Object (Identification)</font>  
+      - Identification details of the recipient.
+
+      - **country** <font color='#7d8793'>String</font>  
+        - ISO standard 3-letter country code.  
+        - Example value: `CHN`
+
+      - **type** <font color='#7d8793'>String</font>  
+        - Identification type.  
+        - Possible values: `BUSINESS_TAX_ID`, `COMPANY_REGISTRATION_NUMBER`, `DATE_OF_BIRTH`, `EMAIL`, `NATIONAL_IDENTIFICATION_CARD`, `OTHER`, `PASSPORT`, `PHONE_NUMBER`
+
+      - **value** <font color='#7d8793'>String</font>  
+        - Identification value.  
+        - Example value: `A001`  
+        - Maximum length: `50`
+
+    - **nameDetails** <font color='#7d8793'>Object (NameDetails)</font>  
+      - Name details of the recipient.
+
+      - **firstName** <font color='#7d8793'>String</font>  
+        - First name.  
+        - Example value: `Michael`  
+        - Maximum length: `50`
+
+      - **lastName** <font color='#7d8793'>String</font>  
+        - Last name.  
+        - Example value: `Jordan`  
+        - Maximum length: `50`
+
+      - **middleName** <font color='#7d8793'>String</font>  
+        - Middle name.  
+        - Example value: `Tom`  
+        - Maximum length: `50`
+
+- **payFacsSubMerchant** <font color='#7d8793'>Object (PayFacsSubMerchant)</font>  
+
+  - Sub-merchant information for PayFacs transactions. The merchant must have PayFacs permission enabled to use this field.
+
+  - **identifier** <font color='#7d8793'>String</font>  
+    - Sub-merchant ID.  
+    - ***Note***: Required when `tradingName` has a value.  
+    - Maximum length: `100`
+
+  - **registeredName** <font color='#7d8793'>String</font>  
+    - Registered name of the sub-merchant.
+
+  - **tradingName** <font color='#7d8793'>String</font>  
+    - Trading name of the sub-merchant.  
+    - ***Note***: Required when `identifier` has a value.
+
+  - **bankIndustryCode** <font color='#7d8793'>String</font>  
+    - Bank industry code of the sub-merchant.  
+    - Maximum length: `100`
+
+  - **city** <font color='#7d8793'>String</font>  
+    - City where the sub-merchant is located.
+
+  - **country** <font color='#7d8793'>String</font>  
+    - Country where the sub-merchant is located.
+
+  - **phone** <font color='#7d8793'>String</font>  
+    - Phone number of the sub-merchant.  
+    - Maximum length: `100`
+
+  - **disputeContactPhone** <font color='#7d8793'>String</font>  
+    - Dispute contact phone number of the sub-merchant.  
+    - Maximum length: `100`
+
+  - **marketplaceId** <font color='#7d8793'>String</font>  
+    - Marketplace ID of the sub-merchant.  
+    - Maximum length: `100`
+
+  - **governmentCountryCode** <font color='#7d8793'>String</font>  
+    - Country/government code that the sub-merchant belongs to.
