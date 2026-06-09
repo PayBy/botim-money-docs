@@ -51,7 +51,7 @@ Payers will have the almost the same operation process for using **In-APP** and 
        ```java
        String signString = "iapAppId=" + appId + "&iapDeviceId=" + deviceId + "&iapPartnerId=" + partnerId + "&token=" +             token;
        ```
-    2. **Sign the sign string** using a private key. The encryption rules are provided in the demo.
+    2. **Sign the `signString` ** using a private key. The encryption rules are provided in the demo.
 
     > **Note:** In the demo, the `sign` is generated on the app client for demonstration purposes. For production use, the         `sign` should be securely generated on the server and returned to the client.
 

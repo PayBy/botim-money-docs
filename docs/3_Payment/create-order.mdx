@@ -74,7 +74,7 @@ export function SwitchProduct() {
       </select>
       <br />
       <br />
-​      <b>paySceneParams</b> <span style={{ color: " #7d8793" }}>String</span>
+​      <b>paySceneParams</b> <span style={{ color: " #7d8793" }}>Object</span>
 ​      <details open={true}>
 ​        <summary>
 ​          Attributes
@@ -206,11 +206,11 @@ The attributes are:
     - **agreementType** <span style={{color:" #7d8793"}}>String(20)</span>
 
     The type of agreement for the payment.
-  
+
     Possible values: `INSTALLMENT` / `OTHER` / `RECURRING` / `UNSCHEDULED`
-  
+
     <br/>
-  
+
   - **numberOfPayments** <span style={{color:" #7d8793"}}>Integer</span>
   
     The total number of payments in the agreement. Required when `agreementType` is `RECURRING`.

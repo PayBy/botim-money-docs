@@ -171,7 +171,7 @@ Declare the necessary permissions in manifest, including:
 2. Read/Write SD card: allows an application to read from / write to external storage.
 3. Install Package: allows an application to install packages.
 
-```
+```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.payby.android.payment.iap.sample">
     <uses-permission android:name="android.permission.INTERNET" />
@@ -191,9 +191,9 @@ If your project `targetVersion` is 30, you also need to declare the following pe
 
 The payment parameter descriptions and methods to get are as follows. The following parameters can be used to construct a **PayTask** object, which describes a payment task, by calling **pay (PayTask task, Environment env)** method in **PbManager** to complete payment.
 
-| Name         | Descriptioin                                                 | How to get                                                   |
+| Name         | Description                                                  | How to get                                                   |
 | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| iapDeviceId  | Unique identification of device                              | It is from the api in IAP SDK                                |
+| iapDeviceId  | Unique identification of device                              | It is from the API in IAP SDK                                |
 | iapPartnerId | partnerId                                                    | It is assigned when a merchant applies for the payment service |
 | token        | orderToken                                                   | After placing an order, you can get it from the response     |
 | iapAppId     | appId                                                        | It is assigned when a merchant applies for the payment service |
@@ -204,7 +204,7 @@ The payment parameter descriptions and methods to get are as follows. The follow
 
 ---
 
-**Step 1: Generate IAPDeviceId**
+**Step 1: Generate `iapDeviceId`**
 
 ```java
 // If your payment page is Activity, just pass in this, but if it is Fragment, you should pass in getActivity()
@@ -212,7 +212,7 @@ PbManager manager = PbManager.getInstance(this);
 String mIapDeviceId = manager.getIAPDeviceID();
 ```
 
-> **Note:** When placing an order and paying for the order, the IapDeviceId must not be different.
+> **Note:** When placing an order and paying for the order, the `iapDeviceId` must not be different.
 
 ---
 
@@ -272,9 +272,7 @@ Implement the `OnPayResultListener` interface and override the `onGetPayState(St
 
 ## Proguard-rules
 
--keep class com.payby.android.iap.domain.value**{ *; }
-
-<br/>
+- keep class com.payby.android.iap.domain.value**{ *; }
 
 ## Sample
 
