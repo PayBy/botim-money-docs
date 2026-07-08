@@ -19,12 +19,13 @@ import CardInfo from "./_card-info.mdx";
   - Example value: `131658300517875854`
 
 - **status** <font color='#7d8793'>Enum</font> <font color='#f19938'>Required</font>  
-
   - The possible values are:  
     - `CREATED`: The order has been created.  
     - `PAID_SUCCESS`: The order has been successfully paid.  
     - `SETTLED`: The order has been paid and the fund has been settled to merchant's account.  
-    - `FAILURE`: The order has been cancelled or expired.
+    - `FAILURE`: The order has been cancelled or expired.  
+    - `AUTHORIZATION`: The pre-authorization has been successful.  
+    - `VOID`: The pre-authorization has been successfully cancelled.
 
 - **paymentInfo** <font color='#7d8793'>Object (PaymentInfo)</font>  
 

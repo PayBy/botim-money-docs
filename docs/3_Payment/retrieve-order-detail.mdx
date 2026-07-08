@@ -59,6 +59,11 @@ The `getOrder` interface enables merchants to query the status of any Botim Mone
 	- **orderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 		- The Botim Money's unique identify number of the order. 
 		- Example value: 131658300517875854
+		- Maximum length: `32`
+
+	- **deviceId**   <font color = ' #7d8793'>String</font>
+		- Set this value when using `merchantOrderNo` to query a POS order.
+		- Maximum length: `32`
 
 
 ### Request Sample
@@ -77,6 +82,15 @@ The `getOrder` interface enables merchants to query the status of any Botim Mone
   "requestTime": 1581405884647,
   "bizContent": {
     "merchantOrderNo": "M965739182419"
+  }
+}
+
+//Http Body - POS order
+{
+  "requestTime": 1581405884647,
+  "bizContent": {
+    "merchantOrderNo": "M965739182419",
+    "deviceId": "1342"
   }
 }
 ```
@@ -266,10 +280,11 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
         "channelParam": {
           "eciValue": "05",
           "extension": {
-          "AuthCode": "765210",
-          "AcquireCode": "00",
-          "RRN": "920003454461"
-                        }
+            "processorResponseCode": "00",
+            "terminalId": "TERM_001",
+            "acquirerBin": "123456",
+            "merchantReference": "REF_123456"
+          }
         },
         "paidAmount": {
           "amount": 100.00,
