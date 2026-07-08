@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 toc_max_heading_level: 6
 ---
 
@@ -7,17 +7,17 @@ import RequestHeader from '../_request-header.mdx'
 import ResponseHead from './_response-header.mdx'
 
 
-# Apply VAM Xtran
+# Query VAM Xtran
 
 ## Overview
 
-The `applyVamXtran` interface enables merchants to apply for a dedicated VAM (Virtual Account Management) account for a specified account holder. Botim Money returns the allocated virtual account information, including the IBAN, account number, SWIFT code, bank information, and account status.
+The `queryVamXtran` interface enables merchants to query previously applied VAM (Virtual Account Management) accounts by reference number and/or account holder name. At least one of `referenceNumber` and `accountHolderName` must be provided. Botim Money returns a list of matching virtual account information.
 
 
 ## API URL
 
-- UAT: https://uat.test2pay.com/sgs/api/vam/applyVamXtran
-- Production: https://api.payby.com/sgs/api/vam/applyVamXtran
+- UAT: https://uat.test2pay.com/sgs/api/vam/queryVamXtran
+- Production: https://api.payby.com/sgs/api/vam/queryVamXtran
 
 
 ## Request
@@ -39,13 +39,13 @@ The `applyVamXtran` interface enables merchants to apply for a dedicated VAM (Vi
 
 - **bizContent**   <font color = ' #7d8793'>Object</font>   <font color = '#f19938'>Required</font>
 
-	- **referenceNumber**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
-		- Merchant-defined reference number. Only letters and digits are supported.
-		- Example value: REF1A2B3C4D5E6F
+	- **referenceNumber**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Optional</font>
+		- Merchant-defined reference number. Only letters and digits are supported. At least one of `referenceNumber` and `accountHolderName` must be provided.
+		- Example value: REFQUERY001
 		- Maximum length: `64`
 
-	- **accountHolderName**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
-		- Account holder name. Encrypted with the merchant's public key (SHA-256).
+	- **accountHolderName**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Optional</font>
+		- Account holder name. Encrypted with the merchant's public key (SHA-256). At least one of `referenceNumber` and `accountHolderName` must be provided.
 		- Maximum length: `75`
 
 
@@ -57,14 +57,14 @@ The `applyVamXtran` interface enables merchants to apply for a dedicated VAM (Vi
     "Content-Language": "en",
     "Content-Type": "application/json",
     "sign": "aMs582GhLeRv4fL3xqw7nN4dlzWS+ZVzdsNXT6rKwPpj7qOM4Y7qZBP3Yl6HogILy4IyX1tp8M7D92rK37hUgJg814odd1INIuy4l+KTRPA1Y3F8y0hVGXak0ddeVcOM3XNN+YEhvPClBx4EpmfWVqY3A2qNJTo3ugwr6uZiVGA38OjHRLZthGa+5nea0DtLaZYQnOGWaCI6fPIBZ7qr9HTiVkIsAp3N4m4cHR+3Rvpdbzu2TZoScA358D9wGmF5UOkbHCjwNV03I3O8HzaKUqMe4jnXZ+lJ0TMmxmqLrcMyMztJjZMQB9S4lXMW2+TqMrdNgLQv3GLiQ9IFvhUVEg==",
-    "Partner-Id": "200000086193"
+    "Partner-Id": "200000429066"
 }
 
 //Http Body
 {
   "requestTime": 1581405399656,
   "bizContent": {
-    "referenceNumber": "REF1A2B3C4D5E6F",
+    "referenceNumber": "REFQUERY001",
     "accountHolderName": "i0qWVkLjDrPQ1uhnwIs3NgIXUdy2jB1ZKiuB5H5wSmiBJO5bO2r7tHefI54F/aEhKnZ/EXJ8097aVjfWdsD7Vb9rUsBF254vJ2cusy4NVe6OhWv/b9KrkdYh+9FjRK/TXYuZpbu5nnYHX/v5HOxFKBl4iSDBE4D8KtUWb2Zxc1IhlqhDy8Sf1hHCck8LAyeSlxo6p1qyc5SC75BSyPTVm3IDCQhNeE4IGT4WZaMd9LmvChEesOH8CKg9ff+7DNpqkf2Zl0aQjK6/2SNc0+yWf4faNuAHq17GZGadCGs0IyyhHfE9us1xKyDS6hgRBpXY2g0aUFVFa44QUsJVF2VI8Q=="
   }
 }
@@ -97,8 +97,8 @@ When Botim Money sends response, Botim Money will use its own private key to sig
 
 Body is returned only when `applyStatus` = `SUCCESS` and `code` = `0`.
 
-- **vamAccountDetail** <font color='#7d8793'>VamAccountDetail</font> <font color='#f19938'>Required</font>  
-  - Virtual account information.
+- **vamAccountDetails** <font color='#7d8793'>List&lt;VamAccountDetail&gt;</font> <font color='#f19938'>Required</font>  
+  - List of virtual account information.
 
 **VamAccountDetail**
 
@@ -111,7 +111,7 @@ Body is returned only when `applyStatus` = `SUCCESS` and `code` = `0`.
 
 - **referenceNumber** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
   - Merchant-defined reference number.  
-  - Example value: `REF1A2B3C4D5E6F`
+  - Example value: `REFQUERY001`
 
 - **swiftCode** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
   - Bank SWIFT/BIC code.  
@@ -149,16 +149,18 @@ Body is returned only when `applyStatus` = `SUCCESS` and `code` = `0`.
     "msg": "SUCCESS"
   },
   "body": {
-    "vamAccountDetail": {
-      "iban": "SgsiXi2T//eEymXADGbK7o0EE9wmCTQxi4gLNp7y1JYTW0PbGbEmYk2rmsLc56kSOMbgAGUPf0Na0qs3uPwwhyfGSrHJsxNB8J2wBhcvBm8eSX2BjS45qT/hI8pW2KhpprWVXMmwCCh7NX36Imp0WcsDg8o4EHKBKgg1GLBOBkCh7tHAEDMPhwOllsGYioPb9eKmXHoRlgBAosD+wgEayvLS2LgGb18gGMM3w4ujwLKllQ2g2cr3HiCzvEcaroiBJ/1XSjGQ5rJNVomLpXec05Mr9Ql2oszh8uGbayCL3M4EhppXsA0KTYkHhxmZ5yM7pWmpHQH2tRtxE8EM5j7o3g==",
-      "accountNo": "600001603",
-      "referenceNumber": "REF1A2B3C4D5E6F",
-      "swiftCode": "BBMEAEADXXX",
-      "bankAddress": "Abu Dhabi, UAE",
-      "accountStatus": "Valid",
-      "accountHolder": "SgsiXi2T//eEymXADGbK7o0EE9wmCTQxi4gLNp7y1JYTW0PbGbEmYk2rmsLc56kSOMbgAGUPf0Na0qs3uPwwhyfGSrHJsxNB8J2wBhcvBm8eSX2BjS45qT/hI8pW2KhpprWVXMmwCCh7NX36Imp0WcsDg8o4EHKBKgg1GLBOBkCh7tHAEDMPhwOllsGYioPb9eKmXHoRlgBAosD+wgEayvLS2LgGb18gGMM3w4ujwLKllQ2g2cr3HiCzvEcaroiBJ/1XSjGQ5rJNVomLpXec05Mr9Ql2oszh8uGbayCL3M4EhppXsA0KTYkHhxmZ5yM7pWmpHQH2tRtxE8EJ8i7o3g==",
-      "bankName": "Mashreq Bank"
-    }
+    "vamAccountDetails": [
+      {
+        "iban": "SgsiXi2T//eEymXADGbK7o0EE9wmCTQxi4gLNp7y1JYTW0PbGbEmYk2rmsLc56kSOMbgAGUPf0Na0qs3uPwwhyfGSrHJsxNB8J2wBhcvBm8eSX2BjS45qT/hI8pW2KhpprWVXMmwCCh7NX36Imp0WcsDg8o4EHKBKgg1GLBOBkCh7tHAEDMPhwOllsGYioPb9eKmXHoRlgBAosD+wgEayvLS2LgGb18gGMM3w4ujwLKllQ2g2cr3HiCzvEcaroiBJ/1XSjGQ5rJNVomLpXec05Mr9Ql2oszh8uGbayCL3M4EhppXsA0KTYkHhxmZ5yM7pWmpHQH2tRtxE8EM5j7o3g==",
+        "accountNo": "600001603",
+        "referenceNumber": "REFQUERY001",
+        "swiftCode": "BBMEAEADXXX",
+        "bankAddress": "Abu Dhabi, UAE",
+        "accountStatus": "Valid",
+        "accountHolder": "SgsiXi2T//eEymXADGbK7o0EE9wmCTQxi4gLNp7y1JYTW0PbGbEmYk2rmsLc56kSOMbgAGUPf0Na0qs3uPwwhyfGSrHJsxNB8J2wBhcvBm8eSX2BjS45qT/hI8pW2KhpprWVXMmwCCh7NX36Imp0WcsDg8o4EHKBKgg1GLBOBkCh7tHAEDMPhwOllsGYioPb9eKmXHoRlgBAosD+wgEayvLS2LgGb18gGMM3w4ujwLKllQ2g2cr3HiCzvEcaroiBJ/1XSjGQ5rJNVomLpXec05Mr9Ql2oszh8uGbayCL3M4EhppXsA0KTYkHhxmZ5yM7pWmpHQH2tRtxE8EM5j7o3g==",
+        "bankName": "Mashreq Bank"
+      }
+    ]
   }
 }
 ```
@@ -169,12 +171,13 @@ Body is returned only when `applyStatus` = `SUCCESS` and `code` = `0`.
 | **Code** | **Message**            | **Cause**                                                                 | **Workaround**                       |
 |---------|------------------------|---------------------------------------------------------------------------|--------------------------------------|
 | 0       | SUCCESS                | Success                                                                    |                                      |
-| 400     | INVALID_PARAMETER      | Invalid parameters, for example `referenceNumber` or `accountHolderName` is missing or invalid | Adjust request parameters            |
+| 400     | INVALID_PARAMETER      | Invalid parameters, for example both `referenceNumber` and `accountHolderName` are empty | Adjust request parameters            |
 | 402     | RATE_LIMIT_REJECT      | Too many requests                                                          | Reduce request frequency             |
 | 403     | UNAUTHORIZED           | API not authorized, signature error, or KYC not passed                     | Contact Botim Money                  |
 | 404     | SERVICE_NOT_AVAILABLE  | API service unavailable                                                    | Contact Botim Money                  |
 | 500     | SYSTEM_ERROR           | System error                                                               | Contact Botim Money, or try again later |
 | 504     | SERVICE_TIMEOUT        | Service timeout                                                            | Try again later                      |
+| 62004   | MERCHANT_ORDER_NO_NOT_EXIST | No virtual account record found for the given reference number         | Adjust request parameters            |
 | 62101   | WRONG_IBAN_FORMAT      | IBAN is empty or incorrectly formatted                                     | Contact Botim Money                  |
 | 62102   | IBAN_NOT_FOUND         | IBAN not found                                                             | Contact Botim Money                  |
 | 62118   | INVALID_RESPONSE       | Invalid response returned by the channel                                   | Contact Botim Money, or try again later |
