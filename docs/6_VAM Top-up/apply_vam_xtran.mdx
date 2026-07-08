@@ -1,0 +1,181 @@
+---
+sidebar_position: 3
+toc_max_heading_level: 6
+slug: /applyvamxtran
+---
+
+import RequestHeader from '../_request-header.mdx'
+import ResponseHead from './_response-header.mdx'
+
+
+# Apply VAM Xtran
+
+## Overview
+
+The `applyVamXtran` interface enables merchants to apply for a dedicated VAM (Virtual Account Management) account for a specified account holder. Botim Money returns the allocated virtual account information, including the IBAN, account number, SWIFT code, bank information, and account status.
+
+
+## API URL
+
+- UAT: https://uat.test2pay.com/sgs/api/vam/applyVamXtran
+- Production: https://api.payby.com/sgs/api/vam/applyVamXtran
+
+
+## Request
+
+### Http Header
+
+<details>
+  <summary>Attributes</summary>
+  <RequestHeader/>
+</details>
+
+
+### Http Body
+
+
+- **requestTime**   <font color = ' #7d8793'>Timestamp(3)</font>   <font color = '#f19938'>Required</font>
+
+	- Example value: 1581493898000
+
+- **bizContent**   <font color = ' #7d8793'>Object</font>   <font color = '#f19938'>Required</font>
+
+	- **referenceNumber**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+		- Merchant-defined reference number. Only letters and digits are supported.
+		- Example value: REF1A2B3C4D5E6F
+		- Maximum length: `64`
+
+	- **accountHolderName**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+		- Account holder name. Encrypted with the merchant's public key (SHA-256).
+		- Maximum length: `75`
+
+
+### Request Sample
+
+```json
+//Http Header
+{
+    "Content-Language": "en",
+    "Content-Type": "application/json",
+    "sign": "aMs582GhLeRv4fL3xqw7nN4dlzWS+ZVzdsNXT6rKwPpj7qOM4Y7qZBP3Yl6HogILy4IyX1tp8M7D92rK37hUgJg814odd1INIuy4l+KTRPA1Y3F8y0hVGXak0ddeVcOM3XNN+YEhvPClBx4EpmfWVqY3A2qNJTo3ugwr6uZiVGA38OjHRLZthGa+5nea0DtLaZYQnOGWaCI6fPIBZ7qr9HTiVkIsAp3N4m4cHR+3Rvpdbzu2TZoScA358D9wGmF5UOkbHCjwNV03I3O8HzaKUqMe4jnXZ+lJ0TMmxmqLrcMyMztJjZMQB9S4lXMW2+TqMrdNgLQv3GLiQ9IFvhUVEg==",
+    "Partner-Id": "200000086193"
+}
+
+//Http Body
+{
+  "requestTime": 1581405399656,
+  "bizContent": {
+    "referenceNumber": "REF1A2B3C4D5E6F",
+    "accountHolderName": "i0qWVkLjDrPQ1uhnwIs3NgIXUdy2jB1ZKiuB5H5wSmiBJO5bO2r7tHefI54F/aEhKnZ/EXJ8097aVjfWdsD7Vb9rUsBF254vJ2cusy4NVe6OhWv/b9KrkdYh+9FjRK/TXYuZpbu5nnYHX/v5HOxFKBl4iSDBE4D8KtUWb2Zxc1IhlqhDy8Sf1hHCck8LAyeSlxo6p1qyc5SC75BSyPTVm3IDCQhNeE4IGT4WZaMd9LmvChEesOH8CKg9ff+7DNpqkf2Zl0aQjK6/2SNc0+yWf4faNuAHq17GZGadCGs0IyyhHfE9us1xKyDS6hgRBpXY2g0aUFVFa44QUsJVF2VI8Q=="
+  }
+}
+```
+
+
+## Response
+
+### Http Header
+
+
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+When Botim Money sends response, Botim Money will use its own private key to sign the message, and the merchant uses Botim Money 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Botim Money and not faked by others.
+
+
+### Http Body
+
+**head** 
+
+  <details>
+    <summary>Attributes</summary>
+    <ResponseHead/>
+  </details>
+
+**body** 
+
+
+**<font color = '#f19938'>Notice </font>**
+
+Body is returned only when `applyStatus` = `SUCCESS` and `code` = `0`.
+
+- **vamAccountDetail** <font color='#7d8793'>VamAccountDetail</font> <font color='#f19938'>Required</font>  
+  - Virtual account information.
+
+**VamAccountDetail**
+
+- **iban** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Virtual account IBAN. Returned encrypted with the merchant's public key (SHA-256).
+
+- **accountNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Virtual account number.  
+  - Example value: `600001603`
+
+- **referenceNumber** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Merchant-defined reference number.  
+  - Example value: `REF1A2B3C4D5E6F`
+
+- **swiftCode** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Bank SWIFT/BIC code.  
+  - Example value: `BBMEAEADXXX`
+
+- **bankAddress** <font color='#7d8793'>String</font>  
+  - Bank address.  
+  - Example value: `Abu Dhabi, UAE`
+
+- **accountStatus** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Virtual account status.  
+  - Possible values: `Init`, `Processing`, `Valid`, `Closed`, `Failed`  
+  - Example value: `Valid`
+
+- **accountHolder** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Account holder name. Returned encrypted with the merchant's public key (SHA-256).
+
+- **bankName** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Bank name.  
+  - Example value: `Mashreq Bank`
+
+### Response Sample
+
+```json
+//Http Header
+{
+  "sign": "nDdClX1tAyV3qcX/Epay6AXFNRGSsWd8ysWO9SgwPrNTetSePLA9C39mGp6qRbjJeqXLEnYLwSkBu5eKdtyVX3tflGLiV2kvRjVfYpTCjXdVL2Pcnv2w+ghjHe2jL988iklk7q5AjAgdtXNphpHcTes9pk6W3bVCbvijH6at0fExUtZ91L1LrnPGELT1IJm/lFW3w4KLh0Gxs7FzDPI9RDfUemObNlRzV8kCtkWahwPgs/hBnS69GyYDKN7ihQX2UiLuP239wl6IA+VG/ZZKHPhLs8bbuOS+LKWORIp6jRt+JsAx7c/Ot1RNyOnHKxPRKJ8bVTohEp39yUz/HwG8oA=="
+}
+
+//Http Body
+{
+  "head": {
+    "applyStatus": "SUCCESS",
+    "code": "0",
+    "msg": "SUCCESS"
+  },
+  "body": {
+    "vamAccountDetail": {
+      "iban": "SgsiXi2T//eEymXADGbK7o0EE9wmCTQxi4gLNp7y1JYTW0PbGbEmYk2rmsLc56kSOMbgAGUPf0Na0qs3uPwwhyfGSrHJsxNB8J2wBhcvBm8eSX2BjS45qT/hI8pW2KhpprWVXMmwCCh7NX36Imp0WcsDg8o4EHKBKgg1GLBOBkCh7tHAEDMPhwOllsGYioPb9eKmXHoRlgBAosD+wgEayvLS2LgGb18gGMM3w4ujwLKllQ2g2cr3HiCzvEcaroiBJ/1XSjGQ5rJNVomLpXec05Mr9Ql2oszh8uGbayCL3M4EhppXsA0KTYkHhxmZ5yM7pWmpHQH2tRtxE8EM5j7o3g==",
+      "accountNo": "600001603",
+      "referenceNumber": "REF1A2B3C4D5E6F",
+      "swiftCode": "BBMEAEADXXX",
+      "bankAddress": "Abu Dhabi, UAE",
+      "accountStatus": "Valid",
+      "accountHolder": "SgsiXi2T//eEymXADGbK7o0EE9wmCTQxi4gLNp7y1JYTW0PbGbEmYk2rmsLc56kSOMbgAGUPf0Na0qs3uPwwhyfGSrHJsxNB8J2wBhcvBm8eSX2BjS45qT/hI8pW2KhpprWVXMmwCCh7NX36Imp0WcsDg8o4EHKBKgg1GLBOBkCh7tHAEDMPhwOllsGYioPb9eKmXHoRlgBAosD+wgEayvLS2LgGb18gGMM3w4ujwLKllQ2g2cr3HiCzvEcaroiBJ/1XSjGQ5rJNVomLpXec05Mr9Ql2oszh8uGbayCL3M4EhppXsA0KTYkHhxmZ5yM7pWmpHQH2tRtxE8EJ8i7o3g==",
+      "bankName": "Mashreq Bank"
+    }
+  }
+}
+```
+
+## Response Codes
+
+
+| **Code** | **Message**            | **Cause**                                                                 | **Workaround**                       |
+|---------|------------------------|---------------------------------------------------------------------------|--------------------------------------|
+| 0       | SUCCESS                | Success                                                                    |                                      |
+| 400     | INVALID_PARAMETER      | Invalid parameters, for example `referenceNumber` or `accountHolderName` is missing or invalid | Adjust request parameters            |
+| 402     | RATE_LIMIT_REJECT      | Too many requests                                                          | Reduce request frequency             |
+| 403     | UNAUTHORIZED           | API not authorized, signature error, or KYC not passed                     | Contact Botim Money                  |
+| 404     | SERVICE_NOT_AVAILABLE  | API service unavailable                                                    | Contact Botim Money                  |
+| 500     | SYSTEM_ERROR           | System error                                                               | Contact Botim Money, or try again later |
+| 504     | SERVICE_TIMEOUT        | Service timeout                                                            | Try again later                      |
+| 62101   | WRONG_IBAN_FORMAT      | IBAN is empty or incorrectly formatted                                     | Contact Botim Money                  |
+| 62102   | IBAN_NOT_FOUND         | IBAN not found                                                             | Contact Botim Money                  |
+| 62118   | INVALID_RESPONSE       | Invalid response returned by the channel                                   | Contact Botim Money, or try again later |

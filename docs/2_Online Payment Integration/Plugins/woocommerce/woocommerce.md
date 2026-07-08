@@ -11,7 +11,7 @@ The plugin offers seamless integration, allowing the customer to pay on your web
 
 
 ### Product application
-Step 1: Create your account in the PayBy Merchant Portal.
+Step 1: Create your account in the Botim Money Merchant Portal.
 
 | Environment                 | URL                                                       |
 | ---------------------- | ------------------------------------------------------------ |
@@ -29,7 +29,7 @@ Step 3:Enter the merchant information and submit the application.
 
 ![fill](./pic/fill.png)
 <br/> 
-Step 4:Once the application is submitted, it will be reviewed by the PayBy team. This usually takes 1-2 working days.
+Step 4:Once the application is submitted, it will be reviewed by the Botim Money team. This usually takes 1-2 working days.
 <br/>   
 
 
@@ -65,9 +65,9 @@ Upload "PayBy_key_public.pem" on this step. This pem is used to signiture the re
 
 <br/>
 
-**Step 3: Download PayBy Public Key**
+**Step 3: Download Botim Money Public Key**
 
-This pem is used to Verify the response from PayBy and Encrypting senitive information.
+This pem is used to Verify the response from Botim Money and Encrypting senitive information.
 
 [![object-keys1](./pic/object-keys1.png)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiICAgIGdyYXBoIExSXG4gICAgICAgIEFbXCJvcmlnaW5hbCBjb250ZW50IG9mIHJlcXVlc3QgYm9keVwiXSAtLSBVVEYtOCBlbmNvZGluZyAtLT5CW1wiZW5jb2RlZCBtZXNzYWdlXCJdIC0tIFNIQTI1NndpdGhSU0EgLS0-Q1tcInNpZ25hdHVyZVwiXSAtLSBCYXNlNjQgLS0-IERbXCJmaW5hbCBzaWduYXR1cmUgb3V0cHV0XCJdXG4iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCIsInNlcXVlbmNlIjp7ImRpYWdyYW1NYXJnaW5YIjo1MCwiZGlhZ3JhbU1hcmdpblkiOjEwLCJhY3Rvck1hcmdpbiI6NTAsIndpZHRoIjo0MDAsImhlaWdodCI6NjUsImJveE1hcmdpbiI6MTAsImJveFRleHRNYXJnaW4iOjUsIm5vdGVNYXJnaW4iOjEwLCJtZXNzYWdlTWFyZ2luIjozNSwibWlycm9yQWN0b3JzIjp0cnVlLCJib3R0b21NYXJnaW5BZGoiOjEsInVzZU1heFdpZHRoIjp0cnVlLCJyaWdodEFuZ2xlcyI6ZmFsc2UsInNob3dTZXF1ZW5jZU51bWJlcnMiOmZhbHNlfX0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
@@ -117,16 +117,16 @@ https://github.com/PayBy/Extenstions/blob/master/woocommerce-payment-gateway-pay
 **Step 3: Configure WooCommerce**
 
 1. Navigate to WooCommerce → Setting
-2. Set PayBy as the payment method.
+2. Set Botim Money as the payment method.
 
 ![pic04](./pic/pic04.png) 
 
 3. Enter the Subject provided.
 4. Enter the Merchant Partner Id provided.  
 5. Enter the Merchant Private Key provided. (Don't remove the -----BEGIN PRIVATE KEY----- and -----END PRIVATE KEY-----)   
-6. Enter the PayBy Public Key provided. (Don't remove the -----BEGIN PUBLIC KEY----- and -----END PUBLIC KEY-----)  
+6. Enter the Botim Money Public Key provided. (Don't remove the -----BEGIN PUBLIC KEY----- and -----END PUBLIC KEY-----)  
 7. Select Run Mode UAT for testing, Production for general usage. 
-8. Enter PayBy Payment OrderNo Prefix like 'wp_'  
+8. Enter Botim Money Payment OrderNo Prefix like 'wp_'  
 9. Click on Save changes to update the settings. 
 
 ![pic05](./pic/pic05.png)  
@@ -135,7 +135,7 @@ https://github.com/PayBy/Extenstions/blob/master/woocommerce-payment-gateway-pay
 
 **Step 4: Check front checkout page**
 
-1: Select PayBy as the payment method and place the order.
+1: Select Botim Money as the payment method and place the order.
 
 ![pic06](./pic/pic06.png)  
 
