@@ -34,9 +34,9 @@ The payer completes the signing of the automatic deduction agreement while makin
   
   The source of the agreement.
   
-  Possible values: INTERNET, MERCHANT
+  Possible value: INTERNET
 
-- **agreementType** <span style={{color:" #7d8793"}}>Enum</span> <span style={{color:"#f19938"}}>Required when agreementVersion is not empty</span>
+- **agreementType** <span style={{color:" #7d8793"}}>Enum</span> <span style={{color:"#f19938"}}>Required when `agreementVersion` is not empty</span>
   
   The type of the auto-deduction agreement.
   

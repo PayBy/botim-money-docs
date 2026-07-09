@@ -12,4 +12,3 @@ Cancel a pre-authorization and release the held funds before the transaction is 
 
   Example value: `PA202311190001234567`
   
-  <br/>

@@ -13,18 +13,16 @@ Automatically deduct the funds from the user's BOTIM & Botim Money account
 
   Example value: 2000001
 
-  <br/>
+- **source** <span style={{color:" #7d8793"}}>Enum</span>
 
-- **source** <span style={{color:" #7d8793"}}>String</span>
+  The source of the agreement.
+  
+  Possible value: MERCHANT
 
-  The source or origin of the payment request.
+- **agreementVersion** <span style={{color:" #7d8793"}}>Enum</span>
 
-  <br/>
-
-- **agreementVersion** <span style={{color:" #7d8793"}}>String</span>
-
-  The version of the payment agreement or protocol being used.
-
-  <br/>
+  The version of the agreement.
+  
+  Possible value: V1
 
 
