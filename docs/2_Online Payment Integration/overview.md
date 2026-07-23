@@ -32,9 +32,9 @@ Select the payment product you want to access and check the user experience and 
 
 <br/>
 
-<!--**E-commerce plugin**
+**E-commerce plugin**
 
-`Magento plugin`, `Opencart plugin`, `WooCommerce plugin` -->
+`Magento plugin`, `Opencart plugin`, `WooCommerce plugin`
 
 <br/>
 
