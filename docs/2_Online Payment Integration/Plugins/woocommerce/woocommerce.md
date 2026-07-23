@@ -4,7 +4,7 @@ WooCommerce is an open source, completely customizable ecommerce platform for en
 
 Integrate your WooCommerce site with the Botim Money Payment Gateway to accept payments via debit card, credit card, netbanking (supports 3D Secure) or through any of our supported wallets.
 
-The plugin offers seamless integration, allowing the customer to pay on your website without being redirected. This allows the plugin to work across all browsers and ensures compatibility with the [...]
+The plugin offers seamless integration, allowing the customer to pay on your website without being redirected. This allows the plugin to work across all browsers and ensures compatibility with the latest version of WooCommerce.
 
 <br/>
 
@@ -80,7 +80,7 @@ This IP address is outbound IP of Merchant system. botimMoney provides you with 
 
 For security reasons, we recommend that API should bind at least one IP address.
 
-If there is only one IP address, you can enter it directly. If there is more than one IP address, you should separate them with halfwidth comma (e.g. 192.168.1.1,192.168.1.2,192.168.1.3) or Replace wi[...]
+If there is only one IP address, you can enter it directly. If there is more than one IP address, you should separate them with halfwidth comma (e.g. 192.168.1.1,192.168.1.2,192.168.1.3) or Replace with *.
 (e.g. 192.168.*.*,172.16.9.*,192.168.1.1). If you want to allow any ip addresses,you can only enter *."
 
 <br/>
