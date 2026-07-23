@@ -18,15 +18,15 @@ Step 1: Create your account in the Botim Money Merchant Portal.
 
 Step 2: Visit the Product List to see the product named **Basic Payment Gateway** and click **APPLY NOW**.
 
-![application](./pic/apply.png)
+![application](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/apply.png)
 
-![application](./pic/apply2.png)
+![application](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/apply2.png)
 
 <br/> 
 
 Step 3: Enter the merchant information and submit the application.
 
-![fill](./pic/fill.png)
+![fill](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/fill.png)
 
 <br/> 
 Step 4: Once the application is submitted, it will be reviewed by the botimMoney team. This usually takes 1-2 working days.
@@ -36,7 +36,7 @@ Step 4: Once the application is submitted, it will be reviewed by the botimMoney
 
 After submitting your product activation request, please visit the **API Management** section of the merchant portal to configure the basic parameters required for the integration.
 
-![api-management](./pic/api-management4.png)
+![api-management](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/api-management4.png)
 
 <br/>
 
@@ -70,13 +70,13 @@ Upload "botimMoney_key_public.pem" on this step. This pem is used to signiture t
 
 This pem is used to Verify the response from botimMoney and Encrypting senitive information.
 
-[![object-keys1](./pic/object-keys1.png)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiICAgIGdyYXBoIExSXG4gICAgICAgIEFbXCJvcmlnaW5hbCBjb250ZW50IG9mIHJlcXVlc3QgYm9keVwiXSAtLSBVVEYtOCBlbmNvZGluZyAtLT5CW1wiZW5jb2RlZCBtZXNzYWdlXCJdIC0tIFNIQTI1NndpdGhSU0EgLS0-Q1tcInNpZ25hdHVyZVwiXSAtLSBCYXNlNjQgLS0-IERbXCJmaW5hbCBzaWduYXR1cmUgb3V0cHV0XCJdXG4iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCIsInNlcXVlbmNlIjp7ImRpYWdyYW1NYXJnaW5YIjo1MCwiZGlhZ3JhbU1hcmdpblkiOjEwLCJhY3Rvck1hcmdpbiI6NTAsIndpZHRoIjo0MDAsImhlaWdodCI6NjUsImJveE1hcmdpbiI6MTAsImJveFRleHRNYXJnaW4iOjUsIm5vdGVNYXJnaW4iOjEwLCJtZXNzYWdlTWFyZ2luIjozNSwibWlycm9yQWN0b3JzIjp0cnVlLCJib3R0b21NYXJnaW5BZGoiOjEsInVzZU1heFdpZHRoIjp0cnVlLCJyaWdodEFuZ2xlcyI6ZmFsc2UsInNob3dTZXF1ZW5jZU51bWJlcnMiOmZhbHNlfX0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+[![object-keys1](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/object-keys1.png)
 
 <br/>
 
 **Step 4:Bind IP address (Required)**
 
-This IP address is outbound IP of Merchant system. botimMoney provides you with a strong API through which you can enjoy services such as `placeOrder`, `getOrder`, etc. View How To Use via Developers website.
+This IP address is outbound IP of Merchant system. botimMoney provides you with a strong API through which you can enjoy services such as placeOrder, getOrder, etc. View How To Use via Developers website.
 
 For security reasons, we recommend that API should bind at least one IP address.
 
@@ -97,14 +97,14 @@ Step 2: Install Plugin
 
 1. Set the payment currency to AED – United Arab Emirates Dirham.
 
-![pic01](./pic/pic01.png)  
+![pic01](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/pic01.png)  
 
 2. Set up the Opencart.
 3. Log into the admin page.    
 4. Navigate to Extension → Installer  
 5. Upload the compressed files called 'botim_money.ocmod.zip'.
 
-![pic02](./pic/pic02.png)
+![pic02](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/pic02.png)
 
 <br/>
 
@@ -115,9 +115,9 @@ Step 3: Configure Opencart
 3. Click the Install button to activate botimMoney as a payment method.
 4. Click the Edit button. 
 
-![pic03](./pic/pic03.png)  
+![pic03](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/pic03.png)  
 
-![pic04](./pic/pic04.png)  
+![pic04](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/pic04.png)  
 
 5. Enter the Merchant Partner Id provided. 
 6. Enter the Merchant Private Key provided. 
@@ -129,7 +129,7 @@ Step 3: Configure Opencart
 12. Change the status to Enabled. 
 13. Click on Save to update the settings.
 
-![pic05](./pic/pic05.png)  
+![pic05](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/pic05.png)  
 
 <br/>
 
@@ -137,27 +137,27 @@ Step 4: Check front checkout page
 
 1. Select **botimMoney** as the payment method.
 
-![pic06](./pic/pic06.png)
+![pic06](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/pic06.png)
 
 <br/>
 
 2. Confirm Order. 
 
-![pic07](./pic/pic07.png)
+![pic07](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/pic07.png)
 
 <br/>
 
 3. The page will be redirected to the PayPage, choose to pay by SCAN PAY or CARD PAY.<br/>
 Option A:
 
-![pic08](./pic/paypage1.png)  
+![pic08](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/paypage1.png)  
 
 Option B: 
 
-![pic08](./pic/paypage2.png) 
+![pic08](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/paypage2.png) 
 
 <br/>
 
 4. View payment results in Orders.
 
-![pic09](./pic/pic09.png)  
+![pic09](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/pic09.png)  

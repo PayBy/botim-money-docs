@@ -70,13 +70,13 @@ Upload "botimMoney_key_public.pem" on this step. This pem is used to signiture t
 
 This pem is used to Verify the response from botimMoney and Encrypting senitive information.
 
-[![object-keys1](https://raw.githubusercontent.com/PayBy/botim-money-docs/dev/docs/2_Online%20Payment%20Integration/Plugins/woocommerce/pic/object-keys1.png)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiICAgIGdyYXBoIExSXG4gICAgICAgIEFbXCJvcmlnaW5hbCBjb250ZW50IG9mIHJlcXVlc3QgYm9keVwiXSAtLSVURVNUW1wiYW5kIG1vcmVcIl1cbiJ9)
+[![object-keys1](https://raw.githubusercontent.com/PayBy/botim-money-docs/dev/docs/2_Online%20Payment%20Integration/Plugins/woocommerce/pic/object-keys1.png)
 
 <br/>
 
 **Step 4: Bind IP address (Required)**
 
-This IP address is outbound IP of Merchant system. botimMoney provides you with a strong API through which you can enjoy services such as `placeOrder`, `getOrder`, etc. View How To Use via Developers [...]
+This IP address is outbound IP of Merchant system. botimMoney provides you with a strong API through which you can enjoy services such as placeOrder, getOrder, etc. View How To Use via Developers website.
 
 For security reasons, we recommend that API should bind at least one IP address.
 
@@ -161,4 +161,3 @@ Option B:
 
 <br/>
 
-```
