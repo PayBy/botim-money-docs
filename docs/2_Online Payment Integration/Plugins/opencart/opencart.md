@@ -6,7 +6,7 @@ You can use the plugins for a seamless integration. This not only allows for ref
 
 <br/>
 
-### Product Application
+## Product Application
 Step 1: Create your account in the Botim Money Merchant Portal.
 
 | Environment                 | URL                                                       |
@@ -28,7 +28,7 @@ Step 3: Enter the merchant information and submit the application.
 Step 4: Once the application is submitted, it will be reviewed by the botimMoney team. This usually takes 1-2 working days.
 <br/>   
 
-### Generate the API keys from the botimMoney Merchant Portal
+## Generate the API keys from the botimMoney Merchant Portal
 
 After submitting your product activation request, please visit the **API Management** section of the merchant portal to configure the basic parameters required for the integration.
 
@@ -81,7 +81,7 @@ If there is only one IP address, you can enter it directly. If there is more tha
 
 
 
-### Integration Steps
+## Integration Steps
 
 Step 1: Download
 
