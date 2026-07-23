@@ -1,6 +1,6 @@
 # Magento plugin
 
-Botim Money offers various plugins that enable you to accept payments on your ecommerce website via the Botim Money Payment Gateway. You can accept payments via debit card, credit card, netbanking (su[...]
+BotimMoney offers various plugins that enable you to accept payments on your ecommerce website via the botimMoney Payment Gateway. You can accept payments via debit card, credit card, netbanking (supports 3D Secure) or through any of our supported wallets.
 <br/>
 
 You can use the plugins for a seamless integration. This not only allows for refunds and chargebacks but also enables the plugin to works across all browsers.
@@ -70,17 +70,17 @@ Upload "botimMoney_key_public.pem" on this step. This pem is used to signiture t
 
 This pem is used to Verify the response from botimMoney and Encrypting senitive information.
 
-[![object-keys1](https://github.com/PayBy/botim-money-docs/blob/master/docs/2_Online%20Payment%20Integration/Plugins/magento/pic/object-keys1.png)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiICAgIGdyYXBoIExSXG4gICAgICAgIEFbXCJvcmlnaW5hbCBjb250ZW50IG9mIHJlcXVlc3QgYm9keVwiXSAtLSBVVE[...]
+[![object-keys1](https://github.com/PayBy/botim-money-docs/blob/master/docs/2_Online%20Payment%20Integration/Plugins/magento/pic/object-keys1.png)
 
 <br/>
 
 **Step 4: Bind IP address (Required)**
 
-This IP address is outbound IP of Merchant system. Botim Money provides you with a strong API through which you can enjoy services such as `placeOrder`, `getOrder`, etc. View How To Use via Developers[...]
+This IP address is outbound IP of Merchant system. botimMoney provides you with a strong API through which you can enjoy services such as placeOrder, getOrder, etc. View How To Use via Developers website.
 
 For security reasons, we recommend that API should bind at least one IP address.
 
-If there is only one IP address, you can enter it directly. If there is more than one IP address, you should separate them with halfwidth comma (e.g. 192.168.1.1,192.168.1.2,192.168.1.3) or Replace wi[...]
+If there is only one IP address, you can enter it directly. If there is more than one IP address, you should separate them with halfwidth comma (e.g. 192.168.1.1,192.168.1.2,192.168.1.3) or Replace with *
 (e.g. 192.168.*.*,172.16.9.*,192.168.1.1). If you want to allow any ip addresses,you can only enter *."
 
 <br/>
@@ -160,5 +160,3 @@ Option B:
 <br/>
 
 3. Check the payment results.
-
-```
