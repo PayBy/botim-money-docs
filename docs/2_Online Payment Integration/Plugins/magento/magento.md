@@ -7,7 +7,7 @@ You can use the plugins for a seamless integration. This not only allows for ref
 
 <br/>
 
-### Product Application
+## Product Application
 
 Step 1: Create your account in the Botim Money Merchant Portal.
 
@@ -30,7 +30,7 @@ Step 3: Enter the merchant information and submit the application.
 Step 4: Once the application is submitted, it will be reviewed by the botimMoney team. This usually takes 1-2 working days.
 <br/>   
 
-### Generate the API keys from the botimMoney Merchant Portal
+## Generate the API keys from the botimMoney Merchant Portal
 After submitting your product activation request, please visit the API Management of the merchant portal to configure the basic parameters required for the integration.
 
 ![api-management](./pic/api-management4.png)
@@ -82,7 +82,7 @@ If there is only one IP address, you can enter it directly. If there is more tha
 
 <br/>
 
-### Integration Steps
+## Integration Steps
 
 **Step 1: Download**
 
@@ -138,13 +138,13 @@ bin/magento cache:clean
 
 **Step 4: Check front checkout page**
 
-1: Select **botimMoney** as the payment method and place the order.
+1. Select **botimMoney** as the payment method and place the order.
 
 ![pic04](./pic/pic04.png)  
 
 <br/>
 
-2: The page will be redirected to the PayPage, choose to pay by SCAN PAY or CARD PAY.<br/>
+2. The page will be redirected to the PayPage, choose to pay by SCAN PAY or CARD PAY.<br/>
 Option A:
 
 ![pic08](./pic/paypage1.png)  
@@ -154,4 +154,4 @@ Option B:
 
 <br/>
 
-3: Check the payment results.
+3. Check the payment results.
