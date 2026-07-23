@@ -1,13 +1,13 @@
 # Opencart plugin
 
-BotimMoney offers various plugins that enable you to accept payments on your ecommerce website via the botimMoney Payment Gateway. You can accept payments via debit card, credit card, netbanking (supports 3D Secure) or through any of our supported wallets.
+Botim Money offers various plugins that enable you to accept payments on your ecommerce website via the Botim Money Payment Gateway. You can accept payments via debit card, credit card, netbanking (supports 3D Secure) or through any of our supported wallets.
 
 You can use the plugins for a seamless integration. This not only allows for refunds and chargebacks but also enables the plugin to works across all browsers.
 
 <br/>
 
 ### Product Application
-Step 1:Create your account in the botimMoney Merchant Portal.
+Step 1: Create your account in the Botim Money Merchant Portal.
 
 | Environment                 | URL                                                       |
 | ---------------------- | ------------------------------------------------------------ |
@@ -16,21 +16,21 @@ Step 1:Create your account in the botimMoney Merchant Portal.
 
 <br/>
 
-Step 2:Visit the Product List to see the product named **Basic Payment Gateway** and click APPLY NOW.
+Step 2: Visit the Product List to see the product named **Basic Payment Gateway** and click **APPLY NOW**.
 
 ![application](./pic/apply.png)
 ![application](./pic/apply2.png)
 <br/> 
-Step 3:Enter the merchant information and submit the application.
+Step 3: Enter the merchant information and submit the application.
 
 ![fill](./pic/fill.png)
 <br/> 
-Step 4:Once the application is submitted, it will be reviewed by the botimMoney team. This usually takes 1-2 working days.
+Step 4: Once the application is submitted, it will be reviewed by the botimMoney team. This usually takes 1-2 working days.
 <br/>   
 
 ### Generate the API keys from the botimMoney Merchant Portal
 
-After submitting your product activation request, please visit the API Management of the merchant portal to configure the basic parameters required for the integration.
+After submitting your product activation request, please visit the **API Management** section of the merchant portal to configure the basic parameters required for the integration.
 
 ![api-management](./pic/api-management4.png)
 
@@ -72,8 +72,10 @@ This pem is used to Verify the response from botimMoney and Encrypting senitive 
 
 **Step 4:Bind IP address (Required)**
 
-This IP address is outbound IP of Merchant system. botimMoney provides you with a strong API through which you can enjoy services such as placeOrder, getOrder, etc. View How To Use via Developers website.
+This IP address is outbound IP of Merchant system. botimMoney provides you with a strong API through which you can enjoy services such as `placeOrder`, `getOrder`, etc. View How To Use via Developers website.
+
 For security reasons, we recommend that API should bind at least one IP address.
+
 If there is only one IP address, you can enter it directly. If there is more than one IP address, you should separate them with halfwidth comma (e.g. 192.168.1.1,192.168.1.2,192.168.1.3) or Replace with *
 (e.g. 192.168.*.*,172.16.9.*,192.168.1.1). If you want to allow any ip addresses,you can only enter *."
 
@@ -81,13 +83,13 @@ If there is only one IP address, you can enter it directly. If there is more tha
 
 ### Integration Steps
 
-Step 1:Download
+Step 1: Download
 
-https://cdn-web-glb.botim.me/upd/v1/res/common/money/plugins/botim_money.ocmod.zip
+Download from: https://cdn-web-glb.botim.me/upd/v1/res/common/money/plugins/botim_money.ocmod.zip
 
 <br/>
 
-Step 2:Install Plugin
+Step 2: Install Plugin
 
 1. Set the payment currency to AED – United Arab Emirates Dirham.
 
@@ -102,7 +104,7 @@ Step 2:Install Plugin
 
 <br/>
 
-Step 3:Configure Opencart
+Step 3: Configure Opencart
 
 1. Navigate to Press Extensions → Extensions 
 2. Select Payments as extension Extension type.
@@ -125,9 +127,9 @@ Step 3:Configure Opencart
 
 <br/>
 
-Step 4:Check front checkout page
+Step 4: Check front checkout page
 
-1. Select botimMoney as the payment method.
+1. Select **botimMoney** as the payment method.
 
 ![pic06](./pic/pic06.png)
 
