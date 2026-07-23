@@ -1,20 +1,18 @@
-# WooCommerce plugin
+# Magento plugin
 
-WooCommerce is an open source, completely customizable ecommerce platform for entrepreneurs worldwide. It offers a flexible way to build an ecommerce store with WordPress.
+Botim Money offers various plugins that enable you to accept payments on your ecommerce website via the Botim Money Payment Gateway. You can accept payments via debit card, credit card, netbanking (supports 3D Secure) or through any of our supported wallets.
+<br/>
 
-Integrate your WooCommerce site with the Botim Money Payment Gateway to accept payments via debit card, credit card, netbanking (supports 3D Secure) or through any of our supported wallets.
-
-The plugin offers seamless integration, allowing the customer to pay on your website without being redirected. This allows the plugin to work across all browsers and ensures compatibility with the latest version of WooCommerce.
+You can use the plugins for a seamless integration. This not only allows for refunds and chargebacks but also enables the plugin to works across all browsers.
 
 <br/>
 
+## Product Application
 
-
-## Product application
 Step 1: Create your account in the Botim Money Merchant Portal.
 
-| Environment                 | URL                                            |
-| ---------------------- | ------------------------------------------------- |
+| Environment                 | URL                                                       |
+| ---------------------- | ------------------------------------------------------------ |
 | Production      | https://unified.botim.money |
 | UAT      | https://uat-web-unified.test2pay.com/ |
 
@@ -25,17 +23,15 @@ Step 2: Visit the Product List to see the product named **Basic Payment Gateway*
 ![application](./pic/apply.png)
 ![application](./pic/apply2.png)
 <br/> 
-Step 3:Enter the merchant information and submit the application.
+Step 3: Enter the merchant information and submit the application.
 
 ![fill](./pic/fill.png)
 <br/> 
-Step 4:Once the application is submitted, it will be reviewed by the botimMoney team. This usually takes 1-2 working days.
+Step 4: Once the application is submitted, it will be reviewed by the botimMoney team. This usually takes 1-2 working days.
 <br/>   
 
-
-## API Management
+## Generate the API keys from the botimMoney Merchant Portal
 After submitting your product activation request, please visit the API Management of the merchant portal to configure the basic parameters required for the integration.
-
 
 ![api-management](./pic/api-management4.png)
 
@@ -59,6 +55,8 @@ openssl rsa -in botimMoney_key.pem -out botimMoney_key_public.pem -pubout
 openssl pkcs8 -in botimMoney_key.pem -topk8 -nocrypt -out botimMoney_key_private.pem
 ```
 
+<br/>
+
 **Step 2: Upload your public key**
 
 Upload "botimMoney_key_public.pem" on this step. This pem is used to signiture the request from merchant.
@@ -75,7 +73,7 @@ This pem is used to Verify the response from botimMoney and Encrypting senitive 
 
 **Step 4: Bind IP address (Required)**
 
-This IP address is outbound IP of Merchant system. botimMoney provides you with a strong API through which you can enjoy services such as `placeOrder`, `getOrder`, etc. View How To Use via Developers website.
+This IP address is outbound IP of Merchant system. Botim Money provides you with a strong API through which you can enjoy services such as `placeOrder`, `getOrder`, etc. View How To Use via Developers website.
 
 For security reasons, we recommend that API should bind at least one IP address.
 
@@ -84,12 +82,11 @@ If there is only one IP address, you can enter it directly. If there is more tha
 
 <br/>
 
-
 ## Integration Steps
 
 **Step 1: Download**
 
-Download from: https://cdn-web-glb.botim.me/upd/v1/res/common/money/plugins/botim-money-for-woocommerce.zip
+Download from: https://cdn-web-glb.botim.me/upd/v1/res/common/money/plugins/botim-money-for-magento.zip
 
 <br/>
 
@@ -97,49 +94,53 @@ Download from: https://cdn-web-glb.botim.me/upd/v1/res/common/money/plugins/boti
 
 1. Set the payment currency to AED – United Arab Emirates Dirham.
 
-![pic01](./pic/pic01.png) 
+![pic01](./pic/pic01.png)  
 
-2. Set up the Wordpress And Woocommerce. 
-3. Log into the admin page.
-4. Navigate to Plugins → Add New 
-5. Upload the compressed files called 'botim-money-for-woocommerce.zip'.
+2. Set up the Magento.  
+3. Upload the compressed files called 'botim-money-for-magento.zip' to Magento’s server.  
+4. Unzip "botim-money-for-magento.zip" to sub folder app/code that you would get folder structure similar to following:  
 
 ![pic02](./pic/pic02.png)  
 
-6. Click the Install Now button.
+5. Login Magento server with your favorite SSH client e.g. putty, and entered Magento’s root folder. Run the following commands one by one:  
 
-7. Navigate to WooCommerce → Installed Plugins
-
-8. Click the Activate button.
-
-![pic03](./pic/pic03.png)
-
-<br/>
-
-**Step 3: Configure WooCommerce**
-
-1. Navigate to WooCommerce → Setting
-2. Set botimMoney as the payment method.
-
-![pic04](./pic/pic04.png) 
-
-3. Enter the Subject provided.
-4. Enter the Merchant Partner Id provided.  
-5. Enter the Merchant Private Key provided. (Don't remove the -----BEGIN PRIVATE KEY----- and -----END PRIVATE KEY-----)   
-6. Enter the botimMoney Public Key provided. (Don't remove the -----BEGIN PUBLIC KEY----- and -----END PUBLIC KEY-----)  
-7. Select Run Mode UAT for testing, Production for general usage. 
-8. Enter botimMoney Payment OrderNo Prefix like 'wp_'  
-9. Click on Save changes to update the settings. 
-
-![pic05](./pic/pic05.png)  
+```php
+php bin/magento module:enable BotimMoney_Payment php bin/magento setup:upgrade
+php bin/magento setup:di:compile
+php bin/magento setup:static-content:deploy php bin/magento cache:clean`
+```
 
 <br/>
+
+or
+
+```shel
+bin/magento module:enable BotimMoney_Payment 
+bin/magento setup:upgrade
+bin/magento setup:di:compile
+bin/magento setup:static-content:deploy -f 
+bin/magento cache:clean
+```
+
+**Step 3: Configure Magento**
+
+1. Navigate to Stores → Configuration → Sales → Payment Methods → botimMoney  
+2. Enter the Merchant Partner Id provided. 
+3. Enter the Merchant Private Key provided. 
+4. Enter the botimMoney Public Key provided. 
+5. Select Mode Test for testing, Production for generalusage.   
+6. Confirm that the currency is set to AED.
+7. Click on Save Config to update the settings.
+
+![pic03](./pic/pic03.png)  
+
+
 
 **Step 4: Check front checkout page**
 
-1. Select botim money as the payment method and place the order.
+1. Select **botimMoney** as the payment method and place the order.
 
-![pic06](./pic/pic06.png)  
+![pic04](./pic/pic04.png)  
 
 <br/>
 
@@ -147,15 +148,10 @@ Download from: https://cdn-web-glb.botim.me/upd/v1/res/common/money/plugins/boti
 Option A:
 
 ![pic08](./pic/paypage1.png)  
-
 Option B: 
 
-![pic08](./pic/paypage2.png) 
+![pic08](./pic/paypage2.png)  
 
 <br/>
 
-3. View payment results in Orders. 
-
-![pic09](./pic/pic09.png) 
-
-<br/>
+3. Check the payment results.
