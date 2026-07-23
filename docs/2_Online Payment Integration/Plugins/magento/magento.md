@@ -20,15 +20,15 @@ Step 1: Create your account in the Botim Money Merchant Portal.
 
 Step 2: Visit the Product List to see the product named **Basic Payment Gateway** and click **APPLY NOW**.
 
-![application](https://github.com/PayBy/botim-money-docs/blob/master/docs/2_Online%20Payment%20Integration/Plugins/magento/pic/apply.png)
+![application](./pic/apply.png)
 
-![application](https://github.com/PayBy/botim-money-docs/blob/master/docs/2_Online%20Payment%20Integration/Plugins/magento/pic/apply2.png)
+![application](./pic/apply2.png)
 
 <br/> 
 
 Step 3: Enter the merchant information and submit the application.
 
-![fill](https://github.com/PayBy/botim-money-docs/blob/master/docs/2_Online%20Payment%20Integration/Plugins/magento/pic/fill.png)
+![fill](./pic/fill.png)
 <br/> 
 Step 4: Once the application is submitted, it will be reviewed by the botimMoney team. This usually takes 1-2 working days.
 <br/>   
@@ -36,7 +36,7 @@ Step 4: Once the application is submitted, it will be reviewed by the botimMoney
 ## Generate the API keys from the botimMoney Merchant Portal
 After submitting your product activation request, please visit the API Management of the merchant portal to configure the basic parameters required for the integration.
 
-![api-management](https://github.com/PayBy/botim-money-docs/blob/master/docs/2_Online%20Payment%20Integration/Plugins/magento/pic/api-management4.png)
+![api-management](./pic/api-management4.png)
 
 <br/>
 
@@ -70,7 +70,7 @@ Upload "botimMoney_key_public.pem" on this step. This pem is used to signiture t
 
 This pem is used to Verify the response from botimMoney and Encrypting senitive information.
 
-[![object-keys1](https://github.com/PayBy/botim-money-docs/blob/master/docs/2_Online%20Payment%20Integration/Plugins/magento/pic/object-keys1.png)
+[![object-keys1](./pic/object-keys1.png)
 
 <br/>
 
@@ -97,13 +97,13 @@ Download from: https://cdn-web-glb.botim.me/upd/v1/res/common/money/plugins/boti
 
 1. Set the payment currency to AED – United Arab Emirates Dirham.
 
-![pic01](https://github.com/PayBy/botim-money-docs/blob/master/docs/2_Online%20Payment%20Integration/Plugins/magento/pic/pic01.png)  
+![pic01](./pic/pic01.png)  
 
 2. Set up the Magento.  
 3. Upload the compressed files called 'botim-money-for-magento.zip' to Magento’s server.  
 4. Unzip "botim-money-for-magento.zip" to sub folder app/code that you would get folder structure similar to following:  
 
-![pic02](https://github.com/PayBy/botim-money-docs/blob/master/docs/2_Online%20Payment%20Integration/Plugins/magento/pic/pic02.png)  
+![pic02](./pic/pic02.png)  
 
 5. Login Magento server with your favorite SSH client e.g. putty, and entered Magento’s root folder. Run the following commands one by one:  
 
@@ -135,7 +135,7 @@ bin/magento cache:clean
 6. Confirm that the currency is set to AED.
 7. Click on Save Config to update the settings.
 
-![pic03](https://github.com/PayBy/botim-money-docs/blob/master/docs/2_Online%20Payment%20Integration/Plugins/magento/pic/pic03.png)  
+![pic03](./pic/pic03.png)  
 
 
 
@@ -144,18 +144,18 @@ bin/magento cache:clean
 
 1. Select **botimMoney** as the payment method and place the order.
 
-![pic04](https://github.com/PayBy/botim-money-docs/blob/master/docs/2_Online%20Payment%20Integration/Plugins/magento/pic/pic04.png)  
+![pic04](./pic/pic04.png)  
 
 <br/>
 
 2. The page will be redirected to the PayPage, choose to pay by SCAN PAY or CARD PAY.<br/>
 Option A:
 
-![pic08](https://github.com/PayBy/botim-money-docs/blob/master/docs/2_Online%20Payment%20Integration/Plugins/magento/pic/paypage1.png)  
+![pic08](./pic/paypage1.png)  
 
 Option B: 
 
-![pic08](https://github.com/PayBy/botim-money-docs/blob/master/docs/2_Online%20Payment%20Integration/Plugins/magento/pic/paypage2.png)  
+![pic08](./pic/paypage2.png)  
 
 <br/>
 
