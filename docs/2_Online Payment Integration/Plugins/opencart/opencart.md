@@ -1,6 +1,6 @@
 # Opencart plugin
 
-Botim Money offers various plugins that enable you to accept payments on your ecommerce website via the Botim Money Payment Gateway. You can accept payments via debit card, credit card, netbanking (su[...]
+Botim Money offers various plugins that enable you to accept payments on your ecommerce website via the Botim Money Payment Gateway. You can accept payments via debit card, credit card, netbanking (supports 3D Secure) or through any of our supported wallets.
 
 You can use the plugins for a seamless integration. This not only allows for refunds and chargebacks but also enables the plugin to works across all browsers.
 
