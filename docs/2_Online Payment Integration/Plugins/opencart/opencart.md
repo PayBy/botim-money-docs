@@ -70,18 +70,18 @@ Upload "botimMoney_key_public.pem" on this step. This pem is used to signiture t
 
 This pem is used to Verify the response from botimMoney and Encrypting senitive information.
 
-[![object-keys1](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/object-keys1.png)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiICAgIGdyYXBoIExSXG4gICAgICAgIEFbXCJvcmlnaW5hbCBjb250ZW50IG9mIHJlcXVlc3QgYm9keVwiXSAtLS[...]
+[![object-keys1](https://github.com/PayBy/botim-money-docs/raw/dev/docs/2_Online%20Payment%20Integration/Plugins/opencart/pic/object-keys1.png)
 
 <br/>
 
 **Step 4:Bind IP address (Required)**
 
-This IP address is outbound IP of Merchant system. botimMoney provides you with a strong API through which you can enjoy services such as `placeOrder`, `getOrder`, etc. View How To Use via Developers [...]
+This IP address is outbound IP of Merchant system. botimMoney provides you with a strong API through which you can enjoy services such as placeOrder, getOrder, etc. View How To Use via Developers website.
 
 For security reasons, we recommend that API should bind at least one IP address.
 
-If there is only one IP address, you can enter it directly. If there is more than one IP address, you should separate them with halfwidth comma (e.g. 192.168.1.1,192.168.1.2,192.168.1.3) or Replace wi[...]
-(e.g. 192.168.*.*,172.16.9.*,192.168.1.1). If you want to allow any ip addresses,you can only enter *.
+If there is only one IP address, you can enter it directly. If there is more than one IP address, you should separate them with halfwidth comma (e.g. 192.168.1.1,192.168.1.2,192.168.1.3) or Replace with *
+(e.g. 192.168.*.*,172.16.9.*,192.168.1.1). If you want to allow any ip addresses,you can only enter *."
 
 
 
