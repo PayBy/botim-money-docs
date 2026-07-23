@@ -19,11 +19,15 @@ Step 1: Create your account in the Botim Money Merchant Portal.
 Step 2: Visit the Product List to see the product named **Basic Payment Gateway** and click **APPLY NOW**.
 
 ![application](./pic/apply.png)
+
 ![application](./pic/apply2.png)
+
 <br/> 
+
 Step 3: Enter the merchant information and submit the application.
 
 ![fill](./pic/fill.png)
+
 <br/> 
 Step 4: Once the application is submitted, it will be reviewed by the botimMoney team. This usually takes 1-2 working days.
 <br/>   
@@ -112,6 +116,7 @@ Step 3: Configure Opencart
 4. Click the Edit button. 
 
 ![pic03](./pic/pic03.png)  
+
 ![pic04](./pic/pic04.png)  
 
 5. Enter the Merchant Partner Id provided. 
@@ -123,6 +128,7 @@ Step 3: Configure Opencart
 11. Confirm that AED currency is set.
 12. Change the status to Enabled. 
 13. Click on Save to update the settings.
+
 ![pic05](./pic/pic05.png)  
 
 <br/>
@@ -145,6 +151,7 @@ Step 4: Check front checkout page
 Option A:
 
 ![pic08](./pic/paypage1.png)  
+
 Option B: 
 
 ![pic08](./pic/paypage2.png) 
@@ -152,4 +159,5 @@ Option B:
 <br/>
 
 4. View payment results in Orders.
-    ![pic09](./pic/pic09.png)  
+
+![pic09](./pic/pic09.png)  

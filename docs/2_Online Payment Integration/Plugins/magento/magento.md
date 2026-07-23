@@ -21,8 +21,11 @@ Step 1: Create your account in the Botim Money Merchant Portal.
 Step 2: Visit the Product List to see the product named **Basic Payment Gateway** and click **APPLY NOW**.
 
 ![application](./pic/apply.png)
+
 ![application](./pic/apply2.png)
+
 <br/> 
+
 Step 3: Enter the merchant information and submit the application.
 
 ![fill](./pic/fill.png)
@@ -148,6 +151,7 @@ bin/magento cache:clean
 Option A:
 
 ![pic08](./pic/paypage1.png)  
+
 Option B: 
 
 ![pic08](./pic/paypage2.png)  
