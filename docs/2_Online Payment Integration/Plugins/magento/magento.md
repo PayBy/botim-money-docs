@@ -84,13 +84,13 @@ If there is only one IP address, you can enter it directly. If there is more tha
 
 ### Integration Steps
 
-**Step 1:Download**
+**Step 1: Download**
 
 Download from: https://cdn-web-glb.botim.me/upd/v1/res/common/money/plugins/botim-money-for-magento.zip
 
 <br/>
 
-**Step 2:Install Plugin**
+**Step 2: Install Plugin**
 
 1. Set the payment currency to AED – United Arab Emirates Dirham.
 
@@ -122,7 +122,7 @@ bin/magento setup:static-content:deploy -f
 bin/magento cache:clean
 ```
 
-**Step 3:Configure Magento**
+**Step 3: Configure Magento**
 
 1. Navigate to Stores → Configuration → Sales → Payment Methods → botimMoney  
 2. Enter the Merchant Partner Id provided. 
@@ -136,7 +136,7 @@ bin/magento cache:clean
 
 
 
-**Step 4:Check front checkout page**
+**Step 4: Check front checkout page**
 
 1: Select **botimMoney** as the payment method and place the order.
 
