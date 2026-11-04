@@ -1,4 +1,9 @@
-## Google Pay™
+---
+sidebar_position: 91
+toc_max_heading_level: 6
+---
+
+# Google Pay™
 
 Botim Money supports Google Pay™ on the hosted paypage (`PAYPAGE`) and on Direct Pay (`DIRECTPAY`). Google Pay is always written as two words. Google Pay is a trademark of Google LLC.
 
@@ -8,7 +13,7 @@ Google Pay is not supported on `INAPP` or `EWALLET`.
 
 > **Policy requirement:** Merchants who use Google Pay must adhere to the [Google Pay and Wallet API Acceptable Use Policy](https://payments.developers.google.com/terms/aup) and accept the [Google Pay API Terms of Service](https://payments.developers.google.com/terms/sellertos).
 
-### Hosted checkout (`PAYPAGE`)
+## Hosted checkout (`PAYPAGE`)
 
 Google Pay must be enabled on your merchant profile by Botim Money Business. Once enabled, Botim Money's hosted paypage shows Google Pay as a payment method. You do not generate a Google Pay payload yourself.
 
@@ -17,16 +22,16 @@ Google Pay must be enabled on your merchant profile by Botim Money Business. Onc
 3. The payer selects Google Pay on the paypage and completes the payment.
 4. Botim Money redirects the payer to your `redirectUrl` and sends the result to your `notifyUrl`.
 
-### Direct Pay (`DIRECTPAY`)
+## Direct Pay (`DIRECTPAY`)
 
 Google Pay on Direct Pay is available only to merchants that are PCI-DSS compliant and integrated directly with Google Pay.
 
-**Prerequisites**
+### Prerequisites
 
 - Sign up with Google and create your Google Pay merchant ID for the [Direct Pay](https://developers.google.com/pay/api/web/guides/tutorial) integration method.
 - Google Pay must be enabled on your merchant profile by Botim Money Business.
 
-**Integration model**
+### Integration model
 
 On Direct Pay, you decrypt the Google Pay token yourself. Botim Money is **not** your Google Pay payment gateway (`PAYMENT_GATEWAY` tokenization).
 
@@ -49,13 +54,13 @@ const tokenizationSpecification = {
 
 The `gateway` and `gatewayMerchantId` parameters belong to `PAYMENT_GATEWAY` tokenization and do not apply to Direct Pay.
 
-**Google Pay developer resources**
+### Google Pay developer resources
 
 - [Google Pay Web developer documentation](https://developers.google.com/pay/api/web/)
 - [Google Pay Web integration checklist](https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist)
 - [Publish your integration for Web](https://developers.google.com/pay/api/web/guides/test-and-deploy/publish-your-integration)
 
-**Supported configurations**
+### Supported configurations
 
 | Parameter | Botim Money support |
 |---|---|
@@ -79,7 +84,7 @@ const cardPaymentMethod = {
 };
 ```
 
-**Submit the decrypted payment**
+### Submit the decrypted payment
 
 1. Take the encrypted token from `paymentData.paymentMethodData.tokenizationData.token` in the Google Pay response.
 2. Decrypt it on your server. The card fields are in `paymentMethodDetails`.
@@ -97,7 +102,7 @@ const cardPaymentMethod = {
 | `cryptoFmt` | Cryptogram format, `3DSECURE` (`CRYPTOGRAM_3DS` only) | No |
 | `customerId` | Your unique identifier for the payer | No |
 
-**Encrypt the card fields**
+### Encrypt the card fields
 
 Encrypt each sensitive field separately with the RSA public key issued by Botim Money:
 
@@ -124,7 +129,7 @@ public string RSAEncryption(string plainText, string publicKeyBase64)
 }
 ```
 
-**Example request**
+### Example request
 
 ```http
 POST https://api.payby.com/sgs/api/acquire2/placeOrder
@@ -163,7 +168,7 @@ Partner-Id: <your Partner-Id>
 }
 ```
 
-**Handle the response**
+### Handle the response
 
 - **`PAN_ONLY` (FPAN):** the response contains redirect HTML in `interActionParams.threeDSecureDom`. Render it in the payer's browser to start OTP authentication. After the OTP, the payer is redirected to your `redirectUrl`.
 - **`CRYPTOGRAM_3DS` (DPAN):** the response contains no redirect HTML.
