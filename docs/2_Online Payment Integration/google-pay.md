@@ -9,6 +9,8 @@ Botim Money supports Google Pay™ on the hosted paypage (`PAYPAGE`) and on Dire
 
 When you display the Google Pay button or mark, follow the [Google Pay Web Brand Guidelines](https://developers.google.com/pay/api/web/guides/brand-guidelines).
 
+Google Pay is not supported on `INAPP` or `EWALLET`.
+
 > **Policy requirement:** Merchants who use Google Pay must adhere to the [Google Pay and Wallet API Acceptable Use Policy](https://payments.developers.google.com/terms/aup) and accept the [Google Pay API Terms of Service](https://payments.developers.google.com/terms/sellertos).
 
 ## Hosted Checkout (`PAYPAGE`)
@@ -26,8 +28,8 @@ Google Pay on Direct Pay is available only to merchants that are PCI-DSS complia
 
 ### Prerequisites
 
-- Sign up with Google and create your Google Pay merchant ID for the Direct Pay integration method.
-- Google Pay must be enabled on your merchant profile by Botim Money.
+- Sign up with Google and create your Google Pay merchant ID for the [Direct Pay](https://developers.google.com/pay/api/web/guides/tutorial) integration method.
+- Google Pay must be enabled on your merchant profile by Botim Money Business.
 
 ### Integration Model
 
@@ -65,6 +67,22 @@ The `gateway` and `gatewayMerchantId` parameters belong to `PAYMENT_GATEWAY` tok
 | `allowedAuthMethods` | Both. `PAN_ONLY`: the card number (FPAN) stored in the payer's Google account, with no device authentication. `CRYPTOGRAM_3DS`: a device token (DPAN) with a cryptogram, authenticated on the payer's device. |
 | 3DS for `PAN_ONLY` | Botim Money returns redirect HTML in `threeDSecureDom` (in `interactionParams`). Render it in the payer's browser to start OTP authentication. |
 | 3DS for `CRYPTOGRAM_3DS` | No redirect HTML is returned. |
+| `allowedCardNetworks` | `VISA` and `MASTERCARD`. Pass exactly these values in `allowedCardNetworks`. Other card networks are not supported for Google Pay on Botim Money. |
+| `billingAddressParameters` | Not required. Botim Money does not need a billing address to process the decrypted card data, and the Create Order request has no billing address fields. |
+
+Use these card parameters in your Google Pay `PaymentMethod` object, together with the `tokenizationSpecification` above:
+
+```javascript
+const cardPaymentMethod = {
+  type: 'CARD',
+  parameters: {
+    allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+    allowedCardNetworks: ['VISA', 'MASTERCARD']
+    // billingAddressRequired and billingAddressParameters are not needed
+  },
+  tokenizationSpecification: tokenizationSpecification
+};
+```
 
 ### Submit the Decrypted Payment
 
@@ -96,8 +114,8 @@ Encrypt each sensitive field separately with the RSA public key issued by Botim 
 public string RSAEncryption(string plainText, string publicKeyBase64)
 {
     string base64Key = publicKeyBase64.Replace("-----BEGIN PUBLIC KEY-----", "")
-        .Replace("-----END PUBLIC KEY-----", "")
-        .Replace("\r\n", "").Trim();
+                                      .Replace("-----END PUBLIC KEY-----", "")
+                                      .Replace("\r\n", "").Trim();
     byte[] keyBytes = Convert.FromBase64String(base64Key);
     using (RSA rsa = RSA.Create())
     {
