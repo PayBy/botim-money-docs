@@ -52,6 +52,12 @@ const tokenizationSpecification = {
 
 The `gateway` and `gatewayMerchantId` parameters belong to `PAYMENT_GATEWAY` tokenization and do not apply to Direct Pay.
 
+### Google Pay Developer Resources
+
+- [Google Pay Web developer documentation](https://developers.google.com/pay/api/web/)
+- [Google Pay Web integration checklist](https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist)
+- [Publish your integration for Web](https://developers.google.com/pay/api/web/guides/test-and-deploy/publish-your-integration)
+
 ### Supported Configurations
 
 | Parameter | Botim Money support |
